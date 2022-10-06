@@ -49,7 +49,7 @@ In this documentation, `Pipeline` job will be used, but any job is expected to w
 - Enter a Job name (here it will be `github_PR_webhook`).  
 - Click `OK`. It will navigate to the job's configuration page.
     - Add a `Description` of choice.
-    - Scroll down and check `GitHub project`. Add the URL of GitHub repository. Here the URL of the repository should be added without `.git` extention. This is **important** because otherwise, the webhook will not be created.
+    - Scroll down and check `GitHub project`. Add the URL of GitHub repository. Here the URL of the repository should be added without `.git` extention. This is **important** that the person who is creating pull request should be either in `admin list` or `whitelist` because otherwise, the webhook will not be created.
     - Scroll down to `Build Triggers` section.
     - Check `GitHub Pull Request Builder`. This will open further configurations for this option.
         - Leave `GitHub API credentials`.
