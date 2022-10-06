@@ -165,7 +165,4 @@ If no issue is encountered during this whole setup, jenkins will take us to the 
 ![unnamed (14)](https://user-images.githubusercontent.com/99069972/190384770-a8f2fcff-081a-470a-913a-2982f943f16d.png)  
   
 **After this point, node will be able to run jobs from the container directory.**  
-  
-<p align="center">
-  <b>END OF DOCUMENTATION<b>
-</p>
+
