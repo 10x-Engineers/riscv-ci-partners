@@ -68,6 +68,3 @@ Jenkins freestyle jobs can be combined together by mentioning post-build jobs in
   
 This can be done in all the job's configuration for the specified node.  
   
-<p align="center">
-  <b>END OF DOCUMENTATION<b>
-</p>
