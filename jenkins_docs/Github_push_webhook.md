@@ -96,4 +96,8 @@ For the sake of this documentation, I have created a simple repository called `j
       
 After this point each time the github repository is commited with a change, jenkins job will start the build and will also denote on the repository if the build has passed or failed (as can be seen in the below screenshot).
   
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192314484-a761bb98-5fbe-4303-9627-d42ff1f096e1.png)
+![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192314484-a761bb98-5fbe-4303-9627-d42ff1f096e1.png)  
+  
+<p align="center">
+  <b>END OF DOCUMENTATION<b>
+</p>
