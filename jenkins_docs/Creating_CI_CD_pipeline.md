@@ -26,3 +26,8 @@ For sake of this documentation, jenkins built-in sample script is used to create
 5. Definition section contains configuration for stages and steps of the pipeline. Under `Definition` section, you can either choose `Pipeline script` and try writing your own script or try some sample pipeline (like `Hello World`, `Github+Maven` etc) or you could select `Pipeline script from SCM` and give a github repository containing configurations of Pipeline.
 6. Press `Save` and `Apply`.
 7. This should take you to the Pipeline and you can build the pipeline and if no unresolved dependencies are present, the pipeline should build without any error.
+  
+  
+<p align="center">
+  <b>END OF DOCUMENTATION<b>
+</p>
