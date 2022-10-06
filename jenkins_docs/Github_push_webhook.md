@@ -1,6 +1,6 @@
-# Github webhook integration with Jenkins
+# Github 'Push' webhook integration with Jenkins
 ## Purpose of using github webhook integration with jenkins
-Most of the time, before generating each pull request on the upstream repository, one may want to check the result of all the checks on the repository defined by CI/CD pipeline. This saves the owner of the repository from all the trouble of reviewing all the changes and approve the pull request once the there is no issue with it. This can be achieved using github webhook integration with jenkins.
+Most of the time, after a push on the upstream repository, one may want to check the result of all the checks on the repository defined by CI/CD pipeline. This tells whether there is some issue with push and whether or not the defined checks/tests have passed. This can be achieved using github push webhook integration with jenkins.
 ## Jenkins version and operating system specifications
 The version of Jenkins and operating system specifications at the time of writing this documentation are mentioned below:  
 **Jenkins version:** 2.370  
@@ -10,17 +10,21 @@ The version of Jenkins and operating system specifications at the time of writin
 
 ## Pre-requisites
 - Jenkins
-- ngrok
+- ngrok (only if a public IP is not available)
 
 ## Setting up the ngrok
 The localhost cannot be used for github webhook integration as it cannot be detected by online webservers. For this reason, a public ip must be used. For the sake of this documentation, ngrok is being used, which maps localhost to some public ip which can then be accessed publicly on the internet.  
   
 Following steps can be used for setting up ngrok on ubuntu:
 - Install ngrok.  
-`sudo apt install ngrok`
+```
+sudo apt install ngrok
+```
 - For using html content, a sign up is required on ngrok. So sign up on ngrok.
 - Execute the following command to run ngrok which will provide a public ip mapped to localhost.  
-`ngrok http <port number>`  
+```
+ngrok http <port number>  
+```  
 
 This will setup ngrok and provide a public ip for working online.
 ## Setting up Jenkins for github webhook
