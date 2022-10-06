@@ -87,4 +87,8 @@ _**NOTE:** The Jenkinfile will run present in the pull request and not in the ma
 [^note]:
     This point is taken from the jenkins `GitHub Pull Request Builder` plugin documentation at  https://plugins.jenkins.io/ghprb/  
 [^note1]: 
-    This is an issue mentioned in the documentation of `Github Pull Request Builder` plugin at https://plugins.jenkins.io/ghprb/.
+    This is an issue mentioned in the documentation of `Github Pull Request Builder` plugin at https://plugins.jenkins.io/ghprb/.  
+  
+<p align="center">
+  <b>END OF DOCUMENTATION<b>
+</p>
