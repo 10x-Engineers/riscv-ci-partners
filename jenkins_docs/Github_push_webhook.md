@@ -74,12 +74,12 @@ For the sake of this documentation, I have created a simple repository called `j
 - Go to GitHub repository's settings  
   
 
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192272619-657a40c5-ef9e-4a48-a2b0-17217ebcac70.png)  
+![Screenshot from 2022-09-26 16-39-29](<../doc_images/192272619-657a40c5-ef9e-4a48-a2b0-17217ebcac70.png>)  
   
 - In `Webhooks` section, click on `Add webhook`  
   
 
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192310841-ac0cdbd0-e515-445b-aca6-5875d5ff1583.png)  
+![Screenshot from 2022-09-26 16-39-29](<../doc_images/Selection_001.png>)  
   
 
 - In Webhooks settings:
@@ -92,9 +92,9 @@ For the sake of this documentation, I have created a simple repository called `j
     - Click on `Add Webhook`.  
       
 
-    ![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192312918-03082be8-2c61-44a6-8165-dc24591db5ba.png)  
+    ![Screenshot from 2022-09-26 16-39-29](<../doc_images/Selection_002.png>)  
       
 After this point each time the github repository is commited with a change, jenkins job will start the build and will also denote on the repository if the build has passed or failed (as can be seen in the below screenshot).
   
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192314484-a761bb98-5fbe-4303-9627-d42ff1f096e1.png)  
+![Screenshot from 2022-09-26 16-39-29](<../doc_images/Screenshot from 2022-09-26 16-39-29.png>)  
   
