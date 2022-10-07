@@ -98,6 +98,3 @@ After this point each time the github repository is commited with a change, jenk
   
 ![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192314484-a761bb98-5fbe-4303-9627-d42ff1f096e1.png)  
   
-<p align="center">
-  <b>END OF DOCUMENTATION<b>
-</p>

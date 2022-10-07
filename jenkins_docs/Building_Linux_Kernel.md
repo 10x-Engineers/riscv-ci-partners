@@ -192,6 +192,3 @@ qemu-system-riscv64 -kernel Image -machine sifive_u -nographic
     - `-nographic` restricts the use of GUI (which is a better option considering lxc container does not support gtk initialization).
 - If everything goes on right, the kernel will boot successfully as shown in the picture below.
 ![Selection_012](https://user-images.githubusercontent.com/99069972/193477051-cf4466dc-d1d4-40c7-8438-7c509b0f7d3a.png)
-<p align="center">
-  <b>END OF DOCUMENTATION<b>
-</p>
