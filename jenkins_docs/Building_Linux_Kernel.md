@@ -79,7 +79,7 @@ make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- defconfig
 make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- menuconfig
 ```  
   
-![Selection_005](https://user-images.githubusercontent.com/99069972/193460405-9fb117e2-201e-4185-a04d-10a971244edd.png)  
+![Selection_005](doc_images/Selection_005.png)  
   
 ![Selection_007](https://user-images.githubusercontent.com/99069972/193460418-c417a5ab-a572-4574-99cb-0d91ea24c709.png)
   
