@@ -64,7 +64,7 @@ pipeline {
 ## Creating multinode pipelines using Jenkins freestyle jobs
 Jenkins freestyle jobs can be combined together by mentioning post-build jobs in the freestyle job settings. Freestyle jobs are customizable and offer more options than jenkins native pipeline jobs. Each job represents a stage and each stage has separate settings. One can use jenkins freestyle jobs to run on a separate node by selecting the option `Restrict where this project can be run` in the `General` section of the job's configuration. In the `Label Expression`, the node's name can be mentioned in which to run the job. The following image shows the option from job's configuration.  
   
-![image1](https://user-images.githubusercontent.com/99069972/191689660-ae7c2511-6f0b-48ff-97c7-f6962b9686f4.png)  
+![image1](<../doc_images/191689660-ae7c2511-6f0b-48ff-97c7-f6962b9686f4.png>)  
   
 This can be done in all the job's configuration for the specified node.  
   
