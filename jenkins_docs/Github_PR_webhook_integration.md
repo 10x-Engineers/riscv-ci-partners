@@ -80,7 +80,7 @@ In this documentation, `Pipeline` job will be used, but any job is expected to w
 - Now after checking the merge conflicts, the checks will run their results will be shown with pull request (as can be seen in the image below).  
 _**NOTE:** The Jenkinfile will run present in the pull request and not in the main branch._
   
-![Selection_013](https://user-images.githubusercontent.com/99069972/194247574-fe22a016-bb09-4f2f-ab7a-bb745f92e951.png)
+![Selection_013](<../doc_images/Selection_013.png>)
   
 - Clicking on the `Details` navigates the user to the Jenkins Job result page where the console output and each stage can be seen.
 
