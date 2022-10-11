@@ -1,0 +1,28 @@
+# Creating a CI/CD pipeline in Jenkins
+## Pre Requisistes
+For sake of this documentation, jenkins built-in sample script is used to create and execute a cd/cd pipeline in jenkins. In the built-in script maven is used as M3, so one must install `Maven` plugin inside jenkins and name it `M3`. Usually maven is already present inside jenkins and can be configured from `Global Configuration Tools`. Following steps demonstrate configuring Maven plugin.  
+1. Go to Jenkins `Dashboard` and click on `Manage Jenkins`
+2. In `Manage Jenkins`, under `System Configuration` section, click on `Global Tool Configuration`.  
+  
+![unnamed](https://user-images.githubusercontent.com/99069972/190372793-ce7651d0-b28c-441e-ae95-f5f336d94207.png)
+  
+3. In `Global Tool Configuration`, scroll down to Maven section and click on the respective option under the `Maven` Section (should be `Maven installations…` or `Add Maven`).  
+  
+![unnamed (1)](https://user-images.githubusercontent.com/99069972/190373429-a836117b-3d01-4f15-81b0-d19d34c98460.png)
+  
+4. Under `Maven installations`, enter `M3` in “name” text box, check `Install Automatically` and select `Version` greater than 3, then click `Apply` and `Save`.
+5. This should install Maven version 3 and configure as `M3`.
+## Steps for Jenkins pipeline creation
+1. After installing Jenkins and having all the suggested plugins installed, go to Jenkins dashboard and click on `Create Job`.
+2. On the next page, give your pipeline a name, select `Pipeline` and click `OK`.
+  
+![unnamed (2)](https://user-images.githubusercontent.com/99069972/190374930-980fac2a-90c8-4728-bcc7-c4af7e65bfac.png)
+  
+3. A `Configuration` page for the pipeline will appear.
+4. Select `Build Triggers` options and `General` options according to need and scroll down to the Pipeline section.
+  
+![unnamed (3)](https://user-images.githubusercontent.com/99069972/190375373-2329b2a2-0fcb-4ff7-bf64-614e5f76cfbf.png)
+  
+5. Definition section contains configuration for stages and steps of the pipeline. Under `Definition` section, you can either choose `Pipeline script` and try writing your own script or try some sample pipeline (like `Hello World`, `Github+Maven` etc) or you could select `Pipeline script from SCM` and give a github repository containing configurations of Pipeline.
+6. Press `Save` and `Apply`.
+7. This should take you to the Pipeline and you can build the pipeline and if no unresolved dependencies are present, the pipeline should build without any error.

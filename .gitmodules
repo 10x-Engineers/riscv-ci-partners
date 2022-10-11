@@ -1,0 +1,3 @@
+[submodule "jenkins-ci"]
+	path = jenkins-ci
+	url = https://github.com/alitariq4589/jenkins-ci.git
