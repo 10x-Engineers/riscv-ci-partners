@@ -21,4 +21,6 @@ After the above commands successfully completes execution, `jenkins.war` should 
 `java -jar ~/jenkins/war/target/jenkins.war --httpPort=8080 #Considering jenkins repo is cloned at ~/`
 
 **After this process jenkins UI can be accessed using http://localhost:8080 in a browser and a password will be shown on terminal to login to jenkins first time**  
-After this, Jenkins UI will go through a very simple post installation process which one can configure according to his needs.
+After this, Jenkins UI will go through a very simple post installation process which one can configure according to his needs.  
+  
+

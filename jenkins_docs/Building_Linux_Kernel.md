@@ -79,9 +79,8 @@ make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- defconfig
 make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- menuconfig
 ```  
   
-![Selection_005](https://user-images.githubusercontent.com/99069972/193460405-9fb117e2-201e-4185-a04d-10a971244edd.png)  
-  
-![Selection_007](https://user-images.githubusercontent.com/99069972/193460418-c417a5ab-a572-4574-99cb-0d91ea24c709.png)
+![Selection_005](../doc_images/Selection_005.png)
+![Selection_007](../doc_images/Selection_007.png)
   
 - Now that configuration is complete, build busybox by executing following command.  
 ```
@@ -105,7 +104,7 @@ sudo mknod dev/ram b 1 0
   
 - After executing above commands, following files with names `ram` and `console` will be created as shown in the image below.
   
-![Screenshot from 2022-10-02 21-45-00](https://user-images.githubusercontent.com/99069972/193465907-499c00c0-db4c-490a-8b6e-345b773686c0.png)  
+![Screenshot from 2022-10-02 21-45-00](<../doc_images/Screenshot from 2022-10-02 21-45-00.png>)  
   
 - Now an `init` file is needed because linux kernel does not boot itself, it rather searches for `init` file in the directories (read linux kernel messages during build procedure). `init` file contains commands to mount some directories during boot (more information can be found [here](https://tldp.org/LDP/abs/html/systemdirs.html)). In `busybox/_install`, create a file with following contents (be sure to make it executable with `chmod +x init`).  
 ```
@@ -169,11 +168,11 @@ make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- menuconfig
 ```
 - Above command will open configuration menu. Enter `General setup`, scroll down and enable  `Initial RAM filesystem and RAM disk (initramfs/initrd) support` using `Space` key. Then enter `()    Initramfs source file(s)` and here put the absolute path to `initramfs.cpio.gz` file which was just created using busybox. For this documentation, it is `/home/qemu-user/riscv-linux/initramfs.cpio.gz`. Double-press `esc` and save the file.
   
-![Selection_008](https://user-images.githubusercontent.com/99069972/193475938-782bb15b-14ca-470b-8dfa-2ed93fcf9d31.png)
+![Selection_008](../doc_images/Selection_008.png)
   
-![Selection_009](https://user-images.githubusercontent.com/99069972/193475946-2994cf1f-de3d-434d-b086-084919ebd881.png)  
+![Selection_009](../doc_images/Selection_009.png)  
   
-![Selection_011](https://user-images.githubusercontent.com/99069972/193475964-00d2d497-5d9e-4ec1-ae81-2f8845cec4e1.png)  
+![Selection_011](../doc_images/Selection_011.png)  
   
 - Now linux kernel is ready to be compiled with `riscv64-linux-gnu-gcc` toolchain. So execute the command below.
 ```
@@ -191,7 +190,4 @@ qemu-system-riscv64 -kernel Image -machine sifive_u -nographic
     - `-machine` takes one of the machine names as arguments available in `qemu-system-riscv64`. Available machines can be listed on terminal using command `qemu-system-riscv64 -machine help`.
     - `-nographic` restricts the use of GUI (which is a better option considering lxc container does not support gtk initialization).
 - If everything goes on right, the kernel will boot successfully as shown in the picture below.
-![Selection_012](https://user-images.githubusercontent.com/99069972/193477051-cf4466dc-d1d4-40c7-8438-7c509b0f7d3a.png)
-<p align="center">
-  <b>END OF DOCUMENTATION<b>
-</p>
+![Selection_012](../doc_images/Selection_012.png)
