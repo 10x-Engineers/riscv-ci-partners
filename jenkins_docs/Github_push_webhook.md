@@ -1,6 +1,6 @@
-# Github webhook integration with Jenkins
+# Github 'Push' webhook integration with Jenkins
 ## Purpose of using github webhook integration with jenkins
-Most of the time, before generating each pull request on the upstream repository, one may want to check the result of all the checks on the repository defined by CI/CD pipeline. This saves the owner of the repository from all the trouble of reviewing all the changes and approve the pull request once the there is no issue with it. This can be achieved using github webhook integration with jenkins.
+Most of the time, after a push on the upstream repository, one may want to check the result of all the checks on the repository defined by CI/CD pipeline. This tells whether there is some issue with push and whether or not the defined checks/tests have passed. This can be achieved using github push webhook integration with jenkins.
 ## Jenkins version and operating system specifications
 The version of Jenkins and operating system specifications at the time of writing this documentation are mentioned below:  
 **Jenkins version:** 2.370  
@@ -10,17 +10,21 @@ The version of Jenkins and operating system specifications at the time of writin
 
 ## Pre-requisites
 - Jenkins
-- ngrok
+- ngrok (only if a public IP is not available)
 
 ## Setting up the ngrok
 The localhost cannot be used for github webhook integration as it cannot be detected by online webservers. For this reason, a public ip must be used. For the sake of this documentation, ngrok is being used, which maps localhost to some public ip which can then be accessed publicly on the internet.  
   
 Following steps can be used for setting up ngrok on ubuntu:
 - Install ngrok.  
-`sudo apt install ngrok`
+```
+sudo apt install ngrok
+```
 - For using html content, a sign up is required on ngrok. So sign up on ngrok.
 - Execute the following command to run ngrok which will provide a public ip mapped to localhost.  
-`ngrok http <port number>`  
+```
+ngrok http <port number>  
+```  
 
 This will setup ngrok and provide a public ip for working online.
 ## Setting up Jenkins for github webhook
@@ -70,12 +74,12 @@ For the sake of this documentation, I have created a simple repository called `j
 - Go to GitHub repository's settings  
   
 
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192272619-657a40c5-ef9e-4a48-a2b0-17217ebcac70.png)  
+![Screenshot from 2022-09-26 16-39-29](<../doc_images/192272619-657a40c5-ef9e-4a48-a2b0-17217ebcac70.png>)  
   
 - In `Webhooks` section, click on `Add webhook`  
   
 
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192310841-ac0cdbd0-e515-445b-aca6-5875d5ff1583.png)  
+![Screenshot from 2022-09-26 16-39-29](<../doc_images/Selection_001.png>)  
   
 
 - In Webhooks settings:
@@ -88,8 +92,9 @@ For the sake of this documentation, I have created a simple repository called `j
     - Click on `Add Webhook`.  
       
 
-    ![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192312918-03082be8-2c61-44a6-8165-dc24591db5ba.png)  
+    ![Screenshot from 2022-09-26 16-39-29](<../doc_images/Selection_002.png>)  
       
 After this point each time the github repository is commited with a change, jenkins job will start the build and will also denote on the repository if the build has passed or failed (as can be seen in the below screenshot).
   
-![Screenshot from 2022-09-26 16-39-29](https://user-images.githubusercontent.com/99069972/192314484-a761bb98-5fbe-4303-9627-d42ff1f096e1.png)
+![Screenshot from 2022-09-26 16-39-29](<../doc_images/Screenshot from 2022-09-26 16-39-29.png>)  
+  

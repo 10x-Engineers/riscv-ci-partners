@@ -1,0 +1,4 @@
+[submodule "jenkins-ci"]
+	path = jenkins-ci
+	url = https://github.com/10x-Engineers/jenkins-ci.git
+	branch = main

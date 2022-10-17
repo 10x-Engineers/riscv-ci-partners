@@ -41,11 +41,11 @@ This runs lxc container with unit name `my-unit`, container name `my-container` 
 
 This will output the list of available linux distributions in which one may want to run the container and will prompt for Distribution as shown in the following image.  
   
-![unnamed (4)](https://user-images.githubusercontent.com/99069972/190380431-69a9c8d7-f8ec-482d-a2e8-0683405ec637.png)
+![unnamed (4)](<../doc_images/unnamed (4).png>)
   
 After selecting the suitable distribution, release and architecture (which is also mentioned in the table), the container may be created as shown in the image below:  
   
-![unnamed (5)](https://user-images.githubusercontent.com/99069972/190380584-7ba96b88-c0c0-4a09-85fd-ba1e7e912c10.png)  
+![unnamed (5)](<../doc_images/unnamed (5).png>)  
   
 Next thing is to start a container which will change its state from STOPPED to RUNNING using the following command.  
   
@@ -62,7 +62,7 @@ From this point onwards, if one wants to use the machine in the terminal then us
   
 `lxc-attach my-container`  
   
-![unnamed (6)](https://user-images.githubusercontent.com/99069972/190381132-c248c86b-cb1d-4266-82b5-f9d9a61e3bbc.png)
+![unnamed (6)](<../doc_images/unnamed (6).png>)
   
 Now the container is ready to be used and is completely isolated from the host machine.
 ## Using SSH to access container with username and password
@@ -108,13 +108,13 @@ sudo apt-install net-tools
 Ifconfig -a
 ```  
   
-![unnamed (7)](https://user-images.githubusercontent.com/99069972/190382532-8e462a27-8b66-4ea5-bb5f-9282c4ddcbff.png)  
+![unnamed (7)](<../doc_images/unnamed (7).png>)  
   
 OR open a new terminal in the host machine and execute the following command.  
   
 `lxc-info my-container -iH`  
   
-![unnamed (8)](https://user-images.githubusercontent.com/99069972/190382743-a3df0f74-9121-4410-ba6c-9638314dfec8.png)  
+![unnamed (8)](<../doc_images/unnamed (8).png>)  
   
 So, the ip of the container is `10.0.3.127`.
 The command for establishing an ssh connection to a remote machine is mentioned below and it will ask for the password of the remote machine which is actually the container in our case.  
@@ -123,7 +123,7 @@ The command for establishing an ssh connection to a remote machine is mentioned 
   
 After entering the password, terminal will switch to the container’s user1 as can be seen in the following image.
   
-![unnamed (9)](https://user-images.githubusercontent.com/99069972/190383000-a848f2cb-026b-411d-b0be-db4ad8587cbf.png)  
+![unnamed (9)](<../doc_images/unnamed (9).png>)  
   
 ## Using SSH to access Jenkins agents on the container
 First install some initial dependencies (git, jdk, jre) on the containers for running agents on the container.
@@ -134,7 +134,7 @@ sudo apt install default-jdk default-jre git maven
 Now login to jenkins with administrator privileges and create a node in it from `Dashboard > Manage Jenkins > Nodes` and press `+ New Node`. Enter a name for the node and select the desirable node type.
 For this documentation, the node will be a permanent type and the name will be `temp_node`.  
   
-![unnamed (10)](https://user-images.githubusercontent.com/99069972/190383470-306e92cb-4e96-4d1b-9036-838b93fbfe0c.png)  
+![unnamed (10)](<../doc_images/unnamed (10).png>)  
   
 After this click on `Create` which will display the configuration page of the node.
 1. Write the description of the node as desired.
@@ -154,14 +154,15 @@ After this click on `Create` which will display the configuration page of the no
 8. Click on “Save”.  
 After complete setup, the configuration for this node will look something like this.  
   
-![unnamed (11)](https://user-images.githubusercontent.com/99069972/190384390-efd0ba31-7a14-464b-aaee-bbaab4b76e99.png)  
+![unnamed (11)](<../doc_images/unnamed (11).png>)  
   
-![unnamed (12)](https://user-images.githubusercontent.com/99069972/190384538-df8ff471-fdc2-482f-956b-43edf10e33c1.png)  
+![unnamed (12)](<../doc_images/unnamed (12).png>)  
   
-![unnamed (13)](https://user-images.githubusercontent.com/99069972/190384628-0e95e4ee-8c2b-424e-81b9-3a6b8c207cc4.png)  
+![unnamed (13)](<../doc_images/unnamed (13).png>)  
   
 If no issue is encountered during this whole setup, jenkins will take us to the log and after sometime (when the ssh connection is established) we can see “Agent successfully connected and online” at the bottom of the log as can be seen in the screenshot below.  
   
-![unnamed (14)](https://user-images.githubusercontent.com/99069972/190384770-a8f2fcff-081a-470a-913a-2982f943f16d.png)  
+![unnamed (14)](<../doc_images/unnamed (14).png>)  
   
-**After this point, node will be able to run jobs from the container directory.**
+**After this point, node will be able to run jobs from the container directory.**  
+
