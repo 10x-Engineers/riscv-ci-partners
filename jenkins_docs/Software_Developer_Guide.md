@@ -31,7 +31,7 @@ _**Note:** This jenkinsfile should remain same in all the branches and pull requ
 Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  
   
 This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.
-- Contact us for a new account by creating an issue on github with following required details:
+- Contact us for a new account by creating an issue on github or through email with following required details:
     - Name
     - Contact Email
     - URL of the GitHub project repository
