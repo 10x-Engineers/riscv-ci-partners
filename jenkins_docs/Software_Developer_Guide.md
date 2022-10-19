@@ -36,6 +36,7 @@ This process requires GitHub credentials of owner of repository on which the web
     - Contact Email
     - URL of the GitHub project repository
     - Name of your organization
+- We will provide you the credentials on the provided email.
 - Login with provided credentials.
 - Click on the drop down near user profile as shown in image below.  
   
