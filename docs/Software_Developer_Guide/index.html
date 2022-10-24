@@ -74,7 +74,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
     </li>
@@ -107,9 +107,11 @@
               
                 <h1 id="software-developer-guide-for-risc-v-ci">Software Developer Guide for RISC-V CI</h1>
 <p>A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on RISC-V Continuous Integration (CI).<br />
-Currently, the specifications for RISC-V CI is as follows.
-- Jenkins latest version
-- Ubuntu 22.04 LTS  </p>
+Currently, the specifications for RISC-V CI is as follows.</p>
+<ul>
+<li>Jenkins latest version</li>
+<li>Ubuntu 23.04 LTS  </li>
+</ul>
 <h2 id="pre-requisites">Pre-requisites</h2>
 <ol>
 <li>GitHub account.</li>
@@ -118,7 +120,8 @@ Currently, the specifications for RISC-V CI is as follows.
 <h2 id="setting-up-jenkinsfile-inside-github-project-repository">Setting up <code>Jenkinsfile</code> inside github project repository</h2>
 <p>Jenkins pipeline will need a <code>Jenkinsfile</code> written with jenkins pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
 <p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
-<pre><code>node{
+<pre><code>
+node{
     stage('*** Compilation Phase ***') {
         //Using bash commands
         sh '''#!/bin/bash
@@ -130,17 +133,19 @@ Currently, the specifications for RISC-V CI is as follows.
 <p>Upon execution of such a pipeline, the console output can be viewed as follows.  </p>
 <p><img alt="Console Output" src="../doc_images/Console output for Hello World.png" /></p>
 <p><em><strong>Note:</strong> This jenkinsfile should remain same in all the branches and pull requests.</em>  </p>
-<h2 id="setting-credentials-for-webhook">Setting credentials for webhook:</h2>
+<h2 id="setting-credentials-for-webhook">Setting credentials for webhook</h2>
 <p>Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  </p>
-<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.
-- Contact us for a new account by creating an issue on github or through email with following required details:
-    - Name
-    - Contact Email
-    - URL of the GitHub project repository
-    - Name of your organization
-- We will provide you the credentials on the provided email.
-- Login with provided credentials.
-- Click on the drop down near user profile as shown in image below.  </p>
+<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.</p>
+<ul>
+<li>Contact us for a new account by creating an issue on github or through email with following required details:</li>
+<li>Name</li>
+<li>Contact Email</li>
+<li>URL of the GitHub project repository</li>
+<li>Name of your organization</li>
+<li>We will provide you the credentials on the provided email.</li>
+<li>Login with provided credentials.</li>
+<li>Click on the drop down near user profile as shown in image below.  </li>
+</ul>
 <p><img alt="Credentials1" src="../doc_images/Credentials1.png" /></p>
 <ul>
 <li>This will take you to the credentials page.</li>
@@ -156,7 +161,7 @@ Currently, the specifications for RISC-V CI is as follows.
 </ul>
 <p><img alt="Credentials4" src="../doc_images/Credentials4.png" /></p>
 <ul>
-<li>This will take you to the <code>New Credentials</code> page.<ul>
+<li>This will take you to the <code>New Credentials</code> page.</li>
 <li>Select <code>Kind</code> as <code>Username with password</code>.</li>
 <li>Select <code>Scope</code> as <code>Global (Jenkins, nodes, items, all child items etc)</code>.</li>
 <li>Enter the GitHub username in <code>Username</code>.</li>
@@ -166,20 +171,20 @@ Currently, the specifications for RISC-V CI is as follows.
 <li>Select <code>Create</code>.</li>
 <li>This process will look something like this.</li>
 </ul>
-</li>
-</ul>
 <p><img alt="Credentials5" src="../doc_images/Credentials5.png" />  </p>
 <ul>
 <li>Now credentials will be available in the credentials list and will be shown to you as well as administrator as shown in the image below. This will create an option in configurations for using these credentials in github webhook without changing or viewing them.  </li>
 </ul>
 <p><img alt="Credentials6" src="../doc_images/Credentials6.png" /></p>
 <h2 id="requirements-for-administrator">Requirements for administrator</h2>
-<p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.
-- Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.
-- Events for triggering the job build.
-- URL of GitHub repository.
-- Path and name of Jenkinsfile on the provided GitHub repository.
-- Any additional information which should be given for successful execution of job builds.</p>
+<p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
+<ul>
+<li>Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.</li>
+<li>Events for triggering the job build.</li>
+<li>URL of GitHub repository.</li>
+<li>Path and name of Jenkinsfile on the provided GitHub repository.</li>
+<li>Any additional information which should be given for successful execution of job builds.</li>
+</ul>
               
             </div>
           </div><footer>
