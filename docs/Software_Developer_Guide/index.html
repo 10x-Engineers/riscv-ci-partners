@@ -120,7 +120,7 @@ Currently, the specifications for RISC-V CI is as follows.</p>
 <h2 id="setting-up-jenkinsfile-inside-github-project-repository">Setting up <code>Jenkinsfile</code> inside github project repository</h2>
 <p>Jenkins pipeline will need a <code>Jenkinsfile</code> written with jenkins pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
 <p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
-<pre><code>
+<pre><code class="language-shell">
 node{
     stage('*** Compilation Phase ***') {
         //Using bash commands

@@ -118,7 +118,7 @@
 <h2 id="resolving-the-dependencies">Resolving the dependencies</h2>
 <p>After cloning the repository at ~/, the file <code>CONTRIBUTING.md</code> should be available in ~/jenkins/. This file contains all the information to resolve the dependencies and building the repository.
 Some notable dependencies are Java Development Kit (JDK), Apache Maven (latest version will be preferable) and git. Running Following command will resolve the mentioned dependencies.</p>
-<pre><code>sudo apt update &amp;&amp; sudo apt install default-jdk default-jre maven git -y
+<pre><code class="language-shell">sudo apt update &amp;&amp; sudo apt install default-jdk default-jre maven git -y
 </code></pre>
 <h2 id="building-jenkins-using-maven-on-linux">Building Jenkins using maven on linux</h2>
 <p>For having the jenkins build up as fast as possible, following command can be used in ~/jenkins/.<br />
@@ -126,7 +126,7 @@ Some notable dependencies are Java Development Kit (JDK), Apache Maven (latest v
 <h2 id="executing-jenkins">Executing Jenkins</h2>
 <p>After the above commands successfully completes execution, <code>jenkins.war</code> should be present in <code>~/jenkins/war/target</code> and can be executed to run at port 8080 on localhost using following command.<br />
 <code>java -jar ~/jenkins/war/target/jenkins.war --httpPort=8080 #Considering jenkins repo is cloned at ~/</code></p>
-<p><strong>After this process jenkins UI can be accessed using http://localhost:8080 in a browser and a password will be shown on terminal to login to jenkins first time</strong><br />
+<p><strong>After this process jenkins UI can be accessed using <a href="http://localhost:8080">http://localhost:8080</a> in a browser and a password will be shown on terminal to login to jenkins first time</strong><br />
 After this, Jenkins UI will go through a very simple post installation process which one can configure according to his needs.  </p>
               
             </div>

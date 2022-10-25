@@ -102,19 +102,21 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="adding-custom-build-packages-in-jenkins">Adding Custom-build packages in Jenkins</h1>
-<p><em><em>NOTE:</em> For this documentation, Ubuntu 22.04 and Jenkins version 2.371 is used.</em></p>
+<p>__NOTE:<em> For this documentation, Ubuntu 22.04 and Jenkins version 2.371 is used.</em></p>
 <p>While working open-source, many times one may need to build the package from source code. While working on the local machine, the built package may be accessible by adding it to the <code>$PATH</code> environment variable. But while working with Jenkins, This may not work.</p>
 <h2 id="where-to-install-package-for-jenkins-job">Where to install package for Jenkins job</h2>
 <p>In Jenkins job, the package is installed on the node (or agent) on which the specific job is being used and <strong>NOT</strong> on the node where the jenkins controller node is installed. For example if the Jenkins controller node is on <code>computer1</code> and slave node on which the <code>job</code> is destined to run is on <code>computer2</code> then <code>computer2</code> should have all the packages used by the <code>job</code> and not the <code>computer1</code>.</p>
 <h2 id="adding-the-package-to-jenkins">Adding the package to Jenkins</h2>
-<p>Considering there is a node with name <code>Runner1</code> in jenkins on which the <code>job</code> is destined to run and that job uses a toolchain <code>riscv64-unknown-elf-gcc</code> to run properly and that toolchain is present in directory <code>/home/runner1/path_to_install/bin</code>, then the following procedure is used to add the toolchain in Jenkins.
-- Go to <code>Dashboard &gt; Manage Jenkins &gt; Nodes &gt; Runner1</code>.
-- Scroll down and check <code>Environment variables</code>.
-- Under section <code>List of variables</code> add:
-    - <code>Name</code> as <code>PATH</code>
-    - <code>Value</code> as <code>$PATH:/home/runner1/path_to_install/bin</code>.
-- Click on <code>Save</code>.
-After this, the package should be available to be used.</p>
+<p>Considering there is a node with name <code>Runner1</code> in jenkins on which the <code>job</code> is destined to run and that job uses a toolchain <code>riscv64-unknown-elf-gcc</code> to run properly and that toolchain is present in directory <code>/home/runner1/path_to_install/bin</code>, then the following procedure is used to add the toolchain in Jenkins.</p>
+<ul>
+<li>Go to <code>Dashboard &gt; Manage Jenkins &gt; Nodes &gt; Runner1</code>.</li>
+<li>Scroll down and check <code>Environment variables</code>.</li>
+<li>Under section <code>List of variables</code> add:</li>
+<li><code>Name</code> as <code>PATH</code></li>
+<li><code>Value</code> as <code>$PATH:/home/runner1/path_to_install/bin</code>.</li>
+<li>Click on <code>Save</code>.
+After this, the package should be available to be used.</li>
+</ul>
               
             </div>
           </div><footer>

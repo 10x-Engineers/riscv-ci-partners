@@ -133,30 +133,34 @@
 </ul>
 <h2 id="setting-up-the-ngrok">Setting up the ngrok</h2>
 <p>The localhost cannot be used for github webhook integration as it cannot be detected by online webservers. For this reason, a public ip must be used. For the sake of this documentation, ngrok is being used, which maps localhost to some public ip which can then be accessed publicly on the internet.  </p>
-<p>Following steps can be used for setting up ngrok on ubuntu:
-- Install ngrok.  </p>
-<pre><code>sudo apt install ngrok
+<p>Following steps can be used for setting up ngrok on ubuntu:</p>
+<ul>
+<li>Install ngrok.  </li>
+</ul>
+<pre><code class="language-shell">sudo apt install ngrok
 </code></pre>
 <ul>
 <li>For using html content, a sign up is required on ngrok. So sign up on ngrok.</li>
 <li>Execute the following command to run ngrok which will provide a public ip mapped to localhost.  </li>
 </ul>
-<pre><code>ngrok http &lt;port number&gt;  
+<pre><code class="language-shell">ngrok http &lt;port number&gt;  
 </code></pre>
 <p>This will setup ngrok and provide a public ip for working online.</p>
 <h2 id="setting-up-jenkins-for-github-webhook">Setting up Jenkins for github webhook</h2>
 <h3 id="pre-requisites_1">Pre-requisites</h3>
-<p>Following plugins should be installed in jenkins:
-- Git Plugin
-- GitHub API Plugin
-- GitHub Plugin</p>
+<p>Following plugins should be installed in jenkins:</p>
+<ul>
+<li>Git Plugin</li>
+<li>GitHub API Plugin</li>
+<li>GitHub Plugin</li>
+</ul>
 <h3 id="jenkins-configuration-in-settings">Jenkins Configuration in Settings</h3>
 <ul>
 <li>Go to <code>Manage Jenkins &gt; Configure System</code> and scroll down to <code>GitHub</code> section.  </li>
-<li>Click on <code>Add GitHub Server</code> <ul>
-<li>Add a name for the Github server. </li>
-<li>Leave <code>API URL</code> as is. </li>
-<li>In Credentials, click on <code>Add</code>. <code>Jenkins</code> will appear in drop down, click on it. <ul>
+<li>Click on <code>Add GitHub Server</code></li>
+<li>Add a name for the Github server.</li>
+<li>Leave <code>API URL</code> as is.</li>
+<li>In Credentials, click on <code>Add</code>. <code>Jenkins</code> will appear in drop down, click on it.<ul>
 <li>Select <code>Kind</code> as <code>Secret text</code></li>
 <li>Scroll down to the <code>Secret</code> and here, put down the github personal authentication token (PAT) which can be acquired from github account.</li>
 <li>Other options can be left unattended.</li>
@@ -166,51 +170,53 @@
 <li>In the <code>Credentials</code> drop down, select <code>Secret text</code>.</li>
 <li>Check <code>Manage hooks</code>.</li>
 <li>Now the connection can be established and can be checked by clicking the <code>Test Connection</code>.</li>
-</ul>
-</li>
 <li>Click <code>Save</code>.  </li>
 </ul>
 <h3 id="jenkins-job-setup-for-github-webhook">Jenkins job setup for Github Webhook</h3>
-<p>Create a new jenkins freestyle job and proceed with following settings on the configurations along with desired settings.
-- Check <code>GitHub project</code> in <code>General</code> section and provide GitHub repository URL.
-- In <code>Source Code Management</code> section, select <code>Git</code>.
-    - Give Repository URL
-    - In <code>Credentials</code> (if the credentials are not created already), click on <code>Add</code>, click on <code>Jenkins</code> from the drop down.
-        - Select <code>Kind</code> as <code>Username with password</code>. 
-        - In <code>Username</code>, enter github username.
-        - In <code>Password</code>, enter github personal authentication token (PAT) which can be acquired from github account.
-        - Other fields can be left unattended.
-        - Click on <code>Add</code>
-    - From <code>Credentials</code> drop down, select your added credentials.
-    - In <code>Branches to build</code> section, in <code>Branch Specifier</code> field, enter the name of branch of github repository which needs to be built.
-- In <code>Build Triggers</code> section, check <code>GitHub hook trigger for GITScm polling</code>.<br />
-<em>(Following step is for checking the commit status according to the Jenkins job status, means if Jenkins job fails, commit status is also <code>Failure</code>)</em><br />
-- Scroll down to the bottom and <code>Add post-build action</code>. From drop down, select <code>Set GitHub commit status</code>.
-    - Leave other settings as is and click on <code>Advanced</code>.
-    - Check <code>Handle errors</code>
-    - Under drop down <code>Result on failure</code>, select <code>FAILURE</code>
-- Click on <code>Apply</code> and <code>Save</code>
-- By this point, Jenkins is setup for github webhooks.</p>
+<p>Create a new jenkins freestyle job and proceed with following settings on the configurations along with desired settings.</p>
+<ul>
+<li>Check <code>GitHub project</code> in <code>General</code> section and provide GitHub repository URL.</li>
+<li>In <code>Source Code Management</code> section, select <code>Git</code>.</li>
+<li>Give Repository URL</li>
+<li>In <code>Credentials</code> (if the credentials are not created already), click on <code>Add</code>, click on <code>Jenkins</code> from the drop down.<ul>
+<li>Select <code>Kind</code> as <code>Username with password</code>.</li>
+<li>In <code>Username</code>, enter github username.</li>
+<li>In <code>Password</code>, enter github personal authentication token (PAT) which can be acquired from github account.</li>
+<li>Other fields can be left unattended.</li>
+<li>Click on <code>Add</code></li>
+</ul>
+</li>
+<li>From <code>Credentials</code> drop down, select your added credentials.</li>
+<li>In <code>Branches to build</code> section, in <code>Branch Specifier</code> field, enter the name of branch of github repository which needs to be built.</li>
+<li>In <code>Build Triggers</code> section, check <code>GitHub hook trigger for GITScm polling</code>.<br />
+<em>(Following step is for checking the commit status according to the Jenkins job status, means if Jenkins job fails, commit status is also <code>Failure</code>)</em>  </li>
+<li>Scroll down to the bottom and <code>Add post-build action</code>. From drop down, select <code>Set GitHub commit status</code>.</li>
+<li>Leave other settings as is and click on <code>Advanced</code>.</li>
+<li>Check <code>Handle errors</code></li>
+<li>Under drop down <code>Result on failure</code>, select <code>FAILURE</code></li>
+<li>Click on <code>Apply</code> and <code>Save</code></li>
+<li>By this point, Jenkins is setup for github webhooks.</li>
+</ul>
 <h2 id="setting-up-github-repository-webhook">Setting up github repository webhook</h2>
-<p>For the sake of this documentation, I have created a simple repository called <code>jenkins_hello_world_integrated</code>.
-- Go to GitHub repository's settings  </p>
+<p>For the sake of this documentation, I have created a simple repository called <code>jenkins_hello_world_integrated</code>.</p>
+<ul>
+<li>Go to GitHub repository's settings  </li>
+</ul>
 <p><img alt="Screenshot from 2022-09-26 16-39-29" src="../../doc_images/192272619-657a40c5-ef9e-4a48-a2b0-17217ebcac70.png" />  </p>
 <ul>
 <li>In <code>Webhooks</code> section, click on <code>Add webhook</code>  </li>
 </ul>
 <p><img alt="Screenshot from 2022-09-26 16-39-29" src="../../doc_images/Selection_001.png" />  </p>
 <ul>
-<li>
-<p>In Webhooks settings:</p>
-<ul>
+<li>In Webhooks settings:</li>
 <li>Add <code>Payload URL</code> as the URL of jenkins and append <code>/github-webhook/</code> at the end of it.</li>
 <li>Select Content type <code>application/jason</code>.</li>
 <li>It is recommended to add <code>Secret</code> which can be generated by jenkins <code>API Token</code> by going to account configuration.</li>
 <li>It is recommended to <code>Enable SSL verification</code>.</li>
 <li>Select the events which should trigger the build in jenkins.</li>
 <li>Check <code>Active</code>.</li>
-<li>Click on <code>Add Webhook</code>.  </li>
-</ul>
+<li>
+<p>Click on <code>Add Webhook</code>.  </p>
 <p><img alt="Screenshot from 2022-09-26 16-39-29" src="../../doc_images/Selection_002.png" />  </p>
 </li>
 </ul>

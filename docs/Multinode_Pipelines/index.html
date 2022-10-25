@@ -110,16 +110,18 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="multinode-pipelines">Multinode Pipelines</h1>
-<p>One can create multinode pipelines in jenkins freestyle pipeline job as well as in jenkins native pipeline job. In such a pipeline, different stages of the pipeline can run on separate nodes. The jenkins native pipeline job can have two types.<br />
-1. Scripted Pipeline
-2. Declarative pipeline</p>
+<p>One can create multinode pipelines in jenkins freestyle pipeline job as well as in jenkins native pipeline job. In such a pipeline, different stages of the pipeline can run on separate nodes. The jenkins native pipeline job can have two types.  </p>
+<ol>
+<li>Scripted Pipeline</li>
+<li>Declarative pipeline</li>
+</ol>
 <p>For the sake of this documentation, two nodes are used: <code>container-node</code> and <code>container-node2</code></p>
 <h3 id="label">Label</h3>
 <p>In jenkins, label specifies where the job or a stage of the job can run. In jenkins, a label can be explicitly added in the node's configuration so that each time that label is mentioned in a jenkins job, that specific node is used for building the job, or the name of the node can also be used as label in case if no label is added in the node.</p>
 <h2 id="creating-multinode-pipelines-in-jenkins-native-pipeline-job">Creating multinode pipelines in Jenkins native pipeline job</h2>
 <h3 id="scripted-pipeline">Scripted Pipeline</h3>
 <p>For creating a multinode pipeline with jenkins native scripted pipeline job, jenkinsfile can be tweaked. The keyword <code>node</code> can be used to specify the node in which the stages are going to run and this keyword can also be used in between stages. Following screenshot indicates a code in which first stage runs on node named <code>container-node</code>. While the second node runs on node named <code>container-node2</code>.  </p>
-<pre><code>node ('container-node') {
+<pre><code class="language-shell">node ('container-node') {
     stage ('*** Creating a directory in container-node ***'){
         sh '''#!/bin/bash
         mkdir newdir_container-node-$RANDOM
@@ -136,7 +138,7 @@
 </code></pre>
 <h3 id="declarative-pipeline">Declarative pipeline</h3>
 <p>For a declarative pipeline the keyword <code>label</code> can be used in the agent block. This can either be done at the start of the pipeline after the keyword <code>pipeline</code> or it can be used inside the stages. The following code builds two stages each of which is built in separate node. The keyword <code>none</code> with agent means that the agent is not specified globally for each stage and it should be specified inside each stage.</p>
-<pre><code>pipeline {
+<pre><code class="language-shell">pipeline {
     agent none // Means no agent specified. This means each node will specify its own agent
     stages {
         stage('container-node') {
