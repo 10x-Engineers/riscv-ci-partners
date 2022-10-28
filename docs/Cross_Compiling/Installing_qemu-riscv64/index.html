@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Cross Compiling Openssl - RISC-V CI Docs</title>
+    <title>Installing qemu-riscv64 - RISC-V CI Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cross Compiling Openssl";
-        var mkdocs_page_input_path = "Cross_Compiling/Cross_compiling_openssl.md";
+        var mkdocs_page_name = "Installing qemu-riscv64";
+        var mkdocs_page_input_path = "Cross_Compiling/Installing_qemu-riscv64.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -70,15 +70,17 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Installing_qemu-riscv64/">Installing qemu-riscv64</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Cross Compiling Openssl</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Installing qemu-riscv64</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#what-is-openssl">What is openssl</a>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-pre-requisites">Installing Pre-requisites</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building-openssl-for-riscv64-architecture">Building openssl for riscv64 architecture</a>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-qemu-riscv64-on-ubuntu-2204">Installing qemu-riscv64 on ubuntu 22.04</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing-qemu-riscv64">Testing qemu-riscv64</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_openssl/">Cross Compiling Openssl</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_ruby/">Cross Compiling Ruby</a>
                   </li>
@@ -107,7 +109,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Cross-Compilation &raquo;</li>
-      <li>Cross Compiling Openssl</li>
+      <li>Installing qemu-riscv64</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -116,44 +118,77 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="cross-compiling-openssl">Cross-compiling openssl</h1>
-<h2 id="what-is-openssl">What is <code>openssl</code></h2>
-<p>Openssl is a software library which is used inside many high level languages (e.g. Python, Ruby etc.) and also in linux itself. It is used for security and other cryptography applications.  </p>
-<h2 id="building-openssl-for-riscv64-architecture">Building openssl for <code>riscv64</code> architecture</h2>
-<p>Following are the steps used to build openssl for riscv64 architecture.  </p>
-<ol>
-<li>Get the source code of <code>openssl</code> and navigate inside the cloned repository using the commands below</li>
-</ol>
-<pre><code class="language-shell">git clone https://github.com/openssl/openssl.git
-cd openssl
+                <h1 id="what-is-qemu-riscv64">What is <code>qemu-riscv64</code></h1>
+<p><code>qemu-riscv64</code> is the qemu emulator. But instead of porting a complete operating system (like <code>qemu-system-riscv64</code>), it can readily execute binaries.<br />
+Throughout cross-compiling section, <code>qemu-riscv64</code> will be used with <code>linux-user</code> and executable of every program can be tested on qemu (e.g. python, ruby etc.).  </p>
+<h2 id="installing-pre-requisites">Installing Pre-requisites</h2>
+<p>Execute the following command to install the pre-requisites for installing <code>qemu</code> on ubuntu 22.04 (jammy)  </p>
+<pre><code class="language-shell">sudo apt-get install git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev ninja-build
 </code></pre>
+<p><strong>Note:</strong> Make sure you have <code>riscv-unknown-linux-gnu</code> toolchain installed.</p>
+<p>There are some optional dependencies which one can download, but they are actually not needed for installing qemu and make it work.</p>
+<h2 id="installing-qemu-riscv64-on-ubuntu-2204">Installing <code>qemu-riscv64</code> on ubuntu 22.04</h2>
 <ol>
-<li>Configure openssl for building. In openssl there are some <code>os/compiler</code> choices which one can use to build for his architecture. But in our case there is no support for building with riscv64. As it is written in C language, so it can be compiled whether or not the support is given. Use the following command to generate a <code>Makefile</code> for <code>linux-generic64</code></li>
+<li>Get source code of <code>qemu</code> using the command below  </li>
 </ol>
-<pre><code class="language-shell">./Configure linux-generic64 --prefix=$PREFIX # Prefix is the directory where you want binaries to be installed at the end
-</code></pre>
-<ol>
-<li>After the above command is successfully completed, run the following command to build openssl using <code>riscv64-unknown-linux-gnu-gcc</code> compiler instead of native gcc compiler.</li>
-</ol>
-<pre><code class="language-shell">make -j$(nproc) CC=riscv64-unknown-linux-gnu-gcc
+<pre><code class="language-shell">git clone https://github.com/qemu/qemu.git
 </code></pre>
 <ol>
-<li>Install the binaries in the specified <code>--prefix</code> using the command below</li>
+<li>Use following command in the root directory of repository to configure <code>qemu</code> for <code>riscv64-linux-user</code>  </li>
 </ol>
-<pre><code class="language-shell">make -j$(nproc) install CC=riscv64-unknown-linux-gnu-gcc
+<pre><code class="language-shell">./configure --target-list=riscv64-linux-user --prefix=$PREFIX # Replace $PREFIX with a valid location to install at
 </code></pre>
-<p>The installed binary can be tested on <code>qemu-riscv64</code> using the command below:</p>
-<pre><code class="language-shell">qemu-riscv64 -L $RISCV_SYSROOT ./openssl
+<p><strong>Note:</strong> If this is not your architecture/platform, you can see a list of available platform/architecture by executing following command</p>
+<pre><code class="language-shell">./configure --help
 </code></pre>
-<p>Here $RISCV_SYSROOT is the <code>sysroot/</code> folder located inside the riscv gnu toolchain installed directory.</p>
-<p>The above mentioned command will start the openssl console if everything went right.  </p>
-<p><strong>Note:</strong> Do not change the directory of openssl or rename it, as it some files inside it are inferred with absolute paths, changing the directory or renaming it will cause other packages to not configure openssl for them when cross-compiling.</p>
+<ol>
+<li>Use the following command to start the build process  </li>
+</ol>
+<pre><code class="language-shell">make -j$(nproc)
+</code></pre>
+<ol>
+<li>After the builld is complete without any error, use the following command to install binaries at $PREFIX location  </li>
+</ol>
+<pre><code class="language-shell">make install
+</code></pre>
+<ol>
+<li>
+<p>Add the $PREFIX/bin to $PATH variable so that it may be recognized as a command.  </p>
+</li>
+<li>
+<p>Using this method causes the <code>qemu-riscv64</code> to have an issue with sysroot. It starts searching for libraries in the root folder of the machine which is based on <code>x86_64-linux-gnu</code>. A simple workaround is to give path of the <code>sysroot/</code> folder where  <code>riscv64-unknown-linux-gnu</code> toolchain is installed. Here that directory will be denoted as <code>$RISCV_SYSROOT</code></p>
+</li>
+</ol>
+<h2 id="testing-qemu-riscv64">Testing <code>qemu-riscv64</code></h2>
+<ol>
+<li>Create a C file in your favorite editor or by using the commands below:  </li>
+</ol>
+<pre><code class="language-shell">echo &quot;#include&lt;stdio.h&gt;&quot; &gt; helloworld.c
+echo &quot;int main(){&quot; &gt;&gt; helloworld.c
+echo &quot;printf(&quot;Hello World !&quot;);&quot; &gt;&gt; helloworld.c
+echo '}' &gt;&gt; helloworld.c
+</code></pre>
+<ol>
+<li>Execute following command to compile C program with <code>riscv gnu toolchain</code>  </li>
+</ol>
+<pre><code class="language-shell">riscv64-unknown-linux-gnu-gcc helloworld.c -o helloworld
+</code></pre>
+<ol>
+<li>Execute following command to execute the compiled binary on <code>qemu-riscv64</code>  </li>
+</ol>
+<pre><code class="language-shell">qemu-riscv64 -L $RISCV_SYSROOT ./helloworld
+</code></pre>
+<ol>
+<li>If everything went right, following output will be shown.  </li>
+</ol>
+<pre><code class="language-shell">Hello World !
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Installing_qemu-riscv64/" class="btn btn-neutral float-left" title="Installing qemu-riscv64"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Cross_compiling_ruby/" class="btn btn-neutral float-right" title="Cross Compiling Ruby">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Overview/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Cross_compiling_openssl/" class="btn btn-neutral float-right" title="Cross Compiling Openssl">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -176,10 +211,10 @@ cd openssl
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Installing_qemu-riscv64/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Cross_compiling_ruby/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Cross_compiling_openssl/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
