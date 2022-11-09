@@ -63,14 +63,16 @@
               </ul>
               <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Building_qemu/">Installing Qemu for RISC-V</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Installing_qemu-riscv64/">Installing qemu-riscv64</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_openssl/">Cross Compiling Openssl</a>
                   </li>
@@ -118,20 +120,20 @@
 <p>Dhrystone is a benchmarking tool. Here <code>dhrystone</code> will be compiled from source and run on <code>qemu-riscv64</code>.<br />
 Dhrystone is comparable to VAX 11/780 in a way that VAX 11/780 achieves 1757 dhrystones per second which is also referred to as 1 MIPS of VAX11/780. So number of dhrystones per seconds are obtained and then divided by 1757 to get MIPS. See this <a href="https://wiki.cdot.senecacollege.ca/wiki/Dhrystone_howto">link</a> for more details.</p>
 <h2 id="cross-compiling-for-riscv64-unknown-linux-gnu">Cross-compiling for <code>riscv64-unknown-linux-gnu</code></h2>
-<ol>
+<ul>
 <li>Get the source code of <code>dhrystone</code> using the command below  </li>
-</ol>
+</ul>
 <pre><code class="language-shell">git clone https://github.com/sifive/benchmark-dhrystone.git
 </code></pre>
-<ol>
+<ul>
 <li>Navigate to root directory of repository and compile program with <code>riscv64-unknown-linux-gnu-gcc</code> instead of native <code>gcc</code>  </li>
-</ol>
+</ul>
 <pre><code class="language-shell">cd benchmark-dhrystone
 make CC=riscv64-unknown-linux-gnu-gcc
 </code></pre>
-<ol>
+<ul>
 <li>Execute following command to execute <code>dhrystone</code> binary  </li>
-</ol>
+</ul>
 <pre><code class="language-shell">qemu-riscv64 -L $RISCV_SYSROOT ./dhrystone
 </code></pre>
 <p><strong>Note:</strong> You may want to tweak <code>Makefile</code> and <code>dhry_1.c</code> a little bit to get the correct results.  </p>
