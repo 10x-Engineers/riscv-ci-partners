@@ -155,10 +155,10 @@ git checkout v2022.10
 <pre><code class="language-shell">qemu-system-riscv64 \
 -machine virt -nographic -m 2048 -smp 4 \
 -kernel $UBOOTPATH/u-boot.bin \
--device virtio-net-device,netdev=eth0 -netdev user,id=eth0 \
+-device virtio-net-device,netdev=eth0 -netdev user,id=eth0,hostfwd=::2222-:22 \
 -drive file=ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img,format=raw,if=virtio
 </code></pre>
-<p>Here <code>-m</code> is the memory in Megabytes and <code>-smp</code> is number of cores. <code>-nographic</code> means qemu will use same terminal instance instead of opening a new window of its own (which is beneficial while running servers without gui).  </p>
+<p>Here <code>-m</code> is the memory in Megabytes and <code>-smp</code> is number of cores. <code>-nographic</code> means qemu will use same terminal instance instead of opening a new window of its own (which is beneficial while running servers without gui). Whereas <code>hostfwd=::2222-:22</code> will forward traffic going to port <code>2222</code> to port <code>22</code>. Due to this port <code>2222</code> will be used to access ssh on qemu machine.  </p>
 <p>This should boot ubuntu 22.04. But it will take a while on first start.  </p>
 <p>On start, credentials will be as follows.  </p>
 <pre><code class="language-shell">Username: ubuntu
