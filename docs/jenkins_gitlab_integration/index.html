@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Creating a pipeline project - RISC-V CI Docs</title>
+    <title>GitLab Integration - RISC-V CI Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Creating a pipeline project";
-        var mkdocs_page_input_path = "Creating_CI_CD_pipeline.md";
+        var mkdocs_page_name = "GitLab Integration";
+        var mkdocs_page_input_path = "jenkins_gitlab_integration.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -50,13 +50,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating a pipeline project</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#pre-requisistes">Pre Requisistes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#steps-for-jenkins-pipeline-creation">Steps for Jenkins pipeline creation</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
                   </li>
@@ -66,7 +60,17 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">GitLab Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-jenkins-system">Configuring Jenkins System</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-gitlab">Configuring GitLab</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-jenkins-job">Configuring Jenkins Job</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
@@ -111,7 +115,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Jenkins Docs &raquo;</li>
-      <li>Creating a pipeline project</li>
+      <li>GitLab Integration</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -120,62 +124,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="creating-a-cicd-pipeline-in-jenkins">Creating a CI/CD pipeline in Jenkins</h1>
-<h2 id="pre-requisistes">Pre Requisistes</h2>
-<p>For sake of this documentation, jenkins built-in sample script is used to create and execute a cd/cd pipeline in jenkins. In the built-in script maven is used as M3, so one must install <code>Maven</code> plugin inside jenkins and name it <code>M3</code>. Usually maven is already present inside jenkins and can be configured from <code>Global Configuration Tools</code>. Following steps demonstrate configuring Maven plugin.  </p>
+                <h1 id="integrating-gitlab-with-jenkins">Integrating GitLab with Jenkins</h1>
+<p>This documentation will cover how to create an integration between jenkins and GitLab. This will allow users to trigger jenkins job when a <code>merge request</code> or a <code>push</code> is detected in GitLab.  </p>
+<h2 id="pre-requisites">Pre-requisites</h2>
 <ul>
-<li>Go to Jenkins <code>Dashboard</code> and click on <code>Manage Jenkins</code></li>
-<li>In <code>Manage Jenkins</code>, under <code>System Configuration</code> section, click on <code>Global Tool Configuration</code>.  </li>
+<li>GitLab plugin  </li>
+<li>Git plugin  </li>
+<li>GitLab repository with owner's credentials  </li>
 </ul>
-<p><img alt="unnamed" src="../doc_images/unnamed.png" /></p>
+<h2 id="configuring-jenkins-system">Configuring Jenkins System</h2>
+<p>First jenkins needs to be configured.  </p>
 <ul>
-<li>In <code>Global Tool Configuration</code>, scroll down to Maven section and click on the respective option under the <code>Maven</code> Section (should be <code>Maven installations…</code> or <code>Add Maven</code>).  </li>
+<li>Go to <code>Dashboard &gt; Manage Jenkins &gt; Configure System</code>  </li>
+<li>Scroll down to <code>Gitlab</code> section  </li>
+<li>
+<p>Check <code>Enable authentication for '/project' end-point</code>  </p>
+</li>
+<li>
+<p>Enter a <code>Connection name</code>.  </p>
+</li>
+<li>Enter <code>Gitlab host URL</code> as <code>https://gitlab.com/</code>. In case there is a different domain name, then enter there instead of above url.  </li>
+<li>In <code>Credentials</code>, click on <code>Add</code> then click on <code>Jenkins</code>.  </li>
+<li>In <code>Kind</code>, select <code>GitLab API token</code>.  </li>
+<li>In <code>API token</code>, enter the gitlab personal access token (this will be obtained below while configuring GitLab).  </li>
+<li>Click on <code>Advanced</code>.</li>
+<li>Click on <code>Test Connection</code>.  </li>
+<li>If everything goes right, it should print <code>success</code>.  </li>
 </ul>
-<p><img alt="unnamed (1)" src="../doc_images/unnamed (1).png" /></p>
+<h2 id="configuring-gitlab">Configuring GitLab</h2>
 <ul>
+<li>Click on profile avatar in the top right.  </li>
 <li>
-<p>Under <code>Maven installations</code>, enter <code>M3</code> in “name” text box, check <code>Install Automatically</code> and select <code>Version</code> greater than 3, then click <code>Apply</code> and <code>Save</code>.  </p>
+<p>Click on <code>Edit profile</code>.  </p>
+<p><img alt="GitLab Profile Settings" src="../docs/doc_images/GitLab_profile_settings.png" /></p>
 </li>
 <li>
-<p>This should install Maven version 3 and configure as <code>M3</code>.</p>
+<p>Click on <code>Access Tokens</code>.</p>
 </li>
+<li>Create a new personal access token and copy it (this is the GitLab API token used in above section <code>Configuring Jenkins System</code>).  </li>
+<li>Go to repository settings.</li>
+<li>On left-side pane, select <code>Webhooks</code>.  </li>
+<li>Enter <code>GitLab webhook URL</code> (this is explained below in next section).  </li>
+<li>Enter <code>Secret Token</code> (this is explained in the below section).</li>
+<li>Check desirable trigger options.  </li>
+<li>Click <code>Add webhook</code>.</li>
 </ul>
-<h2 id="steps-for-jenkins-pipeline-creation">Steps for Jenkins pipeline creation</h2>
+<h2 id="configuring-jenkins-job">Configuring Jenkins Job</h2>
 <ul>
-<li>
-<p>After installing Jenkins and having all the suggested plugins installed, go to Jenkins dashboard and click on <code>Create Job</code>.  </p>
-</li>
-<li>
-<p>On the next page, give your pipeline a name, select <code>Pipeline</code> and click <code>OK</code>.</p>
-</li>
+<li>Create a jenkins job.</li>
+<li>On job configuration page, scroll down to <code>Source Code Management</code>.  </li>
+<li>Select <code>Git</code>.  </li>
+<li>In <code>Credentials</code>, add the owner credentials of GitLab repository. This will be <code>Username and Password</code>.  </li>
+<li>Select the appropriate branch (generally it is <code>main</code>).  </li>
+<li>Scroll down to <code>Build Triggers</code>.  </li>
+<li>Check <code>Build when a change is pushed to GitLab</code>. There will also be a <code>GitLab webhook URL</code>. This is needed in GitLab. This URL will be called as <code>Webhook URL</code>.  </li>
+<li>Click on <code>Advanced</code> in the same option, then scroll down and generate a secret token. This token is also needed. This token will be called as <code>Secret Token</code>.</li>
+<li>Scroll down to <code>Post-build Actions</code> and select <code>Publish build status to GitLab</code>.  </li>
+<li>Click on <code>Apply</code> and <code>Save</code>.  </li>
 </ul>
-<p><img alt="unnamed (2)" src="../doc_images/unnamed (2).png" /></p>
-<ul>
-<li>
-<p>A <code>Configuration</code> page for the pipeline will appear.  </p>
-</li>
-<li>
-<p>Select <code>Build Triggers</code> options and <code>General</code> options according to need and scroll down to the Pipeline section.</p>
-</li>
-</ul>
-<p><img alt="unnamed (3)" src="../doc_images/unnamed (3).png" /></p>
-<ul>
-<li>
-<p>Definition section contains configuration for stages and steps of the pipeline. Under <code>Definition</code> section, you can either choose <code>Pipeline script</code> and try writing your own script or try some sample pipeline (like <code>Hello World</code>, <code>Github+Maven</code> etc) or you could select <code>Pipeline script from SCM</code> and give a github repository containing configurations of Pipeline.  </p>
-</li>
-<li>
-<p>Press <code>Save</code> and <code>Apply</code>.  </p>
-</li>
-<li>
-<p>This should take you to the Pipeline and you can build the pipeline and if no unresolved dependencies are present, the pipeline should build without any error.</p>
-</li>
-</ul>
+<p>Now whenever there will be a push (or whatever build trigger option is set in jenkins and gitlab webhook), specified jenkins job will be triggered.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Creating_Jenkins_Node_on_LXC/" class="btn btn-neutral float-left" title="Creating Jenkins Node on LXC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Multinode_Pipelines/" class="btn btn-neutral float-right" title="Creating Multinode pipelines">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../jenkins_github_integration/Github_PR_webhook_integration/" class="btn btn-neutral float-left" title="Github PR webhook integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Building_qemu/" class="btn btn-neutral float-right" title="Installing Qemu for RISC-V">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -198,10 +211,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Creating_Jenkins_Node_on_LXC/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../jenkins_github_integration/Github_PR_webhook_integration/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Multinode_Pipelines/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Building_qemu/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
