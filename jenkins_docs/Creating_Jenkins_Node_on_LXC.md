@@ -1,20 +1,32 @@
 # Creating a Jenkins Node on LXC Container
+
 ### Reference Links
-Documentation for LXC containers can be found at: https://linuxcontainers.org  
-Details regarding Jenkins ssh agents can be found at: https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node
+
+Documentation for LXC containers can be found at: <https://linuxcontainers.org>  
+Details regarding Jenkins ssh agents can be found at: <https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node>
+
 ## What is a container
+
 A container is a virtualization method for isolating the applications (or even operating systems) from each other.
+
 ## Why do we need a container for Jenkins node
+
 In Jenkins, node is a location where our jobs run. One user can use one node for all of his processes and multiple users may also use one node for all of their processes. In Jenkins freestyle project, we can use bash shell or windows command shell due to which there is a possibility to navigate anywhere in the server machine. This possibility can lead to various security and integrity issues for server administrators and also for other users using that webserver. So one must isolate each node and allocate each node to each user separately.
+
 ## What is LXC Container
+
 LXC stands for Linux Containers. LXC is a package for linux operating systems and provides linux users with containers which may contain a whole linux operating system while also being lightweight than a virtual machine. More information regarding LXC can be found at
-https://linuxcontainers.org/lxc/introduction/
+<https://linuxcontainers.org/lxc/introduction/>
 
 On ubuntu 20.04 one can install LXC using command  
 `[sudo] apt-get install lxc`  
+
 ## Creating a container with LXC
+
 **_NOTE: Throughout this document, the name of the container will be `my-container` and the name of the user will be `user1`. So wherever my-container is written, one may change the name to whatever one wants to give it._**
+
 ## Pre-requisites
+
 Before proceeding, it is important to mention that at the point of writing this document following are the specifications for linux kernel and distribution:
 
 **Linux Kernel**: 5.15.0-46-generic (can be checked on ubuntu by command `uname -r`)  
@@ -32,7 +44,9 @@ In above example `jenkins` is the username, `veth` is the command used for creat
 
 According lxc documentation, in ubuntu 20.04 an additional command is required before creating lxc container:  
 `export DOWNLOAD_KEYSERVER="hkp://keyserver.ubuntu.com"`  
+
 ## Creating image
+
 After this, one can create container using following command  
   
 `systemd-run --unit=my-unit --user --scope -p "Delegate=yes" -- lxc-create -t download -n my-container`  
@@ -65,18 +79,20 @@ From this point onwards, if one wants to use the machine in the terminal then us
 ![unnamed (6)](<../doc_images/unnamed (6).png>)
   
 Now the container is ready to be used and is completely isolated from the host machine.
+
 ## Using SSH to access container with username and password
+
 The above mentioned method can be used to attach the host machine terminal to the container and this can be used to access the container. But if one wants to access the machine remotely then one possible and well-known method will be to configure and use SSH on the container.
 
 As it is an out of the box linux distro and only the root user is present, so first create another user using the following command and then manage its permissions for `/home folder`.
 
-```
+```shell
 #Considering you remain the root user for execution of all the  following #commands
 
 useradd user1
 cd /home
-mkdir user1 			#Creating home directory for user1
-chown user1:user1 user1 	#Giving ownership of home directory to new user
+mkdir user1    #Creating home directory for user1
+chown user1:user1 user1  #Giving ownership of home directory to new user
 
 #For adding the same shell and bashrc configurations for new user, use #following
 #command, otherwise the shell will be very basic for new user and will be #very inconvenient to use.
@@ -100,8 +116,9 @@ Now install openssh-server for configuring the ssh on user1.
 `sudo apt install openssh-server`  
   
 After that one must find the ip of the container we are using, for this either run following command while in container with user1,
-```
-sudo apt-install net-tools 
+
+```shell
+sudo apt-install net-tools
 
 #Because ifconfig is part of net-tools which are by default not installed on new #container
 
@@ -126,34 +143,38 @@ After entering the password, terminal will switch to the container’s user1 as 
 ![unnamed (9)](<../doc_images/unnamed (9).png>)  
   
 ## Using SSH to access Jenkins agents on the container
+
 First install some initial dependencies (git, jdk, jre) on the containers for running agents on the container.
-```
+
+```shell
 sudo apt update
 sudo apt install default-jdk default-jre git maven
 ```  
+
 Now login to jenkins with administrator privileges and create a node in it from `Dashboard > Manage Jenkins > Nodes` and press `+ New Node`. Enter a name for the node and select the desirable node type.
 For this documentation, the node will be a permanent type and the name will be `temp_node`.  
   
 ![unnamed (10)](<../doc_images/unnamed (10).png>)  
   
-After this click on `Create` which will display the configuration page of the node.
-1. Write the description of the node as desired.
-2. Number of executors means number of threads running at a time (it will be better to set it to the number of processors present on the machine which is running this node).
-3. Remote root directory will be the directory where the jobs will run by default on the node. In our case this will be a specified directory inside the container.
-4. Labels indicate that this node will run only when a job with specified labels is run, otherwise this node will not be used (also depends on the usage method in the next option). If the purpose is to use the node by default for every job, then leave it empty.
-5. Select a desired usage option.
-6. In launch methods, select “Launch agents via SSH”
-    - In “Host” enter the ip address of the container which is 10.0.3.127 in our case.
-    - In “Credentials”, click Add and this will open another sub dialog for entering credentials information.
-    - Select the kind as “Username wih password”.
-    - Leave other options as is and write the username and password of the container user, in our case the username will be user1 and password will be the password which was set for user1.
-    - “ID” and “Description” are optional.
-    - Click on “Add”
-    - Now as the credentials are added, click on the dropdown menu and select the username you just added. In our case it is user1 as the username added was user1
-7. After this rest of the options need not to be changed if this node is going to be a default node.
+After this click on `Create` which will display the configuration page of the node.  
+
+1. Write the description of the node as desired.  
+2. Number of executors means number of threads running at a time (it will be better to set it to the number of processors present on the machine which is running this node).  
+3. Remote root directory will be the directory where the jobs will run by default on the node. In our case this will be a specified directory inside the container.  
+4. Labels indicate that this node will run only when a job with specified labels is run, otherwise this node will not be used (also depends on the usage method in the next option). If the purpose is to use the node by default for every job, then leave it empty.  
+5. Select a desired usage option.  
+6. In launch methods, select “Launch agents via SSH”  
+    - In “Host” enter the ip address of the container which is 10.0.3.127 in our case.  
+    - In “Credentials”, click Add and this will open another sub dialog for entering credentials information.  
+    - Select the kind as “Username wih password”.  
+    - Leave other options as is and write the username and password of the container user, in our case the username will be user1 and password will be the password which was set for user1.  
+    - “ID” and “Description” are optional.  
+    - Click on “Add”.  
+    - Now as the credentials are added, click on the dropdown menu and select the username you just added. In our case it is user1 as the username added was user1.  
+7. After this rest of the options need not to be changed if this node is going to be a default node.  
 8. Click on “Save”.  
 After complete setup, the configuration for this node will look something like this.  
-  
+
 ![unnamed (11)](<../doc_images/unnamed (11).png>)  
   
 ![unnamed (12)](<../doc_images/unnamed (12).png>)  
@@ -165,4 +186,3 @@ If no issue is encountered during this whole setup, jenkins will take us to the 
 ![unnamed (14)](<../doc_images/unnamed (14).png>)  
   
 **After this point, node will be able to run jobs from the container directory.**  
-

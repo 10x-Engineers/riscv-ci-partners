@@ -4,20 +4,20 @@ A software developer is the end-user who will develop or build his/her projects 
 Currently, the specifications for RISC-V CI is as follows.
 
 - Jenkins latest version
-- Ubuntu 23.04 LTS  
+- Ubuntu 22.04 LTS  
 
 ## Pre-requisites
 
 1. GitHub account.
 2. GitHub project repository with owner rights.
-  
+
 ## Setting up `Jenkinsfile` inside github project repository
 
 Jenkins pipeline will need a `Jenkinsfile` written with jenkins pipeline syntax to start execution of tests/checks (see [link](https://www.jenkins.io/doc/book/pipeline/syntax/)). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be `scripted pipeline` which will only have stages or it can also be `declarative pipeline` which may also have steps inside stages.  
 
 A simple scripted `Helloworld` pipeline in linux is as follows:
 
-```
+```shell
 
 node{
     stage('*** Compilation Phase ***') {
