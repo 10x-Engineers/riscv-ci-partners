@@ -1,4 +1,4 @@
-site_name: RISC-V CI Docs
+site_name: Cloud-V Docs
 nav:
 - Home: index.md
 - Jenkins Docs:
