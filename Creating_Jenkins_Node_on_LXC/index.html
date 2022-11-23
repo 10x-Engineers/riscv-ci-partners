@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Creating Jenkins Node on LXC - Cloud-V Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Creating Jenkins Node on LXC";
+        var mkdocs_page_input_path = "Creating_Jenkins_Node_on_LXC.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cloud-V Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating Jenkins Node on LXC</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference Links</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-a-container">What is a container</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-do-we-need-a-container-for-jenkins-node">Why do we need a container for Jenkins node</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-lxc-container">What is LXC Container</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-a-container-with-lxc">Creating a container with LXC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-image">Creating image</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-ssh-to-access-container-with-username-and-password">Using SSH to access container with username and password</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-ssh-to-access-jenkins-agents-on-the-container">Using SSH to access Jenkins agents on the container</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_qemu/">Installing Qemu for RISC-V</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cloud-V Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Jenkins Docs &raquo;</li>
+      <li>Creating Jenkins Node on LXC</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creating-a-jenkins-node-on-lxc-container">Creating a Jenkins Node on LXC Container</h1>
+<h3 id="reference-links">Reference Links</h3>
+<p>Documentation for LXC containers can be found at: <a href="https://linuxcontainers.org">https://linuxcontainers.org</a><br />
+Details regarding Jenkins ssh agents can be found at: <a href="https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node">https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node</a></p>
+<h2 id="what-is-a-container">What is a container</h2>
+<p>A container is a virtualization method for isolating the applications (or even operating systems) from each other.</p>
+<h2 id="why-do-we-need-a-container-for-jenkins-node">Why do we need a container for Jenkins node</h2>
+<p>In Jenkins, node is a location where our jobs run. One user can use one node for all of his processes and multiple users may also use one node for all of their processes. In Jenkins freestyle project, we can use bash shell or windows command shell due to which there is a possibility to navigate anywhere in the server machine. This possibility can lead to various security and integrity issues for server administrators and also for other users using that webserver. So one must isolate each node and allocate each node to each user separately.</p>
+<h2 id="what-is-lxc-container">What is LXC Container</h2>
+<p>LXC stands for Linux Containers. LXC is a package for linux operating systems and provides linux users with containers which may contain a whole linux operating system while also being lightweight than a virtual machine. More information regarding LXC can be found at
+<a href="https://linuxcontainers.org/lxc/introduction/">https://linuxcontainers.org/lxc/introduction/</a></p>
+<p>On ubuntu 20.04 one can install LXC using command<br />
+<code>[sudo] apt-get install lxc</code>  </p>
+<h2 id="creating-a-container-with-lxc">Creating a container with LXC</h2>
+<p><strong><em>NOTE: Throughout this document, the name of the container will be <code>my-container</code> and the name of the user will be <code>user1</code>. So wherever my-container is written, one may change the name to whatever one wants to give it.</em></strong></p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>Before proceeding, it is important to mention that at the point of writing this document following are the specifications for linux kernel and distribution:</p>
+<p><strong>Linux Kernel</strong>: 5.15.0-46-generic (can be checked on ubuntu by command <code>uname -r</code>)<br />
+<strong>Distribution</strong>: Ubuntu focal (20.04) (can be checked on ubuntu by command <code>lsb_release -a</code>)  </p>
+<p>By default linux users are not allowed to create any network device on the machine. For doing that, one must add <code>uid</code> and <code>gid</code> in the <code>/etc/lxc/lxc-usernet</code>. The uid and gid of the user you want to use can be found in the files <code>/etc/uid</code> and <code>/etc/gid</code> respectively.</p>
+<p>After getting the <code>gid</code> and <code>uid</code> of the user you want to allow for creating the network devices, one must go to <code>/etc/lxc/lxc-usernet</code> and add the <code>uid</code> and <code>gid</code> in the following format:</p>
+<p><code>&lt;username&gt; veth lxcbr0 10</code><br />
+e.g.<br />
+<code>jenkins veth lxcbr0 10</code>  </p>
+<p>In above example <code>jenkins</code> is the username, <code>veth</code> is the command used for creating the bridges between virtual network devices and physical network devices (you will be able to see that ethernet device in our container will be <code>lxcbr0</code>) and <code>lxbr0</code> is the network device we want to create. ‘10’ represents the number of devices we want to create using our specified user.</p>
+<p>According lxc documentation, in ubuntu 20.04 an additional command is required before creating lxc container:<br />
+<code>export DOWNLOAD_KEYSERVER="hkp://keyserver.ubuntu.com"</code>  </p>
+<h2 id="creating-image">Creating image</h2>
+<p>After this, one can create container using following command  </p>
+<p><code>systemd-run --unit=my-unit --user --scope -p "Delegate=yes" -- lxc-create -t download -n my-container</code>  </p>
+<p>This runs lxc container with unit name <code>my-unit</code>, container name <code>my-container</code> and delegates a control group (also known as the <code>cgroup</code>) which is needed for resource allocation for processes in container.</p>
+<p>This will output the list of available linux distributions in which one may want to run the container and will prompt for Distribution as shown in the following image.  </p>
+<p><img alt="unnamed (4)" src="../doc_images/unnamed (4).png" /></p>
+<p>After selecting the suitable distribution, release and architecture (which is also mentioned in the table), the container may be created as shown in the image below:  </p>
+<p><img alt="unnamed (5)" src="../doc_images/unnamed (5).png" />  </p>
+<p>Next thing is to start a container which will change its state from STOPPED to RUNNING using the following command.  </p>
+<p><code>lxc-start -n my-container</code>  </p>
+<p>Above command will have no output if it succeeds.<br />
+The state of the container can be checked using the following command.  </p>
+<p><code>lxc-info -n my-container</code>  </p>
+<p>After starting the container, its state will be set as running and is just like turning a linux machine ON.  </p>
+<p>From this point onwards, if one wants to use the machine in the terminal then use the following command and this will switch the terminal to the root of the container.  </p>
+<p><code>lxc-attach my-container</code>  </p>
+<p><img alt="unnamed (6)" src="../doc_images/unnamed (6).png" /></p>
+<p>Now the container is ready to be used and is completely isolated from the host machine.</p>
+<h2 id="using-ssh-to-access-container-with-username-and-password">Using SSH to access container with username and password</h2>
+<p>The above mentioned method can be used to attach the host machine terminal to the container and this can be used to access the container. But if one wants to access the machine remotely then one possible and well-known method will be to configure and use SSH on the container.</p>
+<p>As it is an out of the box linux distro and only the root user is present, so first create another user using the following command and then manage its permissions for <code>/home folder</code>.</p>
+<pre><code class="language-shell">#Considering you remain the root user for execution of all the  following #commands
+
+useradd user1
+cd /home
+mkdir user1    #Creating home directory for user1
+chown user1:user1 user1  #Giving ownership of home directory to new user
+
+#For adding the same shell and bashrc configurations for new user, use #following
+#command, otherwise the shell will be very basic for new user and will be #very inconvenient to use.
+
+usermod -s /bin/bash user1
+</code></pre>
+<p>For the sake of simplicity of this document the name used for the new user is <code>user1</code> here.
+(You may want to set the password for <code>user1</code> by executing the <code>passwd</code> command in root.)</p>
+<p>At this point <code>user1</code> is not in sudoers. For adding it to the sudoers, it must be added in the sudo group which can be done by using the following command.  </p>
+<p><code>usermod -a -G sudo user1</code>  </p>
+<p>Now switch to the user1 using the following command.  </p>
+<p><code>su - user</code>  </p>
+<p>Now install openssh-server for configuring the ssh on user1.  </p>
+<p><code>sudo apt install openssh-server</code>  </p>
+<p>After that one must find the ip of the container we are using, for this either run following command while in container with user1,</p>
+<pre><code class="language-shell">sudo apt-install net-tools
+
+#Because ifconfig is part of net-tools which are by default not installed on new #container
+
+Ifconfig -a
+</code></pre>
+<p><img alt="unnamed (7)" src="../doc_images/unnamed (7).png" />  </p>
+<p>OR open a new terminal in the host machine and execute the following command.  </p>
+<p><code>lxc-info my-container -iH</code>  </p>
+<p><img alt="unnamed (8)" src="../doc_images/unnamed (8).png" />  </p>
+<p>So, the ip of the container is <code>10.0.3.127</code>.
+The command for establishing an ssh connection to a remote machine is mentioned below and it will ask for the password of the remote machine which is actually the container in our case.  </p>
+<p><code>ssh user1@10.0.3.127</code>  </p>
+<p>After entering the password, terminal will switch to the container’s user1 as can be seen in the following image.</p>
+<p><img alt="unnamed (9)" src="../doc_images/unnamed (9).png" />  </p>
+<h2 id="using-ssh-to-access-jenkins-agents-on-the-container">Using SSH to access Jenkins agents on the container</h2>
+<p>First install some initial dependencies (git, jdk, jre) on the containers for running agents on the container.</p>
+<pre><code class="language-shell">sudo apt update
+sudo apt install default-jdk default-jre git maven
+</code></pre>
+<p>Now login to jenkins with administrator privileges and create a node in it from <code>Dashboard &gt; Manage Jenkins &gt; Nodes</code> and press <code>+ New Node</code>. Enter a name for the node and select the desirable node type.
+For this documentation, the node will be a permanent type and the name will be <code>temp_node</code>.  </p>
+<p><img alt="unnamed (10)" src="../doc_images/unnamed (10).png" />  </p>
+<p>After this click on <code>Create</code> which will display the configuration page of the node.  </p>
+<ol>
+<li>Write the description of the node as desired.  </li>
+<li>Number of executors means number of threads running at a time (it will be better to set it to the number of processors present on the machine which is running this node).  </li>
+<li>Remote root directory will be the directory where the jobs will run by default on the node. In our case this will be a specified directory inside the container.  </li>
+<li>Labels indicate that this node will run only when a job with specified labels is run, otherwise this node will not be used (also depends on the usage method in the next option). If the purpose is to use the node by default for every job, then leave it empty.  </li>
+<li>Select a desired usage option.  </li>
+<li>In launch methods, select “Launch agents via SSH”  <ul>
+<li>In “Host” enter the ip address of the container which is 10.0.3.127 in our case.  </li>
+<li>In “Credentials”, click Add and this will open another sub dialog for entering credentials information.  </li>
+<li>Select the kind as “Username wih password”.  </li>
+<li>Leave other options as is and write the username and password of the container user, in our case the username will be user1 and password will be the password which was set for user1.  </li>
+<li>“ID” and “Description” are optional.  </li>
+<li>Click on “Add”.  </li>
+<li>Now as the credentials are added, click on the dropdown menu and select the username you just added. In our case it is user1 as the username added was user1.  </li>
+</ul>
+</li>
+<li>After this rest of the options need not to be changed if this node is going to be a default node.  </li>
+<li>Click on “Save”.<br />
+After complete setup, the configuration for this node will look something like this.  </li>
+</ol>
+<p><img alt="unnamed (11)" src="../doc_images/unnamed (11).png" />  </p>
+<p><img alt="unnamed (12)" src="../doc_images/unnamed (12).png" />  </p>
+<p><img alt="unnamed (13)" src="../doc_images/unnamed (13).png" />  </p>
+<p>If no issue is encountered during this whole setup, jenkins will take us to the log and after sometime (when the ssh connection is established) we can see “Agent successfully connected and online” at the bottom of the log as can be seen in the screenshot below.  </p>
+<p><img alt="unnamed (14)" src="../doc_images/unnamed (14).png" />  </p>
+<p><strong>After this point, node will be able to run jobs from the container directory.</strong>  </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Building_Jenkins_github_repo/" class="btn btn-neutral float-left" title="Building Jenkins"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Creating_CI_CD_pipeline/" class="btn btn-neutral float-right" title="Creating a pipeline project">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Building_Jenkins_github_repo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Creating_CI_CD_pipeline/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
