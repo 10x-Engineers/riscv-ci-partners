@@ -21,6 +21,7 @@ nav:
     - Cross Compiling Ruby: Cross_Compiling/Cross_compiling_ruby.md
     - Cross Compiling Drhystone: Cross_Compiling/Cross_compiling_dhrystone.md
     - Cross Compiling Coremark: Cross_Compiling/Cross_compiling_coremark
+    - Cross Compiling Rust: Cross_Compiling/Cross_compiling_rust.md
 - RISC-V CI User's Guide:
     - Guide for Software Developer: Software_Developer_Guide.md
 theme: readthedocs
