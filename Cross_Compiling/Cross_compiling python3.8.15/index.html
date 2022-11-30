@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Cross-compiling Coremark - Cloud-V Docs</title>
+    <title>Cross Compiling Python3.8.15 - Cloud-V Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cross-compiling Coremark";
-        var mkdocs_page_input_path = "Cross_Compiling/Cross_compiling_coremark.md";
+        var mkdocs_page_name = "Cross Compiling Python3.8.15";
+        var mkdocs_page_input_path = "Cross_Compiling/Cross_compiling python3.8.15.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -75,10 +75,14 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Cross Compiling Python3.8.15</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#building-python">Building Python</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_openssl/">Cross Compiling Openssl</a>
                   </li>
@@ -86,7 +90,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href=".">Cross Compiling Coremark</a>
+                  <li class="toctree-l1"><a class="" href="../Cross_compiling_coremark">Cross Compiling Coremark</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_rust/">Cross Compiling Rust</a>
                   </li>
@@ -112,7 +116,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Cross-compiling Coremark</li>
+          <li>Cross-Compilation &raquo;</li>
+      <li>Cross Compiling Python3.8.15</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -121,51 +126,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="cross-compiling-coremark">Cross-compiling Coremark</h1>
-<p>Coremark is another benchmarking tool. Here coremark will be cross-compiled for <code>riscv64-unknown-linux-gnu</code> and will be run on <code>qemu-riscv64</code>.  The github source code commit at the time of build is <code>eefc986ebd3452d6adde22eafaff3e5c859f29e4</code> and branch is <code>main</code>.  </p>
-<h2 id="getting-the-source-code">Getting the source code</h2>
-<p>Execute the following command to get the source code of coremark.  </p>
-<pre><code class="language-shell">git clone https://github.com/eembc/coremark.git
+                <h1 id="cross-compiling-python3815-for-riscv64">Cross compiling python3.8.15 for <code>riscv64</code></h1>
+<p>This document will include how to build python3.8.15 for riscv64 architecture while using build machine as x86_64.  </p>
+<h2 id="building-python">Building Python</h2>
+<p>Get the python source code of python 3.8.15 in form of tarball from <a href="https://www.python.org/downloads/source/">this</a> link.  </p>
+<p>Once a tarball is obtained, extract it and use following command in its root folder to configure it.  </p>
+<pre><code class="language-shell"># Here $PREFIX is the directory where the binaries are desired to be installed.
+./configure --host=riscv64-unknown-linux-gnu --build=x86_64-linux-gnu --prefix=&quot;$PREFIX&quot; --disable-ipv6 ac_cv_file__dev_ptmx=no ac_cv_file__dev_ptc=no
 </code></pre>
-<h2 id="tweaking-source-files-for-riscv64-unknown-linux-gnu">Tweaking source files for <code>riscv64-unknown-linux-gnu</code></h2>
-<p>At the time of this documentation, linux is being used for this test. First of all <code>core_portme.mak</code> will be changed.  </p>
-<ol>
-<li>Navigate to <code>linux/</code> directory in source repository.  </li>
-<li>Open <code>core_portme.mak</code>. Here a single line will be used to include <code>core_portme.mak</code> from <code>posix</code> directory. So, navigate to <code>posix/</code> directory in source folder</li>
-<li>Open <code>core_portme.mak</code> in <code>posix/</code> directory and do the following changes to variables here.  <ol>
-<li>Change <code>CC?=cc</code> to <code>CC=riscv64-unknown-linux-gnu-gcc</code>.</li>
-<li>Scroll down and change <code>EXE=.exe</code> to <code>EXE=</code> (it should be blank).</li>
-<li>Scroll down and change <code>LD=gcc</code> to <code>LD=riscv64-unknown-linux-gnu-ld</code>.</li>
-<li>As we are using <code>qemu-riscv64</code>, so change <code>RUN=</code> to <code>RUN=qemu-riscv64 -L "$$RISCV_SYSROOT"</code></li>
-<li>Save changes and exit this file.  </li>
-</ol>
-</li>
-<li>Now open <code>core_portme.h</code> and change <code>#define USE_CLOCK 0</code> to <code>#define  USE_CLOCK 1</code> and save.</li>
-<li>Navigate to source directory of repository and execute following command  </li>
-</ol>
-<pre><code class="language-shell">make PORT_DIR=linux/
+<p>After the above command is executed, use following command to start the build.</p>
+<pre><code class="language-shell">make -j$(nproc)
 </code></pre>
-<p>If everything went right, the output result will be stored in <code>run1.log</code> and <code>run2.log</code> and will be of the form as shown below.  </p>
-<pre><code class="language-shell">2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 12368459
-Total time (secs): 12.368459
-Iterations/Sec   : 8893.589735
-Iterations       : 110000
-Compiler version : GCC12.2.0
-Compiler flags   : -O2 -DPERFORMANCE_RUN=1  -lrt
-Memory location  : Please put data memory location here
-            (e.g. code in flash, data on heap etc)
-seedcrc          : 0x18f2
-[0]crclist       : 0xe3c1
-[0]crcmatrix     : 0x0747
-[0]crcstate      : 0x8d84
-[0]crcfinal      : 0x0956
-Correct operation validated. See README.md for run and reporting rules.
+<p>Now to install binaries on the location where PREFIX, use following command.</p>
+<pre><code class="language-shell">make install
 </code></pre>
+<p>This will install binaries for python3.8.15 in the $PREFIX directory and it can be checked using <code>qemu-riscv64</code>.</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Overview/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Cross_compiling_openssl/" class="btn btn-neutral float-right" title="Cross Compiling Openssl">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -187,6 +169,10 @@ Correct operation validated. See README.md for run and reporting rules.
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../Overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Cross_compiling_openssl/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
