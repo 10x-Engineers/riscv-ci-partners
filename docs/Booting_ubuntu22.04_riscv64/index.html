@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Booting RISC-V Ubuntu 22.04 on `qemu-system-riscv64` - Cloud-V Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Booting RISC-V Ubuntu 22.04 on `qemu-system-riscv64`";
+        var mkdocs_page_input_path = "Booting_ubuntu22.04_riscv64.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cloud-V Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../jenkins_version.md">Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_qemu/">Installing Qemu for RISC-V</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href=".">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_rust/">Cross Compiling Rust</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_go/">Cross Compiling go</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cloud-V Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Booting RISC-V Ubuntu 22.04 on `qemu-system-riscv64`</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="booting-risc-v-ubuntu-2204-on-qemu-system-riscv64">Booting RISC-V Ubuntu 22.04 on <code>qemu-system-riscv64</code></h1>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>Following are the pre-requisites which are needed to be installed before booting ubuntu 22.04 for RISC-V on <code>qemu</code>.  </p>
+<p><em><strong>Note:</strong> Make sure RISC-V GNU Toolchain is installed before proceeding</em></p>
+<ol>
+<li>U-boot</li>
+<li>Qemu version 7.0 or greater with networking  </li>
+<li>Ubuntu 22.04 pre-built image for RISC-V</li>
+</ol>
+<h3 id="1-installing-u-boot">1. Installing U-boot</h3>
+<p><em><strong>Note:</strong> If you plan on installing U-boot from apt or some system repository, install the one which comes with ubuntu 22.04. Older will not work with this process. Also, be sure to checkout a latest Stable version instead of development version.</em>  </p>
+<ul>
+<li>Get source code of u-boot and checkout stable version using commands below.  </li>
+</ul>
+<pre><code class="language-shell">git clone https://github.com/qemu/u-boot.git
+cd u-boot
+git checkout v2022.10
+</code></pre>
+<ul>
+<li>Generate configurations for supervisor mode with following command.  </li>
+</ul>
+<pre><code class="language-shell">make qemu-riscv64_smode_defconfig CROSS_COMPILE=riscv64-unknown-linux-gnu-
+</code></pre>
+<ul>
+<li>Execute following command to start build process.  </li>
+</ul>
+<pre><code class="language-shell">make CROSS_COMPILE=riscv64-unknown-linux-gnu-
+</code></pre>
+<ul>
+<li>This should install <code>u-boot.bin</code> in the source directory. This file will be used later so its path must be kept remember. Here it will be refered to as <code>$UBOOTPATH</code>.</li>
+</ul>
+<h3 id="2-installing-qemu">2. Installing Qemu</h3>
+<p>Qemu version 7.0 or greater should be installed with networking for ubuntu 22.04 to work. See <a href="../Building_qemu/">Installing Qemu for RISC-V</a> for instructions on installing <code>qemu-system-riscv64</code>.  </p>
+<h3 id="3-getting-ubuntu-2204-pre-build-image-for-risc-v">3. Getting Ubuntu 22.04 pre-build image for RISC-V</h3>
+<p>Ubuntu 22.04 image can be downloaded from <a href="https://ubuntu.com/download/risc-v">https://ubuntu.com/download/risc-v</a>.  </p>
+<h2 id="booting-ubuntu-2204-image-on-qemu">Booting Ubuntu 22.04 Image on qemu</h2>
+<p>In the directory where ubuntu 22.04 image is present, execute following command to boot into ubuntu 22.04 with <code>qemu-system-riscv64</code>.  </p>
+<p>If you need more space, you can use following command.  </p>
+<pre><code class="language-shell">qemu-img resize -f raw ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img +5G
+</code></pre>
+<p>This will increase storage size of the image by 5GB.  </p>
+<pre><code class="language-shell">qemu-system-riscv64 \
+-machine virt -nographic -m 2048 -smp 4 \
+-kernel $UBOOTPATH/u-boot.bin \
+-device virtio-net-device,netdev=eth0 -netdev user,id=eth0,hostfwd=::&lt;host_port&gt;-:&lt;VM_port&gt; \
+-drive file=ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img,format=raw,if=virtio
+</code></pre>
+<p>Here <code>-m</code> is the memory in Megabytes and <code>-smp</code> is number of cores. <code>-nographic</code> means qemu will use same terminal instance instead of opening a new window of its own (which is beneficial while running servers without gui). Whereas <code>hostfwd=::&lt;host_port&gt;-:&lt;VM_port&gt;</code> will forward traffic going to port <code>&lt;host_port&gt;</code> to port <code>VM_port</code>. Due to this port <code>&lt;host_port&gt;</code> will be used to access ssh on qemu machine.  </p>
+<p>This should boot ubuntu 22.04. But it will take a while on first start.  </p>
+<p>On start, credentials will be as follows.  </p>
+<pre><code class="language-shell">Username: ubuntu
+Password: ubuntu
+</code></pre>
+<p>After entering credentials, terminal will prompt for change of password after which ubuntu will be ready to use.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

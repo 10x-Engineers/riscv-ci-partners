@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Installing Qemu for RISC-V - Cloud-V Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Installing Qemu for RISC-V";
+        var mkdocs_page_input_path = "Building_qemu.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cloud-V Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../jenkins_version.md">Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Installing Qemu for RISC-V</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-pre-requisites">Installing Pre-requisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-qemu-system-riscv64">Installing qemu-system-riscv64</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-qemu-system-riscv64">What is qemu-system-riscv64</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-qemu-system-riscv64-on-ubuntu">Installing qemu-system-riscv64 on ubuntu</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-qemu-system-riscv64">Testing qemu-system-riscv64</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-qemu-riscv64">Installing qemu-riscv64</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-qemu-riscv64">What is qemu-riscv64</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-qemu-riscv64-on-ubuntu-2204">Installing qemu-riscv64 on ubuntu 22.04</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-qemu-riscv64">Testing qemu-riscv64</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_rust/">Cross Compiling Rust</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_go/">Cross Compiling go</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cloud-V Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QEMU and Linux Kernel &raquo;</li>
+      <li>Installing Qemu for RISC-V</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="installing-qemu-for-emulating-riscv64">Installing <code>QEMU</code> for emulating riscv64</h1>
+<p><code>QEMU</code> is an open-source emulator. It can be used to emulate different architectures on a single machine. In RISC-V CI there are various programs which run on RISC-V architecture. But instead of porting them to a dedicated board of riscv architecture, they can be run readily on qemu emulator. Here two types of <code>QEMU</code> emulators will be used for RISC-V applications:  </p>
+<ol>
+<li><strong>qemu-system-riscv64:</strong> It can be used to load a complete linux operating system image.  </li>
+<li><strong>qemu-riscv64:</strong> It can be used to execute program's binary directly without need of a complete operating system.  </li>
+</ol>
+<h2 id="installing-pre-requisites">Installing Pre-requisites</h2>
+<p>Execute the following command to install the pre-requisites for installing <code>qemu</code> on ubuntu 22.04 (jammy)  </p>
+<pre><code class="language-shell">sudo apt-get install meson git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev ninja-build
+</code></pre>
+<p><code>qemu-slirp</code> is important for enabling user-level networking with <code>qemu-system-riscv64</code> <code>qemu-system-riscv64</code> while loading image of server installation of ubuntu. So it needs to be installed first.  </p>
+<p>Get the source code of <code>qemu-slirp</code> using following command:  </p>
+<pre><code class="language-shell">git clone https://github.com/openSUSE/qemu-slirp.git
+</code></pre>
+<p>Then Execute following commands to install <code>slirp</code> in meson, which can later be used by qemu during build.  </p>
+<pre><code class="language-shell">meson build
+ninja -C build install
+</code></pre>
+<p><strong>Note:</strong> Make sure you have <code>riscv64-unknown-linux-gnu</code> toolchain installed for compiling program and executing them on qemu later.</p>
+<p>There are some optional dependencies which one can download, but they are actually not needed for installing qemu and make it work.</p>
+<h2 id="installing-qemu-system-riscv64">Installing <code>qemu-system-riscv64</code></h2>
+<h3 id="what-is-qemu-system-riscv64">What is <code>qemu-system-riscv64</code></h3>
+<p><code>qemu-system-riscv64</code> is qemu executable program. It can load a complete linux distribution. It cannot take program's executable binary as argument and run it without a dedicated linux distribution.</p>
+<h3 id="installing-qemu-system-riscv64-on-ubuntu">Installing <code>qemu-system-riscv64</code> on ubuntu</h3>
+<ul>
+<li>Get source code of <code>qemu</code> from github using the command below  </li>
+</ul>
+<pre><code class="language-shell">git clone https://github.com/qemu/qemu.git
+</code></pre>
+<ul>
+<li>Configure qemu for <code>riscv64-softmmu</code> with following command (replace $PREFIX with valid location of installation).  </li>
+</ul>
+<pre><code class="language-shell">./configure --prefix=$PREFIX --target-list=riscv64-linux-user,riscv64-softmmu --enable-slirp  
+</code></pre>
+<ul>
+<li>Execute following command to start the build.  </li>
+</ul>
+<pre><code class="language-shell">make
+</code></pre>
+<ul>
+<li>Execute following command to install the binaries at <code>$PREFIX</code> location.  </li>
+</ul>
+<pre><code class="language-shell">make install
+</code></pre>
+<p><em><strong>Note:</strong> After the installation with <code>slirp</code> following error can be encountered on some systems</em>.  </p>
+<pre><code class="language-shell">qemu-system-riscv64: symbol lookup error: qemu-system-riscv64: undefined symbol: slirp_new, version SLIRP_4.0
+</code></pre>
+<p><em><strong>Solution:</strong> This can be solved by executing following command in source directory of qemu (which is cloned from github).</em>  </p>
+<pre><code class="language-shell">[sudo] ldconfig
+</code></pre>
+<h3 id="testing-qemu-system-riscv64">Testing <code>qemu-system-riscv64</code></h3>
+<p><code>qemu-system-riscv64</code> can only be tested by booting a linux operating system. See <a href="../Booting_ubuntu22.04_riscv64/">Booting RISC-V Ubuntu 22.04 on <code>qemu-system-riscv64</code></a>.</p>
+<h2 id="installing-qemu-riscv64">Installing <code>qemu-riscv64</code></h2>
+<h3 id="what-is-qemu-riscv64">What is <code>qemu-riscv64</code></h3>
+<p><code>qemu-riscv64</code> is qemu executable program. But instead of porting a complete operating system (like <code>qemu-system-riscv64</code>), it can readily execute binaries.<br />
+Throughout cross-compiling section, <code>qemu-riscv64</code> will be used with <code>linux-user</code> and executable of every program can be tested on qemu (e.g. python, ruby etc.).  </p>
+<h3 id="installing-qemu-riscv64-on-ubuntu-2204">Installing <code>qemu-riscv64</code> on ubuntu 22.04</h3>
+<ul>
+<li>Get source code of <code>qemu</code> using the command below  </li>
+</ul>
+<pre><code class="language-shell">git clone https://github.com/qemu/qemu.git
+</code></pre>
+<ul>
+<li>Use following command in the root directory of repository to configure <code>qemu</code> for <code>riscv64-linux-user</code>  </li>
+</ul>
+<pre><code class="language-shell">./configure --target-list=riscv64-linux-user --prefix=$PREFIX # Replace $PREFIX with a valid location to install at  
+</code></pre>
+<p><strong>Note:</strong> If this is not your architecture/platform, you can see a list of available platform/architecture by executing following command.  </p>
+<pre><code class="language-shell">./configure --help
+</code></pre>
+<ul>
+<li>Use the following command to start the build process  </li>
+</ul>
+<pre><code class="language-shell">make -j$(nproc)
+</code></pre>
+<ul>
+<li>After the builld is complete without any error, use the following command to install binaries at <code>$PREFIX</code> location  </li>
+</ul>
+<pre><code class="language-shell">make install
+</code></pre>
+<ul>
+<li>
+<p>Add the <code>$PREFIX/bin</code> to <code>$PATH</code> variable so that it may be recognized as a command.  </p>
+</li>
+<li>
+<p>Using this method causes the <code>qemu-riscv64</code> to have an issue with sysroot. It starts searching for libraries in the root folder of the machine which is based on <code>x86_64-linux-gnu</code>. A simple workaround is to give path of the <code>sysroot/</code> folder where  <code>riscv64-unknown-linux-gnu</code> toolchain is installed. Here that directory will be denoted as <code>$RISCV_SYSROOT</code></p>
+</li>
+</ul>
+<h3 id="testing-qemu-riscv64">Testing <code>qemu-riscv64</code></h3>
+<ul>
+<li>Create a C file in your favorite editor or by using the commands below:  </li>
+</ul>
+<pre><code class="language-shell">echo &quot;#include&lt;stdio.h&gt;&quot; &gt; helloworld.c
+echo &quot;int main(){&quot; &gt;&gt; helloworld.c
+echo &quot;printf(&quot;Hello World !&quot;);&quot; &gt;&gt; helloworld.c
+echo '}' &gt;&gt; helloworld.c
+</code></pre>
+<ul>
+<li>Execute following command to compile C program with <code>riscv gnu toolchain</code>  </li>
+</ul>
+<pre><code class="language-shell">riscv64-unknown-linux-gnu-gcc helloworld.c -o helloworld
+</code></pre>
+<ul>
+<li>Execute following command to execute the compiled binary on <code>qemu-riscv64</code>  </li>
+</ul>
+<pre><code class="language-shell">qemu-riscv64 -L $RISCV_SYSROOT ./helloworld
+</code></pre>
+<ul>
+<li>If everything went right, following output will be shown.  </li>
+</ul>
+<pre><code class="language-shell">Hello World !
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Installing_ssl_certificates_new/" class="btn btn-neutral float-left" title="Letsencrypt configuration with Jenkins"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Building_Linux_Kernel/" class="btn btn-neutral float-right" title="Building Linux kernel and booting on QEMU">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Installing_ssl_certificates_new/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Building_Linux_Kernel/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
