@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Cross Compiling Rust - Cloud-V Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Cross Compiling Rust";
+        var mkdocs_page_input_path = "Cross_Compiling/Cross_compiling_rust.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cloud-V Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../jenkins_version.md">Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Building_Jenkins_github_repo/">Building Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Multinode_Pipelines/">Creating Multinode pipelines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../jenkins_gitlab_integration/">GitLab Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Building_qemu/">Installing Qemu for RISC-V</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_openssl/">Cross Compiling Openssl</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_ruby/">Cross Compiling Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../Cross_compiling_coremark">Cross Compiling Coremark</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Cross Compiling Rust</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting-source-code">Getting source code</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Cross_compiling_go/">Cross Compiling go</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Software_Developer_Guide/">Guide for Software Developer</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cloud-V Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Cross-Compilation &raquo;</li>
+      <li>Cross Compiling Rust</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cross-compiling-rust">Cross-compiling rust</h1>
+<p>Rust is a programming language just like C but it focuses on safety of programs. This document describes how one can build rust for x86_64 and then add support to compile code for <code>riscv64</code> architecture. The executable for RISC-V architecture will be able to run on <code>qemu-riscv64</code>.  </p>
+<p><em><strong>Note:</strong> Make sure riscv64-unknown-linux-gnu toolchain is installed on the machine.</em></p>
+<h2 id="getting-source-code">Getting source code</h2>
+<p>Here the code will be taken from <code>rustup</code> GitHub repository. This is because instead of installing <code>cargo</code>, <code>rustup</code> and <code>rustc</code>, just compiling rustup will compile them along with itself.</p>
+<p>Get the source code using the command below:</p>
+<pre><code class="language-shell">git clone https://github.com/rust-lang/rustup.git
+</code></pre>
+<p>Before starting installation process, if you want to install rust in a specific location, then set <code>CARGO_HOME</code> and <code>RUSTUP_HOME</code> variable in the directory where you want to install rustup.  </p>
+<p>After that, considering you are in the repository directory, start the installation process using the command below:</p>
+<pre><code class="language-shell">sh rustup-init.sh -y
+</code></pre>
+<p>After execution above command, follow the prompts as desired and complete the installation process.</p>
+<p>Now add riscv64 library support in rust using the command below:  </p>
+<pre><code class="language-shell">rustup target add riscv64gc-unknown-linux-gnu
+</code></pre>
+<p>Once this is complete, go to the desired location where a new project is to be created and use following command to create a project's directory structure.  </p>
+<pre><code class="language-shell">cargo new project_name # Use a meaningful project name
+</code></pre>
+<p>A directory with name <code>project_name</code> will be created as soon as the above command is executed successfully. This project will contain a <code>main.rs</code> which initially contains a <code>Hello World</code> program.  </p>
+<p>Navigate to the <code>project_name</code> directory and create a folder with name <code>.cargo</code>, this will include a <code>config.toml</code> file inside it, which will tell it cargo during build that what is the target for which the compilation is to be done. The contents of the <code>project_name/.cargo/config.toml</code> will be as follows:  </p>
+<pre><code class="language-shell">[build]
+target = &quot;riscv64gc-unknown-linux-gnu&quot;
+
+[target.riscv64gc-unknown-linux-gnu]
+linker = &quot;riscv64-unknown-linux-gnu-gcc&quot;
+</code></pre>
+<p>Now the project will be ready to build. Get back to the <code>project_name/</code> directory and use following command to build the <code>main.rs</code> file:  </p>
+<pre><code class="language-shell">cargo build
+</code></pre>
+<p>The output of the above command should as follows:  </p>
+<pre><code class="language-shell">   Compiling myproject v0.1.0 (project_name)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.27s
+</code></pre>
+<p>After the above command, the executable with the name <code>project_name</code> will be available at following location:  </p>
+<pre><code class="language-shell">project_name/target/riscv64gc-unknown-linux-gnu/debug
+</code></pre>
+<p>Now the produced executable can be executed using qemu usermode. Use the following command to execute binary:  </p>
+<pre><code class="language-shell">qemu-riscv64 -L $RISCV_SYSROOT ./project_name
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Cross_compiling_dhrystone/" class="btn btn-neutral float-left" title="Cross Compiling Drhystone"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Cross_compiling_go/" class="btn btn-neutral float-right" title="Cross Compiling go">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Cross_compiling_dhrystone/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Cross_compiling_go/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
