@@ -46,8 +46,6 @@
               </ul>
               <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_version/">Version</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
@@ -101,6 +99,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-an-account-for-cloud-v">Getting an account for Cloud-V</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
@@ -137,15 +137,20 @@
                 <h1 id="software-developer-guide-for-risc-v-ci">Software Developer Guide for RISC-V CI</h1>
 <p>A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on RISC-V Continuous Integration (CI).<br />
 Currently, the specifications for RISC-V CI is as follows.</p>
-<ul>
-<li>Jenkins latest version</li>
-<li>Ubuntu 22.04 LTS  </li>
-</ul>
 <h2 id="pre-requisites">Pre-requisites</h2>
 <ol>
 <li>GitHub account.</li>
 <li>GitHub project repository with owner rights.</li>
 </ol>
+<h2 id="getting-an-account-for-cloud-v">Getting an account for Cloud-V</h2>
+<p>Contact us for a new account by creating an issue on github or through email with following required details:</p>
+<ul>
+<li>Name</li>
+<li>Contact Email</li>
+<li>URL of the GitHub project repository</li>
+<li>Name of your organization</li>
+</ul>
+<p>After this we will get back to you with login credentials</p>
 <h2 id="setting-up-jenkinsfile-inside-github-project-repository">Setting up <code>Jenkinsfile</code> inside github project repository</h2>
 <p>Jenkins pipeline will need a <code>Jenkinsfile</code> written with jenkins pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
 <p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
@@ -166,11 +171,6 @@ node{
 <p>Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  </p>
 <p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.</p>
 <ul>
-<li>Contact us for a new account by creating an issue on github or through email with following required details:</li>
-<li>Name</li>
-<li>Contact Email</li>
-<li>URL of the GitHub project repository</li>
-<li>Name of your organization</li>
 <li>We will provide you the credentials on the provided email.</li>
 <li>Login with provided credentials.</li>
 <li>Click on the drop down near user profile as shown in image below.  </li>

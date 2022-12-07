@@ -2,7 +2,6 @@ site_name: Cloud-V Docs
 nav:
 - Home: index.md
 - Jenkins Docs:
-    - Version: jenkins_version.md
     - Building Jenkins: Building_Jenkins_github_repo.md
     - Creating Jenkins Node on LXC: Creating_Jenkins_Node_on_LXC.md
     - Creating a pipeline project: Creating_CI_CD_pipeline.md
