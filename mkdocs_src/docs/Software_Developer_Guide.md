@@ -1,7 +1,6 @@
 # Software Developer Guide for RISC-V CI
 
-A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on RISC-V Continuous Integration (CI).  
-Currently, the specifications for RISC-V CI is as follows.
+A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on Cloud-V Continuous Integration (CI).  
 
 ## Pre-requisites
 
@@ -10,14 +9,14 @@ Currently, the specifications for RISC-V CI is as follows.
 
 ## Getting an account for Cloud-V
 
-Contact us for a new account by creating an issue on github or through email with following required details:
+Contact us for a new account by creating an [issue on github](<https://github.com/10x-Engineers/riscv-ci-partners/issues/new>) or through [email](mailto:ali.tariq@10xengineers.ai) with following required details:
 
 - Name
 - Contact Email
 - URL of the GitHub project repository
 - Name of your organization
 
-After this we will get back to you with login credentials
+After this we will get back to you with login credentials.
 
 ## Setting up `Jenkinsfile` inside github project repository
 
@@ -49,7 +48,7 @@ Jenkins supports webhooks which can trigger the job from external sources such a
 
 This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.
 
-- We will provide you the credentials on the provided email.
+- We will provide you with jenkins credentials on the provided email.
 - Login with provided credentials.
 - Click on the drop down near user profile as shown in image below.  
 
