@@ -1,15 +1,22 @@
 # Software Developer Guide for RISC-V CI
 
-A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on RISC-V Continuous Integration (CI).  
-Currently, the specifications for RISC-V CI is as follows.
-
-- Jenkins latest version
-- Ubuntu 22.04 LTS  
+A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on Cloud-V Continuous Integration (CI).  
 
 ## Pre-requisites
 
 1. GitHub account.
 2. GitHub project repository with owner rights.
+
+## Getting an account for Cloud-V
+
+Contact us for a new account by creating an [issue on github](<https://github.com/10x-Engineers/riscv-ci-partners/issues/new>) or through [email](mailto:ali.tariq@10xengineers.ai) with following required details:
+
+- Name
+- Contact Email
+- URL of the GitHub project repository
+- Name of your organization
+
+After this we will get back to you with login credentials.
 
 ## Setting up `Jenkinsfile` inside github project repository
 
@@ -30,26 +37,21 @@ node{
 ```  
 
 Upon execution of such a pipeline, the console output can be viewed as follows.  
-  
+
 ![Console Output](<../doc_images/Console output for Hello World.png>)
-  
+
 _**Note:** This jenkinsfile should remain same in all the branches and pull requests._  
-  
+
 ## Setting credentials for webhook
 
 Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  
-  
+
 This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.
 
-- Contact us for a new account by creating an issue on github or through email with following required details:
-  - Name
-  - Contact Email
-  - URL of the GitHub project repository
-  - Name of your organization
-- We will provide you the credentials on the provided email.
+- We will provide you with jenkins credentials on the provided email.
 - Login with provided credentials.
 - Click on the drop down near user profile as shown in image below.  
-  
+
 ![Credentials1](../doc_images/Credentials1.png)
   
 - This will take you to the credentials page.
