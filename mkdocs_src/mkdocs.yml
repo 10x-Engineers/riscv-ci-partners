@@ -26,4 +26,7 @@ nav:
     - Cross Compiling go: Cross_Compiling/Cross_compiling_go.md
 - RISC-V CI User's Guide:
     - Guide for Software Developer: Software_Developer_Guide.md
+- Usage monitoring:
+    - Setting up Grafana and Prometheus: Usage_Monitoring/Prometheus_Grafana.md
+    - Integrating Prometheus with Grafana: Usage_Monitoring/Integrating_prometheus_grafana.md
 theme: readthedocs
