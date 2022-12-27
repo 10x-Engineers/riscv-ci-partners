@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Guide for Software Developer - Cloud-V Docs</title>
+    <title>Creating a Jenkinsfile - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Guide for Software Developer";
-        var mkdocs_page_input_path = "Software_Developer_Guide.md";
+        var mkdocs_page_name = "Creating a Jenkinsfile";
+        var mkdocs_page_input_path = "Creating_jenkinsfile.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -94,20 +94,8 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Guide for Software Developer</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#getting-an-account-for-cloud-v">Getting an account for Cloud-V</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Usage monitoring</span></p>
@@ -131,8 +119,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>RISC-V CI User's Guide &raquo;</li>
-      <li>Guide for Software Developer</li>
+      <li>Creating a Jenkinsfile</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -141,35 +128,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="software-developer-guide-for-risc-v-ci">Software Developer Guide for RISC-V CI</h1>
-<p>A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on Cloud-V Continuous Integration (CI).  </p>
-<h2 id="pre-requisites">Pre-requisites</h2>
+                <h1 id="creating-a-jenkinsfile">Creating a Jenkinsfile</h1>
+<h2 id="what-is-a-jenkinsfile">What is a Jenkinsfile</h2>
+<p>A Jenkinsfile is a Continuous Integration (CI) pipeline script which is written Java. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Java itself.<br />
+Mainly Jenkinsfiles are of two types:  </p>
 <ol>
-<li>GitHub account.</li>
-<li>GitHub project repository with owner rights.</li>
+<li><strong>Scripted:</strong> Only contains stages</li>
+<li><strong>Declarative:</strong> Contains stages as well as steps</li>
 </ol>
-<h2 id="getting-an-account-for-cloud-v">Getting an account for Cloud-V</h2>
-<p>Contact us for a new account by:  </p>
-<ol>
-<li>Creating an <a href="https://github.com/10x-Engineers/riscv-ci-partners/issues/new">issue on github</a> and assigning to <a href="https://github.com/alitariq4589">alitariq4589</a></li>
-</ol>
-<p>OR</p>
-<ol>
-<li>
-<p>Through <a href="mailto:ali.tariq@10xengineers.ai">email</a> with following required details:</p>
-</li>
-<li>
-<p>Name</p>
-</li>
-<li>Contact Email</li>
-<li>URL of the GitHub project repository</li>
-<li>Name of your organization</li>
-</ol>
-<p>After this we will get back to you with login credentials.</p>
-<h2 id="setting-up-jenkinsfile-inside-github-project-repository">Setting up <code>Jenkinsfile</code> inside github project repository</h2>
-<p>Jenkins pipeline will need a <code>Jenkinsfile</code> written with jenkins pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
-<p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
-<pre><code class="language-shell">
+<p>This documentation will cover how to create a jenkinsfile in bash script and run it on various compute instances (which are known as <code>Nodes</code> in jenkins).</p>
+<h2 id="jenkins-node">Jenkins Node</h2>
+<p>In jenkins, node represents a compute instance. In simple words, it is the platform on which our job build is going to run.  </p>
+<h3 id="jenkins-master">Jenkins Master</h3>
+<p>There is a <code>jenkins Master</code> node which is actually the compute instance on which Jenkins is installed. It is the node which schedules builds on runners. For security reason, no job is allowed to run on this node.</p>
+<h3 id="jenkins-slave">Jenkins Slave</h3>
+<p>Jenkins slave nodes are the compute instances on which our job builds run safely. They may be attached with jenkins master via hardware or they may be connected through remote SSH connection.</p>
+<h2 id="jenkinsfile-written-in-bash">Jenkinsfile written in Bash</h2>
+<h3 id="simple-hello-world-jenkinsfile">Simple Hello World Jenkinsfile</h3>
+<p>In Cloud-V, all the platforms are running Linux operating system, so the jenkinsfile should be written in bash.
+Following script is an example of how can we run a bash script in scripted pipeline Jenkinsfile.  </p>
+<pre><code class="language-java">
 node{
     stage('*** Phase 1 ***') {
         //Using bash commands
@@ -179,63 +157,83 @@ node{
     }
 }
 </code></pre>
-<p>Upon execution of such a pipeline, the console output can be viewed as follows.  </p>
-<p><img alt="Console Output" src="../doc_images/Console output for Hello World.png" /></p>
-<p><em><strong>Note:</strong> This jenkinsfile should remain same in all the branches and pull requests.</em>  </p>
-<h2 id="setting-credentials-for-webhook">Setting credentials for webhook</h2>
-<p>Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  </p>
-<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.</p>
+<p>The keyword <code>sh</code> is used to specify a shell script</p>
+<p>As there is nothing mentioned with <code>node</code>, so the script will run job build on any available compute instance.  </p>
+<h3 id="jenkinsfile-for-a-specific-node">Jenkinsfile for a Specific Node</h3>
+<p>In previous script, the jenkinsfile would run on any compute instances which are available. But in case if someone wants to run a job build on specific node, then a compute instance name must be specified with keyword <code>node</code>. The following script is an example of running above <code>Hello World</code> program on node named <code>hifive_unleashed</code>.  </p>
+<pre><code class="language-java">
+node('hifive_unleashed'){
+    stage('*** Phase 1 ***') {
+        //Using bash commands
+        sh '''#!/bin/bash
+            echo &quot;Hello World !\n&quot;
+         '''
+    }
+}
+</code></pre>
+<h2 id="jenkinsfile-for-cross-platform-compilation-and-execution">Jenkinsfile for Cross-Platform Compilation and Execution</h2>
+<p>Cloud-V supports cross-compilation and execution on emulated RISC-V compute instances. Following tools help in cross compilation and cross-platfrom execution:  </p>
 <ul>
-<li>We will provide you with jenkins credentials on the provided email.</li>
-<li>Login with provided credentials.</li>
-<li>Click on the drop down near user profile as shown in image below.  </li>
+<li>RISC-V GNU Toolchain</li>
+<li>QEMU user mode</li>
+<li>QEMU System (with Linux installed)  </li>
 </ul>
-<p><img alt="Credentials1" src="../doc_images/Credentials1.png" /></p>
-<ul>
-<li>This will take you to the credentials page.</li>
-<li>Scroll down to the <code>Stores scoped to Jenkins</code> and click on the <code>System</code> as shown in the image.  </li>
-</ul>
-<p><img alt="Credentials2" src="../doc_images/Credentials2.png" />  </p>
-<ul>
-<li>Click on <code>Global credentials (unrestricted)</code>.  </li>
-</ul>
-<p><img alt="Credentials3" src="../doc_images/Credentials3.png" /></p>
-<ul>
-<li>Click on <code>Add Credentials</code>.  </li>
-</ul>
-<p><img alt="Credentials4" src="../doc_images/Credentials4.png" /></p>
-<ul>
-<li>This will take you to the <code>New Credentials</code> page.</li>
-<li>Select <code>Kind</code> as <code>Username with password</code>.</li>
-<li>Select <code>Scope</code> as <code>Global (Jenkins, nodes, items, all child items etc)</code>.</li>
-<li>Enter the GitHub username in <code>Username</code>.</li>
-<li>You may check <code>Treat username as secret</code> which will mask username in console output of builds, but this is not recommended by jenkins due to performance issues.</li>
-<li>Enter <code>Password</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
-<li><code>ID</code> and <code>Description</code> can be left empty. But it is recommended to give a unique ID and a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.</li>
-<li>Select <code>Create</code>.</li>
-<li>This process will look something like this.</li>
-</ul>
-<p><img alt="Credentials5" src="../doc_images/Credentials5.png" />  </p>
-<ul>
-<li>Now credentials will be available in the credentials list and will be shown to you as well as administrator as shown in the image below. This will create an option in configurations for using these credentials in github webhook without changing or viewing them.  </li>
-</ul>
-<p><img alt="Credentials6" src="../doc_images/Credentials6.png" /></p>
-<h2 id="requirements-for-administrator">Requirements for administrator</h2>
-<p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
-<ul>
-<li>Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.</li>
-<li>Events for triggering the job build.</li>
-<li>URL of GitHub repository.</li>
-<li>Path and name of Jenkinsfile on the provided GitHub repository.</li>
-<li>Any additional information which should be given for successful execution of job builds.</li>
-</ul>
+<p>An example pipeline script is given below in scripted pipeline.  </p>
+<pre><code class="language-java">node('x86_runner2'){
+    checkout scm //Getting content of this repo
+    stage('*** Compilation Phase ***') { // for display purposes
+        //Compiling helloworld.c using bash commands
+        sh '''#!/bin/bash
+            gcc -g ./helloworld.c -o helloworld.out
+            riscv64-unknown-linux-gnu-gcc ./helloworld.c -o helloworld_riscv_compiled.out //Cross compiling for RISC-V
+         '''
+    }
+    stage (' *** Running Binaries ***'){
+        sh '''#!/bin/bash
+            ./helloworld.out
+            qemu-riscv64 -L $RISCV_SYSROOT helloworld_riscv_compiled.out //Running executable on RISC-V emulated platform
+         '''
+    }
+}
+</code></pre>
+<p>The equivalent declarative pipeline is as follows:  </p>
+<pre><code class="language-java">pipeline {
+    agent {label &quot;x86_runner2&quot;}
+
+    stages {
+        stage('Clone Repository') {
+            steps('delegate'){
+                    checkout scm //Clones the repository on the local machine
+            }
+        }
+        stage ('Compilation Phase'){
+            steps{
+                    sh '''#!/bin/bash
+                        gcc -g ./helloworld.c -o helloworld.out
+                    '''
+                    sh '''#!/bin/bash
+                        riscv64-unknown-linux-gnu-gcc ./helloworld.c -o helloworld_riscv_compiled.out
+                    '''
+            }
+        }
+        stage ('Running Binaries'){
+            steps {
+                    sh ''' #!/bin/bash
+                        ./helloworld.out
+                    '''
+                    sh'''#!/bin/bash
+                        qemu-riscv64 -L $RISCV_SYSROOT helloworld_riscv_compiled.out
+                    '''
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="reference-links">Reference Links</h2>
+<p><a href="https://www.jenkins.io/doc/book/pipeline/syntax/">https://www.jenkins.io/doc/book/pipeline/syntax/</a></p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Cross_Compiling/Cross_compiling_go/" class="btn btn-neutral float-left" title="Cross Compiling go"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Usage_Monitoring/Prometheus_Grafana/" class="btn btn-neutral float-right" title="Setting up Grafana and Prometheus">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -257,10 +255,6 @@ node{
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Cross_Compiling/Cross_compiling_go/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../Usage_Monitoring/Prometheus_Grafana/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
