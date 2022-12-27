@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Monitoring with Promtheus and Grafana - Cloud-V Docs</title>
+    <title>Setting up Grafana and Prometheus - Cloud-V Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Monitoring with Promtheus and Grafana";
+        var mkdocs_page_name = "Setting up Grafana and Prometheus";
         var mkdocs_page_input_path = "Usage_Monitoring/Prometheus_Grafana.md";
         var mkdocs_page_url = null;
       </script>
@@ -98,6 +98,25 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../Software_Developer_Guide/">Guide for Software Developer</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Usage monitoring</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Setting up Grafana and Prometheus</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference links</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-are-prometheus-and-grafana">What are Prometheus and Grafana</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-node-exporters">Setting up Node Exporters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-prometheus">Configuring Prometheus</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-prometheus">Running Prometheus</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-grafana">Running Grafana</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
       </div>
     </div>
     </nav>
@@ -112,7 +131,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Monitoring with Promtheus and Grafana</li>
+          <li>Usage monitoring &raquo;</li>
+      <li>Setting up Grafana and Prometheus</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -125,18 +145,18 @@
 <h2 id="reference-links">Reference links</h2>
 <p><a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/</a></p>
 <h2 id="what-are-prometheus-and-grafana">What are Prometheus and Grafana</h2>
-<p>Prometheus is a tool for monitoring usage of memory,CPU etc. It takes queries as mathematical expressions (like SQL) and returns the interactive graphical usage stats. It collects data using <code>node_exporter</code>, which is used to get raw data from the compute instances</p>
-<p>Grafana is used for creating dashboards in which there can be different panels containing the graphical statistics from Prometheus. These dashboards are more interactive and user-friendly than Prometheus.  </p>
+<p>Prometheus is a tool for monitoring usage of memory, CPU etc. It takes queries as mathematical expressions (like SQL) and returns the interactive graphical usage stats. It collects data using <code>node_exporter</code>, which is used to get raw data from the compute instances</p>
+<p>Grafana is used for creating dashboards in which there can be different panels containing the graphical statistics from Prometheus. Grafana dashboards are more interactive and user-friendly than Prometheus.  </p>
 <h2 id="setting-up-node-exporters">Setting up Node Exporters</h2>
 <p>Node exporters are needed for prometheus to get data from the compute instances.<br />
-Download pre-compiled tarball of node_exporters from <a href="https://prometheus.io/download/#node_exporter">this</a> link and place the tarballs on computer instances.  </p>
+Download pre-compiled tarball of node_exporters from <a href="https://prometheus.io/download/#node_exporter">this</a> link and place the tarballs on compute instances.  </p>
 <p>Once <code>node_exporter</code> tarball is downloaded, extract it using following command:</p>
 <pre><code class="language-shell">tar -xvf node_exporter-x.x.x.linux-amd64.tar.gz
 </code></pre>
-<p>Run <code>node_exporter</code> on computer instances using command below (which will run node_exporter on port 9100 by default):  </p>
+<p>Run <code>node_exporter</code> on compute instances using command below (which will run node_exporter on port 9100 by default):  </p>
 <pre><code class="language-shell">./node_exporter
 </code></pre>
-<p>Follow this procedure on every computer instance which are desired to be monitored using Prometheus.  </p>
+<p>Follow this procedure on every compute instance which is desired to be monitored using Prometheus.  </p>
 <p><em><strong>Note:</strong> Make sure that compute instances can be accessed in the machine in which prometheus is installed.</em></p>
 <h2 id="configuring-prometheus">Configuring Prometheus</h2>
 <p>Use <a href="https://prometheus.io/download/#prometheus">this</a> link to get pre-compiled tarball of Prometheus.  </p>
@@ -168,6 +188,9 @@ scrape_configs:
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../Software_Developer_Guide/" class="btn btn-neutral float-left" title="Guide for Software Developer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -188,6 +211,8 @@ scrape_configs:
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
+    
+      <span><a href="../../Software_Developer_Guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>
