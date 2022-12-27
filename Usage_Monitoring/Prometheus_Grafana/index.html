@@ -102,8 +102,6 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Setting up Grafana and Prometheus</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference links</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#what-are-prometheus-and-grafana">What are Prometheus and Grafana</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#setting-up-node-exporters">Setting up Node Exporters</a>
@@ -113,6 +111,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#running-prometheus">Running Prometheus</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#running-grafana">Running Grafana</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference links</a>
     </li>
     </ul>
                   </li>
@@ -144,8 +144,6 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="setting-up-promtheus-and-grafana">Setting up Promtheus and Grafana</h1>
-<h2 id="reference-links">Reference links</h2>
-<p><a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/</a></p>
 <h2 id="what-are-prometheus-and-grafana">What are Prometheus and Grafana</h2>
 <p>Prometheus is a tool for monitoring usage of memory, CPU etc. It takes queries as mathematical expressions (like SQL) and returns the interactive graphical usage stats. It collects data using <code>node_exporter</code>, which is used to get raw data from the compute instances</p>
 <p>Grafana is used for creating dashboards in which there can be different panels containing the graphical statistics from Prometheus. Grafana dashboards are more interactive and user-friendly than Prometheus.  </p>
@@ -187,7 +185,9 @@ scrape_configs:
 <pre><code class="language-shell">./grafana-server #By default it will run on port 3000
 </code></pre>
 <p>The default username and password of Grafana will be <code>admin</code>.</p>
-<p>Once Grafana is installed, a dashboard can be created to with multiple panels which will show data from Prometheus.</p>
+<p>Once Grafana is installed, a dashboard can be created to with multiple panels which will show data from Prometheus.  </p>
+<h2 id="reference-links">Reference links</h2>
+<p><a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/</a></p>
               
             </div>
           </div><footer>
