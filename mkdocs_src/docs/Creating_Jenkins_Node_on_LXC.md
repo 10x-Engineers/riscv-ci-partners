@@ -1,10 +1,5 @@
 # Creating a Jenkins Node on LXC Container
 
-### Reference Links
-
-Documentation for LXC containers can be found at: <https://linuxcontainers.org>  
-Details regarding Jenkins ssh agents can be found at: <https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node>
-
 ## What is a container
 
 A container is a virtualization method for isolating the applications (or even operating systems) from each other.
@@ -186,3 +181,8 @@ If no issue is encountered during this whole setup, jenkins will take us to the 
 ![unnamed (14)](<../doc_images/unnamed (14).png>)  
   
 **After this point, node will be able to run jobs from the container directory.**  
+
+## Reference Links
+
+Documentation for LXC containers can be found at: <https://linuxcontainers.org>  
+Details regarding Jenkins ssh agents can be found at: <https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node>

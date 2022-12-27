@@ -1,10 +1,5 @@
 # Building a RISCV Linux kernel and booting it in QEMU inside LXC container  
 
-**Reference links**:  
-
-1. <https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html>
-2. <https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv>  
-
 This documentation covers how to build a linux kernel with RISCV linux toolchain inside an un-privileged LXC container and then boot it on qemu.
 Doing this process on privileged lxc container makes life easier, but privileged containers always have security loop holes. For instance, their root id is mapped to root id of host machine. On the other hand un-privileged containers are the safest (see [link](https://linuxcontainers.org/lxc/security/)).  
 
@@ -256,4 +251,9 @@ qemu-system-riscv64 -kernel Image -machine sifive_u -nographic
   - `-machine` takes one of the machine names as arguments available in `qemu-system-riscv64`. Available machines can be listed on terminal using command `qemu-system-riscv64 -machine help`.
   - `-nographic` restricts the use of GUI (which is a better option considering lxc container does not support gtk initialization).
 - If everything goes on right, the kernel will boot successfully as shown in the picture below.
-![Selection_012](../doc_images/Selection_012.png)
+![Selection_012](../doc_images/Selection_012.png)  
+
+## Reference links  
+
+1. <https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html>
+2. <https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv>

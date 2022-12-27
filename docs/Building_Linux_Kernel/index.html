@@ -89,6 +89,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#booting-into-the-linux-kernel-using-qemu-emulator">Booting into the linux kernel using QEMU emulator</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference links</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
@@ -150,11 +152,6 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="building-a-riscv-linux-kernel-and-booting-it-in-qemu-inside-lxc-container">Building a RISCV Linux kernel and booting it in QEMU inside LXC container</h1>
-<p><strong>Reference links</strong>:  </p>
-<ol>
-<li><a href="https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html">https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html</a></li>
-<li><a href="https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv">https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv</a>  </li>
-</ol>
 <p>This documentation covers how to build a linux kernel with RISCV linux toolchain inside an un-privileged LXC container and then boot it on qemu.
 Doing this process on privileged lxc container makes life easier, but privileged containers always have security loop holes. For instance, their root id is mapped to root id of host machine. On the other hand un-privileged containers are the safest (see <a href="https://linuxcontainers.org/lxc/security/">link</a>).  </p>
 <h2 id="machines-and-lxc-containers-operating-system-specifications">Machine's and LXC Container's Operating System Specifications</h2>
@@ -364,8 +361,13 @@ make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- menuconfig
 <li><code>-machine</code> takes one of the machine names as arguments available in <code>qemu-system-riscv64</code>. Available machines can be listed on terminal using command <code>qemu-system-riscv64 -machine help</code>.</li>
 <li><code>-nographic</code> restricts the use of GUI (which is a better option considering lxc container does not support gtk initialization).</li>
 <li>If everything goes on right, the kernel will boot successfully as shown in the picture below.
-<img alt="Selection_012" src="../doc_images/Selection_012.png" /></li>
+<img alt="Selection_012" src="../doc_images/Selection_012.png" />  </li>
 </ul>
+<h2 id="reference-links">Reference links</h2>
+<ol>
+<li><a href="https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html">https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html</a></li>
+<li><a href="https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv">https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv</a></li>
+</ol>
               
             </div>
           </div><footer>
