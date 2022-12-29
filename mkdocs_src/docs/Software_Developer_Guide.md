@@ -21,6 +21,7 @@ OR
 - Contact Email
 - URL of the GitHub project repository
 - Name of your organization
+- How the the job build should be triggered
 
 After this we will get back to you with login credentials.
 
@@ -59,20 +60,20 @@ This process requires GitHub credentials of owner of repository on which the web
 - Click on the drop down near user profile as shown in image below.  
 
 ![Credentials1](../doc_images/Credentials1.png)
-  
+
 - This will take you to the credentials page.
 - Scroll down to the `Stores scoped to Jenkins` and click on the `System` as shown in the image.  
-  
+
 ![Credentials2](../doc_images/Credentials2.png)  
-  
+
 - Click on `Global credentials (unrestricted)`.  
-  
+
 ![Credentials3](../doc_images/Credentials3.png)
-  
+
 - Click on `Add Credentials`.  
-  
+
 ![Credentials4](../doc_images/Credentials4.png)
-  
+
 - This will take you to the `New Credentials` page.
   - Select `Kind` as `Username with password`.
   - Select `Scope` as `Global (Jenkins, nodes, items, all child items etc)`.
@@ -87,7 +88,9 @@ This process requires GitHub credentials of owner of repository on which the web
 
 - Now credentials will be available in the credentials list and will be shown to you as well as administrator as shown in the image below. This will create an option in configurations for using these credentials in github webhook without changing or viewing them.  
 
-![Credentials6](../doc_images/Credentials6.png)
+![Credentials6](../doc_images/Credentials6.png)  
+
+_**Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.**_
 
 ## Requirements for administrator
 
