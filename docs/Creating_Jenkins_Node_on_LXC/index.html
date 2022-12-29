@@ -50,8 +50,6 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating Jenkins Node on LXC</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference Links</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#what-is-a-container">What is a container</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#why-do-we-need-a-container-for-jenkins-node">Why do we need a container for Jenkins node</a>
@@ -67,6 +65,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#using-ssh-to-access-container-with-username-and-password">Using SSH to access container with username and password</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#using-ssh-to-access-jenkins-agents-on-the-container">Using SSH to access Jenkins agents on the container</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference Links</a>
     </li>
     </ul>
                   </li>
@@ -150,9 +150,6 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="creating-a-jenkins-node-on-lxc-container">Creating a Jenkins Node on LXC Container</h1>
-<h3 id="reference-links">Reference Links</h3>
-<p>Documentation for LXC containers can be found at: <a href="https://linuxcontainers.org">https://linuxcontainers.org</a><br />
-Details regarding Jenkins ssh agents can be found at: <a href="https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node">https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node</a></p>
 <h2 id="what-is-a-container">What is a container</h2>
 <p>A container is a virtualization method for isolating the applications (or even operating systems) from each other.</p>
 <h2 id="why-do-we-need-a-container-for-jenkins-node">Why do we need a container for Jenkins node</h2>
@@ -268,6 +265,9 @@ After complete setup, the configuration for this node will look something like t
 <p>If no issue is encountered during this whole setup, jenkins will take us to the log and after sometime (when the ssh connection is established) we can see “Agent successfully connected and online” at the bottom of the log as can be seen in the screenshot below.  </p>
 <p><img alt="unnamed (14)" src="../doc_images/unnamed (14).png" />  </p>
 <p><strong>After this point, node will be able to run jobs from the container directory.</strong>  </p>
+<h2 id="reference-links">Reference Links</h2>
+<p>Documentation for LXC containers can be found at: <a href="https://linuxcontainers.org">https://linuxcontainers.org</a><br />
+Details regarding Jenkins ssh agents can be found at: <a href="https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node">https://acloudguru.com/blog/engineering/adding-a-jenkins-agent-node</a></p>
               
             </div>
           </div><footer>

@@ -1,9 +1,5 @@
 # Setting up Promtheus and Grafana
 
-## Reference links
-
-<https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/>
-
 ## What are Prometheus and Grafana
 
 Prometheus is a tool for monitoring usage of memory, CPU etc. It takes queries as mathematical expressions (like SQL) and returns the interactive graphical usage stats. It collects data using `node_exporter`, which is used to get raw data from the compute instances
@@ -78,4 +74,8 @@ After Grafana is ready to be run, use following command to run Grafana:
 
 The default username and password of Grafana will be `admin`.
 
-Once Grafana is installed, a dashboard can be created to with multiple panels which will show data from Prometheus.
+Once Grafana is installed, a dashboard can be created to with multiple panels which will show data from Prometheus.  
+
+## Reference links
+
+<https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/>
