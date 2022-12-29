@@ -91,6 +91,10 @@ This process requires GitHub credentials of owner of repository on which the web
 ![Credentials6](../doc_images/Credentials6.png)  
 
 
+- Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the credentials. It is important that administrator knows the credentials ID because he will use it in the job build configurations.  
+
+![Credentials6_id](../doc_images/Credentials6_id.png)  
+
 _**Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.**_
 
 ## Requirements for administrator
