@@ -90,6 +90,7 @@ This process requires GitHub credentials of owner of repository on which the web
 
 ![Credentials6](../doc_images/Credentials6.png)  
 
+
 _**Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.**_
 
 ## Requirements for administrator
