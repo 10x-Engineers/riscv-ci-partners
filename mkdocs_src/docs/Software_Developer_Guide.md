@@ -57,9 +57,9 @@ This process requires GitHub credentials of owner of repository on which the web
 
 - We will provide you with jenkins credentials on the provided email.
 - Login with provided credentials.
-- Click on the drop down near user profile as shown in image below.  
+- Click on the `Credentials` in the left menu.  
 
-![Credentials1](../doc_images/Credentials1.png)
+![Credentials1](../doc_images/Credentials1.png.png)
 
 - This will take you to the credentials page.
 - Scroll down to the `Stores scoped to Jenkins` and click on the `System` as shown in the image.  
