@@ -1,6 +1,7 @@
 site_name: Cloud-V Docs
 nav:
-- Home: index.md
+- Home:
+    - Cloud-V: index.md
 - For Software Developers:
     - RISC-V CI User's Guide:
         - Guide for Software Developer: Software_Developer_Guide.md
