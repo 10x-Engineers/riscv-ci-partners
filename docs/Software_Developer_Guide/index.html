@@ -203,9 +203,9 @@ node{
 <ul>
 <li>We will provide you with jenkins credentials on the provided email.</li>
 <li>Login with provided credentials.</li>
-<li>Click on the drop down near user profile as shown in image below.  </li>
+<li>Click on the <code>Credentials</code> in the left menu.  </li>
 </ul>
-<p><img alt="Credentials1" src="../doc_images/Credentials1.png" /></p>
+<p><img alt="Credentials1" src="../doc_images/Credentials1.png.png" /></p>
 <ul>
 <li>This will take you to the credentials page.</li>
 <li>Scroll down to the <code>Stores scoped to Jenkins</code> and click on the <code>System</code> as shown in the image.  </li>
@@ -221,12 +221,10 @@ node{
 <p><img alt="Credentials4" src="../doc_images/Credentials4.png" /></p>
 <ul>
 <li>This will take you to the <code>New Credentials</code> page.</li>
-<li>Select <code>Kind</code> as <code>Username with password</code>.</li>
+<li>Select <code>Kind</code> as <code>Secret text</code>.</li>
 <li>Select <code>Scope</code> as <code>Global (Jenkins, nodes, items, all child items etc)</code>.</li>
-<li>Enter the GitHub username in <code>Username</code>.</li>
-<li>You may check <code>Treat username as secret</code> which will mask username in console output of builds, but this is not recommended by jenkins due to performance issues.</li>
-<li>Enter <code>Password</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
-<li><code>ID</code> and <code>Description</code> can be left empty. But it is recommended to give a unique ID and a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.</li>
+<li>Enter <code>Secret</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
+<li>Enter a unique<code>ID</code>. <code>Description</code> can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.</li>
 <li>Select <code>Create</code>.</li>
 <li>This process will look something like this.</li>
 </ul>
@@ -235,6 +233,10 @@ node{
 <li>Now credentials will be available in the credentials list and will be shown to you as well as administrator as shown in the image below. This will create an option in configurations for using these credentials in github webhook without changing or viewing them.  </li>
 </ul>
 <p><img alt="Credentials6" src="../doc_images/Credentials6.png" />  </p>
+<ul>
+<li>Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the credentials. It is important that administrator knows the credentials ID because he will use it in the job build configurations.  </li>
+</ul>
+<p><img alt="Credentials6_id" src="../doc_images/Credentials6_id.png" />  </p>
 <p><em><strong>Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.</strong></em></p>
 <h2 id="requirements-for-administrator">Requirements for administrator</h2>
 <p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
