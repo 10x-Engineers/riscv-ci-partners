@@ -75,12 +75,10 @@ This process requires GitHub credentials of owner of repository on which the web
 ![Credentials4](../doc_images/Credentials4.png)
 
 - This will take you to the `New Credentials` page.
-  - Select `Kind` as `Username with password`.
+  - Select `Kind` as `Secret text`.
   - Select `Scope` as `Global (Jenkins, nodes, items, all child items etc)`.
-  - Enter the GitHub username in `Username`.
-  - You may check `Treat username as secret` which will mask username in console output of builds, but this is not recommended by jenkins due to performance issues.
-  - Enter `Password` as `GitHub personal authentication token` (PAT) which can be acquired from Github account settings.  
-  - `ID` and `Description` can be left empty. But it is recommended to give a unique ID and a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.
+  - Enter `Secret` as `GitHub personal authentication token` (PAT) which can be acquired from Github account settings.  
+  - Enter a unique`ID`. `Description` can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.
   - Select `Create`.
   - This process will look something like this.
 
