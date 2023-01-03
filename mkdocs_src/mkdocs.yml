@@ -6,6 +6,7 @@ nav:
     - RISC-V CI User's Guide:
         - Guide for Software Developer: Software_Developer_Guide.md
         - Creating a Jenkinfile: Creating_jenkinsfile.md
+        - Tools available in Cloud-V: Tooling.md
 - For Administrators:
     - Jenkins Docs:
         - Building Jenkins: Building_Jenkins_github_repo.md
