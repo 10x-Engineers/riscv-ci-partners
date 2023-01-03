@@ -57,6 +57,12 @@
     <li class="toctree-l3"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration-inside-github-repository">Configuration inside GitHub repository</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configurations-inside-cloud-v">Configurations inside Cloud-V</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
     </li>
@@ -200,10 +206,34 @@ node{
 <p><img alt="Console Output" src="../doc_images/Console output for Hello World.png" /></p>
 <p><em><strong>Note:</strong> This jenkinsfile should remain same in all the branches and pull requests.</em>  </p>
 <h2 id="setting-credentials-for-webhook">Setting credentials for webhook</h2>
-<p>Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  </p>
-<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.</p>
+<p>Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  </p>
+<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.</p>
+<h3 id="configuration-inside-github-repository">Configuration inside GitHub repository</h3>
+<p>In GitHub,</p>
 <ul>
-<li>We will provide you with jenkins credentials on the provided email.</li>
+<li>Go to repository settings which you want to integrate for Cloud-V.  </li>
+</ul>
+<p><img alt="Github_settings" src="../doc_images/repo_settings.png" /></p>
+<ul>
+<li>Go to <code>Webhooks</code>  </li>
+</ul>
+<p><img alt="webhooks" src="../doc_images/webhooks.png" />  </p>
+<ul>
+<li>Click on <code>Add webhook</code>  </li>
+</ul>
+<p><img alt="add_webhook" src="../doc_images/newwebhook.png" /></p>
+<ul>
+<li>Add <code>Payload URL</code> as <code>https://cloud-v.co/ghprbhook/</code>  </li>
+<li>Select content type as <code>application/x-www-form-urlencoded</code></li>
+<li>Check <code>Enable SSL verification</code>  </li>
+<li>In the section <strong>Which events would you like to trigger this webhook?</strong> check <code>Let me select individual events</code> and choose the events for which you want build to be triggered.  </li>
+</ul>
+<p>Webhook settings will look something like this:</p>
+<p><img alt="webhook_settings" src="../doc_images/webhook_settings.png" />  </p>
+<h3 id="configurations-inside-cloud-v">Configurations inside Cloud-V</h3>
+<p><em><strong>Note:</strong> Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured.</em></p>
+<ul>
+<li>We will provide you with Cloud-V credentials on the provided email.</li>
 <li>Login with provided credentials.</li>
 <li>Click on the <code>Credentials</code> in the left menu.  </li>
 </ul>
