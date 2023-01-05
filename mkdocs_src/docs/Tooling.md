@@ -1,33 +1,56 @@
 # Tools on Cloud-V
 
+## Using Environment Modules
+
+Users can use environment modules to load different versions of same program. For using environment modules the pattern is as follows:
+
+```shell
+module load <PACKAGENAME/VERSION>
+```  
+
+For example if you want to load python version 3.9.2 compiled for x86, you will need to use following command:  
+
+```shell
+module load python/3.9.2
+```  
+
+For packages compiled for RISC-V architecture host, you will need to append `_riscv` to package name. For example, for python 3.8.15 compiled for RISC-V, following command will be used.  
+
+```shell
+module load python_riscv/3.8.15
+```
+
 Following are the tools and libraries available in Cloud-V.
 
 ## Tools on `x86_runner1` and `qemuusermode_runner1` node
 
 Tools which are mentioned for `x86` architecture are able to run on`x86_runner2`. Tools which are mentioned for `RISC-V` architecture are able to run on `qemuusermode_runner1`.  
 
+The packages which are supported for `QEMU User mode` can be used by normal commands once they are loaded.
+
+Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
+
 **Operating System:** Debian 11 (bullseye)
 
-| Tool | Version | Installed from | Host Architecture |
-| ---- | ------- | -------------- | ------------ |
-| RISC-V GNU Linux Toolchain | 12.2.0 | source | x86 |
-| Git | 2.3.0.2 | source | x86 |
-| OpenJDK | 19.0.1 | apt | x86 |
-| GCC | 10.4.0 | apt | x86 |
-| Python3 | 3.8.15 | source | x86 |
-| Python3 | 3.9.2 | apt | x86 |
-| Python3 | 3.8.15 | source | RISC-V |
-| zlib | 1.2.13 | source | RISC-V |
-| OpenSSL | 1.1.1r | source | RISC-V |
-| Ruby (without IRB) | 3.2.0dev | source | RISC-V |
-| Go | 1.18.8 | apt | x86 |
-| rustc | 1.65.0 | source | RISC-V,x86 |
-| Flex | 2.6.4 | apt | x86 |
-| Ninja | 1.10.1-1 | apt | x86 |
-| Bison | 3.7.5 | apt | x86 |  
-| clang | 16.0.0 | source | RISC-V |
-| autoconf | 2.69 | apt | x86 |
-| gperf | 2.2.4 | apt | x86 |
+| Tool | Versions | Installed from | Host Architecture | Environment Modules Support |
+| ---- | ------- | -------------- | ------------ | ------------ |
+| RISC-V GNU Linux Toolchain | 12.2.0 | source | x86 | N/A |
+| Git | 2.3.0.2 | source | x86 | N/A |
+| OpenJDK | 19.0.1 | apt | x86 | N/A |
+| GCC | 10.4.0, 12.2.0 | apt | x86 | Yes |
+| Python3 | 3.8.15, 3.9.2 | source | x86 | Yes |
+| Python3 | 3.8.15 | source | RISC-V | Yes |
+| zlib | 1.2.13 | source | RISC-V | N/A |
+| OpenSSL | 1.1.1r | source | RISC-V | Yes |
+| Ruby (without IRB) | 3.2.0dev | source | RISC-V | Yes |
+| Go | 1.18.8 | apt | x86 | N/A |
+| rustc | 1.65.0 | source | RISC-V,x86 | N/A |
+| Flex | 2.6.4 | apt | x86 | N/A |
+| Ninja | 1.10.1-1 | apt | x86 | N/A |
+| Bison | 3.7.5 | apt | x86 | N/A |
+| clang | 16.0.0 | source | RISC-V | Yes |
+| autoconf | 2.69 | apt | x86 | N/A |
+| gperf | 2.2.4 | apt | x86 | N/A |
 
 ## Tools on `riscv64_runner1` node
 
