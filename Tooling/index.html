@@ -54,6 +54,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Tools available in Cloud-V</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#using-environment-modules">Using Environment Modules</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#tools-on-x86_runner1-and-qemuusermode_runner1-node">Tools on x86_runner1 and qemuusermode_runner1 node</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#tools-on-riscv64_runner1-node">Tools on riscv64_runner1 node</a>
@@ -154,17 +156,30 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="tools-on-cloud-v">Tools on Cloud-V</h1>
+<h2 id="using-environment-modules">Using Environment Modules</h2>
+<p>Users can use environment modules to load different versions of same program. For using environment modules the pattern is as follows:</p>
+<pre><code class="language-shell">module load &lt;PACKAGENAME/VERSION&gt;
+</code></pre>
+<p>For example if you want to load python version 3.9.2 compiled for x86, you will need to use following command:  </p>
+<pre><code class="language-shell">module load python/3.9.2
+</code></pre>
+<p>For packages compiled for RISC-V architecture host, you will need to append <code>_riscv</code> to package name. For example, for python 3.8.15 compiled for RISC-V, following command will be used.  </p>
+<pre><code class="language-shell">module load python_riscv/3.8.15
+</code></pre>
 <p>Following are the tools and libraries available in Cloud-V.</p>
 <h2 id="tools-on-x86_runner1-and-qemuusermode_runner1-node">Tools on <code>x86_runner1</code> and <code>qemuusermode_runner1</code> node</h2>
 <p>Tools which are mentioned for <code>x86</code> architecture are able to run on<code>x86_runner2</code>. Tools which are mentioned for <code>RISC-V</code> architecture are able to run on <code>qemuusermode_runner1</code>.  </p>
+<p>The packages which are supported for <code>QEMU User mode</code> can be used by normal commands once they are loaded.</p>
+<p>Here <code>PACKAGE_NAME</code> is the package which you want to run on QEMU user mode.</p>
 <p><strong>Operating System:</strong> Debian 11 (bullseye)</p>
 <table>
 <thead>
 <tr>
 <th>Tool</th>
-<th>Version</th>
+<th>Versions</th>
 <th>Installed from</th>
 <th>Host Architecture</th>
+<th>Environment Modules Support</th>
 </tr>
 </thead>
 <tbody>
@@ -173,108 +188,119 @@
 <td>12.2.0</td>
 <td>source</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>Git</td>
 <td>2.3.0.2</td>
 <td>source</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OpenJDK</td>
 <td>19.0.1</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>GCC</td>
-<td>10.4.0</td>
+<td>10.4.0, 12.2.0</td>
 <td>apt</td>
 <td>x86</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Python3</td>
-<td>3.8.15</td>
+<td>3.8.15, 3.9.2</td>
 <td>source</td>
 <td>x86</td>
-</tr>
-<tr>
-<td>Python3</td>
-<td>3.9.2</td>
-<td>apt</td>
-<td>x86</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Python3</td>
 <td>3.8.15</td>
 <td>source</td>
 <td>RISC-V</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>zlib</td>
 <td>1.2.13</td>
 <td>source</td>
 <td>RISC-V</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OpenSSL</td>
 <td>1.1.1r</td>
 <td>source</td>
 <td>RISC-V</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Ruby (without IRB)</td>
 <td>3.2.0dev</td>
 <td>source</td>
 <td>RISC-V</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Go</td>
 <td>1.18.8</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>rustc</td>
 <td>1.65.0</td>
 <td>source</td>
 <td>RISC-V,x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>Flex</td>
 <td>2.6.4</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>Ninja</td>
 <td>1.10.1-1</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>Bison</td>
 <td>3.7.5</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>clang</td>
 <td>16.0.0</td>
 <td>source</td>
 <td>RISC-V</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>autoconf</td>
 <td>2.69</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>gperf</td>
 <td>2.2.4</td>
 <td>apt</td>
 <td>x86</td>
+<td>N/A</td>
 </tr>
 </tbody>
 </table>
