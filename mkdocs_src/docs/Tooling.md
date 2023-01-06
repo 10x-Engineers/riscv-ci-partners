@@ -46,8 +46,11 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | Go | 1.18.8 | apt | x86 | N/A |
 | rustc | 1.65.0 | source | RISC-V,x86 | N/A |
 | Flex | 2.6.4 | apt | x86 | N/A |
+| Flex | 2.6.4 | source | RISC-V | yes
 | Ninja | 1.10.1-1 | apt | x86 | N/A |
+| Ninja | 1.12.0.git | source | RISC-V | Yes |
 | Bison | 3.7.5 | apt | x86 | N/A |
+| Bison | 3.8.2, 2.3 | source | RISC-V | Yes |
 | clang | 16.0.0 | source | RISC-V | Yes |
 | autoconf | 2.69 | apt | x86 | N/A |
 | gperf | 2.2.4 | apt | x86 | N/A |
