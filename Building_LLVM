@@ -1,0 +1,17 @@
+# First run this command in the 10xconfig:
+
+cmake -G Ninja -DCMAKE_BUILD_TYPE="Release" \                                                                          main [1f8746cc8004] untracked
+  -DBUILD_SHARED_LIBS=True -DLLVM_USE_SPLIT_DWARF=True \
+  -DCMAKE_INSTALL_PREFIX="/home/ali/custom_installed/llvm" \
+  -DLLVM_OPTIMIZED_TABLEGEN=True -DLLVM_BUILD_TESTS=False \
+  -DDEFAULT_SYSROOT="/home/ali/RISCV/riscv-gnu-toolchain-github/path_to_install_linux/sysroot" \    
+  -DLLVM_DEFAULT_TARGET_TRIPLE="riscv64-unknown-linux-gnu" \
+  -DLLVM_TARGETS_TO_BUILD="RISCV" \
+  ../llvm \
+-DLLVM_ENABLE_PROJECTS=clang
+
+# Then run following command:
+
+cmake --build . --target install
+
+# Then copy the contents RISCV GNU toolchain in the directory where LLVM was installed
