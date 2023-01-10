@@ -30,7 +30,8 @@ The packages which are supported for `QEMU User mode` can be used by normal comm
 
 Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 
-**Operating System:** Debian 11 (bullseye)
+**Operating System:** Debian 11 (bullseye)  
+**QEMU User Mode Version:** 7.1.0
 
 | Tool | Versions | Installed from | Host Architecture | Environment Modules Support |
 | ---- | ------- | -------------- | ------------ | ------------ |
@@ -59,7 +60,8 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 
 This is compute instance with 64-bit RISC-V Linux and it has all the packages ONLY for RISC-V architecture  
 
-**Operating System:** Ubuntu 22.04.1 (jammy)
+**Operating System:** Ubuntu 22.04.1 (jammy)  
+**QEMU Linux Version:** 7.1.90
 
 | Tool | Version | Installed from |
 | ---- | ------- | -------------- |
