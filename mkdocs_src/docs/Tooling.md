@@ -55,6 +55,9 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | clang | 16.0.0 | source | RISC-V | Yes |
 | autoconf | 2.69 | apt | x86 | N/A |
 | gperf | 2.2.4 | apt | x86 | N/A |
+| spike | 1.1.1-dev | source | x86 | Yes |
+| Verilator | 4.038 | apt | x86 | N/A |
+| riscv-pk | 1.0.0-91-g573c858 | source | RISC-V | Yes |
 
 ## Tools on `riscv64_runner1` node
 
