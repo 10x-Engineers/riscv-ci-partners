@@ -15,7 +15,7 @@ Contact us for a new account by:
 
 OR
 
-2. Through [email](mailto:ali.tariq@10xengineers.ai) with following required details:
+2. Through [cloud-v@10xengineers.ai](mailto:cloud-v@10xengineers.ai) with following required details:
 
 - Name
 - Contact Email
