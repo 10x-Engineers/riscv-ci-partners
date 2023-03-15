@@ -9,19 +9,7 @@ A software developer is the end-user who will develop or build his/her projects 
 
 ## Getting an account for Cloud-V
 
-Contact us for a new account by:  
-
-1. Creating an [issue on github](<https://github.com/10x-Engineers/riscv-ci-partners/issues/new>) and assigning to [alitariq4589](<https://github.com/alitariq4589>)
-
-OR
-
-2. Through [cloud-v@10xengineers.ai](mailto:cloud-v@10xengineers.ai) with following required details:
-
-- Name
-- Contact Email
-- URL of the GitHub project repository
-- Name of your organization
-- How the the job build should be triggered
+Contact us for a new account by emailing us at [cloud-v@10xengineers.ai](mailto:cloud-v@10xengineers.ai) and fill out [this](https://forms.gle/BSRjWqWbB6HNNxxd9) google form.
 
 After this we will get back to you with login credentials.
 
