@@ -58,6 +58,7 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | spike | 1.1.1-dev | source | x86 | Yes |
 | Verilator | 4.038 | apt | x86 | N/A |
 | riscv-pk | 1.0.0-91-g573c858 | source | RISC-V | Yes |
+| Sail (riscv_sim_RV64, riscv_sim_RV32) | 0.5 | source | x86 | Yes |
 
 ## Tools on `riscv64_runner1` node
 
