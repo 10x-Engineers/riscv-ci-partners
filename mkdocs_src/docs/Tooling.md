@@ -59,6 +59,8 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | Verilator | 4.038 | apt | x86 | N/A |
 | riscv-pk | 1.0.0-91-g573c858 | source | RISC-V | Yes |
 | Sail (riscv_sim_RV64, riscv_sim_RV32) | 0.5 | source | x86 | Yes |
+| cmake | 3.18.4 | apt | x86 | N/A |
+| make | 4.3 | apt | x86 | N/A |
 
 ## Tools on `riscv64_runner1` node
 
@@ -83,6 +85,8 @@ This is compute instance with 64-bit RISC-V Linux and it has all the packages ON
 | Bison | 3.8.2 | apt |
 | autoconf | 2.71 | apt |
 | gperf | 3.1 | apt |
+| make | 4.3 | apt |
+| cmake | 3.22.1 | apt |
 
 ## Tools on `hifive_unleashed` node
 
@@ -104,6 +108,8 @@ This compute instance is Sifive's HiFive Unleased board and it has available pac
 | Ninja | 1.9.0 | dnf |
 | Bison | 3.4.1 | dnf |
 | autoconf | 2.69 | dnf |
+| make | 4.2.1 | dnf |
+| cmake | 3.14.5 | dnf |
 
 ## Tools on `starfive_visionfive2` node
 
@@ -125,3 +131,6 @@ This compute instance is Starfive's VisionFive 2 board and it has available pack
 | Ninja | 1.11.0 | apt |
 | Bison | 3.8.2 | apt |
 | autoconf | 2.71 | apt |
+| gperf | 3.1 | apt |
+| cmake | 3.23.2 | apt |
+| make | 4.3 | apt |
