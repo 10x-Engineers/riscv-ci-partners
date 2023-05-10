@@ -118,6 +118,7 @@ This compute instance is Starfive's VisionFive 2 board and it has available pack
 | GCC | 11.3.0 | apt |
 | Python3 | 3.8.1 | apt |
 | OpenSSL | 1.1.1f | apt |
+| Ruby | 3.0.4p208 | apt |
 | Go | 1.18.3 | apt |
 | rustc | 1.59.0 | apt |
 | Flex | 2.6.4 | apt |
