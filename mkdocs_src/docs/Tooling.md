@@ -86,7 +86,7 @@ This is compute instance with 64-bit RISC-V Linux and it has all the packages ON
 
 ## Tools on `hifive_unleashed` node
 
-This is compute instance is hifive unleased board and it has all the packages ONLY for RISC-V architecture.  
+This compute instance is Sifive's HiFive Unleased board and it has available packages ONLY for RISC-V architecture.  
 
 **Operating System:** Fedora 32 (Rawhide)
 
@@ -104,3 +104,23 @@ This is compute instance is hifive unleased board and it has all the packages ON
 | Ninja | 1.9.0 | dnf |
 | Bison | 3.4.1 | dnf |
 | autoconf | 2.69 | dnf |
+
+## Tools on `starfive_visionfive2` node
+
+This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  
+
+**Operating System:** Debian Unstable (Bookworm)
+
+| Tool | Version | Installed from |
+| ---- | ------- | -------------- |
+| Git | 2.36.1 | apt |
+| OpenJDK | 17.0.3 | apt |
+| GCC | 11.3.0 | apt |
+| Python3 | 3.8.1 | apt |
+| OpenSSL | 1.1.1f | apt |
+| Go | 1.18.3 | apt |
+| rustc | 1.59.0 | apt |
+| Flex | 2.6.4 | apt |
+| Ninja | 1.11.0 | apt |
+| Bison | 3.8.2 | apt |
+| autoconf | 2.71 | apt |
