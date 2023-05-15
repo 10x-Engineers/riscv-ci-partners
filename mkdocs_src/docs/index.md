@@ -2,4 +2,4 @@
 
 On this site, you will find all the documentation regarding Jenkins, LXC containers and QEMU configured to use with Cloud-V CI infrastructure
 
-Documentation slides: [link](https://drive.google.com/file/d/1bfOQoCXGwwIo1qXyOncz350V1nl0NWVt/view?usp=share_link)
+Documentation slides: [link](https://drive.google.com/file/d/1aBM3fvuGXYsrP2Ay__JQA9A98gfLmd8J/view?usp=share_link)
