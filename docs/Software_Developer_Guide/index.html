@@ -44,69 +44,97 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_version/">Version</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Building_qemu/">Installing Qemu for RISC-V</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_rust/">Cross Compiling Rust</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_go/">Cross Compiling go</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
+              <p class="caption"><span class="caption-text">For Software Developers</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Guide for Software Developer</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">RISC-V CI User's Guide</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Guide for Software Developer</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-an-account-for-cloud-v">Getting an account for Cloud-V</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration-inside-github-repository">Configuration inside GitHub repository</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configurations-inside-cloud-v">Configurations inside Cloud-V</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a Jenkinfile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tooling/">Tools available in Cloud-V</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Administrators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Jenkins Docs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">QEMU and Linux Kernel</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Building_qemu/">Installing Qemu for RISC-V</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Building_Linux_Kernel/">Building Linux kernel and booting on QEMU</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Cross-Compilation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_rust/">Cross Compiling Rust</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_go/">Cross Compiling go</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Usage monitoring</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Usage_Monitoring/Prometheus_Grafana/">Setting up Grafana and Prometheus</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Usage_Monitoring/Integrating_prometheus_grafana/">Integrating Prometheus with Grafana</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -124,6 +152,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>For Software Developers &raquo;</li>
           <li>RISC-V CI User's Guide &raquo;</li>
       <li>Guide for Software Developer</li>
     <li class="wy-breadcrumbs-aside">
@@ -135,23 +164,21 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="software-developer-guide-for-risc-v-ci">Software Developer Guide for RISC-V CI</h1>
-<p>A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on RISC-V Continuous Integration (CI).<br />
-Currently, the specifications for RISC-V CI is as follows.</p>
-<ul>
-<li>Jenkins latest version</li>
-<li>Ubuntu 22.04 LTS  </li>
-</ul>
+<p>A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on Cloud-V Continuous Integration (CI).  </p>
 <h2 id="pre-requisites">Pre-requisites</h2>
 <ol>
 <li>GitHub account.</li>
 <li>GitHub project repository with owner rights.</li>
 </ol>
+<h2 id="getting-an-account-for-cloud-v">Getting an account for Cloud-V</h2>
+<p>Contact us for a new account by emailing us at <a href="mailto:cloud-v@10xengineers.ai">cloud-v@10xengineers.ai</a> and fill out <a href="https://forms.gle/BSRjWqWbB6HNNxxd9">this</a> google form.</p>
+<p>After this we will get back to you with login credentials.</p>
 <h2 id="setting-up-jenkinsfile-inside-github-project-repository">Setting up <code>Jenkinsfile</code> inside github project repository</h2>
 <p>Jenkins pipeline will need a <code>Jenkinsfile</code> written with jenkins pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
 <p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
 <pre><code class="language-shell">
 node{
-    stage('*** Compilation Phase ***') {
+    stage('*** Phase 1 ***') {
         //Using bash commands
         sh '''#!/bin/bash
             echo &quot;Hello World !\n&quot;
@@ -163,19 +190,38 @@ node{
 <p><img alt="Console Output" src="../doc_images/Console output for Hello World.png" /></p>
 <p><em><strong>Note:</strong> This jenkinsfile should remain same in all the branches and pull requests.</em>  </p>
 <h2 id="setting-credentials-for-webhook">Setting credentials for webhook</h2>
-<p>Jenkins supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in jenkins.  </p>
-<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to jenkins without anyone (even administrator) seeing the passwords as follows.</p>
+<p>Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  </p>
+<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.</p>
+<h3 id="configuration-inside-github-repository">Configuration inside GitHub repository</h3>
+<p>In GitHub,</p>
 <ul>
-<li>Contact us for a new account by creating an issue on github or through email with following required details:</li>
-<li>Name</li>
-<li>Contact Email</li>
-<li>URL of the GitHub project repository</li>
-<li>Name of your organization</li>
-<li>We will provide you the credentials on the provided email.</li>
-<li>Login with provided credentials.</li>
-<li>Click on the drop down near user profile as shown in image below.  </li>
+<li>Go to repository settings which you want to integrate for Cloud-V.  </li>
 </ul>
-<p><img alt="Credentials1" src="../doc_images/Credentials1.png" /></p>
+<p><img alt="Github_settings" src="../doc_images/repo_settings.png" /></p>
+<ul>
+<li>Go to <code>Webhooks</code>  </li>
+</ul>
+<p><img alt="webhooks" src="../doc_images/webhooks.png" />  </p>
+<ul>
+<li>Click on <code>Add webhook</code>  </li>
+</ul>
+<p><img alt="add_webhook" src="../doc_images/newwebhook.png" /></p>
+<ul>
+<li>Add <code>Payload URL</code> as <code>https://cloud-v.co:8443/ghprbhook/</code>  </li>
+<li>Select content type as <code>application/x-www-form-urlencoded</code></li>
+<li>Check <code>Enable SSL verification</code>  </li>
+<li>In the section <strong>Which events would you like to trigger this webhook?</strong> check <code>Let me select individual events</code> and choose the events for which you want build to be triggered.  </li>
+</ul>
+<p>Webhook settings will look something like this:</p>
+<p><img alt="webhook_settings" src="../doc_images/webhook_settings.png" />  </p>
+<h3 id="configurations-inside-cloud-v">Configurations inside Cloud-V</h3>
+<p><em><strong>Note:</strong> Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured.</em></p>
+<ul>
+<li>We will provide you with Cloud-V credentials on the provided email.</li>
+<li>Login with provided credentials.</li>
+<li>Click on the <code>Credentials</code> in the left menu.  </li>
+</ul>
+<p><img alt="Credentials1" src="../doc_images/Credentials1.png.png" /></p>
 <ul>
 <li>This will take you to the credentials page.</li>
 <li>Scroll down to the <code>Stores scoped to Jenkins</code> and click on the <code>System</code> as shown in the image.  </li>
@@ -191,12 +237,10 @@ node{
 <p><img alt="Credentials4" src="../doc_images/Credentials4.png" /></p>
 <ul>
 <li>This will take you to the <code>New Credentials</code> page.</li>
-<li>Select <code>Kind</code> as <code>Username with password</code>.</li>
+<li>Select <code>Kind</code> as <code>Secret text</code>.</li>
 <li>Select <code>Scope</code> as <code>Global (Jenkins, nodes, items, all child items etc)</code>.</li>
-<li>Enter the GitHub username in <code>Username</code>.</li>
-<li>You may check <code>Treat username as secret</code> which will mask username in console output of builds, but this is not recommended by jenkins due to performance issues.</li>
-<li>Enter <code>Password</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
-<li><code>ID</code> and <code>Description</code> can be left empty. But it is recommended to give a unique ID and a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.</li>
+<li>Enter <code>Secret</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
+<li>Enter a unique<code>ID</code>. <code>Description</code> can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.</li>
 <li>Select <code>Create</code>.</li>
 <li>This process will look something like this.</li>
 </ul>
@@ -204,7 +248,12 @@ node{
 <ul>
 <li>Now credentials will be available in the credentials list and will be shown to you as well as administrator as shown in the image below. This will create an option in configurations for using these credentials in github webhook without changing or viewing them.  </li>
 </ul>
-<p><img alt="Credentials6" src="../doc_images/Credentials6.png" /></p>
+<p><img alt="Credentials6" src="../doc_images/Credentials6.png" />  </p>
+<ul>
+<li>Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the credentials. It is important that administrator knows the credentials ID because he will use it in the job build configurations.  </li>
+</ul>
+<p><img alt="Credentials6_id" src="../doc_images/Credentials6_id.png" />  </p>
+<p><em><strong>Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.</strong></em></p>
 <h2 id="requirements-for-administrator">Requirements for administrator</h2>
 <p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
 <ul>
@@ -218,7 +267,8 @@ node{
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Cross_Compiling/Cross_compiling_go/" class="btn btn-neutral float-left" title="Cross Compiling go"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-right" title="Creating a Jenkinfile">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -241,8 +291,10 @@ node{
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Cross_Compiling/Cross_compiling_go/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../Creating_jenkinsfile/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -44,80 +44,102 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Jenkins Docs</span></p>
+              <p class="caption"><span class="caption-text">For Software Developers</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_version/">Version</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RISC-V CI User's Guide</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a Jenkinfile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tooling/">Tools available in Cloud-V</a>
+                </li>
+    </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">QEMU and Linux Kernel</span></p>
+              <p class="caption"><span class="caption-text">For Administrators</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../Building_qemu/">Installing Qemu for RISC-V</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Jenkins Docs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jenkins_github_integration/Github_push_webhook/">Github Push webhook integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jenkins_github_integration/Github_PR_webhook_integration/">Github PR webhook integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jenkins_gitlab_integration/">GitLab Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Installing_ssl_certificates_new/">Letsencrypt configuration with Jenkins</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Building Linux kernel and booting on QEMU</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">QEMU and Linux Kernel</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#machines-and-lxc-containers-operating-system-specifications">Machine's and LXC Container's Operating System Specifications</a>
+                <li class="toctree-l2"><a class="reference internal" href="../Building_qemu/">Installing Qemu for RISC-V</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Building Linux kernel and booting on QEMU</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#machines-and-lxc-containers-operating-system-specifications">Machine's and LXC Container's Operating System Specifications</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
+    <li class="toctree-l3"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#3-riscv-gnu-toolchain">3. RISCV GNU Toolchain</a>
+    <li class="toctree-l4"><a class="reference internal" href="#3-riscv-gnu-toolchain">3. RISCV GNU Toolchain</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-busybox">4. Busybox</a>
+    <li class="toctree-l4"><a class="reference internal" href="#4-busybox">4. Busybox</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5-qemu-emulator">5. QEMU Emulator</a>
+    <li class="toctree-l4"><a class="reference internal" href="#5-qemu-emulator">5. QEMU Emulator</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-linux-kernel">6. Linux Kernel</a>
+    <li class="toctree-l3"><a class="reference internal" href="#6-linux-kernel">6. Linux Kernel</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building-linux-kernel-with-riscv64-unknown-linux-gnu-gcc">Building Linux kernel with riscv64-unknown-linux-gnu-gcc</a>
+    <li class="toctree-l3"><a class="reference internal" href="#building-linux-kernel-with-riscv64-unknown-linux-gnu-gcc">Building Linux kernel with riscv64-unknown-linux-gnu-gcc</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#booting-into-the-linux-kernel-using-qemu-emulator">Booting into the linux kernel using QEMU emulator</a>
+    <li class="toctree-l3"><a class="reference internal" href="#booting-into-the-linux-kernel-using-qemu-emulator">Booting into the linux kernel using QEMU emulator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reference-links">Reference links</a>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../Booting_ubuntu22.04_riscv64">Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Cross-Compilation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_rust/">Cross Compiling Rust</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_go/">Cross Compiling go</a>
+                </li>
+    </ul>
                   </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Cross-Compilation</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Overview/">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling%20python3.8.15/">Cross Compiling Python3.8.15</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_openssl/">Cross Compiling Openssl</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_ruby/">Cross Compiling Ruby</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_dhrystone/">Cross Compiling Drhystone</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="../Cross_Compiling/Cross_compiling_coremark">Cross Compiling Coremark</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_rust/">Cross Compiling Rust</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cross_Compiling/Cross_compiling_go/">Cross Compiling go</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">RISC-V CI User's Guide</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Usage monitoring</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Usage_Monitoring/Prometheus_Grafana/">Setting up Grafana and Prometheus</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Usage_Monitoring/Integrating_prometheus_grafana/">Integrating Prometheus with Grafana</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -134,6 +156,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>For Administrators &raquo;</li>
           <li>QEMU and Linux Kernel &raquo;</li>
       <li>Building Linux kernel and booting on QEMU</li>
     <li class="wy-breadcrumbs-aside">
@@ -145,11 +168,6 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="building-a-riscv-linux-kernel-and-booting-it-in-qemu-inside-lxc-container">Building a RISCV Linux kernel and booting it in QEMU inside LXC container</h1>
-<p><strong>Reference links</strong>:  </p>
-<ol>
-<li><a href="https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html">https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html</a></li>
-<li><a href="https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv">https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv</a>  </li>
-</ol>
 <p>This documentation covers how to build a linux kernel with RISCV linux toolchain inside an un-privileged LXC container and then boot it on qemu.
 Doing this process on privileged lxc container makes life easier, but privileged containers always have security loop holes. For instance, their root id is mapped to root id of host machine. On the other hand un-privileged containers are the safest (see <a href="https://linuxcontainers.org/lxc/security/">link</a>).  </p>
 <h2 id="machines-and-lxc-containers-operating-system-specifications">Machine's and LXC Container's Operating System Specifications</h2>
@@ -359,8 +377,13 @@ make ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- menuconfig
 <li><code>-machine</code> takes one of the machine names as arguments available in <code>qemu-system-riscv64</code>. Available machines can be listed on terminal using command <code>qemu-system-riscv64 -machine help</code>.</li>
 <li><code>-nographic</code> restricts the use of GUI (which is a better option considering lxc container does not support gtk initialization).</li>
 <li>If everything goes on right, the kernel will boot successfully as shown in the picture below.
-<img alt="Selection_012" src="../doc_images/Selection_012.png" /></li>
+<img alt="Selection_012" src="../doc_images/Selection_012.png" />  </li>
 </ul>
+<h2 id="reference-links">Reference links</h2>
+<ol>
+<li><a href="https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html">https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html</a></li>
+<li><a href="https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv">https://hackernoon.com/how-to-set-up-the-environment-for-riscv-64-linux-kernel-development-in-ubuntu-2004-si5p35kv</a></li>
+</ol>
               
             </div>
           </div><footer>

@@ -30,7 +30,7 @@ First jenkins needs to be configured.
 - Click on profile avatar in the top right.  
 - Click on `Edit profile`.  
 
-    ![GitLab Profile Settings](../docs/doc_images/GitLab_profile_settings.png)
+![GitLab Profile Settings](<../doc_images/GitLab_profile_settings.png>)  
 
 - Click on `Access Tokens`.
 - Create a new personal access token and copy it (this is the GitLab API token used in above section `Configuring Jenkins System`).  
