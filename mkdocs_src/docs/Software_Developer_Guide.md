@@ -59,7 +59,7 @@ In GitHub,
 
 ![add_webhook](../doc_images/newwebhook.png)
 
-- Add `Payload URL` as `https://cloud-v.co/ghprbhook/`  
+- Add `Payload URL` as `https://cloud-v.co:8443/ghprbhook/`  
 - Select content type as `application/x-www-form-urlencoded`
 - Check `Enable SSL verification`  
 - In the section **Which events would you like to trigger this webhook?** check `Let me select individual events` and choose the events for which you want build to be triggered.  
