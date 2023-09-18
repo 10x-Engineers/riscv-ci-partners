@@ -54,11 +54,13 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#getting-an-account-for-cloud-v">Getting an account for Cloud-V</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#setting-up-jenkinsfile-inside-github-project-repository">Setting up Jenkinsfile inside github project repository</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-cloud-v-pipeline-inside-github-project-repository">Setting up cloud-v-pipeline inside github project repository</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#configuration-inside-github-repository">Configuration inside GitHub repository</a>
+    <li class="toctree-l4"><a class="reference internal" href="#obtaining-github-access-token-for-repository">Obtaining github access token for repository</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configuring-repository-webhook-optional">Configuring repository webhook (Optional)</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#configurations-inside-cloud-v">Configurations inside Cloud-V</a>
     </li>
@@ -171,10 +173,10 @@
 <li>GitHub project repository with owner rights.</li>
 </ol>
 <h2 id="getting-an-account-for-cloud-v">Getting an account for Cloud-V</h2>
-<p>Contact us for a new account by emailing us at <a href="mailto:cloud-v@10xengineers.ai">cloud-v@10xengineers.ai</a> and fill out <a href="https://forms.gle/BSRjWqWbB6HNNxxd9">this</a> google form.</p>
+<p>Fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSdr8qRF3blH0Jv0dfWhasu6t0IwC0h2II8q2U6keM3vhKoYlQ/viewform?usp=sf_link">this</a> google form with all the required information for getting an account on Cloud-V.</p>
 <p>After this we will get back to you with login credentials.</p>
-<h2 id="setting-up-jenkinsfile-inside-github-project-repository">Setting up <code>Jenkinsfile</code> inside github project repository</h2>
-<p>Jenkins pipeline will need a <code>Jenkinsfile</code> written with jenkins pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
+<h2 id="setting-up-cloud-v-pipeline-inside-github-project-repository">Setting up <code>cloud-v-pipeline</code> inside github project repository</h2>
+<p>Cloud-V will need a <code>cloud-v-pipeline</code> written with jenkinsfile pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
 <p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
 <pre><code class="language-shell">
 node{
@@ -188,11 +190,36 @@ node{
 </code></pre>
 <p>Upon execution of such a pipeline, the console output can be viewed as follows.  </p>
 <p><img alt="Console Output" src="../doc_images/Console output for Hello World.png" /></p>
-<p><em><strong>Note:</strong> This jenkinsfile should remain same in all the branches and pull requests.</em>  </p>
+<p><em><strong>Note:</strong> This cloud-v-pipeline should remain same in all the branches and pull requests.</em>  </p>
 <h2 id="setting-credentials-for-webhook">Setting credentials for webhook</h2>
 <p>Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  </p>
-<p>This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.</p>
-<h3 id="configuration-inside-github-repository">Configuration inside GitHub repository</h3>
+<p>This process requires access token of the repository <strong>CREATED BY OWNER OF REPOSITORY</strong> on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.</p>
+<h3 id="obtaining-github-access-token-for-repository">Obtaining github access token for repository</h3>
+<p>Navigate to the dashboard of your github account and click on the your github profile picture on the top-right corner on dashboard.</p>
+<p><img alt="github settings1" src="../doc_images/github_repo_token1.png" /></p>
+<p>Then click on the "Settings" from the list.</p>
+<p><img alt="github settings1" src="../doc_images/github_repo_token2.png" /></p>
+<p>From the left option bar in Settings scroll down and click on "Developer settings".</p>
+<p><img alt="github settings3" src="../doc_images/github_repo_token3.png" /></p>
+<p>Once there, click on "Personal access tokens", then click on "Fine-grained tokens" from the dropdown list and after that click on "Generate new token".</p>
+<p><img alt="github settings4" src="../doc_images/github_repo_token4.png" /></p>
+<p>This will open the page for setting up new access token. Follow following steps for creating a token:  </p>
+<ol>
+<li>Give your token a meaningful name under "Token name"</li>
+<li>Set expiration date in "Expiration" depending upon how long you would like your repository to be integrated with Cloud-V (think of a meaningful upper bound)</li>
+<li>The "Resource owner" should be the owner of the repository who can access all kinds of settings of the repository</li>
+<li>Under "Repository access", check "Only select repositories" and then select the repository for which you would like to create the token</li>
+<li>
+<p>Under "Permissions" section, expand "Repository Permissions" and give the following two permissions:</p>
+<ul>
+<li>"Read and write" access to "Commit statuses" (Because after the CI has run, Cloud-V will be able to set the status of the commit accordingly)</li>
+<li>"Read and write" access to "Webhooks" (Read permission for the webhook is required for reading the incoming pull request. Write permission is required if you want Cloud-V to set the webhook for you instead of you going through the repository settings and setting it up)</li>
+</ul>
+</li>
+</ol>
+<p><em><strong>IMPORTANT NOTE:</strong> If you have decided to create a webhook yourself or have already created one, then Cloud-V will not be able to manage the settings for you, proceed to <a href="#configuring-repository-webhook-optional">following</a> section</em></p>
+<h3 id="configuring-repository-webhook-optional">Configuring repository webhook (Optional)</h3>
+<p><strong><em>You can skip this step if you have given webhook read and write permission in your repository token settings in above step and havent configured any webhook yourself</em></strong></p>
 <p>In GitHub,</p>
 <ul>
 <li>Go to repository settings which you want to integrate for Cloud-V.  </li>
@@ -207,13 +234,13 @@ node{
 </ul>
 <p><img alt="add_webhook" src="../doc_images/newwebhook.png" /></p>
 <ul>
-<li>Add <code>Payload URL</code> as <code>https://cloud-v.co/ghprbhook/</code>  </li>
+<li>Add <code>Payload URL</code> as <code>https://cloud-v.co:8443/ghprbhook/</code>  </li>
 <li>Select content type as <code>application/x-www-form-urlencoded</code></li>
 <li>Check <code>Enable SSL verification</code>  </li>
-<li>In the section <strong>Which events would you like to trigger this webhook?</strong> check <code>Let me select individual events</code> and choose the events for which you want build to be triggered.  </li>
+<li>In the section <strong>Which events would you like to trigger this webhook?</strong> check <code>Let me select individual events</code> and check <code>Pul requests</code> as individual events and dont check any other permission.</li>
 </ul>
 <p>Webhook settings will look something like this:</p>
-<p><img alt="webhook_settings" src="../doc_images/webhook_settings.png" />  </p>
+<p><img alt="webhook_settings" src="../doc_images/webhook-settings1.png" />  </p>
 <h3 id="configurations-inside-cloud-v">Configurations inside Cloud-V</h3>
 <p><em><strong>Note:</strong> Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured.</em></p>
 <ul>

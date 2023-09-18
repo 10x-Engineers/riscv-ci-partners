@@ -9,13 +9,13 @@ A software developer is the end-user who will develop or build his/her projects 
 
 ## Getting an account for Cloud-V
 
-Contact us for a new account by emailing us at [cloud-v@10xengineers.ai](mailto:cloud-v@10xengineers.ai) and fill out [this](https://forms.gle/BSRjWqWbB6HNNxxd9) google form.
+Fill out [this](https://docs.google.com/forms/d/e/1FAIpQLSdr8qRF3blH0Jv0dfWhasu6t0IwC0h2II8q2U6keM3vhKoYlQ/viewform?usp=sf_link) google form with all the required information for getting an account on Cloud-V.
 
 After this we will get back to you with login credentials.
 
-## Setting up `Jenkinsfile` inside github project repository
+## Setting up `cloud-v-pipeline` inside github project repository
 
-Jenkins pipeline will need a `Jenkinsfile` written with jenkins pipeline syntax to start execution of tests/checks (see [link](https://www.jenkins.io/doc/book/pipeline/syntax/)). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be `scripted pipeline` which will only have stages or it can also be `declarative pipeline` which may also have steps inside stages.  
+Cloud-V will need a `cloud-v-pipeline` written with jenkinsfile pipeline syntax to start execution of tests/checks (see [link](https://www.jenkins.io/doc/book/pipeline/syntax/)). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be `scripted pipeline` which will only have stages or it can also be `declarative pipeline` which may also have steps inside stages.  
 
 A simple scripted `Helloworld` pipeline in linux is as follows:
 
@@ -35,15 +35,48 @@ Upon execution of such a pipeline, the console output can be viewed as follows.
 
 ![Console Output](<../doc_images/Console output for Hello World.png>)
 
-_**Note:** This jenkinsfile should remain same in all the branches and pull requests._  
+_**Note:** This cloud-v-pipeline should remain same in all the branches and pull requests._  
 
 ## Setting credentials for webhook
 
 Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  
 
-This process requires GitHub credentials of owner of repository on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.
+This process requires access token of the repository **CREATED BY OWNER OF REPOSITORY** on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.
 
-### Configuration inside GitHub repository
+### Obtaining github access token for repository
+
+Navigate to the dashboard of your github account and click on the your github profile picture on the top-right corner on dashboard.
+
+![github settings1](../doc_images/github_repo_token1.png)
+
+Then click on the "Settings" from the list.
+
+![github settings1](../doc_images/github_repo_token2.png)
+
+From the left option bar in Settings scroll down and click on "Developer settings".
+
+![github settings3](../doc_images/github_repo_token3.png)
+
+Once there, click on "Personal access tokens", then click on "Fine-grained tokens" from the dropdown list and after that click on "Generate new token".
+
+![github settings4](../doc_images/github_repo_token4.png)
+
+This will open the page for setting up new access token. Follow following steps for creating a token:  
+
+1. Give your token a meaningful name under "Token name"
+2. Set expiration date in "Expiration" depending upon how long you would like your repository to be integrated with Cloud-V (think of a meaningful upper bound)
+3. The "Resource owner" should be the owner of the repository who can access all kinds of settings of the repository
+4. Under "Repository access", check "Only select repositories" and then select the repository for which you would like to create the token
+5. Under "Permissions" section, expand "Repository Permissions" and give the following two permissions:
+
+     - "Read and write" access to "Commit statuses" (Because after the CI has run, Cloud-V will be able to set the status of the commit accordingly)
+     - "Read and write" access to "Webhooks" (Read permission for the webhook is required for reading the incoming pull request. Write permission is required if you want Cloud-V to set the webhook for you instead of you going through the repository settings and setting it up)
+
+***IMPORTANT NOTE:** If you have decided to create a webhook yourself or have already created one, then Cloud-V will not be able to manage the settings for you, proceed to [following](#configuring-repository-webhook-optional) section*
+
+### Configuring repository webhook (Optional)
+
+***You can skip this step if you have given webhook read and write permission in your repository token settings in above step and havent configured any webhook yourself***
 
 In GitHub,
 
@@ -59,14 +92,14 @@ In GitHub,
 
 ![add_webhook](../doc_images/newwebhook.png)
 
-- Add `Payload URL` as `https://cloud-v.co/ghprbhook/`  
+- Add `Payload URL` as `https://cloud-v.co:8443/ghprbhook/`  
 - Select content type as `application/x-www-form-urlencoded`
 - Check `Enable SSL verification`  
-- In the section **Which events would you like to trigger this webhook?** check `Let me select individual events` and choose the events for which you want build to be triggered.  
+- In the section **Which events would you like to trigger this webhook?** check `Let me select individual events` and check `Pul requests` as individual events and dont check any other permission.
 
 Webhook settings will look something like this:
 
-![webhook_settings](../doc_images/webhook_settings.png)  
+![webhook_settings](<../doc_images/webhook-settings1.png>)  
 
 ### Configurations inside Cloud-V
 
