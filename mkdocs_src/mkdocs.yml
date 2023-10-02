@@ -1,10 +1,11 @@
 site_name: Cloud-V Docs
 nav:
 - Home: index.md
-- For Software Developers:
+- For Cloud-V Users:
     - RISC-V CI User's Guide:
         - Guide for Software Developer: Software_Developer_Guide.md
         - Creating a Jenkinfile: Creating_jenkinsfile.md
+        - Runners' Info: runner_specs.md
         - Tools available in Cloud-V: Tooling.md
 - For Administrators:
     - Jenkins Docs:
