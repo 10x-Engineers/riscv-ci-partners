@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Creating Multinode pipelines - Cloud-V Docs</title>
+    <title>Runners' Info - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Creating Multinode pipelines";
-        var mkdocs_page_input_path = "Multinode_Pipelines.md";
+        var mkdocs_page_name = "Runners\u0027 Info";
+        var mkdocs_page_input_path = "runner_specs.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,14 +45,16 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">For Cloud-V Users</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="#">RISC-V CI User's Guide</a>
-    <ul>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">RISC-V CI User's Guide</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../Software_Developer_Guide/">Guide for Software Developer</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a Jenkinfile</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../runner_specs/">Runners' Info</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Runners' Info</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Tooling/">Tools available in Cloud-V</a>
                 </li>
@@ -60,30 +62,16 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Administrators</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Jenkins Docs</a>
-    <ul class="current">
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Jenkins Docs</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../Building_Jenkins_github_repo/">Building Jenkins</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Creating_Jenkins_Node_on_LXC/">Creating Jenkins Node on LXC</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Creating_CI_CD_pipeline/">Creating a pipeline project</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Creating Multinode pipelines</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#label">Label</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#creating-multinode-pipelines-in-jenkins-native-pipeline-job">Creating multinode pipelines in Jenkins native pipeline job</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#scripted-pipeline">Scripted Pipeline</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#declarative-pipeline">Declarative pipeline</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#creating-multinode-pipelines-using-jenkins-freestyle-jobs">Creating multinode pipelines using Jenkins freestyle jobs</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Multinode_Pipelines/">Creating Multinode pipelines</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Adding_Custom-build_packages_in_Jenkins/">Adding custom-build packages in Jenkins</a>
                 </li>
@@ -150,9 +138,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>For Administrators &raquo;</li>
-          <li>Jenkins Docs &raquo;</li>
-      <li>Creating Multinode pipelines</li>
+          <li>For Cloud-V Users &raquo;</li>
+          <li>RISC-V CI User's Guide &raquo;</li>
+      <li>Runners' Info</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -161,73 +149,133 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="multinode-pipelines">Multinode Pipelines</h1>
-<p>One can create multinode pipelines in jenkins freestyle pipeline job as well as in jenkins native pipeline job. In such a pipeline, different stages of the pipeline can run on separate nodes. The jenkins native pipeline job can have two types.  </p>
-<ol>
-<li>Scripted Pipeline</li>
-<li>Declarative pipeline</li>
-</ol>
-<p>For the sake of this documentation, two nodes are used: <code>container-node</code> and <code>container-node2</code></p>
-<h3 id="label">Label</h3>
-<p>In jenkins, label specifies where the job or a stage of the job can run. In jenkins, a label can be explicitly added in the node's configuration so that each time that label is mentioned in a jenkins job, that specific node is used for building the job, or the name of the node can also be used as label in case if no label is added in the node.</p>
-<h2 id="creating-multinode-pipelines-in-jenkins-native-pipeline-job">Creating multinode pipelines in Jenkins native pipeline job</h2>
-<h3 id="scripted-pipeline">Scripted Pipeline</h3>
-<p>For creating a multinode pipeline with jenkins native scripted pipeline job, jenkinsfile can be tweaked. The keyword <code>node</code> can be used to specify the node in which the stages are going to run and this keyword can also be used in between stages. Following screenshot indicates a code in which first stage runs on node named <code>container-node</code>. While the second node runs on node named <code>container-node2</code>.  </p>
-<pre><code class="language-shell">node ('container-node') {
-    stage ('*** Creating a directory in container-node ***'){
-        sh '''#!/bin/bash
-        mkdir newdir_container-node-$RANDOM
-        '''
-    }
-    stage ('*** Creating a directory in container-node2'){
-        node ('container-node2'){
-                sh'''#!/bin/bash
-                mkdir newdir_container-node2-$RANDOM
-                '''
-        }
-    }
-}
-</code></pre>
-<h3 id="declarative-pipeline">Declarative pipeline</h3>
-<p>For a declarative pipeline the keyword <code>label</code> can be used in the agent block. This can either be done at the start of the pipeline after the keyword <code>pipeline</code> or it can be used inside the stages. The following code builds two stages each of which is built in separate node. The keyword <code>none</code> with agent means that the agent is not specified globally for each stage and it should be specified inside each stage.</p>
-<pre><code class="language-shell">pipeline {
-    agent none // Means no agent specified. This means each node will specify its own agent
-    stages {
-        stage('container-node') {
-            agent{
-                label &quot;container-node&quot; //Selecting container-node for this stage
-            }
-            steps {
-                sh '''#!/bin/bash
-                    echo 'Hello container-node'
-                    mkdir &quot;newdir-container-node-$RANDOM&quot;
-                '''
-            }
-        }
-        stage('container-node2'){
-            agent{
-                label &quot;container-node2&quot; //Selecting container-node2 for this stage
-            }
-            steps{
-                sh'''#!/bin/bash
-                    echo ''Hello container-node2
-                    mkdir &quot;newdir-container-node2-$RANDOM&quot;
-                '''
-            }
-        }
-    }
-}
-</code></pre>
-<h2 id="creating-multinode-pipelines-using-jenkins-freestyle-jobs">Creating multinode pipelines using Jenkins freestyle jobs</h2>
-<p>Jenkins freestyle jobs can be combined together by mentioning post-build jobs in the freestyle job settings. Freestyle jobs are customizable and offer more options than jenkins native pipeline jobs. Each job represents a stage and each stage has separate settings. One can use jenkins freestyle jobs to run on a separate node by selecting the option <code>Restrict where this project can be run</code> in the <code>General</code> section of the job's configuration. In the <code>Label Expression</code>, the node's name can be mentioned in which to run the job. The following image shows the option from job's configuration.  </p>
-<p><img alt="image1" src="../doc_images/191689660-ae7c2511-6f0b-48ff-97c7-f6962b9686f4.png" />  </p>
-<p>This can be done in all the job's configuration for the specified node.  </p>
+                <h1 id="specifications-of-compute-instances-in-cloud-v">Specifications of compute instances in Cloud-V</h1>
+<p>This document contains the specifications of the compute instances available for users to run builds in Cloud-V. The term "Compute Instance", can also be safely interchanged with the terms "Build Executor" and "Runner".</p>
+<table>
+<thead>
+<tr>
+<th>Name String</th>
+<th>Architecture</th>
+<th>Cores</th>
+<th>Memory</th>
+<th>Compute Instance Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x86_runner1 (or) qemuusermode_runner1</td>
+<td>x86_64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware with application-level emulator</td>
+</tr>
+<tr>
+<td>x86_runner2</td>
+<td>x86_64</td>
+<td>1</td>
+<td>512MiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>dell5559</td>
+<td>x86_64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>rasp4-1</td>
+<td>aarch64</td>
+<td>4</td>
+<td>4GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>riscv64_runner1</td>
+<td>riscv64</td>
+<td>2</td>
+<td>2GiB</td>
+<td>QEMU System emulator</td>
+</tr>
+<tr>
+<td>sf1-1</td>
+<td>riscv64</td>
+<td>2</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf1-2</td>
+<td>riscv64</td>
+<td>2</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf1-3</td>
+<td>riscv64</td>
+<td>2</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf2-1</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf2-2</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf2-3</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf2-4</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>sf2-5</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>unleashed1-1</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>unleashed1-2</td>
+<td>riscv64</td>
+<td>4</td>
+<td>8GiB</td>
+<td>Hardware</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Note:</strong> The qemuusermode_runner1 and x86_runner1 are one and the same runner. The purpose of creating two separate executors for same hardware is that <code>x86_runner1</code> is supposed to be specifically for x86 architecture whereas <code>qemuusermode_runner1</code> is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for <code>x86_runner1</code> can also be used for <code>qemuusermode_runner1</code></em></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Creating_CI_CD_pipeline/" class="btn btn-neutral float-left" title="Creating a pipeline project"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Adding_Custom-build_packages_in_Jenkins/" class="btn btn-neutral float-right" title="Adding custom-build packages in Jenkins">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-left" title="Creating a Jenkinfile"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Tooling/" class="btn btn-neutral float-right" title="Tools available in Cloud-V">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -250,10 +298,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Creating_CI_CD_pipeline/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Creating_jenkinsfile/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Adding_Custom-build_packages_in_Jenkins/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Tooling/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
