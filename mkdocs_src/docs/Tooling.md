@@ -22,7 +22,7 @@ module load python_riscv/3.8.15
 
 Following are the tools and libraries available in Cloud-V.
 
-## Tools on `x86_runner1` and `qemuusermode_runner1` node
+## Tools on `p1` and `qemuusermode_runner1` node
 
 Tools which are mentioned for `x86` architecture are able to run on`x86_runner2`. Tools which are mentioned for `RISC-V` architecture are able to run on `qemuusermode_runner1`.  
 
@@ -62,7 +62,7 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | cmake | 3.18.4 | apt | x86 | N/A |
 | make | 4.3 | apt | x86 | N/A |
 
-## Tools on `qemu-system-1` node
+## Tools on `qemu-linux1` node
 
 This is QEMU system compute instance with 64-bit RISC-V Linux and it has all the packages ONLY for RISC-V architecture  
 
