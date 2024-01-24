@@ -22,9 +22,9 @@ module load python_riscv/3.8.15
 
 Following are the tools and libraries available in Cloud-V.
 
-## Tools on `x86_runner1` and `qemuusermode_runner1` node
+## Tools on `J-VM-1` and `J-QMU-1` node
 
-Tools which are mentioned for `x86` architecture are able to run on`x86_runner2`. Tools which are mentioned for `RISC-V` architecture are able to run on `qemuusermode_runner1`.  
+Tools which are mentioned for `x86` architecture are able to run on`J-VM-1`. Tools which are mentioned for `RISC-V` architecture are able to run on `qemuusermode_runner1`.
 
 The packages which are supported for `QEMU User mode` can be used by normal commands once they are loaded.
 
@@ -62,7 +62,7 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | cmake | 3.18.4 | apt | x86 | N/A |
 | make | 4.3 | apt | x86 | N/A |
 
-## Tools on `qemu-system-1` node
+## Tools on `J-QMS-1` node
 
 This is QEMU system compute instance with 64-bit RISC-V Linux and it has all the packages ONLY for RISC-V architecture  
 
@@ -88,7 +88,7 @@ This is QEMU system compute instance with 64-bit RISC-V Linux and it has all the
 | make | 4.3 | apt |
 | cmake | 3.22.1 | apt |
 
-## Tools on `unleashed1-1` node
+## Tools on `J-HF-1` node
 
 This compute instance is Sifive's HiFive Unleased board and it has available packages ONLY for RISC-V architecture.  
 
@@ -115,7 +115,7 @@ This compute instance is Sifive's HiFive Unleased board and it has available pac
 | gfortran | 9.4.0 | apt |
 | openssh-server | 8.2p1 | apt |
 
-## Tools on `sf1-1` node
+## Tools on `J-VF1-1` node
 
 This compute instance is Starfive's VisionFive 1 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -142,7 +142,7 @@ This compute instance is Starfive's VisionFive 1 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf1-2` node
+## Tools on `J-VF1-2` node
 
 This compute instance is Starfive's VisionFive 1 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -169,7 +169,7 @@ This compute instance is Starfive's VisionFive 1 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf1-3` node
+## Tools on `J-VF1-3` node
 
 This compute instance is Starfive's VisionFive 1 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -196,7 +196,7 @@ This compute instance is Starfive's VisionFive 1 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf2-1` node
+## Tools on `J-VF2-1` node
 
 This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -223,7 +223,7 @@ This compute instance is Starfive's VisionFive 2 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf2-2` node
+## Tools on `J-VF2-2` node
 
 This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -250,7 +250,7 @@ This compute instance is Starfive's VisionFive 2 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf2-3` node
+## Tools on `J-VF2-3` node
 
 This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -277,7 +277,7 @@ This compute instance is Starfive's VisionFive 2 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf2-4` node
+## Tools on `J-VF2-4` node
 
 This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  
 
@@ -304,7 +304,7 @@ This compute instance is Starfive's VisionFive 2 board and it has available pack
 | gfortran | 13.1.0 | apt |
 | openssh-server | 9.0p1 | apt |
 
-## Tools on `sf2-5` node
+## Tools on `J-VF2-5` node
 
 This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  
 

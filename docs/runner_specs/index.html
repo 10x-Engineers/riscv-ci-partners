@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Runners' Info - Cloud-V Docs</title>
+    <title>Compute Instance Specifications - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Runners\u0027 Info";
+        var mkdocs_page_name = "Compute Instance Specifications";
         var mkdocs_page_input_path = "runner_specs.md";
         var mkdocs_page_url = null;
       </script>
@@ -53,13 +53,13 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Runners' Info</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Compute Instance Specifications</a>
     <ul class="current">
     </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Tools available in Cloud-V</a>
+                <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Tooling on Compute Instances</a>
                 </li>
               </ul>
       </div>
@@ -76,7 +76,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Runners' Info</li>
+      <li>Compute Instance Specifications</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -99,105 +99,98 @@
 </thead>
 <tbody>
 <tr>
-<td>x86_runner1 (or) qemuusermode_runner1</td>
+<td>J-VM-1 (or) J-QMU-1</td>
 <td>x86_64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware with application-level emulator</td>
 </tr>
 <tr>
-<td>x86_runner2</td>
-<td>x86_64</td>
-<td>1</td>
-<td>512MiB</td>
-<td>Hardware</td>
-</tr>
-<tr>
-<td>dell5559</td>
+<td>J-TESTVM-1</td>
 <td>x86_64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>rasp4-1</td>
+<td>J-RASP4-1</td>
 <td>aarch64</td>
 <td>4</td>
 <td>4GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>riscv64_runner1</td>
+<td>J-QMS-1</td>
 <td>riscv64</td>
 <td>2</td>
 <td>2GiB</td>
 <td>QEMU System emulator</td>
 </tr>
 <tr>
-<td>sf1-1</td>
+<td>J-VF1-1</td>
 <td>riscv64</td>
 <td>2</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf1-2</td>
+<td>J-VF1-2</td>
 <td>riscv64</td>
 <td>2</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf1-3</td>
+<td>J-VF1-3</td>
 <td>riscv64</td>
 <td>2</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf2-1</td>
+<td>J-VF2-1</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf2-2</td>
+<td>J-VF2-2</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf2-3</td>
+<td>J-VF2-3</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf2-4</td>
+<td>J-VF2-4</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>sf2-5</td>
+<td>J-VF2-5</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>unleashed1-1</td>
+<td>J-VF2-6</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
 <tr>
-<td>unleashed1-2</td>
+<td>J-HF-1</td>
 <td>riscv64</td>
 <td>4</td>
 <td>8GiB</td>
@@ -205,13 +198,13 @@
 </tr>
 </tbody>
 </table>
-<p><em><strong>Note:</strong> The qemuusermode_runner1 and x86_runner1 are one and the same runner. The purpose of creating two separate executors for same hardware is that <code>x86_runner1</code> is supposed to be specifically for x86 architecture whereas <code>qemuusermode_runner1</code> is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for <code>x86_runner1</code> can also be used for <code>qemuusermode_runner1</code></em></p>
+<p><em><strong>Note:</strong> The qemuusermode_runner1 and x86_runner1 are one and the same runner. The purpose of creating two separate executors for same hardware is that <code>J-VM-1</code> is supposed to be specifically for x86 architecture whereas <code>J-QMU-1</code> is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for <code>J-VM-1</code> can also be used for <code>J-QMU-1</code></em></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-left" title="Creating a Jenkinfile"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Tooling/" class="btn btn-neutral float-right" title="Tools available in Cloud-V">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Tooling/" class="btn btn-neutral float-right" title="Tooling on Compute Instances">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

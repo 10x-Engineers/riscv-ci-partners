@@ -3,8 +3,8 @@ nav:
   - Home: index.md
   - Getting Started: Software_Developer_Guide.md
   - Creating a Jenkinfile: Creating_jenkinsfile.md
-  - Runners' Info: runner_specs.md
-  - Tools available in Cloud-V: Tooling.md
+  - Compute Instance Specifications: runner_specs.md
+  - Tooling on Compute Instances: Tooling.md
 # - For Administrators:
 #     - Jenkins Docs:
 #         - Building Jenkins: Building_Jenkins_github_repo.md
