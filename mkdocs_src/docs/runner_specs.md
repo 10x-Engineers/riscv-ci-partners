@@ -19,4 +19,4 @@ This document contains the specifications of the compute instances available for
 | J-VF2-6 | riscv64 | 4 | 8GiB | Hardware |
 | J-HF-1 | riscv64 | 4 | 8GiB | Hardware |
 
-***Note:** The qemuusermode_runner1 and x86_runner1 are one and the same runner. The purpose of creating two separate executors for same hardware is that `x86_runner1` is supposed to be specifically for x86 architecture whereas `qemuusermode_runner1` is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for `x86_runner1` can also be used for `qemuusermode_runner1`*
+***Note:** The qemuusermode_runner1 and x86_runner1 are one and the same runner. The purpose of creating two separate executors for same hardware is that `J-VM-1` is supposed to be specifically for x86 architecture whereas `J-QMU-1` is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for `J-VM-1` can also be used for `J-QMU-1`*
