@@ -2,7 +2,7 @@ site_name: Cloud-V Docs
 nav:
   - Home: index.md
   - Getting Started: Software_Developer_Guide.md
-  - Creating a Jenkinfile: Creating_jenkinsfile.md
+  - Creating a CI pipeline file: Creating_jenkinsfile.md
   - Compute Instance Specifications: runner_specs.md
   - Tooling on Compute Instances: Tooling.md
 # - For Administrators:
