@@ -49,7 +49,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a Jenkinfile</a>
+                <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a CI pipeline file</a>
                 </li>
               </ul>
               <ul>
@@ -62,6 +62,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#using-environment-modules">Using Environment Modules</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tools-on-j-vm-1-and-j-qmu-1-node">Tools on J-VM-1 and J-QMU-1 node</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qemu-user-mode-and-risc-v-gnu-cross-compilers">QEMU User mode and RISC-V GNU Cross compilers</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tools-on-j-qms-1-node">Tools on J-QMS-1 node</a>
     </li>
@@ -114,6 +116,7 @@
 <p>Users can use environment modules to load different versions of same program. For using environment modules the pattern is as follows:</p>
 <pre><code class="language-shell">module load &lt;PACKAGENAME/VERSION&gt;
 </code></pre>
+<p><em>Important Note: Be sure to use <code>#!/bin/bash -l</code> instead of <code>#!/bin/bash</code> in CI pipeline file since that is required for environment modules to load</em></p>
 <p>For example if you want to load python version 3.9.2 compiled for x86, you will need to use following command:  </p>
 <pre><code class="language-shell">module load python/3.9.2
 </code></pre>
@@ -122,11 +125,11 @@
 </code></pre>
 <p>Following are the tools and libraries available in Cloud-V.</p>
 <h2 id="tools-on-j-vm-1-and-j-qmu-1-node">Tools on <code>J-VM-1</code> and <code>J-QMU-1</code> node</h2>
-<p>Tools which are mentioned for <code>x86</code> architecture are able to run on<code>J-VM-1</code>. Tools which are mentioned for <code>RISC-V</code> architecture are able to run on <code>qemuusermode_runner1</code>.</p>
+<p>Tools which are mentioned for <code>x86</code> architecture are able to run on<code>J-VM-1</code>. Tools which are mentioned for <code>RISC-V</code> architecture are able to run on <code>J-QMU-1</code>.</p>
 <p>The packages which are supported for <code>QEMU User mode</code> can be used by normal commands once they are loaded.</p>
 <p>Here <code>PACKAGE_NAME</code> is the package which you want to run on QEMU user mode.</p>
 <p><strong>Operating System:</strong> Debian 11 (bullseye)<br />
-<strong>QEMU User Mode Version:</strong> 7.1.0</p>
+<strong>QEMU User Mode Version:</strong> Different Versions (see the table below)</p>
 <table>
 <thead>
 <tr>
@@ -138,13 +141,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>RISC-V GNU Linux Toolchain</td>
-<td>12.2.0</td>
-<td>source</td>
-<td>x86</td>
-<td>N/A</td>
-</tr>
 <tr>
 <td>Git</td>
 <td>2.3.0.2</td>
@@ -319,6 +315,41 @@
 <td>apt</td>
 <td>x86</td>
 <td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="qemu-user-mode-and-risc-v-gnu-cross-compilers">QEMU User mode and RISC-V GNU Cross compilers</h2>
+<p>From now on RISC-V cross-compilers can only be loaded with their respective QEMU User mode on Cloud-V. This is configured so that there is no confusion between toolchain version and qemu user mode being used because both of these will be "generally" taken from the latest releases of nightly builds. Loading a certain RISC-V toolchain using environment modules will automatically load the respective qemu usermode version unless otherwise specified.</p>
+<p>The loading pattern for RISC-V 64-bit GNU Glibc toolchain will be as follows:</p>
+<pre><code class="language-shell">module load riscv64-gnu-glibc/&lt;release-date&gt;
+</code></pre>
+<p>And the loading pattern for RISC-V 64-bit GNU Glibc toolchain will be as follows:</p>
+<pre><code class="language-shell">module load riscv64-gnu-elf/&lt;release-date&gt;
+</code></pre>
+<p>Following table provides relevant information about version of the toolchain and the respective QEMU User mode version (where the release date is mentioned in pattern <code>MMDDYYYY</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Release date</th>
+<th>GNU Toolchain version (elf and glibc)</th>
+<th>QEMU Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03012024</td>
+<td>13.2.0</td>
+<td>8.2.1</td>
+</tr>
+<tr>
+<td>02022024</td>
+<td>13.2.0</td>
+<td>8.2.1</td>
+</tr>
+<tr>
+<td>02022024</td>
+<td>13.2.0</td>
+<td>8.1.1</td>
 </tr>
 </tbody>
 </table>

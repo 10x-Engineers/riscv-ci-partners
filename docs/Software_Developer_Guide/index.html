@@ -69,7 +69,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a Jenkinfile</a>
+                <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a CI pipeline file</a>
                 </li>
               </ul>
               <ul>
@@ -202,12 +202,13 @@ node{
 <p><img alt="Credentials4" src="../doc_images/Credentials4.png" /></p>
 <ul>
 <li>This will take you to the <code>New Credentials</code> page.</li>
-<li>Select <code>Kind</code> as <code>Secret text</code>.</li>
+<li>Select <code>Kind</code> as <code>Username with password</code>.</li>
 <li>Select <code>Scope</code> as <code>Global (Jenkins, nodes, items, all child items etc)</code>.</li>
-<li>Enter <code>Secret</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
-<li>Enter a unique<code>ID</code>. <code>Description</code> can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.</li>
-<li>Select <code>Create</code>.</li>
-<li>This process will look something like this.</li>
+<li>Enter your GitHub username in <code>Username</code></li>
+<li>Enter <code>Password</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
+<li><code>ID</code> is optional but you can enter a unique <code>ID</code>. <code>Description</code> can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook</li>
+<li>Select <code>Create</code></li>
+<li>This process will look something like this</li>
 </ul>
 <p><img alt="Credentials5" src="../doc_images/Credentials5.png" />  </p>
 <ul>
@@ -215,17 +216,17 @@ node{
 </ul>
 <p><img alt="Credentials6" src="../doc_images/Credentials6.png" />  </p>
 <ul>
-<li>Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the credentials. It is important that administrator knows the credentials ID because he will use it in the job build configurations.  </li>
+<li>Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the login credentials for Cloud-V. It is important that administrator knows the credentials ID because they will use it in the job build configurations.  </li>
 </ul>
 <p><img alt="Credentials6_id" src="../doc_images/Credentials6_id.png" />  </p>
-<p><em><strong>Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.</strong></em></p>
+<p><em><strong>Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.</strong></em></p>
 <h2 id="requirements-for-administrator">Requirements for administrator</h2>
 <p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
 <ul>
 <li>Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.</li>
 <li>Events for triggering the job build.</li>
 <li>URL of GitHub repository.</li>
-<li>Path and name of Jenkinsfile on the provided GitHub repository.</li>
+<li>Path and name of <code>cloud-v-pipeline</code> file on the provided GitHub repository.</li>
 <li>Any additional information which should be given for successful execution of job builds.</li>
 </ul>
               
@@ -233,7 +234,7 @@ node{
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-right" title="Creating a Jenkinfile">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-right" title="Creating a CI pipeline file">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

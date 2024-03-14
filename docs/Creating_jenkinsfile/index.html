@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Creating a Jenkinfile - Cloud-V Docs</title>
+    <title>Creating a CI pipeline file - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Creating a Jenkinfile";
+        var mkdocs_page_name = "Creating a CI pipeline file";
         var mkdocs_page_input_path = "Creating_jenkinsfile.md";
         var mkdocs_page_url = null;
       </script>
@@ -49,9 +49,9 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating a Jenkinfile</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating a CI pipeline file</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#what-is-a-jenkinsfile">What is a Jenkinsfile</a>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-a-cloud-v-ci-pipeline-file">What is a Cloud-V CI Pipeline file</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#jenkins-node">Jenkins Node</a>
         <ul>
@@ -61,15 +61,15 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#jenkinsfile-written-in-bash">Jenkinsfile written in Bash</a>
+    <li class="toctree-l2"><a class="reference internal" href="#cloud-v-pipeline-file-written-with-bash">cloud-v-pipeline file written with bash</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#simple-hello-world-jenkinsfile">Simple Hello World Jenkinsfile</a>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-hello-world-cloud-v-pipeline-file">Simple Hello World cloud-v-pipeline file</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#jenkinsfile-for-a-specific-node">Jenkinsfile for a Specific Node</a>
+    <li class="toctree-l3"><a class="reference internal" href="#cloud-v-pipeline-for-a-specific-node">cloud-v-pipeline for a Specific Node</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#jenkinsfile-for-cross-platform-compilation-and-execution">Jenkinsfile for Cross-Platform Compilation and Execution</a>
+    <li class="toctree-l2"><a class="reference internal" href="#cloud-v-pipeline-for-cross-platform-compilation-and-execution">cloud-v-pipeline for Cross-Platform Compilation and Execution</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#reference-links">Reference Links</a>
     </li>
@@ -98,7 +98,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Creating a Jenkinfile</li>
+      <li>Creating a CI pipeline file</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -107,26 +107,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="creating-a-jenkinsfile">Creating a Jenkinsfile</h1>
-<h2 id="what-is-a-jenkinsfile">What is a Jenkinsfile</h2>
-<p>A Jenkinsfile is a Continuous Integration (CI) pipeline script which is written Java. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Java itself.<br />
-Mainly Jenkinsfiles are of two types:  </p>
+                <h1 id="creating-a-cloud-v-ci-pipeline-file">Creating a Cloud-V CI Pipeline file</h1>
+<h2 id="what-is-a-cloud-v-ci-pipeline-file">What is a Cloud-V CI Pipeline file</h2>
+<p>A <code>cloud-v-pipeline</code> file is a Continuous Integration (CI) jenkins pipeline script which is written in Groovy. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Groovy itself.<br />
+Mainly there can be two types of Cloud-V pipeline files are of two types:  </p>
 <ol>
 <li><strong>Scripted:</strong> Only contains stages</li>
-<li><strong>Declarative:</strong> Contains stages as well as steps</li>
+<li><strong>Declarative:</strong> Contains stages as well as steps (more feature-rich and recommended)</li>
 </ol>
-<p>This documentation will cover how to create a jenkinsfile in bash script and run it on various compute instances (which are known as <code>Nodes</code> in jenkins).</p>
+<p>This documentation will cover how to create a <code>cloud-v-pipeline</code> file with bash script inside it and run it on various compute instances (which are known as <code>Nodes</code> in jenkins).</p>
 <h2 id="jenkins-node">Jenkins Node</h2>
 <p>In jenkins, node represents a compute instance. In simple words, it is the platform on which our job build is going to run.  </p>
 <h3 id="jenkins-master">Jenkins Master</h3>
 <p>There is a <code>jenkins Master</code> node which is actually the compute instance on which Jenkins is installed. It is the node which schedules builds on runners. For security reason, no job is allowed to run on this node.</p>
 <h3 id="jenkins-slave">Jenkins Slave</h3>
 <p>Jenkins slave nodes are the compute instances on which our job builds run safely. They may be attached with jenkins master via hardware or they may be connected through remote SSH connection.</p>
-<h2 id="jenkinsfile-written-in-bash">Jenkinsfile written in Bash</h2>
-<h3 id="simple-hello-world-jenkinsfile">Simple Hello World Jenkinsfile</h3>
-<p>In Cloud-V, all the platforms are running Linux operating system, so the jenkinsfile should be written in bash.
-Following script is an example of how can we run a bash script in scripted pipeline Jenkinsfile.  </p>
-<pre><code class="language-java">
+<h2 id="cloud-v-pipeline-file-written-with-bash"><code>cloud-v-pipeline</code> file written with bash</h2>
+<h3 id="simple-hello-world-cloud-v-pipeline-file">Simple Hello World <code>cloud-v-pipeline</code> file</h3>
+<p>In Cloud-V, all the platforms are running Linux operating system, so the <code>cloud-v-pipeline</code> should be written in bash.
+Following script is an example of how can we run a bash script in scripted <code>cloud-v-pipeline</code>.  </p>
+<pre><code class="language-groovy">
 node{
     stage('*** Phase 1 ***') {
         //Using bash commands
@@ -138,9 +138,9 @@ node{
 </code></pre>
 <p>The keyword <code>sh</code> is used to specify a shell script</p>
 <p>As there is nothing mentioned with <code>node</code>, so the script will run job build on any available compute instance.  </p>
-<h3 id="jenkinsfile-for-a-specific-node">Jenkinsfile for a Specific Node</h3>
-<p>In previous script, the jenkinsfile would run on any compute instances which are available. But in case if someone wants to run a job build on specific node, then a compute instance name must be specified with keyword <code>node</code>. The following script is an example of running above <code>Hello World</code> program on node named <code>hifive_unleashed</code>.  </p>
-<pre><code class="language-java">
+<h3 id="cloud-v-pipeline-for-a-specific-node"><code>cloud-v-pipeline</code> for a Specific Node</h3>
+<p>In previous script, the <code>cloud-v-pipeline</code> would run on any compute instances which are available. But in case if someone wants to run a job build on specific node, then a compute instance name must be specified with keyword <code>node</code>. The following script is an example of running above <code>Hello World</code> program on node named <code>hifive_unleashed</code>.  </p>
+<pre><code class="language-groovy">
 node('hifive_unleashed'){
     stage('*** Phase 1 ***') {
         //Using bash commands
@@ -150,15 +150,15 @@ node('hifive_unleashed'){
     }
 }
 </code></pre>
-<h2 id="jenkinsfile-for-cross-platform-compilation-and-execution">Jenkinsfile for Cross-Platform Compilation and Execution</h2>
+<h2 id="cloud-v-pipeline-for-cross-platform-compilation-and-execution"><code>cloud-v-pipeline</code> for Cross-Platform Compilation and Execution</h2>
 <p>Cloud-V supports cross-compilation and execution on emulated RISC-V compute instances. Following tools help in cross compilation and cross-platfrom execution:  </p>
 <ul>
 <li>RISC-V GNU Toolchain</li>
-<li>QEMU user mode</li>
-<li>QEMU System (with Linux installed)  </li>
+<li>QEMU user mode (for running standalone binaries)</li>
+<li>QEMU System (for running application in Linux)  </li>
 </ul>
 <p>An example pipeline script is given below in scripted pipeline.  </p>
-<pre><code class="language-java">node('x86_runner2'){
+<pre><code class="language-groovy">node('x86_runner2'){
     checkout scm //Getting content of this repo
     stage('*** Compilation Phase ***') { // for display purposes
         //Compiling helloworld.c using bash commands
@@ -176,7 +176,7 @@ node('hifive_unleashed'){
 }
 </code></pre>
 <p>The equivalent declarative pipeline is as follows:  </p>
-<pre><code class="language-java">pipeline {
+<pre><code class="language-groovy">pipeline {
     agent {label &quot;x86_runner2&quot;}
 
     stages {
