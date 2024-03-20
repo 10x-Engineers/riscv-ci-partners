@@ -8,6 +8,8 @@ Users can use environment modules to load different versions of same program. Fo
 module load <PACKAGENAME/VERSION>
 ```  
 
+_Important Note: Be sure to use `#!/bin/bash -l` instead of `#!/bin/bash` in CI pipeline file since that is required for environment modules to load_
+
 For example if you want to load python version 3.9.2 compiled for x86, you will need to use following command:  
 
 ```shell
@@ -24,18 +26,17 @@ Following are the tools and libraries available in Cloud-V.
 
 ## Tools on `J-VM-1` and `J-QMU-1` node
 
-Tools which are mentioned for `x86` architecture are able to run on`J-VM-1`. Tools which are mentioned for `RISC-V` architecture are able to run on `qemuusermode_runner1`.
+Tools which are mentioned for `x86` architecture are able to run on`J-VM-1`. Tools which are mentioned for `RISC-V` architecture are able to run on `J-QMU-1`.
 
 The packages which are supported for `QEMU User mode` can be used by normal commands once they are loaded.
 
 Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 
 **Operating System:** Debian 11 (bullseye)  
-**QEMU User Mode Version:** 7.1.0
+**QEMU User Mode Version:** Different Versions (see the table below)
 
 | Tool | Versions | Installed from | Host Architecture | Environment Modules Support |
 | ---- | ------- | -------------- | ------------ | ------------ |
-| RISC-V GNU Linux Toolchain | 12.2.0 | source | x86 | N/A |
 | Git | 2.3.0.2 | source | x86 | N/A |
 | OpenJDK | 19.0.1 | apt | x86 | N/A |
 | GCC | 10.4.0, 12.2.0 | apt | x86 | Yes |
@@ -61,6 +62,30 @@ Here `PACKAGE_NAME` is the package which you want to run on QEMU user mode.
 | Sail (riscv_sim_RV64, riscv_sim_RV32) | 0.5 | source | x86 | Yes |
 | cmake | 3.18.4 | apt | x86 | N/A |
 | make | 4.3 | apt | x86 | N/A |
+
+## QEMU User mode and RISC-V GNU Cross compilers
+
+From now on RISC-V cross-compilers can only be loaded with their respective QEMU User mode on Cloud-V. This is configured so that there is no confusion between toolchain version and qemu user mode being used because both of these will be "generally" taken from the latest releases of nightly builds. Loading a certain RISC-V toolchain using environment modules will automatically load the respective qemu usermode version unless otherwise specified.
+
+The loading pattern for RISC-V 64-bit GNU Glibc toolchain will be as follows:
+
+```shell
+module load riscv64-gnu-glibc/<release-date>
+```
+
+And the loading pattern for RISC-V 64-bit GNU Glibc toolchain will be as follows:
+
+```shell
+module load riscv64-gnu-elf/<release-date>
+```
+
+Following table provides relevant information about version of the toolchain and the respective QEMU User mode version (where the release date is mentioned in pattern `MMDDYYYY`).
+
+| Release date | GNU Toolchain version (elf and glibc) | QEMU Version |
+| ---- | ------- | -------------- |
+| 03012024 | 13.2.0 | 8.2.1 |
+| 02022024 | 13.2.0 | 8.2.1 |
+| 02022024 | 13.2.0 | 8.1.1 |
 
 ## Tools on `J-QMS-1` node
 

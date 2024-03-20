@@ -125,12 +125,13 @@ _**Note:** Currently users are not able to see or modify pipeline build configur
 ![Credentials4](../doc_images/Credentials4.png)
 
 - This will take you to the `New Credentials` page.
-  - Select `Kind` as `Secret text`.
+  - Select `Kind` as `Username with password`.
   - Select `Scope` as `Global (Jenkins, nodes, items, all child items etc)`.
-  - Enter `Secret` as `GitHub personal authentication token` (PAT) which can be acquired from Github account settings.  
-  - Enter a unique`ID`. `Description` can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook.
-  - Select `Create`.
-  - This process will look something like this.
+  - Enter your GitHub username in `Username`
+  - Enter `Password` as `GitHub personal authentication token` (PAT) which can be acquired from Github account settings.  
+  - `ID` is optional but you can enter a unique `ID`. `Description` can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook
+  - Select `Create`
+  - This process will look something like this
 
 ![Credentials5](../doc_images/Credentials5.png)  
 
@@ -138,11 +139,11 @@ _**Note:** Currently users are not able to see or modify pipeline build configur
 
 ![Credentials6](../doc_images/Credentials6.png)  
 
-- Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the credentials. It is important that administrator knows the credentials ID because he will use it in the job build configurations.  
+- Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the login credentials for Cloud-V. It is important that administrator knows the credentials ID because they will use it in the job build configurations.  
 
 ![Credentials6_id](../doc_images/Credentials6_id.png)  
 
-_**Note: Please make sure to inform the administrator via email that you have added the credentials in jenkins. Also, send administrator the ID of credentials via email.**_
+_**Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.**_
 
 ## Requirements for administrator
 
@@ -151,5 +152,5 @@ After the above setup is complete from software developer's side, developer will
 - Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.
 - Events for triggering the job build.
 - URL of GitHub repository.
-- Path and name of Jenkinsfile on the provided GitHub repository.
+- Path and name of `cloud-v-pipeline` file on the provided GitHub repository.
 - Any additional information which should be given for successful execution of job builds.

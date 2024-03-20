@@ -1,14 +1,14 @@
-# Creating a Jenkinsfile
+# Creating a Cloud-V CI Pipeline file
 
-## What is a Jenkinsfile
+## What is a Cloud-V CI Pipeline file
 
-A Jenkinsfile is a Continuous Integration (CI) pipeline script which is written Java. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Java itself.  
-Mainly Jenkinsfiles are of two types:  
+A `cloud-v-pipeline` file is a Continuous Integration (CI) jenkins pipeline script which is written in Groovy. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Groovy itself.  
+Mainly there can be two types of Cloud-V pipeline files are of two types:  
 
 1. **Scripted:** Only contains stages
-2. **Declarative:** Contains stages as well as steps
+2. **Declarative:** Contains stages as well as steps (more feature-rich and recommended)
 
- This documentation will cover how to create a jenkinsfile in bash script and run it on various compute instances (which are known as `Nodes` in jenkins).
+ This documentation will cover how to create a `cloud-v-pipeline` file with bash script inside it and run it on various compute instances (which are known as `Nodes` in jenkins).
 
 ## Jenkins Node
 
@@ -22,14 +22,14 @@ There is a `jenkins Master` node which is actually the compute instance on which
 
 Jenkins slave nodes are the compute instances on which our job builds run safely. They may be attached with jenkins master via hardware or they may be connected through remote SSH connection.
 
-## Jenkinsfile written in Bash  
+## `cloud-v-pipeline` file written with bash  
 
-### Simple Hello World Jenkinsfile
+### Simple Hello World `cloud-v-pipeline` file
 
-In Cloud-V, all the platforms are running Linux operating system, so the jenkinsfile should be written in bash.
-Following script is an example of how can we run a bash script in scripted pipeline Jenkinsfile.  
+In Cloud-V, all the platforms are running Linux operating system, so the `cloud-v-pipeline` should be written in bash.
+Following script is an example of how can we run a bash script in scripted `cloud-v-pipeline`.  
 
-```java
+```groovy
 
 node{
     stage('*** Phase 1 ***') {
@@ -45,11 +45,11 @@ The keyword `sh` is used to specify a shell script
 
 As there is nothing mentioned with `node`, so the script will run job build on any available compute instance.  
 
-### Jenkinsfile for a Specific Node  
+### `cloud-v-pipeline` for a Specific Node  
 
-In previous script, the jenkinsfile would run on any compute instances which are available. But in case if someone wants to run a job build on specific node, then a compute instance name must be specified with keyword `node`. The following script is an example of running above `Hello World` program on node named `hifive_unleashed`.  
+In previous script, the `cloud-v-pipeline` would run on any compute instances which are available. But in case if someone wants to run a job build on specific node, then a compute instance name must be specified with keyword `node`. The following script is an example of running above `Hello World` program on node named `hifive_unleashed`.  
 
-```java
+```groovy
 
 node('hifive_unleashed'){
     stage('*** Phase 1 ***') {
@@ -61,17 +61,17 @@ node('hifive_unleashed'){
 }
 ```  
 
-## Jenkinsfile for Cross-Platform Compilation and Execution
+## `cloud-v-pipeline` for Cross-Platform Compilation and Execution
 
 Cloud-V supports cross-compilation and execution on emulated RISC-V compute instances. Following tools help in cross compilation and cross-platfrom execution:  
 
 - RISC-V GNU Toolchain
-- QEMU user mode
-- QEMU System (with Linux installed)  
+- QEMU user mode (for running standalone binaries)
+- QEMU System (for running application in Linux)  
 
 An example pipeline script is given below in scripted pipeline.  
 
-```java
+```groovy
 node('x86_runner2'){
     checkout scm //Getting content of this repo
     stage('*** Compilation Phase ***') { // for display purposes
@@ -92,7 +92,7 @@ node('x86_runner2'){
 
 The equivalent declarative pipeline is as follows:  
 
-```java
+```groovy
 pipeline {
     agent {label "x86_runner2"}
 
