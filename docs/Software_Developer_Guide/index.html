@@ -57,7 +57,7 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#obtaining-github-access-token-for-repository">Obtaining github access token for repository</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configuring-repository-webhook-optional">Configuring repository webhook (Optional)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-repository-webhook">Configuring repository webhook</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configurations-inside-cloud-v">Configurations inside Cloud-V</a>
     </li>
@@ -162,13 +162,11 @@ node{
 <p>Under "Permissions" section, expand "Repository Permissions" and give the following two permissions:</p>
 <ul>
 <li>"Read and write" access to "Commit statuses" (Because after the CI has run, Cloud-V will be able to set the status of the commit accordingly)</li>
-<li>"Read and write" access to "Webhooks" (Read permission for the webhook is required for reading the incoming pull request. Write permission is required if you want Cloud-V to set the webhook for you instead of you going through the repository settings and setting it up)</li>
+<li>"Read-only" access to "Webhooks"</li>
 </ul>
 </li>
 </ol>
-<p><em><strong>IMPORTANT NOTE:</strong> If you have decided to create a webhook yourself or have already created one, then Cloud-V will not be able to manage the settings for you, proceed to <a href="#configuring-repository-webhook-optional">following</a> section</em></p>
-<h3 id="configuring-repository-webhook-optional">Configuring repository webhook (Optional)</h3>
-<p><strong><em>You can skip this step if you have given webhook read and write permission in your repository token settings in above step and havent configured any webhook yourself</em></strong></p>
+<h3 id="configuring-repository-webhook">Configuring repository webhook</h3>
 <p>In GitHub,</p>
 <ul>
 <li>Go to repository settings which you want to integrate for Cloud-V.  </li>
@@ -183,8 +181,8 @@ node{
 </ul>
 <p><img alt="add_webhook" src="../doc_images/newwebhook.png" /></p>
 <ul>
-<li>Add <code>Payload URL</code> as <code>https://cloud-v.co:8443/ghprbhook/</code>  </li>
-<li>Select content type as <code>application/x-www-form-urlencoded</code></li>
+<li>Add <code>Payload URL</code> as <code>https://dash.cloud-v.co/ghprbhook/</code>  </li>
+<li>Select content type as <code>application/json</code></li>
 <li>Check <code>Enable SSL verification</code>  </li>
 <li>In the section <strong>Which events would you like to trigger this webhook?</strong> check <code>Let me select individual events</code> and check <code>Pul requests</code> as individual events and dont check any other permission.</li>
 </ul>

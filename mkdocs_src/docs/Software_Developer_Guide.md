@@ -70,13 +70,9 @@ This will open the page for setting up new access token. Follow following steps 
 5. Under "Permissions" section, expand "Repository Permissions" and give the following two permissions:
 
      - "Read and write" access to "Commit statuses" (Because after the CI has run, Cloud-V will be able to set the status of the commit accordingly)
-     - "Read and write" access to "Webhooks" (Read permission for the webhook is required for reading the incoming pull request. Write permission is required if you want Cloud-V to set the webhook for you instead of you going through the repository settings and setting it up)
+     - "Read-only" access to "Webhooks"
 
-***IMPORTANT NOTE:** If you have decided to create a webhook yourself or have already created one, then Cloud-V will not be able to manage the settings for you, proceed to [following](#configuring-repository-webhook-optional) section*
-
-### Configuring repository webhook (Optional)
-
-***You can skip this step if you have given webhook read and write permission in your repository token settings in above step and havent configured any webhook yourself***
+### Configuring repository webhook
 
 In GitHub,
 
@@ -92,8 +88,8 @@ In GitHub,
 
 ![add_webhook](../doc_images/newwebhook.png)
 
-- Add `Payload URL` as `https://cloud-v.co:8443/ghprbhook/`  
-- Select content type as `application/x-www-form-urlencoded`
+- Add `Payload URL` as `https://dash.cloud-v.co/ghprbhook/`  
+- Select content type as `application/json`
 - Check `Enable SSL verification`  
 - In the section **Which events would you like to trigger this webhook?** check `Let me select individual events` and check `Pul requests` as individual events and dont check any other permission.
 
