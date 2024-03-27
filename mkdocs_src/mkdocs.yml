@@ -4,7 +4,14 @@ nav:
   - Getting Started: Software_Developer_Guide.md
   - Creating a CI pipeline file: Creating_jenkinsfile.md
   - Compute Instance Specifications: runner_specs.md
-  - Tooling on Compute Instances: Tooling.md
+  - Tooling on Compute Instances:
+      - Using Environment Modules: Tooling.md
+      - J-x86-1 or J-QMU-1: tooling_J-QMU-1J-VM-1.md
+      - J-QMS-1: tooling_J-QMS-1.md
+      - J-VF1-x: tooling_J-VF1-x.md
+      - J-VF2-x: tooling_J-VF2-x.md
+      - J-HF-1: tooling_J-HF-1.md
+
 # - For Administrators:
 #     - Jenkins Docs:
 #         - Building Jenkins: Building_Jenkins_github_repo.md
