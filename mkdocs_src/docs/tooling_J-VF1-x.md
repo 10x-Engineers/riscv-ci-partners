@@ -1,4 +1,4 @@
-# Tools on `J-VF1-1` node
+# Tools on `J-VF1-x` node
 
 This compute instance is Starfive's VisionFive 1 board and it has available packages ONLY for RISC-V architecture.  
 
