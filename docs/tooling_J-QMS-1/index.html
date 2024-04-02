@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Booting RISC-V Ubuntu 22.04 on `qemu-system-riscv64` - Cloud-V Docs</title>
+    <title>J-QMS-1 - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Booting RISC-V Ubuntu 22.04 on `qemu-system-riscv64`";
-        var mkdocs_page_input_path = "Booting_ubuntu22.04_riscv64.md";
+        var mkdocs_page_name = "J-QMS-1";
+        var mkdocs_page_input_path = "tooling_J-QMS-1.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -57,12 +57,14 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Tooling on Compute Instances</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Using Environment Modules</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMU-1J-VM-1/">J-x86-1 or J-QMU-1</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMS-1/">J-QMS-1</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">J-QMS-1</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tooling_J-VF1-x/">J-VF1-x</a>
                   </li>
@@ -85,7 +87,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Booting RISC-V Ubuntu 22.04 on `qemu-system-riscv64`</li>
+          <li>Tooling on Compute Instances &raquo;</li>
+      <li>J-QMS-1</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -94,63 +97,108 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="booting-risc-v-ubuntu-2204-on-qemu-system-riscv64">Booting RISC-V Ubuntu 22.04 on <code>qemu-system-riscv64</code></h1>
-<h2 id="pre-requisites">Pre-requisites</h2>
-<p>Following are the pre-requisites which are needed to be installed before booting ubuntu 22.04 for RISC-V on <code>qemu</code>.  </p>
-<p><em><strong>Note:</strong> Make sure RISC-V GNU Toolchain is installed before proceeding</em></p>
-<ol>
-<li>U-boot</li>
-<li>Qemu version 7.0 or greater with networking  </li>
-<li>Ubuntu 22.04 pre-built image for RISC-V</li>
-</ol>
-<h3 id="1-installing-u-boot">1. Installing U-boot</h3>
-<p><em><strong>Note:</strong> If you plan on installing U-boot from apt or some system repository, install the one which comes with ubuntu 22.04. Older will not work with this process. Also, be sure to checkout a latest Stable version instead of development version.</em>  </p>
-<ul>
-<li>Get source code of u-boot and checkout stable version using commands below.  </li>
-</ul>
-<pre><code class="language-shell">git clone https://github.com/qemu/u-boot.git
-cd u-boot
-git checkout v2022.10
-</code></pre>
-<ul>
-<li>Generate configurations for supervisor mode with following command.  </li>
-</ul>
-<pre><code class="language-shell">make qemu-riscv64_smode_defconfig CROSS_COMPILE=riscv64-unknown-linux-gnu-
-</code></pre>
-<ul>
-<li>Execute following command to start build process.  </li>
-</ul>
-<pre><code class="language-shell">make CROSS_COMPILE=riscv64-unknown-linux-gnu-
-</code></pre>
-<ul>
-<li>This should install <code>u-boot.bin</code> in the source directory. This file will be used later so its path must be kept remember. Here it will be refered to as <code>$UBOOTPATH</code>.</li>
-</ul>
-<h3 id="2-installing-qemu">2. Installing Qemu</h3>
-<p>Qemu version 7.0 or greater should be installed with networking for ubuntu 22.04 to work. See <a href="../Building_qemu/">Installing Qemu for RISC-V</a> for instructions on installing <code>qemu-system-riscv64</code>.  </p>
-<h3 id="3-getting-ubuntu-2204-pre-build-image-for-risc-v">3. Getting Ubuntu 22.04 pre-build image for RISC-V</h3>
-<p>Ubuntu 22.04 image can be downloaded from <a href="https://ubuntu.com/download/risc-v">https://ubuntu.com/download/risc-v</a>.  </p>
-<h2 id="booting-ubuntu-2204-image-on-qemu">Booting Ubuntu 22.04 Image on qemu</h2>
-<p>In the directory where ubuntu 22.04 image is present, execute following command to boot into ubuntu 22.04 with <code>qemu-system-riscv64</code>.  </p>
-<p>If you need more space, you can use following command.  </p>
-<pre><code class="language-shell">qemu-img resize -f raw ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img +5G
-</code></pre>
-<p>This will increase storage size of the image by 5GB.  </p>
-<pre><code class="language-shell">qemu-system-riscv64 \
--machine virt -nographic -m 2048 -smp 4 \
--kernel $UBOOTPATH/u-boot.bin \
--device virtio-net-device,netdev=eth0 -netdev user,id=eth0,hostfwd=::&lt;host_port&gt;-:&lt;VM_port&gt; \
--drive file=ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img,format=raw,if=virtio
-</code></pre>
-<p>Here <code>-m</code> is the memory in Megabytes and <code>-smp</code> is number of cores. <code>-nographic</code> means qemu will use same terminal instance instead of opening a new window of its own (which is beneficial while running servers without gui). Whereas <code>hostfwd=::&lt;host_port&gt;-:&lt;VM_port&gt;</code> will forward traffic going to port <code>&lt;host_port&gt;</code> to port <code>VM_port</code>. Due to this port <code>&lt;host_port&gt;</code> will be used to access ssh on qemu machine.  </p>
-<p>This should boot ubuntu 22.04. But it will take a while on first start.  </p>
-<p>On start, credentials will be as follows.  </p>
-<pre><code class="language-shell">Username: ubuntu
-Password: ubuntu
-</code></pre>
-<p>After entering credentials, terminal will prompt for change of password after which ubuntu will be ready to use.</p>
+                <h1 id="tools-on-j-qms-1-node">Tools on <code>J-QMS-1</code> node</h1>
+<p>This is QEMU system compute instance with 64-bit RISC-V Linux and it has all the packages ONLY for RISC-V architecture  </p>
+<p><strong>Operating System:</strong> Ubuntu 22.04.4 LTS (Jammy Jellyfish)<br />
+<strong>QEMU Linux Version:</strong> 7.2.90 (v9.0.0-rc0-68-g853546f812)</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Installed from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pip</td>
+<td>22.0.2</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>2.34.1</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>OpenJDK</td>
+<td>19.0.1</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>GCC</td>
+<td>11.4.0</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Python3</td>
+<td>3.10.12</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>OpenSSL</td>
+<td>3.0.2</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>3.0.2p107</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>1.18.8</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>rustc</td>
+<td>1.75.0</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Flex</td>
+<td>2.6.4</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Ninja</td>
+<td>1.10.1</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>Bison</td>
+<td>3.8.2</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>autoconf</td>
+<td>2.71</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>gperf</td>
+<td>3.1</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>make</td>
+<td>4.3</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>cmake</td>
+<td>3.22.1</td>
+<td>apt</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tooling_J-QMU-1J-VM-1/" class="btn btn-neutral float-left" title="J-x86-1 or J-QMU-1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tooling_J-VF1-x/" class="btn btn-neutral float-right" title="J-VF1-x">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -172,6 +220,10 @@ Password: ubuntu
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../tooling_J-QMU-1J-VM-1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../tooling_J-VF1-x/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
