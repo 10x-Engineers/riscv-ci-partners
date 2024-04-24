@@ -31,6 +31,9 @@ The tools available for `J-x86-1` is for use on x86 architecture and these tools
 | Sail (riscv_sim_RV64, riscv_sim_RV32) | 0.5 | source | x86 | Yes |
 | cmake | 3.18.4 | apt | x86 | N/A |
 | make | 4.3 | apt | x86 | N/A |
+| ARM EABI GNU toolchain | 13.2.Rel1 | source | x86 | Yes |
+| qemu-system-arm | 8.2.2 | source | x86 | Yes |
+| SCons | 4.7.0 | source | x86 | Yes |
 
 ## Tooling available for `J-QMU-1`
 
