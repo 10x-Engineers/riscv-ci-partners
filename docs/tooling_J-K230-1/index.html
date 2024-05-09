@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Compute Instance Specifications - Cloud-V Docs</title>
+    <title>J-K230-1 - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Compute Instance Specifications";
-        var mkdocs_page_input_path = "runner_specs.md";
+        var mkdocs_page_name = "J-K230-1";
+        var mkdocs_page_input_path = "tooling_J-K230-1.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -51,14 +51,12 @@
                 <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a CI pipeline file</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Compute Instance Specifications</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runner_specs/">Compute Instance Specifications</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Tooling on Compute Instances</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Using Environment Modules</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMU-1J-VM-1/">J-x86-1 or J-QMU-1</a>
@@ -71,7 +69,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tooling_J-HF-1/">J-HF-1</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-K230-1/">J-K230-1</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">J-K230-1</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
       </div>
@@ -88,7 +88,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Compute Instance Specifications</li>
+          <li class="breadcrumb-item">Tooling on Compute Instances</li>
+      <li class="breadcrumb-item active">J-K230-1</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -97,149 +98,125 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="specifications-of-compute-instances-in-cloud-v">Specifications of compute instances in Cloud-V</h1>
-<p>This document contains the specifications of the compute instances available for users to run builds in Cloud-V. The term "Compute Instance", can also be safely interchanged with the terms "Build Executor" and "Runner".</p>
+                <h1 id="tools-on-j-k230-1-node">Tools on <code>J-K230-1</code> node</h1>
+<p>This compute instance is Starfive's VisionFive 2 board and it has available packages ONLY for RISC-V architecture.  </p>
+<p><strong>Operating System:</strong> Debian 12 (Bookworm)</p>
 <table>
 <thead>
 <tr>
-<th>Name String</th>
-<th>Architecture</th>
-<th>Cores</th>
-<th>Memory</th>
-<th>Compute Instance Type</th>
-<th>ISA String</th>
+<th>Tool</th>
+<th>Version</th>
+<th>Installed from</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>J-x86-1 (or) J-QMU-1</td>
-<td>x86_64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware with application-level emulator</td>
-<td></td>
+<td>Git</td>
+<td>2.40.1</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-TESTVM-1</td>
-<td>x86_64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>N/A</td>
+<td>OpenJDK</td>
+<td>21.0.2</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-RASP4-1</td>
-<td>aarch64</td>
-<td>4</td>
-<td>4GiB</td>
-<td>Hardware</td>
-<td>ARMv8-A</td>
+<td>GCC</td>
+<td>13.2.0</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-QMS-1</td>
-<td>riscv64</td>
-<td>2</td>
-<td>2GiB</td>
-<td>QEMU System emulator</td>
-<td>rv64imafdch_zicbom_zicboz_zicntr_zicsr_zifencei_zihintpause_zihpm_zba_zbb_zbs_sstc</td>
+<td>Python3</td>
+<td>3.11.6</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF1-1</td>
-<td>riscv64</td>
-<td>2</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>OpenSSL</td>
+<td>3.0.10</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF1-2</td>
-<td>riscv64</td>
-<td>2</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>Ruby</td>
+<td>3.1.2p20</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF1-3</td>
-<td>riscv64</td>
-<td>2</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>Go</td>
+<td>1.21.1</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF2-1</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>rustc</td>
+<td>1.75.0</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF2-2</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>Flex</td>
+<td>2.6.4</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF2-3</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>Ninja</td>
+<td>1.11.1</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF2-4</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>Bison</td>
+<td>3.8.2</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF2-5</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>autoconf</td>
+<td>2.71</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-VF2-6</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>gperf</td>
+<td>3.1</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-HF-1</td>
-<td>riscv64</td>
-<td>4</td>
-<td>8GiB</td>
-<td>Hardware</td>
-<td>rv64imafdc</td>
+<td>cmake</td>
+<td>3.27.4</td>
+<td>apt</td>
 </tr>
 <tr>
-<td>J-K230-1</td>
-<td>riscv64</td>
-<td>1</td>
-<td>512MiB</td>
-<td>Hardware</td>
-<td>rv64imafdcvxthead</td>
+<td>make</td>
+<td>4.3</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>automake</td>
+<td>1.16.5</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>gfortran</td>
+<td>13.2.0</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>openssh-server</td>
+<td>9.3p1</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>9.0</td>
+<td>apt</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>3.3a</td>
+<td>apt</td>
 </tr>
 </tbody>
 </table>
-<p><em><strong>Note:</strong> The <code>J-QMU-1</code> and <code>J-x86-1</code> are one and the same runner. The purpose of creating two separate executors for same hardware is that <code>J-x86-1</code> is supposed to be specifically for x86 architecture whereas <code>J-QMU-1</code> is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for <code>J-x86-1</code> can also be used for <code>J-QMU-1</code></em></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-left" title="Creating a CI pipeline file"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Tooling/" class="btn btn-neutral float-right" title="Using Environment Modules">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../tooling_J-HF-1/" class="btn btn-neutral float-left" title="J-HF-1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -262,10 +239,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Creating_jenkinsfile/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../tooling_J-HF-1/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../Tooling/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
