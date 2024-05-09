@@ -6,7 +6,7 @@ This document contains the specifications of the compute instances available for
 | ---- | ------- | -------------- | ------------ | ------------------ | ---- |
 | J-x86-1 (or) J-QMU-1 | x86_64 | N/A | 4 | 8GiB | Hardware with application-level emulator |
 | J-TESTVM-1 | x86_64 | N/A | 4 | 8GiB | Hardware |
-| J-RASP4-1 | aarch64 | 4 | 4GiB | Hardware | ARMv8-A |
+| J-RASP4-1 | aarch64 | ARMv8-A | 4 | 4GiB | Hardware |
 | J-QMS-1 | riscv64 | See Ext 1 at bottom | 2 | 2GiB | QEMU System emulator |
 | J-VF1-1 | riscv64 | rv64imafdc | 2 | 8GiB | Hardware |
 | J-VF1-2 | riscv64 | rv64imafdc | 2 | 8GiB | Hardware |
