@@ -71,6 +71,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tooling_J-HF-1/">J-HF-1</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-K230-1/">J-K230-1</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -102,6 +104,7 @@
 <tr>
 <th>Name String</th>
 <th>Architecture</th>
+<th>ISA String</th>
 <th>Cores</th>
 <th>Memory</th>
 <th>Compute Instance Type</th>
@@ -111,6 +114,7 @@
 <tr>
 <td>J-x86-1 (or) J-QMU-1</td>
 <td>x86_64</td>
+<td>N/A</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware with application-level emulator</td>
@@ -118,6 +122,7 @@
 <tr>
 <td>J-TESTVM-1</td>
 <td>x86_64</td>
+<td>N/A</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -125,6 +130,7 @@
 <tr>
 <td>J-RASP4-1</td>
 <td>aarch64</td>
+<td>ARMv8-A</td>
 <td>4</td>
 <td>4GiB</td>
 <td>Hardware</td>
@@ -132,6 +138,7 @@
 <tr>
 <td>J-QMS-1</td>
 <td>riscv64</td>
+<td>See Ext 1 at bottom</td>
 <td>2</td>
 <td>2GiB</td>
 <td>QEMU System emulator</td>
@@ -139,6 +146,7 @@
 <tr>
 <td>J-VF1-1</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>2</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -146,6 +154,7 @@
 <tr>
 <td>J-VF1-2</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>2</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -153,6 +162,7 @@
 <tr>
 <td>J-VF1-3</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>2</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -160,6 +170,7 @@
 <tr>
 <td>J-VF2-1</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -167,6 +178,7 @@
 <tr>
 <td>J-VF2-2</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -174,6 +186,7 @@
 <tr>
 <td>J-VF2-3</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -181,6 +194,7 @@
 <tr>
 <td>J-VF2-4</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -188,6 +202,7 @@
 <tr>
 <td>J-VF2-5</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -195,6 +210,7 @@
 <tr>
 <td>J-VF2-6</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
@@ -202,12 +218,22 @@
 <tr>
 <td>J-HF-1</td>
 <td>riscv64</td>
+<td>rv64imafdc</td>
 <td>4</td>
 <td>8GiB</td>
 <td>Hardware</td>
 </tr>
+<tr>
+<td>J-K230-1</td>
+<td>riscv64</td>
+<td>rv64imafdcvxthead</td>
+<td>1</td>
+<td>512MiB</td>
+<td>Hardware</td>
+</tr>
 </tbody>
 </table>
+<p><em><strong>Ext1:</strong> rv64imafdch_zicbom_zicboz_zicntr_zicsr_zifencei_zihintpause_zihpm_zba_zbb_zbs_sstc</em></p>
 <p><em><strong>Note:</strong> The <code>J-QMU-1</code> and <code>J-x86-1</code> are one and the same runner. The purpose of creating two separate executors for same hardware is that <code>J-x86-1</code> is supposed to be specifically for x86 architecture whereas <code>J-QMU-1</code> is specifically for the users who want to cross compile source code for riscv64 architecture and then use qemu-usermode to execute them. Nevertheless, the tooling available for <code>J-x86-1</code> can also be used for <code>J-QMU-1</code></em></p>
               
             </div>
