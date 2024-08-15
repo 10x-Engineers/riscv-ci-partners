@@ -1,7 +1,9 @@
 site_name: Cloud-V Docs
 nav:
   - Home: index.md
-  - Getting Started: Software_Developer_Guide.md
+  - Getting Started:
+      - Setting up CI: Software_Developer_Guide.md
+      - Setting up SSH/Sandboxing: sandboxing.md
   - Creating a CI pipeline file: Creating_jenkinsfile.md
   - Compute Instance Specifications: runner_specs.md
   - Tooling on Compute Instances:
@@ -11,6 +13,7 @@ nav:
       - J-VF1-x: tooling_J-VF1-x.md
       - J-VF2-x: tooling_J-VF2-x.md
       - J-HF-1: tooling_J-HF-1.md
+      - J-BPF3-1: tooling_J-BPF3-x.md
       - J-K230-1: tooling_J-K230-1.md
 
 # - For Administrators:
