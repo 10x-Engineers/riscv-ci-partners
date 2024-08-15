@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Using Environment Modules - Cloud-V Docs</title>
+    <title>Setting up SSH/Sandboxing - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Using Environment Modules";
-        var mkdocs_page_input_path = "Tooling.md";
+        var mkdocs_page_name = "Setting up SSH/Sandboxing";
+        var mkdocs_page_input_path = "sandboxing.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -44,10 +44,14 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Software_Developer_Guide/">Setting up CI</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../sandboxing/">Setting up SSH/Sandboxing</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Setting up SSH/Sandboxing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-vscodium-with-risc-v">Setting up VScodium with RISC-V</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <ul>
@@ -59,12 +63,8 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Tooling on Compute Instances</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Using Environment Modules</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#using-environment-modules">Using Environment Modules</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Using Environment Modules</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMU-1J-VM-1/">J-x86-1 or J-QMU-1</a>
                   </li>
@@ -95,8 +95,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Tooling on Compute Instances</li>
-      <li class="breadcrumb-item active">Using Environment Modules</li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Setting up SSH/Sandboxing</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,24 +105,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="tools-on-cloud-v">Tools on Cloud-V</h1>
-<h2 id="using-environment-modules">Using Environment Modules</h2>
-<p>Users can use environment modules to load different versions of same program. For using environment modules the pattern is as follows:</p>
-<pre><code class="language-shell">module load &lt;PACKAGENAME/VERSION&gt;
-</code></pre>
-<p><em>Important Note: Be sure to use <code>#!/bin/bash -l</code> instead of <code>#!/bin/bash</code> in CI pipeline file since that is required for environment modules to load</em></p>
-<p>For example if you want to load python version 3.9.2 compiled for x86, you will need to use following command:  </p>
-<pre><code class="language-shell">module load python/3.9.2
-</code></pre>
-<p>For packages compiled for RISC-V architecture host, you will need to append <code>_riscv</code> to package name. For example, for python 3.8.15 compiled for RISC-V, following command will be used.  </p>
-<pre><code class="language-shell">module load python_riscv/3.8.15
-</code></pre>
+                <h1 id="using-ssh-access-on-risc-v-instance">Using SSH access on RISC-V instance</h1>
+<p>After getting SSH command and credentials from Cloud-V administrator, users can log in to RISC-V instance and start development like any Linux machine without GUI.</p>
+<h2 id="setting-up-vscodium-with-risc-v">Setting up VScodium with RISC-V</h2>
+<p>It may not be convinient for users to use terminal editors (like Vim and Nano) if they are not accustomed.</p>
+<p>At present VScode remote extension does not have support for RISC-V architecture but VScodium supports it.</p>
+<p>This section explains how you can set up VScodium on x86 machine to get remote development access to RISC-V compute instance (assuming both the machines have SSH installed).</p>
+<ol>
+<li>Install VScodium from <a href="https://vscodium.com/">this</a> link</li>
+<li>Install Open Remote - SSH Extension from jeanp413</li>
+</ol>
+<p><img alt="Open Remote - SSH" src="../doc_images/open-remote-extension.png" /></p>
+<ol>
+<li>Use <code>Ctrl+Shift+p</code> to open command pallet and search remote <code>Remote-SSH: Connect to host...</code></li>
+<li>Enter username, publicly accessible IP and port of the compute instance which you want to connect to.</li>
+</ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../runner_specs/" class="btn btn-neutral float-left" title="Compute Instance Specifications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../tooling_J-QMU-1J-VM-1/" class="btn btn-neutral float-right" title="J-x86-1 or J-QMU-1">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Software_Developer_Guide/" class="btn btn-neutral float-left" title="Setting up CI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Creating_jenkinsfile/" class="btn btn-neutral float-right" title="Creating a CI pipeline file">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -145,10 +148,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../runner_specs/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Software_Developer_Guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../tooling_J-QMU-1J-VM-1/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Creating_jenkinsfile/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
