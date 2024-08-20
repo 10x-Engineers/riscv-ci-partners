@@ -17,4 +17,3 @@ This section explains how you can set up VScodium on x86 machine to get remote d
 
 3. Use `Ctrl+Shift+p` to open command pallet and search remote `Remote-SSH: Connect to host...`
 4. Enter username, publicly accessible IP and port of the compute instance which you want to connect to.
-
