@@ -19,6 +19,7 @@ This document contains the specifications of the compute instances available for
 | J-VF2-6 | riscv64 | rv64imafdc | 4 | 8GiB | Hardware |
 | J-HF-1 | riscv64 | rv64imafdc | 4 | 8GiB | Hardware |
 | J-K230-1 | riscv64 | rv64imafdcvxthead | 1 | 512MiB | Hardware |
+| J-K230-1 | riscv64 | rv64imafdcv<br>_sscofpmf_sstc<br>_svpbmt_zicbom<br>_zicboz_zicbop<br>_zihintpause | 1 | 512MiB | Hardware |
 
 ***Ext1:** rv64imafdch_zicbom_zicboz_zicntr_zicsr_zifencei_zihintpause_zihpm_zba_zbb_zbs_sstc*
 

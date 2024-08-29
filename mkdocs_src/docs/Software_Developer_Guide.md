@@ -9,33 +9,31 @@ A software developer is the end-user who will develop or build his/her projects 
 
 ## Getting an account for Cloud-V
 
-Fill out [this](https://docs.google.com/forms/d/e/1FAIpQLSdr8qRF3blH0Jv0dfWhasu6t0IwC0h2II8q2U6keM3vhKoYlQ/viewform?usp=sf_link) google form with all the required information for getting an account on Cloud-V.
+You can request Cloud-V access via [Cloud-V contact-us page](https://cloud-v.co/contactus).
 
-After this we will get back to you with login credentials.
+After requesting the account, Cloud-V team will have a meeting with you and will give you access to the platform accordingly.
 
-## Setting up `cloud-v-pipeline` inside github project repository
+## Setting up repository with Cloud-V
 
-Cloud-V will need a `cloud-v-pipeline` written with jenkinsfile pipeline syntax to start execution of tests/checks (see [link](https://www.jenkins.io/doc/book/pipeline/syntax/)). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be `scripted pipeline` which will only have stages or it can also be `declarative pipeline` which may also have steps inside stages.  
+### Using Cloud-V automatic integration (beta)
 
-A simple scripted `Helloworld` pipeline in linux is as follows:
+For ease of convinience for users and eliminating time delays of manual set up, users can add their GitHub and GitLab repository in Cloud-V by just adding their repository URL on the Cloud-V page. The source code for this is open-source [here](https://github.com/10x-Engineers/Cloud-V-git-automation).
 
-```shell
+#### For GitHub
 
-node{
-    stage('*** Phase 1 ***') {
-        //Using bash commands
-        sh '''#!/bin/bash
-            echo "Hello World !\n"
-         '''
-    }
-}
-```  
+For integrating user repository with Cloud-V, there is a GitHub app which users can install in their repository. The purpose of creating the app and publishing it for users is that, GitHub app has all the permissions already set up. So, when a user installs GitHub app, the app automatically sets up all the permissions for the user's repository.
 
-Upon execution of such a pipeline, the console output can be viewed as follows.  
+Following is the procedure for installing and integrating the repository with Cloud-V github app and for creating the CI pipeline in Cloud-V dashboard.
 
-![Console Output](<../doc_images/Console output for Hello World.png>)
-
-_**Note:** This cloud-v-pipeline should remain same in all the branches and pull requests._  
+- Visit this [link](https://github.com/apps/cloud-v-github-integration) for installing GitHub app.
+- Click on "Install" button which will take you to permissions page where you can select the permissions for the repository and also choose the repository which you would like to integrate with Cloud-V app
+- Select "Only select repositories" if you would like to integrate a specific repository or number of repositories instead of integrating Cloud-V app with all the repositories.
+- Click on "Install & Authorize" which will take you to the page where you can add repository URL
+- Add repository URL and click on "Submit"
+- The next page will show you:
+  - Access Token (will be visible one-time)
+  - URL of the GitHub repository which is configured (currently, one token can be configured with one repository)
+  - The link of the CI pipeline which is created automatically in Cloud-V CI dashboard  
 
 ## Setting credentials for webhook
 
@@ -96,6 +94,30 @@ In GitHub,
 Webhook settings will look something like this:
 
 ![webhook_settings](<../doc_images/webhook-settings1.png>)  
+
+## Setting up `cloud-v-pipeline` inside github project repository
+
+Cloud-V will need a `cloud-v-pipeline` written with jenkinsfile pipeline syntax to start execution of tests/checks (see [link](https://www.jenkins.io/doc/book/pipeline/syntax/)). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be `scripted pipeline` which will only have stages or it can also be `declarative pipeline` which may also have steps inside stages.  
+
+A simple scripted `Helloworld` pipeline in linux is as follows:
+
+```shell
+
+node{
+    stage('*** Phase 1 ***') {
+        //Using bash commands
+        sh '''#!/bin/bash
+            echo "Hello World !\n"
+         '''
+    }
+}
+```  
+
+Upon execution of such a pipeline, the console output can be viewed as follows.  
+
+![Console Output](<../doc_images/Console output for Hello World.png>)
+
+_**Note:** This cloud-v-pipeline should remain same in all the branches and pull requests._  
 
 ### Configurations inside Cloud-V
 
