@@ -1,27 +1,36 @@
 # Software Developer Guide for RISC-V CI
 
-A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on Cloud-V Continuous Integration (CI).  
+A software developer is the end-user who will develop or build his/her projects on RISC-V compute instance using RISC-V CI. This guide will cover all the things a software developer needs to integrate their project with RISC-V continuous integration.
+
+There are currently two ways to integrate version control (Git) project with Cloud-V.
+
+1. Using Cloud-V automatic integration (beta)
+2. Manually integrating your project with Cloud-V
 
 ## Pre-requisites
 
 1. GitHub account.
 2. GitHub project repository with owner rights.
+3. Access to <https://dash.cloud-v.co> and <https://cloud-v.co> (visit [this](<https://cloud-v.co/contactus>) link to request the access)
 
 ## Getting an account for Cloud-V
 
-You can request Cloud-V access via [Cloud-V contact-us page](https://cloud-v.co/contactus).
+After getting access to the Cloud-V platform, use one of the following two methods to create a CI pipeline with Cloud-V.
 
-After requesting the account, Cloud-V team will have a meeting with you and will give you access to the platform accordingly.
-
-## Setting up repository with Cloud-V
-
-### Using Cloud-V automatic integration (beta)
+## 1. Using Cloud-V automatic integration (beta)
 
 For ease of convinience for users and eliminating time delays of manual set up, users can add their GitHub and GitLab repository in Cloud-V by just adding their repository URL on the Cloud-V page. The source code for this is open-source [here](https://github.com/10x-Engineers/Cloud-V-git-automation).
 
-#### For GitHub
+Currently there are support for following version control systems:
+
+1. GitHub
+2. GitLab
+
+### For GitHub
 
 For integrating user repository with Cloud-V, there is a GitHub app which users can install in their repository. The purpose of creating the app and publishing it for users is that, GitHub app has all the permissions already set up. So, when a user installs GitHub app, the app automatically sets up all the permissions for the user's repository.
+
+When a user creates a multibranch pipeline in this way, it triggers a python program which uses API calls to configure the repository in Cloud-V CI dashboard.
 
 Following is the procedure for installing and integrating the repository with Cloud-V github app and for creating the CI pipeline in Cloud-V dashboard.
 
@@ -31,11 +40,36 @@ Following is the procedure for installing and integrating the repository with Cl
 - Click on "Install & Authorize" which will take you to the page where you can add repository URL
 - Add repository URL and click on "Submit"
 - The next page will show you:
+
   - Access Token (will be visible one-time)
   - URL of the GitHub repository which is configured (currently, one token can be configured with one repository)
   - The link of the CI pipeline which is created automatically in Cloud-V CI dashboard  
 
-## Setting credentials for webhook
+  *Note: This creates a github multibranch pipeline automatically and it builds when a PR is created. If you need to check the source code or want to suggest any improvement for this, visit <https://github.com/10x-Engineers/Cloud-V-git-automation> and create an issue.*
+
+### For GitLab
+
+Following is the procedure for integrating repository automatically with GitLab:
+
+There is no app for gitlab integration with Cloud-V. So, for creating a pipeline in automated way, you will have to add gitlab access token and gitlab repository URL. Use the following steps to do so.
+
+- Generate a GitLab personal access token in your repository settings
+- Visit [this](<https://cloud-v.co/gitlab-token-ask>) link
+- Add the personal access token and URL of the GitLab repository
+- If the personal access token and the URL of the repostory is valid, you will get a link to the created pipeline
+
+## 2. Manually adding the repository in Cloud-V
+
+This is the traditional method. The flow involves:
+
+1. Getting a personal access token from GitHub settings
+2. Adding the personal access token in the Cloud-V dashboard by logging in with the provided credentials
+3. Notifying the administrator about the credentials ID which user added, so they can add the credentials in the global settings
+4. Setting up webhook in the repository settings so that it can be triggered whenever a pull request is created
+
+*NOTE: If you followed first method to integrate the repository with Cloud-V, you will not have to follow this method.*
+
+### Setting credentials for webhook
 
 Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  
 
@@ -95,33 +129,9 @@ Webhook settings will look something like this:
 
 ![webhook_settings](<../doc_images/webhook-settings1.png>)  
 
-## Setting up `cloud-v-pipeline` inside github project repository
-
-Cloud-V will need a `cloud-v-pipeline` written with jenkinsfile pipeline syntax to start execution of tests/checks (see [link](https://www.jenkins.io/doc/book/pipeline/syntax/)). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be `scripted pipeline` which will only have stages or it can also be `declarative pipeline` which may also have steps inside stages.  
-
-A simple scripted `Helloworld` pipeline in linux is as follows:
-
-```shell
-
-node{
-    stage('*** Phase 1 ***') {
-        //Using bash commands
-        sh '''#!/bin/bash
-            echo "Hello World !\n"
-         '''
-    }
-}
-```  
-
-Upon execution of such a pipeline, the console output can be viewed as follows.  
-
-![Console Output](<../doc_images/Console output for Hello World.png>)
-
-_**Note:** This cloud-v-pipeline should remain same in all the branches and pull requests._  
-
 ### Configurations inside Cloud-V
 
-_**Note:** Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured._
+***Note:** Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured.*
 
 - We will provide you with Cloud-V credentials on the provided email.
 - Login with provided credentials.
@@ -161,9 +171,9 @@ _**Note:** Currently users are not able to see or modify pipeline build configur
 
 ![Credentials6_id](../doc_images/Credentials6_id.png)  
 
-_**Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.**_
+***Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.***
 
-## Requirements for administrator
+### Requirements for administrator
 
 After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  
 
