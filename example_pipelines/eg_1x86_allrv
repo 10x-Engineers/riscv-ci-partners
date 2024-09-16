@@ -1,0 +1,62 @@
+// This pipeline file is for cross-compiling the code for RISC-V on an x86  physical hardware and then executing the compiled binary on a RISC-V physical hardware (VisionFive 2), on a RISC-V emulated compute instance (QEMU User mode) and on another RISC-V emulated compute instance  (QEMU System Linux)
+
+pipeline {
+    agent none // Means no agent specified. This means each node will specify its own agent
+    stages {
+        stage('RV Cross Compilation on x86') {
+            agent{
+                label "J-VM-1" //Selecting J-VF1-1 for this stage
+            }
+            steps {
+                sh '''#!/bin/bash
+                    
+                    # Creating a hellworld file
+                    echo '#include<stdio.h>' > helloworld.c
+                    echo 'int main(){' >> helloworld.c
+                    echo '  printf("Hello World");' >> helloworld.c
+                    echo '}' >> helloworld.c
+                    
+                    # Compiling the hello world file
+                    riscv64-unknown-linux-gnu-gcc ./helloworld.c -o helloworld.o
+                '''
+                stash includes: 'helloworld.o', name: 'helloworld.o'
+            }
+        }
+        stage('Execution on J-VF2-1'){
+            agent{
+                label "J-VF2-1" //Selecting VisionFive 2 usermode for this stage
+            }
+            steps{
+                // this brings artifacts from job named as this one, and this build
+                    unstash 'helloworld.o'
+                    sh'''#!/bin/bash
+                        ./helloworld.o
+                    '''
+            }
+        }
+        stage('Execution on QEMU User mode'){
+            agent{
+                label "J-QMU-1" //Selecting QEMU usermode for this stage
+            }
+            steps{
+                // this brings artifacts from job named as this one, and this build
+                    unstash 'helloworld.o'
+                    sh'''#!/bin/bash
+                        qemu-riscv64 -L $RISCV_SYSROOT ./helloworld.o
+                    '''
+            }
+        }
+        stage('Execution on QEMU Linux'){
+            agent{
+                label "J-QMS-1" //Selecting J-VF1-2 for this stage
+            }
+            steps{
+                // this brings artifacts from job named as this one, and this build
+                    unstash 'helloworld.o'
+                    sh'''#!/bin/bash
+                        ./helloworld.o
+                    '''
+            }
+        }
+    }
+}
