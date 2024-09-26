@@ -1,0 +1,48 @@
+// This pipeline file is for compiling the code on a RISC-V physical hardware (Kendryte K230) and then executing the compiled binary on another RISC-V physical hardware (VisionFive 1)
+
+pipeline {
+    agent none // Means no agent specified. This means each node will specify its own agent
+    stages {
+        stage('Compilation on J-K230-1') {
+            agent{
+                label "J-K230-1" //Selecting J-VF1-1 for this stage
+            }
+            steps {
+                sh '''#!/bin/bash
+                    
+                    # Creating a hellworld file
+                    echo '#include<stdio.h>' > helloworld.c
+                    echo 'int main(){' >> helloworld.c
+                    echo '  printf("%s","Hello World");' >> helloworld.c
+                    echo '}' >> helloworld.c
+                    
+                    # Compiling the hello world file
+                    gcc ./helloworld.c -o helloworld.o
+                '''
+                stash includes: 'helloworld.o', name: 'helloworld.o'
+            }
+        }
+        stage('Sleep on J-K230-1'){
+            agent{
+                label "J-K230-1" //Selecting J-VF1-2 for this stage
+            }
+            steps{
+                    sh'''#!/bin/bash
+                        sleep 120
+                    '''
+            }
+        }
+        stage('Execution on J-VF1-2'){
+            agent{
+                label "J-VF1-2" //Selecting J-VF1-2 for this stage
+            }
+            steps{
+                // this brings artifacts from job named as this one, and this build
+                    unstash 'helloworld.o'
+                    sh'''#!/bin/bash
+                        ./helloworld.o
+                    '''
+            }
+        }
+    }
+}
