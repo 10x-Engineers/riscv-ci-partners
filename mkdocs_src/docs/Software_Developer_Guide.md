@@ -2,6 +2,8 @@
 
 A software developer is the end-user who will develop or build his/her projects on RISC-V compute instance using RISC-V CI. This guide will cover all the things a software developer needs to integrate their project with RISC-V continuous integration.
 
+__Note: All the compute instances have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use__
+
 There are currently two ways to integrate version control (Git) project with Cloud-V.
 
 1. Using Cloud-V automatic integration (beta)
@@ -30,7 +32,6 @@ Currently there are support for following version control systems:
 
 For integrating user repository with Cloud-V, there is a GitHub app which users can install in their repository. The purpose of creating the app and publishing it for users is that, GitHub app has all the permissions already set up. So, when a user installs GitHub app, the app automatically sets up all the permissions for the user's repository.
 
-When a user creates a multibranch pipeline in this way, it triggers a python program which uses API calls to configure the repository in Cloud-V CI dashboard.
 
 Following is the procedure for installing and integrating the repository with Cloud-V github app and for creating the CI pipeline in Cloud-V dashboard.
 
@@ -43,7 +44,19 @@ Following is the procedure for installing and integrating the repository with Cl
 
   - Access Token (will be visible one-time)
   - URL of the GitHub repository which is configured (currently, one token can be configured with one repository)
-  - The link of the CI pipeline which is created automatically in Cloud-V CI dashboard  
+  - The link of the CI pipeline which is created automatically in Cloud-V CI dashboard
+
+- Now go to the repository settings in the following manner and create a webhook for trigger with pull requests and push to branches
+  
+  - `Settings > Webhooks > Add webhook`
+
+- Fill the webhook settings in following manner
+  
+  - `Payload URL: https://dash.cloud-v.co/github-webhook/`
+  - `Content Type: application/json`
+  - `Enable SSL Verification`
+  - `Which events would you like to trigger this webhook?: Just the push event`
+  - Leave other fields as is
 
   *Note: This creates a github multibranch pipeline automatically and it builds when a PR is created. If you need to check the source code or want to suggest any improvement for this, visit <https://github.com/10x-Engineers/Cloud-V-git-automation> and create an issue.*
 
