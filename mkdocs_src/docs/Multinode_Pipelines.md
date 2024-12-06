@@ -7,7 +7,7 @@ One can create multinode pipelines in jenkins freestyle pipeline job as well as 
 
 For the sake of this documentation, two nodes are used: `container-node` and `container-node2`
 
-### Label
+## Label
 
 In jenkins, label specifies where the job or a stage of the job can run. In jenkins, a label can be explicitly added in the node's configuration so that each time that label is mentioned in a jenkins job, that specific node is used for building the job, or the name of the node can also be used as label in case if no label is added in the node.
 

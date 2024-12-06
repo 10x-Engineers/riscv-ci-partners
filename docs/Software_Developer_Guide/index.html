@@ -45,37 +45,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Setting up CI</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Setting up CI</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#getting-an-account-for-cloud-v">Getting an account for Cloud-V</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-up-repository-with-cloud-v">Setting up repository with Cloud-V</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1-using-cloud-v-automatic-integration-beta">1. Using Cloud-V automatic integration (beta)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#using-cloud-v-automatic-integration-beta">Using Cloud-V automatic integration (beta)</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#for-github">For GitHub</a>
+    <li class="toctree-l3"><a class="reference internal" href="#for-github">For GitHub</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#for-gitlab">For GitLab</a>
     </li>
         </ul>
     </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2-manually-adding-the-repository-in-cloud-v">2. Manually adding the repository in Cloud-V</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#obtaining-github-access-token-for-repository">Obtaining github access token for repository</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-repository-webhook">Configuring repository webhook</a>
     </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setting-up-cloud-v-pipeline-inside-github-project-repository">Setting up cloud-v-pipeline inside github project repository</a>
-        <ul>
     <li class="toctree-l3"><a class="reference internal" href="#configurations-inside-cloud-v">Configurations inside Cloud-V</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -134,19 +130,29 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="software-developer-guide-for-risc-v-ci">Software Developer Guide for RISC-V CI</h1>
-<p>A software developer is the end-user who will develop or build his/her projects on RISC-V CI infrastructure. This guide will cover all the things a software developer needs to create a project based on Cloud-V Continuous Integration (CI).  </p>
+<p>A software developer is the end-user who will develop or build his/her projects on RISC-V compute instance using RISC-V CI. This guide will cover all the things a software developer needs to integrate their project with RISC-V continuous integration.</p>
+<p><strong>Note: All the compute instances have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use</strong></p>
+<p>There are currently two ways to integrate version control (Git) project with Cloud-V.</p>
+<ol>
+<li>Using Cloud-V automatic integration (beta)</li>
+<li>Manually integrating your project with Cloud-V</li>
+</ol>
 <h2 id="pre-requisites">Pre-requisites</h2>
 <ol>
 <li>GitHub account.</li>
 <li>GitHub project repository with owner rights.</li>
+<li>Access to <a href="https://dash.cloud-v.co">https://dash.cloud-v.co</a> and <a href="https://cloud-v.co">https://cloud-v.co</a> (visit <a href="https://cloud-v.co/contactus">this</a> link to request the access)</li>
 </ol>
 <h2 id="getting-an-account-for-cloud-v">Getting an account for Cloud-V</h2>
-<p>You can request Cloud-V access via <a href="https://cloud-v.co/contactus">Cloud-V contact-us page</a>.</p>
-<p>After requesting the account, Cloud-V team will have a meeting with you and will give you access to the platform accordingly.</p>
-<h2 id="setting-up-repository-with-cloud-v">Setting up repository with Cloud-V</h2>
-<h3 id="using-cloud-v-automatic-integration-beta">Using Cloud-V automatic integration (beta)</h3>
+<p>After getting access to the Cloud-V platform, use one of the following two methods to create a CI pipeline with Cloud-V.</p>
+<h2 id="1-using-cloud-v-automatic-integration-beta">1. Using Cloud-V automatic integration (beta)</h2>
 <p>For ease of convinience for users and eliminating time delays of manual set up, users can add their GitHub and GitLab repository in Cloud-V by just adding their repository URL on the Cloud-V page. The source code for this is open-source <a href="https://github.com/10x-Engineers/Cloud-V-git-automation">here</a>.</p>
-<h4 id="for-github">For GitHub</h4>
+<p>Currently there are support for following version control systems:</p>
+<ol>
+<li>GitHub</li>
+<li>GitLab</li>
+</ol>
+<h3 id="for-github">For GitHub</h3>
 <p>For integrating user repository with Cloud-V, there is a GitHub app which users can install in their repository. The purpose of creating the app and publishing it for users is that, GitHub app has all the permissions already set up. So, when a user installs GitHub app, the app automatically sets up all the permissions for the user's repository.</p>
 <p>Following is the procedure for installing and integrating the repository with Cloud-V github app and for creating the CI pipeline in Cloud-V dashboard.</p>
 <ul>
@@ -155,12 +161,53 @@
 <li>Select "Only select repositories" if you would like to integrate a specific repository or number of repositories instead of integrating Cloud-V app with all the repositories.</li>
 <li>Click on "Install &amp; Authorize" which will take you to the page where you can add repository URL</li>
 <li>Add repository URL and click on "Submit"</li>
-<li>The next page will show you:</li>
-<li>Access Token (will be visible one-time)</li>
+<li>
+<p>The next page will show you:</p>
+</li>
+<li>
+<p>Access Token (will be visible one-time)</p>
+</li>
 <li>URL of the GitHub repository which is configured (currently, one token can be configured with one repository)</li>
-<li>The link of the CI pipeline which is created automatically in Cloud-V CI dashboard  </li>
+<li>
+<p>The link of the CI pipeline which is created automatically in Cloud-V CI dashboard</p>
+</li>
+<li>
+<p>Now go to the repository settings in the following manner and create a webhook for trigger with pull requests and push to branches</p>
+</li>
+<li>
+<p><code>Settings &gt; Webhooks &gt; Add webhook</code></p>
+</li>
+<li>
+<p>Fill the webhook settings in following manner</p>
+</li>
+<li>
+<p><code>Payload URL: https://dash.cloud-v.co/github-webhook/</code></p>
+</li>
+<li><code>Content Type: application/json</code></li>
+<li><code>Enable SSL Verification</code></li>
+<li><code>Which events would you like to trigger this webhook?: Just the push event</code></li>
+<li>Leave other fields as is</li>
 </ul>
-<h2 id="setting-credentials-for-webhook">Setting credentials for webhook</h2>
+<p><em>Note: This creates a github multibranch pipeline automatically and it builds when a PR is created. If you need to check the source code or want to suggest any improvement for this, visit <a href="https://github.com/10x-Engineers/Cloud-V-git-automation">https://github.com/10x-Engineers/Cloud-V-git-automation</a> and create an issue.</em></p>
+<h3 id="for-gitlab">For GitLab</h3>
+<p>Following is the procedure for integrating repository automatically with GitLab:</p>
+<p>There is no app for gitlab integration with Cloud-V. So, for creating a pipeline in automated way, you will have to add gitlab access token and gitlab repository URL. Use the following steps to do so.</p>
+<ul>
+<li>Generate a GitLab personal access token in your repository settings</li>
+<li>Visit <a href="https://cloud-v.co/gitlab-token-ask">this</a> link</li>
+<li>Add the personal access token and URL of the GitLab repository</li>
+<li>If the personal access token and the URL of the repostory is valid, you will get a link to the created pipeline</li>
+</ul>
+<h2 id="2-manually-adding-the-repository-in-cloud-v">2. Manually adding the repository in Cloud-V</h2>
+<p>This is the traditional method. The flow involves:</p>
+<ol>
+<li>Getting a personal access token from GitHub settings</li>
+<li>Adding the personal access token in the Cloud-V dashboard by logging in with the provided credentials</li>
+<li>Notifying the administrator about the credentials ID which user added, so they can add the credentials in the global settings</li>
+<li>Setting up webhook in the repository settings so that it can be triggered whenever a pull request is created</li>
+</ol>
+<p><em>NOTE: If you followed first method to integrate the repository with Cloud-V, you will not have to follow this method.</em></p>
+<h3 id="setting-credentials-for-webhook">Setting credentials for webhook</h3>
 <p>Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  </p>
 <p>This process requires access token of the repository <strong>CREATED BY OWNER OF REPOSITORY</strong> on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.</p>
 <h3 id="obtaining-github-access-token-for-repository">Obtaining github access token for repository</h3>
@@ -208,22 +255,6 @@
 </ul>
 <p>Webhook settings will look something like this:</p>
 <p><img alt="webhook_settings" src="../doc_images/webhook-settings1.png" />  </p>
-<h2 id="setting-up-cloud-v-pipeline-inside-github-project-repository">Setting up <code>cloud-v-pipeline</code> inside github project repository</h2>
-<p>Cloud-V will need a <code>cloud-v-pipeline</code> written with jenkinsfile pipeline syntax to start execution of tests/checks (see <a href="https://www.jenkins.io/doc/book/pipeline/syntax/">link</a>). This pipeline will contain all the stages (and may be steps) of a CI/CD pipeline. This pipeline can be <code>scripted pipeline</code> which will only have stages or it can also be <code>declarative pipeline</code> which may also have steps inside stages.  </p>
-<p>A simple scripted <code>Helloworld</code> pipeline in linux is as follows:</p>
-<pre><code class="language-shell">
-node{
-    stage('*** Phase 1 ***') {
-        //Using bash commands
-        sh '''#!/bin/bash
-            echo &quot;Hello World !\n&quot;
-         '''
-    }
-}
-</code></pre>
-<p>Upon execution of such a pipeline, the console output can be viewed as follows.  </p>
-<p><img alt="Console Output" src="../doc_images/Console output for Hello World.png" /></p>
-<p><em><strong>Note:</strong> This cloud-v-pipeline should remain same in all the branches and pull requests.</em>  </p>
 <h3 id="configurations-inside-cloud-v">Configurations inside Cloud-V</h3>
 <p><em><strong>Note:</strong> Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured.</em></p>
 <ul>
@@ -264,8 +295,8 @@ node{
 <li>Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the login credentials for Cloud-V. It is important that administrator knows the credentials ID because they will use it in the job build configurations.  </li>
 </ul>
 <p><img alt="Credentials6_id" src="../doc_images/Credentials6_id.png" />  </p>
-<p><em><strong>Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.</strong></em></p>
-<h2 id="requirements-for-administrator">Requirements for administrator</h2>
+<p><strong><em>Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.</em></strong></p>
+<h3 id="requirements-for-administrator">Requirements for administrator</h3>
 <p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
 <ul>
 <li>Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.</li>
