@@ -2,7 +2,7 @@
 
 A software developer is the end-user who will develop or build his/her projects on RISC-V compute instance using RISC-V CI. This guide will cover all the things a software developer needs to integrate their project with RISC-V continuous integration.
 
-__Note: All the compute instances have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use__
+__Note: All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use__
 
 There are currently two ways to integrate version control (Git) project with Cloud-V.
 

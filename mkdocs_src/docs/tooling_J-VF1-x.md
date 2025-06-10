@@ -2,7 +2,7 @@
 
 This compute instance is Starfive's VisionFive 1 board and it has available packages ONLY for RISC-V architecture.  
 
-**Operating System:** Ubuntu 23.04 (Lunar Lobster)
+**Operating System:** Ubuntu 24.04 (Noble Numbat)
 
 | Tool | Version | Installed from |
 | ---- | ------- | -------------- |
