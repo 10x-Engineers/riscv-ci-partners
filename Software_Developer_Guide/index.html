@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Setting up CI - Cloud-V Docs</title>
+    <title>Software Developer Guide for RISC-V CI - Cloud-V Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Setting up CI";
+        var mkdocs_page_name = "Software Developer Guide for RISC-V CI";
         var mkdocs_page_input_path = "Software_Developer_Guide.md";
         var mkdocs_page_url = null;
       </script>
@@ -44,36 +44,8 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Setting up CI</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#getting-an-account-for-cloud-v">Getting an account for Cloud-V</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-using-cloud-v-automatic-integration-beta">1. Using Cloud-V automatic integration (beta)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#for-github">For GitHub</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#for-gitlab">For GitLab</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-manually-adding-the-repository-in-cloud-v">2. Manually adding the repository in Cloud-V</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#setting-credentials-for-webhook">Setting credentials for webhook</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#obtaining-github-access-token-for-repository">Obtaining github access token for repository</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configuring-repository-webhook">Configuring repository webhook</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configurations-inside-cloud-v">Configurations inside Cloud-V</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#requirements-for-administrator">Requirements for administrator</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../cicd.md">Setting up CI on RISC-V</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sandboxing/">Setting up SSH/Sandboxing</a>
                   </li>
@@ -119,8 +91,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Getting Started</li>
-      <li class="breadcrumb-item active">Setting up CI</li>
+      <li class="breadcrumb-item active">Software Developer Guide for RISC-V CI</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -131,7 +102,7 @@
               
                 <h1 id="software-developer-guide-for-risc-v-ci">Software Developer Guide for RISC-V CI</h1>
 <p>A software developer is the end-user who will develop or build his/her projects on RISC-V compute instance using RISC-V CI. This guide will cover all the things a software developer needs to integrate their project with RISC-V continuous integration.</p>
-<p><strong>Note: All the compute instances have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use</strong></p>
+<p><strong>Note: All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use</strong></p>
 <p>There are currently two ways to integrate version control (Git) project with Cloud-V.</p>
 <ol>
 <li>Using Cloud-V automatic integration (beta)</li>
@@ -308,10 +279,6 @@
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../sandboxing/" class="btn btn-neutral float-right" title="Setting up SSH/Sandboxing">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -333,10 +300,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../sandboxing/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
