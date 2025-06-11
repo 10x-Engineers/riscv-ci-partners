@@ -2,10 +2,12 @@ site_name: Cloud-V Docs
 nav:
   - Home: index.md
   - Getting Started:
-      - Setting up CI on RISC-V: cicd.md
+      - Setting up CI/CD on RISC-V: 
+        - CI/CD on RISC-V: cicd.md
+        - Registering RISC-V as GitLab runner: setting_up_gitlab_runner.md
       - Setting up SSH/Sandboxing: sandboxing.md
   - Creating a CI pipeline file: Creating_jenkinsfile.md
-  - Compute Instance Specifications: runner_specs.md
+  - Compute Instance Specifications: compute_instances.md
   - Tooling on Compute Instances:
       - Using Environment Modules: Tooling.md
       - J-x86-1 or J-QMU-1: tooling_J-QMU-1J-VM-1.md
@@ -44,4 +46,6 @@ nav:
 #     - Usage monitoring:
 #         - Setting up Grafana and Prometheus: Usage_Monitoring/Prometheus_Grafana.md
 #         - Integrating Prometheus with Grafana: Usage_Monitoring/Integrating_prometheus_grafana.md
-theme: readthedocs
+theme: material
+extra_css:
+  - stylesheets/extra.css

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Setting up CI on RISC-V - Cloud-V Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setting up CI on RISC-V";
+        var mkdocs_page_input_path = "cicd.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cloud-V Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Setting up CI on RISC-V</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#supported-cicd-on-cloud-v">Supported CI/CD on Cloud-V</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#supported-compute-machine-types">Supported compute machine types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#why-do-we-even-need-qemu">Why do we even need QEMU</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sandboxing/">Setting up SSH/Sandboxing</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a CI pipeline file</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runner_specs/">Compute Instance Specifications</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tooling on Compute Instances</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Using Environment Modules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMU-1J-VM-1/">J-x86-1 or J-QMU-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMS-1/">J-QMS-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-VF1-x/">J-VF1-x</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-VF2-x/">J-VF2-x</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-HF-1/">J-HF-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-BPF3-x/">J-BPF3-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-K230-1/">J-K230-1</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cloud-V Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Setting up CI on RISC-V</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="running-cicd-pipelines-on-risc-v-with-cloud-v">Running CI/CD pipelines on RISC-V with Cloud-V</h1>
+<p>This document describes how someone can integrate their projects on RISC-V compute machine.</p>
+<h2 id="supported-cicd-on-cloud-v">Supported CI/CD on Cloud-V</h2>
+<p>There is a <a href="https://cloud-v.co/risc-v-ci/cd">dedicated page</a> on Cloud-V website where you can check which version control platforms or CI/CD services are supported by Cloud-V with RISC-V compute machines. At present, developers can use these compute machines free of cost. </p>
+<p>Services which are labeled "Coming Soon!" are in progress and will be added soon.</p>
+<h2 id="supported-compute-machine-types">Supported compute machine types</h2>
+<p>Cloud-V offers vendor-agnostic physical compute machines as well as emulated compute instances. </p>
+<p>Physical compute machines are the SBCs, desktop computers or laptops with RISC-V SoCs in them while the emulated compute instances are running on the x86 host machines. The emulated RISC-V machines use <a href="https://www.qemu.org/">QEMU</a>.</p>
+<h3 id="why-do-we-even-need-qemu">Why do we even need QEMU</h3>
+<p>Every RISC-V SoC in the market supports only a limited set of extensions. So developers don't get flexibility to test the software on the desired ISA string. With QEMU, developers can have an exhaustive list of RISC-V extensions (which do not conflict with each other).</p>
+<p>One other advantage is that if the x86 host machine (which is running the QEMU) has good computing power (say 128 or 256 cores), then it can be leveraged by QEMU to provide a far better computing power than what can be provided by RISC-V physical boards available in the market at present.</p>
+<p>Check &lt;&gt; for ISA extensions running in QEMU.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sandboxing/" class="btn btn-neutral float-right" title="Setting up SSH/Sandboxing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sandboxing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,10 +1,10 @@
-# Software Developer Guide for RISC-V CI
+# Setting up CI/CD with Jenkins
 
-A software developer is the end-user who will develop or build his/her projects on RISC-V compute instance using RISC-V CI. This guide will cover all the things a software developer needs to integrate their project with RISC-V continuous integration.
+This document describes how one can get access to Jenkins and add their project in Jenkins for CI/CD. The Jenkins server is currently hosted at [https://dash.cloud-v.co](https://dash.cloud-v.co)
 
-__Note: All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use__
+All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use
 
-There are currently two ways to integrate version control (Git) project with Cloud-V.
+There are currently two ways to integrate projects with Jenkins on Cloud-V.
 
 1. Using Cloud-V automatic integration (beta)
 2. Manually integrating your project with Cloud-V
@@ -15,15 +15,17 @@ There are currently two ways to integrate version control (Git) project with Clo
 2. GitHub project repository with owner rights.
 3. Access to <https://dash.cloud-v.co> and <https://cloud-v.co> (visit [this](<https://cloud-v.co/contactus>) link to request the access)
 
-## Getting an account for Cloud-V
+## Getting a Jenkins account on Cloud-V
 
-After getting access to the Cloud-V platform, use one of the following two methods to create a CI pipeline with Cloud-V.
+After getting access to the Jenkins server, use one of the following two methods to create a CI pipeline with Cloud-V.
 
 ## 1. Using Cloud-V automatic integration (beta)
 
-For ease of convinience for users and eliminating time delays of manual set up, users can add their GitHub and GitLab repository in Cloud-V by just adding their repository URL on the Cloud-V page. The source code for this is open-source [here](https://github.com/10x-Engineers/Cloud-V-git-automation).
+Jenkins server in Cloud-V 
 
-Currently there are support for following version control systems:
+For ease of convenience for users and eliminating time delays of manual set up, users can add their GitHub and GitLab repository in Cloud-V by just adding their repository URL on the Cloud-V page. The source code for this is open-source [here](https://github.com/10x-Engineers/Cloud-V-git-automation).
+
+Currently, there are support for following version control systems:
 
 1. GitHub
 2. GitLab
