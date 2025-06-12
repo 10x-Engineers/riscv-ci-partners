@@ -1,5 +1,7 @@
 # Using SSH access on RISC-V instance
 
+Fill [this](cloud-v.co/contactus) form to request a RISC-V device from Cloud-V for SSH. List of available devices and their specifications can be found [here](compute_instances.md)
+
 After getting SSH command and credentials from Cloud-V administrator, users can log in to RISC-V instance and start development like any Linux machine without GUI.
 
 ## Setting up VScodium with RISC-V

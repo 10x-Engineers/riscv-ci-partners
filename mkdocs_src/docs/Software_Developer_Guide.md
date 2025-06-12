@@ -2,7 +2,7 @@
 
 This document describes how one can get access to Jenkins and add their project in Jenkins for CI/CD. The Jenkins server is currently hosted at [https://dash.cloud-v.co](https://dash.cloud-v.co)
 
-All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use
+All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use.
 
 There are currently two ways to integrate projects with Jenkins on Cloud-V.
 
@@ -11,9 +11,9 @@ There are currently two ways to integrate projects with Jenkins on Cloud-V.
 
 ## Pre-requisites
 
-1. GitHub account.
-2. GitHub project repository with owner rights.
-3. Access to <https://dash.cloud-v.co> and <https://cloud-v.co> (visit [this](<https://cloud-v.co/contactus>) link to request the access)
+1. GitHub/GitLab account.
+2. GitHub/GitLab project repository with owner rights.
+3. Access to <https://dash.cloud-v.co> and <https://cloud-v.co> (fill [this](<https://cloud-v.co/contactus>) form to request the access)
 
 ## Getting a Jenkins account on Cloud-V
 

@@ -1,11 +1,11 @@
-# Creating a Cloud-V CI Pipeline file
+# Creating a Jenkins CI Pipeline file
 
-## What is a Cloud-V CI Pipeline file
+## What is a Jenkins CI Pipeline file
 
-A `cloud-v-pipeline` file is a Continuous Integration (CI) jenkins pipeline script which is written in Groovy. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Groovy itself.  
+A `jenkinsfile` (also known as `cloud-v-pipeline` file) is a Continuous Integration (CI) Jenkins pipeline script which is written in Groovy. It describes various stages (and possibly steps) which are executed in the defined pattern. These stages can be written in bash or they can be written in Groovy itself.  
 Mainly there can be two types of Cloud-V pipeline files are of two types:  
 
-1. **Scripted:** Only contains stages
+1. **Scripted:** Contains only stages
 2. **Declarative:** Contains stages as well as steps (more feature-rich and recommended)
 
  This documentation will cover how to create a `cloud-v-pipeline` file with bash script inside it and run it on various compute instances (which are known as `Nodes` in jenkins).

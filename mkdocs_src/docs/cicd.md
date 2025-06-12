@@ -15,11 +15,13 @@ Cloud-V offers vendor-agnostic physical compute machines as well as emulated com
 
 Physical compute machines are the SBCs, desktop computers or laptops with RISC-V SoCs in them while the emulated compute instances are running on the x86 host machines. The emulated RISC-V machines use [QEMU](https://www.qemu.org/).
 
+See [Compute Instances in Cloud-V](compute_instances.md) for a complete list of devices available in cloud.
+
 ### Why do we even need QEMU
 
 Every RISC-V SoC in the market supports only a limited set of extensions. So developers don't get flexibility to test the software on the desired ISA string. With QEMU, developers can have an exhaustive list of RISC-V extensions (which do not conflict with each other).
 
 One other advantage is that if the x86 host machine (which is running the QEMU) has good computing power (say 128 or 256 cores), then it can be leveraged by QEMU to provide a far better computing power than what can be provided by RISC-V physical boards available in the market at present.
 
-Check [QEMU Specifications](http://localhost:8000/runner_specs/#qemu-specifications) section for specifications QEMU system running in Cloud-V.
+Check [QEMU Specifications](compute_instances.md#qemu-system-riscv64) section for specifications QEMU system running in Cloud-V.
 

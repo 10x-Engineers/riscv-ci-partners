@@ -1,8 +1,6 @@
-# Tools on `J-HF-1` node
+# Tools on SiFive HiFive Unleashed compute machine
 
-This compute instance is Sifive's HiFive Unleased board and it has available packages ONLY for RISC-V architecture.  
-
-**Operating System:** Ubuntu 20.04.6 (Focal Fossa)
+**Operating System:** Ubuntu 24.04 LTS
 
 | Tool | Version | Installed from |
 | ---- | ------- | -------------- |
