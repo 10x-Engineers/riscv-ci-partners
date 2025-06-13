@@ -446,6 +446,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#user-access-rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Access Rights
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-up-vscodium-with-risc-v" class="md-nav__link">
     <span class="md-ellipsis">
       Setting up VScodium with RISC-V
@@ -537,81 +546,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../Tooling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Using Environment Modules
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tooling_J-QMU-1J-VM-1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    QEMU User Mode
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tooling_J-QMS-1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    QEMU System Linux
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../tooling_sf1-x/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    VisionFive 1
+    VisionFive 1 tooling
     
   </span>
   
@@ -634,7 +574,7 @@
   
   
   <span class="md-ellipsis">
-    VisionFive 2
+    VisionFive 2 tooling
     
   </span>
   
@@ -657,7 +597,99 @@
   
   
   <span class="md-ellipsis">
-    SiFive HiFive Unleashed
+    SiFive HiFive Unleashed tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_BPF3-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Banana Pi F3 tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_jupiter-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Milk-V Jupiter tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_pioneer-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Milk-V Pioneer Box tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_J-QMS-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QEMU System Linux tooling
     
   </span>
   
@@ -702,6 +734,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#user-access-rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Access Rights
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-up-vscodium-with-risc-v" class="md-nav__link">
     <span class="md-ellipsis">
       Setting up VScodium with RISC-V
@@ -729,6 +770,11 @@
 <h1 id="using-ssh-access-on-risc-v-instance">Using SSH access on RISC-V instance</h1>
 <p>Fill <a href="cloud-v.co/contactus">this</a> form to request a RISC-V device from Cloud-V for SSH. List of available devices and their specifications can be found <a href="../compute_instances/">here</a></p>
 <p>After getting SSH command and credentials from Cloud-V administrator, users can log in to RISC-V instance and start development like any Linux machine without GUI.</p>
+<h2 id="user-access-rights">User Access Rights</h2>
+<p>In the current version of the Cloud-V platform, users are provided with unprivileged SSH access, meaning <code>sudo</code> privileges are not available. However, users are welcome and encouraged to build software from source within their environment.</p>
+<p>A list of pre-installed tools is available on the tooling page for each device. For example, tools installed on the VisionFive 1 can be found on the <a href="../tooling_sf1-x/">VisionFive 1 Tooling</a> page.</p>
+<p>If additional tools are needed, users may request their installation by contacting the system administrator.</p>
+<p><em>Privileged access will be added soon in an upcoming version of the platform.</em></p>
 <h2 id="setting-up-vscodium-with-risc-v">Setting up VScodium with RISC-V</h2>
 <p>It may not be convinient for users to use terminal editors (like Vim and Nano) if they are not accustomed.</p>
 <p>At present VScode remote extension does not have support for RISC-V architecture but VScodium supports it.</p>
