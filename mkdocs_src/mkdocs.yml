@@ -10,12 +10,15 @@ nav:
       - Setting up SSH on RISC-V: sandboxing.md
   - Compute Instance Specifications: compute_instances.md
   - Tooling on Compute Instances:
-      - Using Environment Modules: Tooling.md
-      - QEMU User Mode: tooling_J-QMU-1J-VM-1.md
-      - QEMU System Linux: tooling_J-QMS-1.md
-      - VisionFive 1: tooling_sf1-x.md
-      - VisionFive 2: tooling_sf2-x.md
-      - SiFive HiFive Unleashed: tooling_unleashed1-1.md
+      # - Using Environment Modules: Tooling.md
+      # - QEMU User Mode: tooling_J-QMU-1J-VM-1.md
+      - VisionFive 1 tooling: tooling_sf1-x.md
+      - VisionFive 2 tooling: tooling_sf2-x.md
+      - SiFive HiFive Unleashed tooling: tooling_unleashed1-1.md
+      - Banana Pi F3 tooling: tooling_BPF3-x.md
+      - Milk-V Jupiter tooling: tooling_jupiter-x.md
+      - Milk-V Pioneer Box tooling: tooling_pioneer-x.md
+      - QEMU System Linux tooling: tooling_J-QMS-1.md
 
 
 theme: material

@@ -8,7 +8,7 @@ Each instance type shown below may represent one or more instances in actual dep
 <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
 
 <div style="flex: 2;line-height: 1.2;">
-  <h3>Compute Instance:StarFive VisionFive 1</h3>
+  <h3>Compute Instance: StarFive VisionFive 1</h3>
   <p><strong>Architecture:</strong> riscv64</p>
   <p><strong>Clock Frequency (per core):</strong> 1.2GHz</p>
   <p><strong>Core Count:</strong> 2</p>
@@ -161,6 +161,7 @@ Each instance type shown below may represent one or more instances in actual dep
 <div style="flex: 2;line-height: 1.2;">
   <h3>Compute Instance: QEMU System riscv64</h3>
   <p><strong>Host Architecture:</strong> x86</p>
+  <p><strong>Host CPU:</strong> Intel(R) Xeon(R) Gold 6138</p>
   <p><strong>Emulated Architecture:</strong> riscv64</p>
   <p><strong>Clock Frequency (host):</strong> 2 GHz</p>
   <p><strong>Core Count:</strong> 12</p>
