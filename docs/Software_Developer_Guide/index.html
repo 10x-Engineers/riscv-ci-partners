@@ -1,0 +1,1167 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../setting_up_gitlab_runner/">
+      
+      
+        <link rel="next" href="../Creating_jenkinsfile/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Getting access to Jenkins on Cloud-V - Cloud-V Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setting-up-cicd-with-jenkins" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cloud-V Docs" class="md-header__button md-logo" aria-label="Cloud-V Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud-V Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting access to Jenkins on Cloud-V
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cloud-V Docs" class="md-nav__button md-logo" aria-label="Cloud-V Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cloud-V Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setting up CI/CD on RISC-V
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Setting up CI/CD on RISC-V
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD on RISC-V
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting_up_gitlab_runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registering RISC-V as GitLab runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Getting access to Jenkins on Cloud-V
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting access to Jenkins on Cloud-V
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-a-jenkins-account-on-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting a Jenkins account on Cloud-V
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-using-cloud-v-automatic-integration-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Using Cloud-V automatic integration (beta)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Using Cloud-V automatic integration (beta)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      For GitHub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      For GitLab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-manually-adding-the-repository-in-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manually adding the repository in Cloud-V
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Manually adding the repository in Cloud-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-credentials-for-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting credentials for webhook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-github-access-token-for-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtaining github access token for repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-repository-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring repository webhook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurations-inside-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations inside Cloud-V
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirements-for-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements for administrator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Creating_jenkinsfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a Jenkinsfile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sandboxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up SSH on RISC-V
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compute_instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compute Instance Specifications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tooling on Compute Instances
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tooling on Compute Instances
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Environment Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_J-QMU-1J-VM-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QEMU User Mode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_J-QMS-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QEMU System Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_sf1-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VisionFive 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_sf2-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VisionFive 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_unleashed1-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SiFive HiFive Unleashed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-a-jenkins-account-on-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting a Jenkins account on Cloud-V
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-using-cloud-v-automatic-integration-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Using Cloud-V automatic integration (beta)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Using Cloud-V automatic integration (beta)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      For GitHub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      For GitLab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-manually-adding-the-repository-in-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manually adding the repository in Cloud-V
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Manually adding the repository in Cloud-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-credentials-for-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting credentials for webhook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-github-access-token-for-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtaining github access token for repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-repository-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring repository webhook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurations-inside-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations inside Cloud-V
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirements-for-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements for administrator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="setting-up-cicd-with-jenkins">Setting up CI/CD with Jenkins</h1>
+<p>This document describes how one can get access to Jenkins and add their project in Jenkins for CI/CD. The Jenkins server is currently hosted at <a href="https://dash.cloud-v.co">https://dash.cloud-v.co</a></p>
+<p>All the compute instances in Jenkins have restrictions regarding which jobs will run on the compute instance. The administrator has to allow you for using specific instance. Be sure to contact administrator and tell them which instance you want to use.</p>
+<p>There are currently two ways to integrate projects with Jenkins on Cloud-V.</p>
+<ol>
+<li>Using Cloud-V automatic integration (beta)</li>
+<li>Manually integrating your project with Cloud-V</li>
+</ol>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<ol>
+<li>GitHub/GitLab account.</li>
+<li>GitHub/GitLab project repository with owner rights.</li>
+<li>Access to <a href="https://dash.cloud-v.co">https://dash.cloud-v.co</a> and <a href="https://cloud-v.co">https://cloud-v.co</a> (fill <a href="https://cloud-v.co/contactus">this</a> form to request the access)</li>
+</ol>
+<h2 id="getting-a-jenkins-account-on-cloud-v">Getting a Jenkins account on Cloud-V</h2>
+<p>After getting access to the Jenkins server, use one of the following two methods to create a CI pipeline with Cloud-V.</p>
+<h2 id="1-using-cloud-v-automatic-integration-beta">1. Using Cloud-V automatic integration (beta)</h2>
+<p>Jenkins server in Cloud-V </p>
+<p>For ease of convenience for users and eliminating time delays of manual set up, users can add their GitHub and GitLab repository in Cloud-V by just adding their repository URL on the Cloud-V page. The source code for this is open-source <a href="https://github.com/10x-Engineers/Cloud-V-git-automation">here</a>.</p>
+<p>Currently, there are support for following version control systems:</p>
+<ol>
+<li>GitHub</li>
+<li>GitLab</li>
+</ol>
+<h3 id="for-github">For GitHub</h3>
+<p>For integrating user repository with Cloud-V, there is a GitHub app which users can install in their repository. The purpose of creating the app and publishing it for users is that, GitHub app has all the permissions already set up. So, when a user installs GitHub app, the app automatically sets up all the permissions for the user's repository.</p>
+<p>Following is the procedure for installing and integrating the repository with Cloud-V github app and for creating the CI pipeline in Cloud-V dashboard.</p>
+<ul>
+<li>Visit this <a href="https://github.com/apps/cloud-v-github-integration">link</a> for installing GitHub app.</li>
+<li>Click on "Install" button which will take you to permissions page where you can select the permissions for the repository and also choose the repository which you would like to integrate with Cloud-V app</li>
+<li>Select "Only select repositories" if you would like to integrate a specific repository or number of repositories instead of integrating Cloud-V app with all the repositories.</li>
+<li>Click on "Install &amp; Authorize" which will take you to the page where you can add repository URL</li>
+<li>Add repository URL and click on "Submit"</li>
+<li>
+<p>The next page will show you:</p>
+</li>
+<li>
+<p>Access Token (will be visible one-time)</p>
+</li>
+<li>URL of the GitHub repository which is configured (currently, one token can be configured with one repository)</li>
+<li>
+<p>The link of the CI pipeline which is created automatically in Cloud-V CI dashboard</p>
+</li>
+<li>
+<p>Now go to the repository settings in the following manner and create a webhook for trigger with pull requests and push to branches</p>
+</li>
+<li>
+<p><code>Settings &gt; Webhooks &gt; Add webhook</code></p>
+</li>
+<li>
+<p>Fill the webhook settings in following manner</p>
+</li>
+<li>
+<p><code>Payload URL: https://dash.cloud-v.co/github-webhook/</code></p>
+</li>
+<li><code>Content Type: application/json</code></li>
+<li><code>Enable SSL Verification</code></li>
+<li><code>Which events would you like to trigger this webhook?: Just the push event</code></li>
+<li>Leave other fields as is</li>
+</ul>
+<p><em>Note: This creates a github multibranch pipeline automatically and it builds when a PR is created. If you need to check the source code or want to suggest any improvement for this, visit <a href="https://github.com/10x-Engineers/Cloud-V-git-automation">https://github.com/10x-Engineers/Cloud-V-git-automation</a> and create an issue.</em></p>
+<h3 id="for-gitlab">For GitLab</h3>
+<p>Following is the procedure for integrating repository automatically with GitLab:</p>
+<p>There is no app for gitlab integration with Cloud-V. So, for creating a pipeline in automated way, you will have to add gitlab access token and gitlab repository URL. Use the following steps to do so.</p>
+<ul>
+<li>Generate a GitLab personal access token in your repository settings</li>
+<li>Visit <a href="https://cloud-v.co/gitlab-token-ask">this</a> link</li>
+<li>Add the personal access token and URL of the GitLab repository</li>
+<li>If the personal access token and the URL of the repostory is valid, you will get a link to the created pipeline</li>
+</ul>
+<h2 id="2-manually-adding-the-repository-in-cloud-v">2. Manually adding the repository in Cloud-V</h2>
+<p>This is the traditional method. The flow involves:</p>
+<ol>
+<li>Getting a personal access token from GitHub settings</li>
+<li>Adding the personal access token in the Cloud-V dashboard by logging in with the provided credentials</li>
+<li>Notifying the administrator about the credentials ID which user added, so they can add the credentials in the global settings</li>
+<li>Setting up webhook in the repository settings so that it can be triggered whenever a pull request is created</li>
+</ol>
+<p><em>NOTE: If you followed first method to integrate the repository with Cloud-V, you will not have to follow this method.</em></p>
+<h3 id="setting-credentials-for-webhook">Setting credentials for webhook</h3>
+<p>Cloud-V supports webhooks which can trigger the job from external sources such as GitHub. They work in a way such that, if a specified branch is committed or if a pull request is created, the specified job build starts running depending upon the trigger event which is set in build's configuration in Cloud-V.  </p>
+<p>This process requires access token of the repository <strong>CREATED BY OWNER OF REPOSITORY</strong> on which the webhook is to be set. These credentials can be safely added to Cloud-V without anyone (even administrator) seeing the passwords as follows.</p>
+<h3 id="obtaining-github-access-token-for-repository">Obtaining github access token for repository</h3>
+<p>Navigate to the dashboard of your github account and click on the your github profile picture on the top-right corner on dashboard.</p>
+<p><img alt="github settings1" src="../doc_images/github_repo_token1.png" /></p>
+<p>Then click on the "Settings" from the list.</p>
+<p><img alt="github settings1" src="../doc_images/github_repo_token2.png" /></p>
+<p>From the left option bar in Settings scroll down and click on "Developer settings".</p>
+<p><img alt="github settings3" src="../doc_images/github_repo_token3.png" /></p>
+<p>Once there, click on "Personal access tokens", then click on "Fine-grained tokens" from the dropdown list and after that click on "Generate new token".</p>
+<p><img alt="github settings4" src="../doc_images/github_repo_token4.png" /></p>
+<p>This will open the page for setting up new access token. Follow following steps for creating a token:  </p>
+<ol>
+<li>Give your token a meaningful name under "Token name"</li>
+<li>Set expiration date in "Expiration" depending upon how long you would like your repository to be integrated with Cloud-V (think of a meaningful upper bound)</li>
+<li>The "Resource owner" should be the owner of the repository who can access all kinds of settings of the repository</li>
+<li>Under "Repository access", check "Only select repositories" and then select the repository for which you would like to create the token</li>
+<li>
+<p>Under "Permissions" section, expand "Repository Permissions" and give the following two permissions:</p>
+<ul>
+<li>"Read and write" access to "Commit statuses" (Because after the CI has run, Cloud-V will be able to set the status of the commit accordingly)</li>
+<li>"Read-only" access to "Webhooks"</li>
+</ul>
+</li>
+</ol>
+<h3 id="configuring-repository-webhook">Configuring repository webhook</h3>
+<p>In GitHub,</p>
+<ul>
+<li>Go to repository settings which you want to integrate for Cloud-V.  </li>
+</ul>
+<p><img alt="Github_settings" src="../doc_images/repo_settings.png" /></p>
+<ul>
+<li>Go to <code>Webhooks</code>  </li>
+</ul>
+<p><img alt="webhooks" src="../doc_images/webhooks.png" />  </p>
+<ul>
+<li>Click on <code>Add webhook</code>  </li>
+</ul>
+<p><img alt="add_webhook" src="../doc_images/newwebhook.png" /></p>
+<ul>
+<li>Add <code>Payload URL</code> as <code>https://dash.cloud-v.co/ghprbhook/</code>  </li>
+<li>Select content type as <code>application/json</code></li>
+<li>Check <code>Enable SSL verification</code>  </li>
+<li>In the section <strong>Which events would you like to trigger this webhook?</strong> check <code>Let me select individual events</code> and check <code>Pul requests</code> as individual events and dont check any other permission.</li>
+</ul>
+<p>Webhook settings will look something like this:</p>
+<p><img alt="webhook_settings" src="../doc_images/webhook-settings1.png" />  </p>
+<h3 id="configurations-inside-cloud-v">Configurations inside Cloud-V</h3>
+<p><em><strong>Note:</strong> Currently users are not able to see or modify pipeline build configuration inside Jenkins, that is currently managed by administrator. Users are requested to inform administrator about how they want their pipeline configured.</em></p>
+<ul>
+<li>We will provide you with Cloud-V credentials on the provided email.</li>
+<li>Login with provided credentials.</li>
+<li>Click on the <code>Credentials</code> in the left menu.  </li>
+</ul>
+<p><img alt="Credentials1" src="../doc_images/Credentials1.png.png" /></p>
+<ul>
+<li>This will take you to the credentials page.</li>
+<li>Scroll down to the <code>Stores scoped to Jenkins</code> and click on the <code>System</code> as shown in the image.  </li>
+</ul>
+<p><img alt="Credentials2" src="../doc_images/Credentials2.png" />  </p>
+<ul>
+<li>Click on <code>Global credentials (unrestricted)</code>.  </li>
+</ul>
+<p><img alt="Credentials3" src="../doc_images/Credentials3.png" /></p>
+<ul>
+<li>Click on <code>Add Credentials</code>.  </li>
+</ul>
+<p><img alt="Credentials4" src="../doc_images/Credentials4.png" /></p>
+<ul>
+<li>This will take you to the <code>New Credentials</code> page.</li>
+<li>Select <code>Kind</code> as <code>Username with password</code>.</li>
+<li>Select <code>Scope</code> as <code>Global (Jenkins, nodes, items, all child items etc)</code>.</li>
+<li>Enter your GitHub username in <code>Username</code></li>
+<li>Enter <code>Password</code> as <code>GitHub personal authentication token</code> (PAT) which can be acquired from Github account settings.  </li>
+<li><code>ID</code> is optional but you can enter a unique <code>ID</code>. <code>Description</code> can be left empty. But it is recommended to give a suitable but careful description by which administrator will be able to identify and use these credentials to set up github webhook</li>
+<li>Select <code>Create</code></li>
+<li>This process will look something like this</li>
+</ul>
+<p><img alt="Credentials5" src="../doc_images/Credentials5.png" />  </p>
+<ul>
+<li>Now credentials will be available in the credentials list and will be shown to you as well as administrator as shown in the image below. This will create an option in configurations for using these credentials in github webhook without changing or viewing them.  </li>
+</ul>
+<p><img alt="Credentials6" src="../doc_images/Credentials6.png" />  </p>
+<ul>
+<li>Note the credentials ID (as shown in the image below) and email it to the same administrator email on which you received the login credentials for Cloud-V. It is important that administrator knows the credentials ID because they will use it in the job build configurations.  </li>
+</ul>
+<p><img alt="Credentials6_id" src="../doc_images/Credentials6_id.png" />  </p>
+<p><strong><em>Note: Please make sure to inform the administrator via email that you have added the credentials in Cloud-V Dashboard. Also, send administrator the ID of credentials via email.</em></strong></p>
+<h3 id="requirements-for-administrator">Requirements for administrator</h3>
+<p>After the above setup is complete from software developer's side, developer will need to provide the administrator with following information.  </p>
+<ul>
+<li>Dependencies for running the project which can be packages which are needed to install in the RISC-V CI environment by administrator.</li>
+<li>Events for triggering the job build.</li>
+<li>URL of GitHub repository.</li>
+<li>Path and name of <code>cloud-v-pipeline</code> file on the provided GitHub repository.</li>
+<li>Any additional information which should be given for successful execution of job builds.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

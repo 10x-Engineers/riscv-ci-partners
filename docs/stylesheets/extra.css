@@ -1,0 +1,22 @@
+/* Expand content width */
+.md-grid {
+    max-width: 100% !important;
+    width: 95%;
+}
+
+/* Make tables use the full width */
+.md-typeset table {
+    width: 100% !important;
+    table-layout: auto;
+    white-space: nowrap;
+}
+
+/* Prevent text wrapping in table cells */
+.md-typeset td, .md-typeset th {
+    white-space: nowrap;
+}
+
+/* Optional: allow horizontal scrolling for really wide tables */
+.md-typeset__table {
+    overflow-x: auto;
+}
