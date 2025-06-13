@@ -8,7 +8,7 @@ Each instance type shown below may represent one or more instances in actual dep
 <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
 
 <div style="flex: 2;line-height: 1.2;">
-  <h3>Compute Instance:StarFive VisionFive 1</h3>
+  <h3>Compute Instance: StarFive VisionFive 1</h3>
   <p><strong>Architecture:</strong> riscv64</p>
   <p><strong>Clock Frequency (per core):</strong> 1.2GHz</p>
   <p><strong>Core Count:</strong> 2</p>
