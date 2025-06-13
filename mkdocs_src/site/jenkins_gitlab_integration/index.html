@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Integrating GitLab with Jenkins - Cloud-V Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Integrating GitLab with Jenkins";
+        var mkdocs_page_input_path = "jenkins_gitlab_integration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cloud-V Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cicd/">Setting up CI on RISC-V</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sandboxing/">Setting up SSH/Sandboxing</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Creating_jenkinsfile/">Creating a CI pipeline file</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../runner_specs/">Compute Instance Specifications</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tooling on Compute Instances</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tooling/">Using Environment Modules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMU-1J-VM-1/">J-x86-1 or J-QMU-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-QMS-1/">J-QMS-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-VF1-x/">J-VF1-x</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-VF2-x/">J-VF2-x</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-HF-1/">J-HF-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-BPF3-x/">J-BPF3-1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tooling_J-K230-1/">J-K230-1</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cloud-V Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Integrating GitLab with Jenkins</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="integrating-gitlab-with-jenkins">Integrating GitLab with Jenkins</h1>
+<p>This documentation will cover how to create an integration between jenkins and GitLab. This will allow users to trigger jenkins job when a <code>merge request</code> or a <code>push</code> is detected in GitLab.  </p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<ul>
+<li>GitLab plugin  </li>
+<li>Git plugin  </li>
+<li>GitLab repository with owner's credentials  </li>
+</ul>
+<h2 id="configuring-jenkins-system">Configuring Jenkins System</h2>
+<p>First jenkins needs to be configured.  </p>
+<ul>
+<li>Go to <code>Dashboard &gt; Manage Jenkins &gt; Configure System</code>  </li>
+<li>Scroll down to <code>Gitlab</code> section  </li>
+<li>
+<p>Check <code>Enable authentication for '/project' end-point</code>  </p>
+</li>
+<li>
+<p>Enter a <code>Connection name</code>.  </p>
+</li>
+<li>Enter <code>Gitlab host URL</code> as <code>https://gitlab.com/</code>. In case there is a different domain name, then enter there instead of above url.  </li>
+<li>In <code>Credentials</code>, click on <code>Add</code> then click on <code>Jenkins</code>.  </li>
+<li>In <code>Kind</code>, select <code>GitLab API token</code>.  </li>
+<li>In <code>API token</code>, enter the gitlab personal access token (this will be obtained below while configuring GitLab).  </li>
+<li>Click on <code>Advanced</code>.</li>
+<li>Click on <code>Test Connection</code>.  </li>
+<li>If everything goes right, it should print <code>success</code>.  </li>
+</ul>
+<h2 id="configuring-gitlab">Configuring GitLab</h2>
+<ul>
+<li>Click on profile avatar in the top right.  </li>
+<li>Click on <code>Edit profile</code>.  </li>
+</ul>
+<p><img alt="GitLab Profile Settings" src="../doc_images/GitLab_profile_settings.png" />  </p>
+<ul>
+<li>Click on <code>Access Tokens</code>.</li>
+<li>Create a new personal access token and copy it (this is the GitLab API token used in above section <code>Configuring Jenkins System</code>).  </li>
+<li>Go to repository settings.</li>
+<li>On left-side pane, select <code>Webhooks</code>.  </li>
+<li>Enter <code>GitLab webhook URL</code> (this is explained below in next section).  </li>
+<li>Enter <code>Secret Token</code> (this is explained in the below section).</li>
+<li>Check desirable trigger options.  </li>
+<li>Click <code>Add webhook</code>.</li>
+</ul>
+<h2 id="configuring-jenkins-job">Configuring Jenkins Job</h2>
+<ul>
+<li>Create a jenkins job.</li>
+<li>On job configuration page, scroll down to <code>Source Code Management</code>.  </li>
+<li>Select <code>Git</code>.  </li>
+<li>In <code>Credentials</code>, add the owner credentials of GitLab repository. This will be <code>Username and Password</code>.  </li>
+<li>Select the appropriate branch (generally it is <code>main</code>).  </li>
+<li>Scroll down to <code>Build Triggers</code>.  </li>
+<li>Check <code>Build when a change is pushed to GitLab</code>. There will also be a <code>GitLab webhook URL</code>. This is needed in GitLab. This URL will be called as <code>Webhook URL</code>.  </li>
+<li>Click on <code>Advanced</code> in the same option, then scroll down and generate a secret token. This token is also needed. This token will be called as <code>Secret Token</code>.</li>
+<li>Scroll down to <code>Post-build Actions</code> and select <code>Publish build status to GitLab</code>.  </li>
+<li>Click on <code>Apply</code> and <code>Save</code>.  </li>
+</ul>
+<p>Now whenever there will be a push (or whatever build trigger option is set in jenkins and gitlab webhook), specified jenkins job will be triggered.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

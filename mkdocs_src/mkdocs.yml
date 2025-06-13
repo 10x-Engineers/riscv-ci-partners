@@ -2,46 +2,22 @@ site_name: Cloud-V Docs
 nav:
   - Home: index.md
   - Getting Started:
-      - Setting up CI: Software_Developer_Guide.md
-      - Setting up SSH/Sandboxing: sandboxing.md
-  - Creating a CI pipeline file: Creating_jenkinsfile.md
-  - Compute Instance Specifications: runner_specs.md
+      - Setting up CI/CD on RISC-V: 
+        - CI/CD on RISC-V: cicd.md
+        - Registering RISC-V as GitLab runner: setting_up_gitlab_runner.md
+        - Getting access to Jenkins on Cloud-V: Software_Developer_Guide.md
+        - Create a Jenkinsfile: Creating_jenkinsfile.md
+      - Setting up SSH on RISC-V: sandboxing.md
+  - Compute Instance Specifications: compute_instances.md
   - Tooling on Compute Instances:
       - Using Environment Modules: Tooling.md
-      - J-x86-1 or J-QMU-1: tooling_J-QMU-1J-VM-1.md
-      - J-QMS-1: tooling_J-QMS-1.md
-      - J-VF1-x: tooling_J-VF1-x.md
-      - J-VF2-x: tooling_J-VF2-x.md
-      - J-HF-1: tooling_J-HF-1.md
-      - J-BPF3-1: tooling_J-BPF3-x.md
-      - J-K230-1: tooling_J-K230-1.md
+      - QEMU User Mode: tooling_J-QMU-1J-VM-1.md
+      - QEMU System Linux: tooling_J-QMS-1.md
+      - VisionFive 1: tooling_sf1-x.md
+      - VisionFive 2: tooling_sf2-x.md
+      - SiFive HiFive Unleashed: tooling_unleashed1-1.md
 
-# - For Administrators:
-#     - Jenkins Docs:
-#         - Building Jenkins: Building_Jenkins_github_repo.md
-#         - Creating Jenkins Node on LXC: Creating_Jenkins_Node_on_LXC.md
-#         - Creating a pipeline project: Creating_CI_CD_pipeline.md
-#         - Creating Multinode pipelines: Multinode_Pipelines.md
-#         - Adding custom-build packages in Jenkins: Adding_Custom-build_packages_in_Jenkins.md
-#         - Github Push webhook integration: jenkins_github_integration/Github_push_webhook.md
-#         - Github PR webhook integration: jenkins_github_integration/Github_PR_webhook_integration.md
-#         - GitLab Integration: jenkins_gitlab_integration.md
-#         - Letsencrypt configuration with Jenkins: Installing_ssl_certificates_new.md
-#     - QEMU and Linux Kernel:
-#         - Installing Qemu for RISC-V: Building_qemu.md
-#         - Building Linux kernel and booting on QEMU: Building_Linux_Kernel.md
-#         - Booting RISC-V Ubuntu 22.04 on qemu-system-riscv64: Booting_ubuntu22.04_riscv64
-#     - Cross-Compilation:
-#         - Overview: Cross_Compiling/Overview.md
-#         - Cross Compiling Python3.8.15: Cross_Compiling/Cross_compiling python3.8.15.md
-#         - Cross Compiling Openssl: Cross_Compiling/Cross_compiling_openssl.md
-#         - Cross Compiling Ruby: Cross_Compiling/Cross_compiling_ruby.md
-#         - Cross Compiling Drhystone: Cross_Compiling/Cross_compiling_dhrystone.md
-#         - Cross Compiling Coremark: Cross_Compiling/Cross_compiling_coremark
-#         - Cross Compiling Rust: Cross_Compiling/Cross_compiling_rust.md
-#         - Cross Compiling go: Cross_Compiling/Cross_compiling_go.md
 
-#     - Usage monitoring:
-#         - Setting up Grafana and Prometheus: Usage_Monitoring/Prometheus_Grafana.md
-#         - Integrating Prometheus with Grafana: Usage_Monitoring/Integrating_prometheus_grafana.md
-theme: readthedocs
+theme: material
+extra_css:
+  - stylesheets/extra.css
