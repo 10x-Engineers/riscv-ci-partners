@@ -377,6 +377,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Register the runner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registration-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-contact-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Contact Time
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -751,6 +775,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Register the runner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registration-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-contact-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Contact Time
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -791,7 +839,15 @@
 <p>This document explains how developers working on GitLab projects can add RISC-V machines provided by Cloud-V as a GitLab runners.</p>
 <h2 id="register-the-runner">Register the runner</h2>
 <p>For registering the runner, visit <a href="https://cloud-v.co/gitlab-riscv-runner">this</a> link. Add the necessary information on the page and then select a compute machine to use as GitLab runner. </p>
-<p>After the necessary information is placed, clicking the submit button will try to register the runner. The registration can take some time so please be patient with next page loading. Once an attempt to register is finished, you will see the result accordingly on the next page.</p>
+<p>After the necessary information is placed, clicking the submit button will try to register the runner. The registration can take some time so please be patient with next page loading. </p>
+<h3 id="registration-time">Registration Time</h3>
+<p>This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project. </p>
+<p>Depending upon the workload, network latency, and the computing power of the RISC-V machine, this can take up to <strong>3 minutes</strong>. While the page is loading, be patient as it takes some time to contact the runners and register them (especially QEMU machine since it is relatively slower right now).</p>
+<p>Once an attempt to register is finished, you will see the result accordingly on the next page.</p>
+<h3 id="initial-contact-time">Initial Contact Time</h3>
+<p>This is the time GitLab server takes to contact the RISC-V machine after the registration is complete. Once the GitLab is successful in contacting the runner, you will see a solid green circle with GitLab runner on the runners page.</p>
+<p>This time also depends on the workload and computing power of the RISC-V machine. The maximum recorded time with QEMU machine is about <strong>5 minutes</strong>.</p>
+<p>Once the contact is successful, all the jobs can run as usual.</p>
 <h2 id="supported-risc-v-machines">Supported RISC-V machines</h2>
 <p>Currently, following RISC-V machines are supported with GitLab runner workflow.</p>
 <ul>
