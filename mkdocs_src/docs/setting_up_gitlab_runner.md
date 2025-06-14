@@ -6,7 +6,23 @@ This document explains how developers working on GitLab projects can add RISC-V 
 
 For registering the runner, visit [this](https://cloud-v.co/gitlab-riscv-runner) link. Add the necessary information on the page and then select a compute machine to use as GitLab runner. 
 
-After the necessary information is placed, clicking the submit button will try to register the runner. The registration can take some time so please be patient with next page loading. Once an attempt to register is finished, you will see the result accordingly on the next page.
+After the necessary information is placed, clicking the submit button will try to register the runner. The registration can take some time so please be patient with next page loading. 
+
+### Registration Time
+
+This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project. 
+
+Depending upon the workload, network latency, and the computing power of the RISC-V machine, this can take up to **3 minutes**. While the page is loading, be patient as it takes some time to contact the runners and register them (especially QEMU machine since it is relatively slower right now).
+
+Once an attempt to register is finished, you will see the result accordingly on the next page.
+
+### Initial Contact Time
+
+This is the time GitLab server takes to contact the RISC-V machine after the registration is complete. Once the GitLab is successful in contacting the runner, you will see a solid green circle with GitLab runner on the runners page.
+
+This time also depends on the workload and computing power of the RISC-V machine. The maximum recorded time with QEMU machine is about **5 minutes**.
+
+Once the contact is successful, all the jobs can run as usual.
 
 ## Supported RISC-V machines
 
