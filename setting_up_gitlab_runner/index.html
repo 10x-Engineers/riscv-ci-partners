@@ -380,6 +380,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#supported-risc-v-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported RISC-V machines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-the-gitlab-runner-works" class="md-nav__link">
     <span class="md-ellipsis">
       How the GitLab Runner works
@@ -745,6 +754,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#supported-risc-v-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported RISC-V machines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-the-gitlab-runner-works" class="md-nav__link">
     <span class="md-ellipsis">
       How the GitLab Runner works
@@ -774,6 +792,16 @@
 <h2 id="register-the-runner">Register the runner</h2>
 <p>For registering the runner, visit <a href="https://cloud-v.co/gitlab-riscv-runner">this</a> link. Add the necessary information on the page and then select a compute machine to use as GitLab runner. </p>
 <p>After the necessary information is placed, clicking the submit button will try to register the runner. The registration can take some time so please be patient with next page loading. Once an attempt to register is finished, you will see the result accordingly on the next page.</p>
+<h2 id="supported-risc-v-machines">Supported RISC-V machines</h2>
+<p>Currently, following RISC-V machines are supported with GitLab runner workflow.</p>
+<ul>
+<li>VisionFive 2 – Multiple boards</li>
+<li>Banana Pi F3 – Multiple boards</li>
+<li>QEMU System RISC-V – Single instance (supports extensive ISA extensions and offers high compute capacity)</li>
+</ul>
+<p>This list is not final. The infrastructure is expected to scale both in variety and quantity of supported RISC-V machines in the near future.</p>
+<p>The QEMU-based compute instance is configured to support a wide range of ISA extensions and benefits from powerful host compute resources. It will soon be upgraded with additional cores to further enhance performance.</p>
+<p>For a detailed list of compute machines and their specifications, see <a href="../compute_instances/">Compute Instances in Cloud‑V</a>.</p>
 <h2 id="how-the-gitlab-runner-works">How the GitLab Runner works</h2>
 <p>The GitLab runner runs on a non-sudo user on the specified RISC-V machines. Every RISC-V machine can be a shared runner between different GitLab projects. The GitLab runner package runs as docker executor on the RISC-V machine so that every job is isolated from other jobs. The necessary information about the specification of GitLab runner is mentioned on the <a href="https://cloud-v.co/gitlab-riscv-runner">GitLab runner registration page</a> of Cloud-V.</p>
 <p>Following diagram presents a view of how the job runs on the RISC-V machines in the Cloud-V.</p>
