@@ -20,7 +20,7 @@
     
     
       
-        <title>Registering RISC-V as GitLab runner - Cloud-V Docs</title>
+        <title>Registering RISC-V as GitHub runner - Cloud-V Docs</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Registering RISC-V as GitLab runner
+              Registering RISC-V as GitHub runner
             
           </span>
         </div>
@@ -335,7 +335,7 @@
   
   
   <span class="md-ellipsis">
-    Registering RISC-V as GitLab runner
+    Registering RISC-V as GitHub runner
     
   </span>
   
@@ -348,7 +348,7 @@
   
   
   <span class="md-ellipsis">
-    Registering RISC-V as GitLab runner
+    Registering RISC-V as GitHub runner
     
   </span>
   
@@ -859,17 +859,17 @@
 
 
 <h1 id="registering-github-runner-with-cloud-v">Registering GitHub Runner with Cloud-V</h1>
-<p>For registering a free GitHub actions runner on RISC-V compute machine, visit <a href="https://cloud-v.co/github-riscv-runner">this</a>.</p>
-<p>After the necessary information is provided, clicking the submit button will try to register the runner. The registration can take some time. Please be patient with next page loading. </p>
+<p>For registering a free GitHub actions runner on RISC-V compute machine, visit <a href="https://cloud-v.co/github-riscv-runner">this</a> link.</p>
+<p>After the necessary information is provided, clicking the submit button will make an attempt to register the runner. The registration can take some time. Please be patient with next page loading. </p>
 <h2 id="important-points-to-note">Important points to note</h2>
 <ul>
-<li>Only one repository is supported per RISC-V machine type. For example if you have registered a GitHub repository with VisionFive 2, you cannot register the same repository again with VisionFive 2 board type</li>
-<li>You must wait till the next page has loaded after the registration attempt to know the status of registration</li>
-<li>The github action runner will expire in 90 days and can be registered again through the <a href="https://cloud-v.co/github-riscv-runner">same link</a></li>
-<li>The RISC-V boards are shared compute machines using podman containers to isolate the jobs (see the section <a href="#how-the-github-action-workflow-works">How the GitLab Runner works</a>)</li>
+<li>Only one GitHub repository is supported per RISC-V machine type. For example if you have registered a GitHub repository with VisionFive 2, you cannot register the same repository again with VisionFive 2 board type</li>
+<li>You must wait till the next page has loaded after the registration attempt to know the status of registration (this can take some time)</li>
+<li>To preserve the compute resources, the runner will expire in 90 days and can be registered again through the <a href="https://cloud-v.co/github-riscv-runner">same link</a></li>
+<li>The RISC-V boards are shared compute machines running podman containers to isolate the jobs (see the section <a href="#how-the-github-action-workflow-works">How the GitLab Runner works</a>)</li>
 </ul>
 <h3 id="registration-time">Registration Time</h3>
-<p>This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project. </p>
+<p>This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project once you submit the details and apply for runner. </p>
 <p>Depending upon the workload, network latency, and the computing power of the RISC-V machine, this can take up to <strong>3 minutes</strong>. While the page is loading, be patient as it takes some time to contact the runners and register them.</p>
 <p>Once an attempt to register is finished, you will see the result accordingly on the next page.</p>
 <h2 id="supported-risc-v-machines">Supported RISC-V machines</h2>
@@ -882,7 +882,7 @@
 <p>The QEMU-based compute instance is configured to support a wide range of ISA extensions but is relatively slower than the RISC-V hardware. So it may take a while to register the QEMU compute machine as the runner on the page.</p>
 <p>For a detailed list of compute machines and their specifications, see <a href="../compute_instances/">Compute Instances in Cloud‑V</a>.</p>
 <h2 id="how-the-github-action-workflow-works">How the GitHub Action workflow works</h2>
-<p>The flow uses Ansible to start Podman container on the RISC-V boards and registers the runner with the passed argument inside the podman container. The podman container runs all the jobs of single repository registered with it. A single RISC-V machine can have multiple podman containers, each registered with a github repository. The Dockerfile which used for setting up the RISC-V machines is available on the <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a>.</p>
+<p>The flow uses Ansible to start Podman container on the RISC-V boards and registers the runner with the passed argument inside the podman container. The podman isolation level is on repository-level which means the podman container runs all the jobs of single repository registered inside it without further abstraction or containerisation. A single RISC-V machine can have multiple podman containers, each registered with a github repository. The Dockerfile which is used for setting up the RISC-V machines is available on the <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a>.</p>
 <h2 id="found-an-issue">Found an issue?</h2>
 <p>If you found an issue with this workflow, you can create an issue at <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a> or email us directly at cloud-v@10xengineers.ai.</p>
 
