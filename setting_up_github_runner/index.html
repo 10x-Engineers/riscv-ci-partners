@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../cicd/">
       
       
-        <link rel="next" href="../setting_up_github_runner/">
+        <link rel="next" href="../setting_up_gitlab_runner/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>CI/CD on RISC-V - Cloud-V Docs</title>
+        <title>Registering RISC-V as GitLab runner - Cloud-V Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-cicd-pipelines-on-risc-v-with-cloud-v" class="md-skip">
+        <a href="#registering-github-runner-with-cloud-v" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CI/CD on RISC-V
+              Registering RISC-V as GitLab runner
             
           </span>
         </div>
@@ -295,6 +295,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD on RISC-V
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -312,7 +335,7 @@
   
   
   <span class="md-ellipsis">
-    CI/CD on RISC-V
+    Registering RISC-V as GitLab runner
     
   </span>
   
@@ -325,7 +348,7 @@
   
   
   <span class="md-ellipsis">
-    CI/CD on RISC-V
+    Registering RISC-V as GitLab runner
     
   </span>
   
@@ -348,28 +371,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-cicd-platforms-on-cloud-v" class="md-nav__link">
+  <a href="#important-points-to-note" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported CI/CD platforms on Cloud-V
+      Important points to note
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-compute-machine-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported compute machine types
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported compute machine types">
+    <nav class="md-nav" aria-label="Important points to note">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-do-we-even-need-qemu" class="md-nav__link">
+  <a href="#registration-time" class="md-nav__link">
     <span class="md-ellipsis">
-      Why do we even need QEMU
+      Registration Time
     </span>
   </a>
   
@@ -380,33 +394,37 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#supported-risc-v-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported RISC-V machines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-github-action-workflow-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the GitHub Action workflow works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#found-an-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Found an issue?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../setting_up_github_runner/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Registering RISC-V as GitLab runner
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -774,28 +792,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-cicd-platforms-on-cloud-v" class="md-nav__link">
+  <a href="#important-points-to-note" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported CI/CD platforms on Cloud-V
+      Important points to note
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-compute-machine-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported compute machine types
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported compute machine types">
+    <nav class="md-nav" aria-label="Important points to note">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-do-we-even-need-qemu" class="md-nav__link">
+  <a href="#registration-time" class="md-nav__link">
     <span class="md-ellipsis">
-      Why do we even need QEMU
+      Registration Time
     </span>
   </a>
   
@@ -803,6 +812,33 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-risc-v-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported RISC-V machines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-github-action-workflow-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the GitHub Action workflow works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#found-an-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Found an issue?
+    </span>
+  </a>
   
 </li>
       
@@ -822,19 +858,33 @@
 
 
 
-<h1 id="running-cicd-pipelines-on-risc-v-with-cloud-v">Running CI/CD pipelines on RISC-V with Cloud-V</h1>
-<p>This document describes how someone can integrate their CI/CD projects on RISC-V compute machine.</p>
-<h2 id="supported-cicd-platforms-on-cloud-v">Supported CI/CD platforms on Cloud-V</h2>
-<p>There is a <a href="https://cloud-v.co/risc-v-ci/cd">dedicated page</a> on Cloud-V website where you can check which version control platforms or CI/CD services are supported by Cloud-V with RISC-V compute machines. At present, developers can use these compute machines free of cost. </p>
-<p>Services which are labeled "Coming Soon!" are in progress and will be added soon.</p>
-<h2 id="supported-compute-machine-types">Supported compute machine types</h2>
-<p>Cloud-V offers vendor-agnostic physical compute machines as well as emulated compute instances. </p>
-<p>Physical compute machines are the SBCs, desktop computers or laptops with RISC-V SoCs in them while the emulated compute instances are running on the x86 host machines. The emulated RISC-V machines use <a href="https://www.qemu.org/">QEMU</a>.</p>
-<p>See <a href="../compute_instances/">Compute Instances in Cloud-V</a> for a complete list of devices available in cloud.</p>
-<h3 id="why-do-we-even-need-qemu">Why do we even need QEMU</h3>
-<p>Every RISC-V SoC in the market supports only a limited set of extensions. So developers don't get flexibility to test the software on the desired ISA string. With QEMU, developers can have an exhaustive list of RISC-V extensions (which do not conflict with each other).</p>
-<p>One other advantage is that if the x86 host machine (which is running the QEMU) has good computing power (say 128 or 256 cores), then it can be leveraged by QEMU to provide a far better computing power than what can be provided by RISC-V physical boards available in the market at present.</p>
-<p>Check <a href="../compute_instances/#qemu-system-riscv64">QEMU Specifications</a> section for specifications QEMU system running in Cloud-V.</p>
+<h1 id="registering-github-runner-with-cloud-v">Registering GitHub Runner with Cloud-V</h1>
+<p>For registering a free GitHub actions runner on RISC-V compute machine, visit <a href="https://cloud-v.co/github-riscv-runner">this</a>.</p>
+<p>After the necessary information is provided, clicking the submit button will try to register the runner. The registration can take some time. Please be patient with next page loading. </p>
+<h2 id="important-points-to-note">Important points to note</h2>
+<ul>
+<li>Only one repository is supported per RISC-V machine type. For example if you have registered a GitHub repository with VisionFive 2, you cannot register the same repository again with VisionFive 2 board type</li>
+<li>You must wait till the next page has loaded after the registration attempt to know the status of registration</li>
+<li>The github action runner will expire in 90 days and can be registered again through the <a href="https://cloud-v.co/github-riscv-runner">same link</a></li>
+<li>The RISC-V boards are shared compute machines using podman containers to isolate the jobs (see the section <a href="#how-the-github-action-workflow-works">How the GitLab Runner works</a>)</li>
+</ul>
+<h3 id="registration-time">Registration Time</h3>
+<p>This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project. </p>
+<p>Depending upon the workload, network latency, and the computing power of the RISC-V machine, this can take up to <strong>3 minutes</strong>. While the page is loading, be patient as it takes some time to contact the runners and register them.</p>
+<p>Once an attempt to register is finished, you will see the result accordingly on the next page.</p>
+<h2 id="supported-risc-v-machines">Supported RISC-V machines</h2>
+<p>Currently, following RISC-V machines are supported with GitLab runner workflow.</p>
+<ul>
+<li>VisionFive 2 – Multiple boards</li>
+<li>Milk-V Pioneer Box – Single shared compute machine</li>
+</ul>
+<p>This list is not final. The infrastructure is expected to scale both in variety and quantity of supported RISC-V boards in the near future.</p>
+<p>The QEMU-based compute instance is configured to support a wide range of ISA extensions but is relatively slower than the RISC-V hardware. So it may take a while to register the QEMU compute machine as the runner on the page.</p>
+<p>For a detailed list of compute machines and their specifications, see <a href="../compute_instances/">Compute Instances in Cloud‑V</a>.</p>
+<h2 id="how-the-github-action-workflow-works">How the GitHub Action workflow works</h2>
+<p>The flow uses Ansible to start Podman container on the RISC-V boards and registers the runner with the passed argument inside the podman container. The podman container runs all the jobs of single repository registered with it. A single RISC-V machine can have multiple podman containers, each registered with a github repository. The Dockerfile which used for setting up the RISC-V machines is available on the <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a>.</p>
+<h2 id="found-an-issue">Found an issue?</h2>
+<p>If you found an issue with this workflow, you can create an issue at <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a> or email us directly at cloud-v@10xengineers.ai.</p>
 
 
 
