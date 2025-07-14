@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../cicd/">
+        <link rel="prev" href="../setting_up_github_runner/">
       
       
         <link rel="next" href="../Software_Developer_Guide/">
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-risc-v-compute-machine-as-gitlab-runner" class="md-skip">
+        <a href="#registering-risc-v-board-as-gitlab-runner-on-cloud-v" class="md-skip">
           Skip to content
         </a>
       
@@ -318,6 +318,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting_up_github_runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registering RISC-V as GitLab runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -416,6 +439,24 @@
   <a href="#how-the-gitlab-runner-works" class="md-nav__link">
     <span class="md-ellipsis">
       How the GitLab Runner works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-source-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-source version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#found-an-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Found an issue?
     </span>
   </a>
   
@@ -819,6 +860,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#open-source-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-source version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#found-an-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Found an issue?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -835,7 +894,7 @@
 
 
 
-<h1 id="adding-risc-v-compute-machine-as-gitlab-runner">Adding RISC-V compute machine as GitLab Runner</h1>
+<h1 id="registering-risc-v-board-as-gitlab-runner-on-cloud-v">Registering RISC-V board as GitLab Runner on Cloud-V</h1>
 <p>This document explains how developers working on GitLab projects can add RISC-V machines provided by Cloud-V as a GitLab runners.</p>
 <h2 id="register-the-runner">Register the runner</h2>
 <p>For registering the runner, visit <a href="https://cloud-v.co/gitlab-riscv-runner">this</a> link. Add the necessary information on the page and then select a compute machine to use as GitLab runner. </p>
@@ -851,17 +910,21 @@
 <h2 id="supported-risc-v-machines">Supported RISC-V machines</h2>
 <p>Currently, following RISC-V machines are supported with GitLab runner workflow.</p>
 <ul>
-<li>VisionFive 2 – Multiple boards</li>
-<li>Banana Pi F3 – Multiple boards</li>
-<li>QEMU System RISC-V – Single instance (supports extensive ISA extensions and offers high compute capacity)</li>
+<li>VisionFive 2 - Multiple boards</li>
+<li>Banana Pi F3 - Multiple boards</li>
+<li>QEMU System RISC-V - Slower than RISC-V hardware but flexible in RISC-V ISA extensions</li>
 </ul>
 <p>This list is not final. The infrastructure is expected to scale both in variety and quantity of supported RISC-V machines in the near future.</p>
-<p>The QEMU-based compute instance is configured to support a wide range of ISA extensions and benefits from powerful host compute resources. It will soon be upgraded with additional cores to further enhance performance.</p>
+<p>The QEMU-based compute instance is configured to support a wide range of ISA extensions but is relatively slower than the RISC-V hardware. So it may take a while to register the QEMU compute machine as the runner on the page.</p>
 <p>For a detailed list of compute machines and their specifications, see <a href="../compute_instances/">Compute Instances in Cloud‑V</a>.</p>
 <h2 id="how-the-gitlab-runner-works">How the GitLab Runner works</h2>
 <p>The GitLab runner runs on a non-sudo user on the specified RISC-V machines. Every RISC-V machine can be a shared runner between different GitLab projects. The GitLab runner package runs as docker executor on the RISC-V machine so that every job is isolated from other jobs. The necessary information about the specification of GitLab runner is mentioned on the <a href="https://cloud-v.co/gitlab-riscv-runner">GitLab runner registration page</a> of Cloud-V.</p>
 <p>Following diagram presents a view of how the job runs on the RISC-V machines in the Cloud-V.</p>
-<p><img alt="GitLab RISC-V Runner" src="../doc_images/gitlab-riscv-working-diagram.drawio.png" /> </p>
+<p><img alt="GitLab RISC-V Runner" src="../doc_images/gitlab-riscv-working-diagram.drawio.png" /></p>
+<h2 id="open-source-version">Open-source version</h2>
+<p>There is also an open-source version of this workflow on <a href="https://github.com/alitariq4589/riscv-gitlab-ci-infra">github</a> if you want to provision/manage the boards yourself.</p>
+<h2 id="found-an-issue">Found an issue?</h2>
+<p>If you found an issue with this workflow, you can create an issue at <a href="https://github.com/alitariq4589/riscv-gitlab-ci-infra">GitHub Repository</a> or email us directly at cloud-v@10xengineers.ai.</p>
 
 
 

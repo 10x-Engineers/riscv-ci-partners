@@ -1,4 +1,4 @@
-# Adding RISC-V compute machine as GitLab Runner
+# Registering RISC-V board as GitLab Runner on Cloud-V
 
 This document explains how developers working on GitLab projects can add RISC-V machines provided by Cloud-V as a GitLab runners.
 
@@ -28,13 +28,13 @@ Once the contact is successful, all the jobs can run as usual.
 
 Currently, following RISC-V machines are supported with GitLab runner workflow.
 
-- VisionFive 2 – Multiple boards
-- Banana Pi F3 – Multiple boards
-- QEMU System RISC-V – Single instance (supports extensive ISA extensions and offers high compute capacity)
+- VisionFive 2 - Multiple boards
+- Banana Pi F3 - Multiple boards
+- QEMU System RISC-V - Slower than RISC-V hardware but flexible in RISC-V ISA extensions
 
 This list is not final. The infrastructure is expected to scale both in variety and quantity of supported RISC-V machines in the near future.
 
-The QEMU-based compute instance is configured to support a wide range of ISA extensions and benefits from powerful host compute resources. It will soon be upgraded with additional cores to further enhance performance.
+The QEMU-based compute instance is configured to support a wide range of ISA extensions but is relatively slower than the RISC-V hardware. So it may take a while to register the QEMU compute machine as the runner on the page.
 
 For a detailed list of compute machines and their specifications, see [Compute Instances in Cloud‑V](compute_instances.md).
 
@@ -44,4 +44,14 @@ The GitLab runner runs on a non-sudo user on the specified RISC-V machines. Ever
 
 Following diagram presents a view of how the job runs on the RISC-V machines in the Cloud-V.
 
-![GitLab RISC-V Runner](<../doc_images/gitlab-riscv-working-diagram.drawio.png>) 
+![GitLab RISC-V Runner](<../doc_images/gitlab-riscv-working-diagram.drawio.png>)
+
+
+## Open-source version
+
+There is also an open-source version of this workflow on [github](https://github.com/alitariq4589/riscv-gitlab-ci-infra) if you want to provision/manage the boards yourself.
+
+## Found an issue?
+
+If you found an issue with this workflow, you can create an issue at [GitHub Repository](https://github.com/alitariq4589/riscv-gitlab-ci-infra) or email us directly at cloud-v@10xengineers.ai.
+
