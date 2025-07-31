@@ -1,0 +1,1548 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Creating_jenkinsfile/">
+      
+      
+        <link rel="next" href="../sandboxing/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Getting Access to LAVA - Cloud-V Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-linaros-lava-on-cloud-v" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cloud-V Docs" class="md-header__button md-logo" aria-label="Cloud-V Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud-V Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Access to LAVA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cloud-V Docs" class="md-nav__button md-logo" aria-label="Cloud-V Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cloud-V Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setting up CI/CD on RISC-V
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Setting up CI/CD on RISC-V
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci_cd_on_riscv.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD on RISC-V
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Version Control Systems
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Version Control Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting_up_github_runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registering RISC-V as GitHub runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting_up_gitlab_runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registering RISC-V as GitLab runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Software_Developer_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting access to Jenkins on Cloud-V
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Creating_jenkinsfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a Jenkinsfile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    KernelCI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            KernelCI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Getting Access to LAVA
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Access to LAVA
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-lava" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is LAVA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-binaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Binaries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-in-lava" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts in LAVA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-lava-web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the LAVA Web Interface
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-your-test-binaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing Your Test Binaries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing Your Test Binaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-public-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Public Git Repository
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-lava-job-definition-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a LAVA Job Definition (YAML)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a LAVA Job Definition (YAML)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-template-for-risc-v-binary-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Template for RISC-V Binary Testing:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      boot section:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-your-lava-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submitting Your LAVA Job
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting Your LAVA Job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-lava-command-line-client-lavacli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the LAVA Command-Line Client (lavacli)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the LAVA Command-Line Client (lavacli)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-lava-cli-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install LAVA CLI Tools:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authenticate-with-the-lava-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authenticate with the LAVA Server:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      List identities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-your-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submit your jobs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-your-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring Your Job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sandboxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up SSH on RISC-V
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compute_instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compute Instance Specifications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tooling on Compute Instances
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tooling on Compute Instances
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_sf1-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VisionFive 1 tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_sf2-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VisionFive 2 tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_unleashed1-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SiFive HiFive Unleashed tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_BPF3-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Banana Pi F3 tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_jupiter-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Milk-V Jupiter tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_pioneer-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Milk-V Pioneer Box tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tooling_J-QMS-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QEMU System Linux tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-lava" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is LAVA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-binaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Binaries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-in-lava" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts in LAVA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-lava-web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the LAVA Web Interface
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-your-test-binaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing Your Test Binaries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing Your Test Binaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-public-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Public Git Repository
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-lava-job-definition-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a LAVA Job Definition (YAML)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a LAVA Job Definition (YAML)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-template-for-risc-v-binary-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Template for RISC-V Binary Testing:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      boot section:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-your-lava-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submitting Your LAVA Job
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting Your LAVA Job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-lava-command-line-client-lavacli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the LAVA Command-Line Client (lavacli)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the LAVA Command-Line Client (lavacli)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-lava-cli-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install LAVA CLI Tools:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authenticate-with-the-lava-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authenticate with the LAVA Server:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      List identities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-your-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submit your jobs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-your-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring Your Job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="getting-started-with-linaros-lava-on-cloud-v">Getting Started with Linaro's LAVA on Cloud-V</h1>
+<p>This guide provides a step-by-step introduction to start using Cloud-V's LAVA lab for U-Boot/firmware testing on RISC-V boards. This is intended for software developers who want to test the firmware on RISC-V hardware boards.</p>
+<h2 id="what-is-lava">What is LAVA</h2>
+<p>LAVA (Linaro's Automated Validation Architecture) is an open-source, continuous integration system designed for automated testing of firmware (such as OpenSBI, U-Boot, Linux Kernel) on physical hardware. It allows us to:</p>
+<ul>
+<li>Run tests repeatedly and consistently on real hardware.</li>
+<li>View results in a web-based dashboard.</li>
+<li>Safely manage access to a pool of test devices.</li>
+</ul>
+<p>In this lab, we've configured LAVA to test binaries on our specific RISC-V based hardware.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, ensure you have the following:</p>
+<h3 id="user-account">User Account</h3>
+<p>A user account on our LAVA instance (where our LAVA server is hosted: https://kernelci-1.cloud-v.co) is required.</p>
+<p>You can request an account through <a href="https://cloud-v.co/contactus">this</a> page.</p>
+<p>Admin will assign a username and password to your account.</p>
+<h3 id="api-token">API Token</h3>
+<p>Authentication tokens allow scripts using <code>lavacli</code> to securely access LAVA resources. Once a user account has been created, you need to get your token from the LAVA server.</p>
+<ul>
+<li>Go to API-&gt;Authentication Tokens</li>
+<li>Click on the “new” icon, add a description for this token, and click on the create button. It will create and assign a token against your username.</li>
+<li>Refer to <a href="https://validation.linaro.org/static/docs/v2/first_steps.html#authentication-tokens">this</a> page for further details on the authentication token.</li>
+</ul>
+<h3 id="test-binaries">Test Binaries</h3>
+<p>Your compiled RISC-V binaries (such as Linux Kernel, OpenSBI, U-Boot etc.) and any necessary test scripts. These are typically specific for every RISC-V board.</p>
+<h2 id="key-concepts-in-lava">Key Concepts in LAVA</h2>
+<ul>
+<li><strong>Device:</strong> A physical hardware board (e.g., a specific RISC-V SBC) attached to the LAVA dispatcher (worker) available in the lab</li>
+<li><strong>Device Type:</strong> A classification for similar devices (e.g., <code>riscv-virt-qemu</code>, <code>banana-pi-riscv-board</code>)</li>
+<li><strong>Job Definition (LAVA YAML):</strong> A YAML file that describes what to test, how to deploy it, and what device type to use</li>
+<li><strong>Bundle:</strong> A collection of files (binaries, root filesystems, test scripts) that LAVA will deploy to the device</li>
+<li><strong>Result:</strong> The outcome of a test job (PASS, FAIL, WAIVED, INCOMPLETE)</li>
+</ul>
+<h2 id="accessing-the-lava-web-interface">Accessing the LAVA Web Interface</h2>
+<p>The Cloud-V's LAVA dashboard is hosted at https://kernelci-1.cloud-v.co.</p>
+<p>You can access it through the provided credentials</p>
+<h2 id="preparing-your-test-binaries">Preparing Your Test Binaries</h2>
+<p>Your RISC-V firmware binaries and accompanying test scripts need to be accessible to LAVA.</p>
+<h3 id="using-a-public-git-repository">Using a Public Git Repository</h3>
+<p>If your binaries/scripts are part of a public Git repository, you can specify the repository URL in your job definition. LAVA can clone it.</p>
+<h2 id="creating-a-lava-job-definition-yaml">Creating a LAVA Job Definition (YAML)</h2>
+<p>This is the core of telling LAVA what to do. You'll write a YAML file that describes your test.</p>
+<h3 id="example-template-for-risc-v-binary-testing">Example Template for RISC-V Binary Testing:</h3>
+<pre><code># LAVA Job Definition: Flash uboot-opensbi.itb via UART YMODEM
+
+
+# ====================================================================
+# Job Metadata
+# ====================================================================
+
+
+job_name: 3 - Flash of bootloader on SD card using uuu - u-boot only (health-check)
+device_type: banana-pi-f3 # This must match the 'device_type' defined in your device dictionary
+timeouts:
+ job:
+   minutes: 12 # Overall job timeout
+visibility: public # Or 'private' if you prefer
+
+
+# ====================================================================
+# LAVA Actions
+# ====================================================================
+actions:
+ # 1. Deploy the .itb image (LAVA downloads it to the dispatcher's temp directory)
+ - deploy:
+     timeout:
+       minutes: 7
+     to: downloads # Or 'tmpfs'. 'download' is often more explicit.
+     images:
+       image: # Name for the image
+         url: file:///uboot-opensbi_buildroot.itb #
+       uImage:
+         url: https://github.com/alitariq4589/k1-kernelci-setup/blob/main/images/uImage-bianbu
+       dtb:
+         url: https://github.com/alitariq4589/k1-kernelci-setup/blob/main/images/k1-x_deb1_cloud_v.dtb
+       ramdisk:
+         url: https://github.com/alitariq4589/k1-kernelci-setup/blob/main/images/initramfs-generic.img
+       rootfs:
+         url: http://github.com/alitariq4589/k1-kernelci-setup/releases/tag/buildroot/rootfs.ext2
+ - deploy:
+     timeout:
+       minutes: 10
+     to: flasher # Or 'tmpfs'. 'download' is often more explicit.
+     images:
+       image: # Name for the boot image
+         url: downloads://uboot-opensbi_buildroot.itb
+
+
+ # 2. Boot the device and perform the UART YMODEM flash
+ - boot:
+      method: u-boot
+      transfer_overlay:
+         download_command: cd /tmp ; wget
+         unpack_command: none
+      commands:
+      - &quot;setenv ipaddr 192.168.2.5&quot;
+      - &quot;setenv serverip 192.168.2.2&quot;
+      - &quot;setenv netmask 255.255.255.0&quot;
+      - &quot;setenv gatewayip 192.168.2.2&quot;
+      - &quot;setenv dtb_addr 0x31000000&quot;
+      - &quot;setenv ramdisk_addr 0x21000000&quot;
+      - &quot;setenv fdt_high 0xffffffffffffffff&quot;
+      - &quot;setenv kernel_addr_r 0x11000000&quot;
+      - &quot;setenv rootfs_path /nfsroot/rootfs&quot;
+      - &quot;setenv bootfs_path /nfsroot/bootfs&quot;
+      - &quot;setenv rootpath /nfsroot/rootfs&quot;
+      - &quot;setenv console ttyS0,115200&quot;
+      - &quot;setenv dtb_name k1-x_deb1_cloud_v.dtb&quot;
+      - &quot;setenv ramdisk_name initramfs-generic.img&quot;
+      - &quot;setenv knl_name uImage-bianbu&quot;
+      - &quot;workqueue.default_affinity_scope=system&quot;
+      - &quot;commonargs=setenv bootargs ${console}  earlyprintk quiet splash plymouth.ignore-serial-consoles plymouth.prefer-fbcon clk_ignore_unused swiotlb=65536 workqueue.default_affinity_scope=${workqueue.default_affinity_scope}&quot;
+      - &quot;setenv get_kernel 'echo \&quot;Loading kernel from NFS...\&quot;; nfs ${kernel_addr_r} ${serverip}:${bootfs_path}/${knl_name}'&quot;
+      - &quot;setenv get_dtb 'echo \&quot;Loading dtb from NFS...\&quot;; nfs ${dtb_addr} ${serverip}:${bootfs_path}/${dtb_name}'&quot;
+      - &quot;setenv get_ramdisk 'nfs ${ramdisk_addr} ${serverip}:${bootfs_path}/${ramdisk_name}; setenv ramdisk_size ${filesize}; setenv ramdisk_combo ${ramdisk_addr}:${ramdisk_size}'&quot;
+      - &quot;setenv set_boot_args 'setenv bootargs \&quot;${bootargs}\&quot; root=/dev/nfs nfsroot=${serverip}:${rootfs_path} bootfs=${serverip}:${bootfs_path} rootpath=/ ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}::${netdev}:off noipath'&quot;
+      - &quot;setenv start_kernel 'fdt addr ${dtb_addr}; if fdt list /; then bootm ${kernel_addr_r} ${ramdisk_combo} ${dtb_addr}; else booti ${kernel_addr_r} ${ramdisk_combo} ${dtb_addr}; fi;'&quot;
+      - &quot;setenv nfs_boot 'echo \&quot;Try to boot from NFS ...\&quot;; run commonargs; run set_boot_args; run get_kernel; run get_dtb; run get_ramdisk; run start_kernel; echo \&quot;########### boot kernel failed from NFS, check your boot config #############\&quot;'&quot;
+      - &quot;fdt addr ${dtb_addr}&quot;
+      - &quot;run nfs_boot&quot;
+
+      auto_login:
+         login_prompt: 'Bianbu login:'
+         username: 'root'
+         password: 'bianbu'
+      prompts:
+      - 'Welcome to Bianbu Linux'
+
+
+      reset: false # Do not reset the device after booting
+      timeout:
+         minutes: 10
+</code></pre>
+<h3 id="notes">Notes</h3>
+<ul>
+<li><strong>device_type:</strong> This must match a device type configured in your lab. Ask your lab admin or check the LAVA dashboard's "Device Types" section.</li>
+<li><strong>URLs:</strong> Add the actual HTTP/HTTPS URLs to your opensbi.bin, uImage, dtb, rootfs etc. binaries</li>
+</ul>
+<h3 id="boot-section">boot section:</h3>
+<ul>
+<li><strong>method:</strong> This will vary based on your device. Common methods include u-boot, qemu (for QEMU virtual devices), tftp, etc. Consult your lab admin.</li>
+<li><strong>kernel_args:</strong> Essential if you're booting a Linux kernel, especially with NFS rootfs.</li>
+</ul>
+<h2 id="submitting-your-lava-job">Submitting Your LAVA Job</h2>
+<h3 id="using-the-lava-command-line-client-lavacli">Using the LAVA Command-Line Client (<code>lavacli</code>)</h3>
+<p>This is ideal for automation and scripting.</p>
+<h4 id="install-lava-cli-tools">Install LAVA CLI Tools:</h4>
+<p>Install the <code>lavacli</code> using command <code>sudo apt-get install lavacli</code>.</p>
+<h4 id="authenticate-with-the-lava-server">Authenticate with the LAVA Server:</h4>
+<p>Once the token is created, create an identity with that token using following command.</p>
+<pre><code>lavacli identities add --token &lt;TOKEN&gt; --uri https://kernelci-1.cloud-v.co/RPC2 --username &lt;USERNAME&gt; &lt;identity_name&gt;
+</code></pre>
+<h4 id="list-identities">List identities</h4>
+<p>You can list the created identities using following command.</p>
+<pre><code>lavacli identities list
+</code></pre>
+<h4 id="submit-your-jobs">Submit your jobs</h4>
+<p>Use following command to submit jobs.</p>
+<pre><code>lavacli -i &lt;identity_name&gt; jobs submit &lt;job_name&gt;
+</code></pre>
+<p>This command will submit the job and return a Job ID.</p>
+<h2 id="monitoring-your-job">Monitoring Your Job</h2>
+<p>After submission, your job will appear in the LAVA Dashboard.</p>
+<ul>
+<li>Go to the "Your Jobs" section (or the main dashboard)</li>
+<li>Find your job by its Job ID or your username</li>
+<li>Click on your job to see its details. This page provides<ul>
+<li><strong>Status:</strong> Pending, Running, Finished, Canceled</li>
+<li><strong>Log:</strong> Real-time log output from the device as LAVA performs deployment, boot, and testing steps. This is crucial for debugging</li>
+<li><strong>Results:</strong> A summary of test cases (PASS/FAIL) reported by lava-test-case commands</li>
+</ul>
+</li>
+</ul>
+<h2 id="getting-help">Getting Help</h2>
+<p><strong>LAVA Documentation:</strong> Refer to the official <a href="https://docs.lavasoftware.org/lava/index.html">LAVA documentation</a> for detailed information.</p>
+<p><strong>LAVA Mailing List</strong></p>
+<p>If you have questions related to the LAVA, you can post them on the <a href="https://lists.lavasoftware.org/mailman3/lists/">LAVA mailing list</a>.</p>
+<p><strong>Email Us</strong></p>
+<p>If you need help related to infrastructure feature or need to add something new, email us at cloud-v@10xengineers.ai</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
