@@ -1,6 +1,6 @@
 # Getting Started with Linaro's LAVA on Cloud-V
 
-This guide provides a step-by-step introduction to start using our custom LAVA lab for u-boot/firmware testing on RISC-V boards. This is intended for end-users who want to submit and monitor build/test jobs without necessarily delving into LAVA's internal configuration.
+This guide provides a step-by-step introduction to start using Cloud-V's LAVA lab for U-Boot/firmware testing on RISC-V boards. This is intended for software developers who want to test the firmware on RISC-V hardware boards.
 
 ## What is LAVA
 
@@ -217,3 +217,7 @@ After submission, your job will appear in the LAVA Dashboard.
 **LAVA Mailing List**
 
 If you have questions related to the LAVA, you can post them on the [LAVA mailing list](https://lists.lavasoftware.org/mailman3/lists/).
+
+**Email Us**
+
+If you need help related to infrastructure feature or need to add something new, email us at cloud-v@10xengineers.ai

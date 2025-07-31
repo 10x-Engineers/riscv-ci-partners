@@ -3,11 +3,14 @@ nav:
   - Home: index.md
   - Getting Started:
       - Setting up CI/CD on RISC-V: 
-        - CI/CD on RISC-V: cicd.md
-        - Registering RISC-V as GitHub runner: setting_up_github_runner.md
-        - Registering RISC-V as GitLab runner: setting_up_gitlab_runner.md
-        - Getting access to Jenkins on Cloud-V: Software_Developer_Guide.md
-        - Create a Jenkinsfile: Creating_jenkinsfile.md
+        - CI/CD on RISC-V: ci_cd_on_riscv.md
+        - Version Control Systems:
+            - Registering RISC-V as GitHub runner: setting_up_github_runner.md
+            - Registering RISC-V as GitLab runner: setting_up_gitlab_runner.md
+            - Getting access to Jenkins on Cloud-V: Software_Developer_Guide.md
+            - Create a Jenkinsfile: Creating_jenkinsfile.md
+        - KernelCI:
+            - Getting Access to LAVA: getting_started_lava.md
       - Setting up SSH on RISC-V: sandboxing.md
   - Compute Instance Specifications: compute_instances.md
   - Tooling on Compute Instances:
