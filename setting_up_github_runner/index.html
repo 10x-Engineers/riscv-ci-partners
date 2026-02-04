@@ -20,7 +20,7 @@
     
     
       
-        <title>Registering RISC-V as GitHub runner - Cloud-V Docs</title>
+        <title>Register free GitHub Runner - Cloud-V Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#registering-github-runner-with-cloud-v" class="md-skip">
+        <a href="#github-runner-for-risc-v-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Registering RISC-V as GitHub runner
+              Register free GitHub Runner
             
           </span>
         </div>
@@ -298,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci_cd_on_riscv.md" class="md-nav__link">
+      <a href="../ci_cd.md" class="md-nav__link">
         
   
   
@@ -375,7 +375,7 @@
   
   
   <span class="md-ellipsis">
-    Registering RISC-V as GitHub runner
+    Register free GitHub Runner
     
   </span>
   
@@ -388,7 +388,7 @@
   
   
   <span class="md-ellipsis">
-    Registering RISC-V as GitHub runner
+    Register free GitHub Runner
     
   </span>
   
@@ -411,19 +411,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#important-points-to-note" class="md-nav__link">
+  <a href="#quick-start-recommended-for-new-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Important points to note
+      Quick Start (Recommended for New Users)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Important points to note">
+    <nav class="md-nav" aria-label="Quick Start (Recommended for New Users)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#registration-time" class="md-nav__link">
+  <a href="#complete-workflow-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Registration Time
+      Complete Workflow Example
     </span>
   </a>
   
@@ -435,29 +435,455 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-risc-v-machines" class="md-nav__link">
+  <a href="#choosing-your-method-app-vs-legacy" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported RISC-V machines
+      Choosing Your Method: App vs Legacy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-the-github-action-workflow-works" class="md-nav__link">
+  <a href="#supported-risc-v-boards" class="md-nav__link">
     <span class="md-ellipsis">
-      How the GitHub Action workflow works
+      Supported RISC-V Boards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported RISC-V Boards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Expectations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-app-setup-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub App Setup (Beta)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub App Setup (Beta)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-setup-web-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy Setup (Web Form)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Legacy Setup (Web Form)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-installed-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-installed Software
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-installed Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base Image
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-limits-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Limits &amp; Quotas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Limits &amp; Quotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-90-day-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      The 90-Day Cycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The 90-Day Cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-github-app-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      With GitHub App (Beta)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-legacy-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Legacy Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-not-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Not Starting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-build-taking-too-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Build Taking Too Long
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runner-becomes-unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runner Becomes Unreachable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-build-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Build Failures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Secrets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker-in-Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregistering-a-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unregistering a Runner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-notes-about-github-actions-on-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Notes About GitHub Actions on RISC-V
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Notes About GitHub Actions on RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unofficial-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unofficial Port
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-to-be-aware-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations to Be Aware Of
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Need Help?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Need Help?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-contacting-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Contacting Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contact-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact Us
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#want-a-different-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Want a Different Board?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#found-an-issue" class="md-nav__link">
+  <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
-      Found an issue?
+      FAQ
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-multiple-board-types-in-the-same-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I use multiple board types in the same repository?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-to-my-packages-after-90-days" class="md-nav__link">
+    <span class="md-ellipsis">
+      What happens to my packages after 90 days?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-is-my-build-so-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is my build so slow?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-run-multiple-jobs-in-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I run multiple jobs in parallel?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-check-if-a-board-is-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I check if a board is available?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-my-job-needs-more-than-64gb-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if my job needs more than 64GB storage?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-this-for-production-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I use this for production CI/CD?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-a-cloud-v-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I need a Cloud-V account?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -482,7 +908,7 @@
   
   
   <span class="md-ellipsis">
-    Registering RISC-V as GitLab runner
+    Register free GitLab Runner
     
   </span>
   
@@ -909,19 +1335,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#important-points-to-note" class="md-nav__link">
+  <a href="#quick-start-recommended-for-new-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Important points to note
+      Quick Start (Recommended for New Users)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Important points to note">
+    <nav class="md-nav" aria-label="Quick Start (Recommended for New Users)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#registration-time" class="md-nav__link">
+  <a href="#complete-workflow-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Registration Time
+      Complete Workflow Example
     </span>
   </a>
   
@@ -933,29 +1359,455 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-risc-v-machines" class="md-nav__link">
+  <a href="#choosing-your-method-app-vs-legacy" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported RISC-V machines
+      Choosing Your Method: App vs Legacy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-the-github-action-workflow-works" class="md-nav__link">
+  <a href="#supported-risc-v-boards" class="md-nav__link">
     <span class="md-ellipsis">
-      How the GitHub Action workflow works
+      Supported RISC-V Boards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported RISC-V Boards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Expectations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-app-setup-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub App Setup (Beta)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub App Setup (Beta)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-setup-web-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy Setup (Web Form)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Legacy Setup (Web Form)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-installed-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-installed Software
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-installed Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base Image
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-limits-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Limits &amp; Quotas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Limits &amp; Quotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-90-day-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      The 90-Day Cycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The 90-Day Cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-github-app-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      With GitHub App (Beta)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-legacy-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Legacy Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-not-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Not Starting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-build-taking-too-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Build Taking Too Long
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runner-becomes-unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runner Becomes Unreachable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-build-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Build Failures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Secrets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker-in-Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregistering-a-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unregistering a Runner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-notes-about-github-actions-on-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Notes About GitHub Actions on RISC-V
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Notes About GitHub Actions on RISC-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unofficial-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unofficial Port
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-to-be-aware-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations to Be Aware Of
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Need Help?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Need Help?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-contacting-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Contacting Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contact-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact Us
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#want-a-different-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Want a Different Board?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#found-an-issue" class="md-nav__link">
+  <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
-      Found an issue?
+      FAQ
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-multiple-board-types-in-the-same-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I use multiple board types in the same repository?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-to-my-packages-after-90-days" class="md-nav__link">
+    <span class="md-ellipsis">
+      What happens to my packages after 90 days?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-is-my-build-so-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is my build so slow?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-run-multiple-jobs-in-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I run multiple jobs in parallel?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-check-if-a-board-is-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I check if a board is available?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-my-job-needs-more-than-64gb-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if my job needs more than 64GB storage?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-this-for-production-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I use this for production CI/CD?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-a-cloud-v-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I need a Cloud-V account?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -975,33 +1827,381 @@
 
 
 
-<h1 id="registering-github-runner-with-cloud-v">Registering GitHub Runner with Cloud-V</h1>
-<p>For registering a free GitHub actions runner on RISC-V compute machine, visit <a href="https://cloud-v.co/github-riscv-runner">this</a> link.</p>
-<p>After the necessary information is provided, clicking the submit button will make an attempt to register the runner. The registration can take some time. Please be patient with next page loading. </p>
-<h2 id="important-points-to-note">Important points to note</h2>
+<h1 id="github-runner-for-risc-v-documentation">GitHub Runner for RISC-V - Documentation</h1>
+<p>Get free RISC-V compute machines as GitHub runners for your CI/CD workflows.</p>
+<hr />
+<h2 id="quick-start-recommended-for-new-users">Quick Start (Recommended for New Users)</h2>
+<p>Getting started is simple - just three steps:</p>
+<ol>
+<li><strong>Install the GitHub App</strong>: Go to <a href="https://github.com/apps/cloud-v-github-runners">Cloud-V GitHub Runners</a> and click "Install"</li>
+<li><strong>Select Repositories</strong>: Choose which repositories should have access to RISC-V runners</li>
+<li><strong>Add the Label</strong>: In your workflow file, use <code>runs-on:</code> with one of our <a href="#supported-risc-v-boards">supported board labels</a></li>
+</ol>
+<p>That's it! Your first build will automatically provision a RISC-V runner.</p>
+<h3 id="complete-workflow-example">Complete Workflow Example</h3>
+<pre><code class="language-yaml">name: RISC-V CI
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: visionfive2  # Use a RISC-V runner
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build project
+        run: |
+          make clean
+          make all
+
+      - name: Run tests
+        run: make test
+</code></pre>
+<hr />
+<h2 id="choosing-your-method-app-vs-legacy">Choosing Your Method: App vs Legacy</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><strong>GitHub App (Beta)</strong> ✅</th>
+<th><strong>Legacy (Web Form)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recommended for</strong></td>
+<td>New users, production use</td>
+<td>Special cases only</td>
+</tr>
+<tr>
+<td><strong>Setup</strong></td>
+<td>One-time app installation</td>
+<td>Manual form submission per board</td>
+</tr>
+<tr>
+<td><strong>Registration</strong></td>
+<td>Automatic via webhook</td>
+<td>Manual, 2-5 minutes wait</td>
+</tr>
+<tr>
+<td><strong>After 90 days</strong></td>
+<td>Auto-renews on next run</td>
+<td>Manual re-registration required</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>Real-time through GitHub</td>
+<td>Check via email/Discord</td>
+</tr>
+<tr>
+<td><strong>Future</strong></td>
+<td>Actively maintained</td>
+<td>Will be deprecated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Our recommendation</strong>: Use the GitHub App unless you have a specific reason not to.</p>
+<blockquote>
+<p><strong>Note</strong>: The Legacy workflow will eventually be deprecated, though no timeline has been set.</p>
+</blockquote>
+<hr />
+<h2 id="supported-risc-v-boards">Supported RISC-V Boards</h2>
+<p>Add one of these labels to your workflow's <code>runs-on:</code> field:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Board</th>
+<th>CPU</th>
+<th>Cores</th>
+<th>RAM</th>
+<th>ISA Extensions</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visionfive2</code></td>
+<td>StarFive VisionFive 2</td>
+<td>JH7110 @ 1.5GHz</td>
+<td>4</td>
+<td>2-8GB</td>
+<td>RV64GC</td>
+<td>64GB SD</td>
+</tr>
+<tr>
+<td><code>banana-pi-f3</code></td>
+<td>Banana Pi BPI-F3</td>
+<td>SpacemiT K1 @ 1.2GHz</td>
+<td>8</td>
+<td>2-16GB</td>
+<td>RV64GC, RVV 1.0, 2.0 TOPS AI</td>
+<td>8-128GB eMMC</td>
+</tr>
+<tr>
+<td><code>milkv-pioneer</code></td>
+<td>Milk-V Pioneer Box</td>
+<td>SG2042 @ 2.0GHz</td>
+<td>64</td>
+<td>Up to 128GB</td>
+<td>RV64GC, RVV 0.71</td>
+<td>500GB NVMe</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-expectations">Performance Expectations</h3>
+<p>RISC-V boards are currently slower than x86 GitHub-hosted runners. This is expected as the ecosystem is still maturing. For detailed benchmark comparisons, see our <a href="https://cloud-v.co/riscv-comparison">performance comparison page</a>.</p>
+<p><strong>Key points</strong>:
+- First build takes 2-5 minutes (pulling Docker image and registration)
+- Subsequent builds start at normal speed
+- Build times will be longer than x86, but you're helping advance RISC-V adoption!</p>
+<hr />
+<h2 id="github-app-setup-beta">GitHub App Setup (Beta)</h2>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>Visit <a href="https://github.com/apps/cloud-v-github-runners">Cloud-V GitHub Runners App</a></li>
+<li>Click "Install" or "Configure" (if already installed)</li>
+<li>Select "All repositories" or choose specific ones</li>
+<li>Click "Install" to grant permissions</li>
+</ol>
+<p><strong>Permissions requested</strong>:
+- Read access to metadata
+- Read and write access to actions and administration</p>
+<p>These permissions allow the app to register runners and manage GitHub Actions for your repositories.</p>
+<h3 id="first-build">First Build</h3>
+<p>When you push a commit with a RISC-V label in your workflow:</p>
+<ol>
+<li><strong>First time only</strong>: 2-5 minutes to pull the Docker image and register the runner</li>
+<li>GitHub shows the runner as <code>riscv-BOARD_TYPE-YYYYMMDD</code> in your repository settings</li>
+<li><strong>All subsequent builds</strong>: Normal startup time</li>
+</ol>
+<h3 id="verifying-registration">Verifying Registration</h3>
+<p>To confirm your runner is registered:</p>
+<ol>
+<li>Go to your repository on GitHub</li>
+<li>Navigate to <strong>Settings</strong> → <strong>Actions</strong> → <strong>Runners</strong></li>
+<li>Look for a runner named <code>riscv-BOARD_TYPE-YYYYMMDD</code></li>
+</ol>
+<p>You can also check runner status on our <a href="https://monitor.cloud-v.co">monitoring dashboard</a>.</p>
+<h3 id="how-it-works">How It Works</h3>
 <ul>
-<li>Only one GitHub repository is supported per RISC-V machine type. For example if you have registered a GitHub repository with VisionFive 2, you cannot register the same repository again with VisionFive 2 board type</li>
-<li>You must wait till the next page has loaded after the registration attempt to know the status of registration (this can take some time)</li>
-<li>To preserve the compute resources, the runner will expire in 90 days and can be registered again through the <a href="https://cloud-v.co/github-riscv-runner">same link</a></li>
-<li>The RISC-V boards are shared compute machines running podman containers to isolate the jobs (see the section <a href="#how-the-github-action-workflow-works">How the GitLab Runner works</a>)</li>
+<li><strong>One runner per board type per repository</strong>: If you have multiple workflows using <code>visionfive2</code>, they'll share the same runner and run sequentially</li>
+<li><strong>Docker isolation</strong>: Each repository gets its own Docker container on the RISC-V board</li>
+<li><strong>Persistent environment</strong>: Packages you install remain available across builds</li>
+<li><strong>Automatic renewal</strong>: After 90 days, the runner is removed but automatically re-provisioned on your next build</li>
 </ul>
-<h3 id="registration-time">Registration Time</h3>
-<p>This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project once you submit the details and apply for runner. </p>
-<p>Depending upon the workload, network latency, and the computing power of the RISC-V machine, this can take up to <strong>3 minutes</strong>. While the page is loading, be patient as it takes some time to contact the runners and register them.</p>
-<p>Once an attempt to register is finished, you will see the result accordingly on the next page.</p>
-<h2 id="supported-risc-v-machines">Supported RISC-V machines</h2>
-<p>Currently, following RISC-V machines are supported with GitLab runner workflow.</p>
+<hr />
+<h2 id="legacy-setup-web-form">Legacy Setup (Web Form)</h2>
+<blockquote>
+<p><strong>⚠️ Note</strong>: This method will be deprecated in the future. We recommend using the GitHub App instead.</p>
+</blockquote>
+<p>For the legacy workflow, visit <a href="https://cloud-v.co/github-riscv-runner">cloud-v.co/github-riscv-runner</a>.</p>
+<h3 id="important-limitations">Important Limitations</h3>
 <ul>
-<li>VisionFive 2 – Multiple boards</li>
-<li>Milk-V Pioneer Box – Single shared compute machine</li>
+<li>Only one board type per repository (e.g., can't register both VisionFive 2 and Banana Pi F3 for the same repo)</li>
+<li>Manual re-registration required after 90 days</li>
+<li>Registration takes 2-5 minutes - wait for the confirmation page to load</li>
+<li>More steps and points of failure compared to the GitHub App</li>
 </ul>
-<p>This list is not final. The infrastructure is expected to scale both in variety and quantity of supported RISC-V boards in the near future.</p>
-<p>The QEMU-based compute instance is configured to support a wide range of ISA extensions but is relatively slower than the RISC-V hardware. So it may take a while to register the QEMU compute machine as the runner on the page.</p>
-<p>For a detailed list of compute machines and their specifications, see <a href="../compute_instances/">Compute Instances in Cloud‑V</a>.</p>
-<h2 id="how-the-github-action-workflow-works">How the GitHub Action workflow works</h2>
-<p>The flow uses Ansible to start Podman container on the RISC-V boards and registers the runner with the passed argument inside the podman container. The podman isolation level is on repository-level which means the podman container runs all the jobs of single repository registered inside it without further abstraction or containerisation. A single RISC-V machine can have multiple podman containers, each registered with a github repository. The Dockerfile which is used for setting up the RISC-V machines is available on the <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a>.</p>
-<h2 id="found-an-issue">Found an issue?</h2>
-<p>If you found an issue with this workflow, you can create an issue at <a href="https://github.com/alitariq4589/github-actions-riscv">GitHub Repository</a> or email us directly at cloud-v@10xengineers.ai.</p>
+<hr />
+<h2 id="pre-installed-software">Pre-installed Software</h2>
+<p>The Docker container runs Ubuntu RISC-V with these packages pre-installed:</p>
+<ul>
+<li><strong>Build tools</strong>: gcc, make, git</li>
+<li><strong>Core utilities</strong>: curl, ca-certificates, sudo</li>
+<li><strong>Container runtime</strong>: docker.io (Docker-in-Docker capability)</li>
+<li><strong>Libraries</strong>: libatomic1, libicu-dev</li>
+</ul>
+<p><strong>Need additional software?</strong> Install it in your workflow:</p>
+<pre><code class="language-yaml">- name: Install dependencies
+  run: |
+    sudo apt update
+    sudo apt install -y python3 cmake ninja-build
+</code></pre>
+<p>Packages remain installed for the lifetime of the container (until the 90-day renewal).</p>
+<h3 id="base-image">Base Image</h3>
+<p>The container is based on the official <a href="https://hub.docker.com/r/riscv64/ubuntu">Ubuntu RISC-V image</a>. View the complete <a href="https://github.com/alitariq4589/github-actions-riscv-image/blob/docker_acces/Dockerfile.ubuntu">Dockerfile on GitHub</a>.</p>
+<hr />
+<h2 id="usage-limits-quotas">Usage Limits &amp; Quotas</h2>
+<table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Concurrent jobs</strong></td>
+<td>1 per board type per repository</td>
+</tr>
+<tr>
+<td><strong>Build timeout</strong></td>
+<td>Standard GitHub Actions limits</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>64GB (most boards), 500GB (Milk-V Pioneer)</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>Full internet access, no restrictions</td>
+</tr>
+<tr>
+<td><strong>Runner lifetime</strong></td>
+<td>90 days (auto-renewed in App mode)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="storage-management">Storage Management</h3>
+<p>You are responsible for cleaning up build artifacts and temporary files. The container persists between builds, so disk usage will accumulate.</p>
+<p><strong>Example cleanup step</strong>:</p>
+<pre><code class="language-yaml">- name: Cleanup
+  if: always()
+  run: |
+    rm -rf build/
+    docker system prune -f
+</code></pre>
+<hr />
+<h2 id="the-90-day-cycle">The 90-Day Cycle</h2>
+<h3 id="with-github-app-beta">With GitHub App (Beta)</h3>
+<ul>
+<li>After 90 days, the runner is automatically removed from the registry</li>
+<li><strong>Your next build automatically provisions a fresh runner</strong> - no action needed</li>
+<li>The new runner starts with a clean environment (previously installed packages are gone)</li>
+</ul>
+<h3 id="with-legacy-workflow">With Legacy Workflow</h3>
+<ul>
+<li>After 90 days of registration, the runner expires</li>
+<li>You must manually re-register through the <a href="https://cloud-v.co/github-riscv-runner">web form</a></li>
+<li>Your builds won't run until you re-register</li>
+</ul>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="build-not-starting">Build Not Starting</h3>
+<p><strong>Check if the runner is online</strong>:
+1. Go to <strong>Settings</strong> → <strong>Actions</strong> → <strong>Runners</strong> in your repository
+2. Look for your runner (<code>riscv-BOARD_TYPE-YYYYMMDD</code>)
+3. Check if it shows as "Active" or "Offline"</p>
+<p><strong>Alternative</strong>: Check the <a href="https://monitor.cloud-v.co">Cloud-V monitoring dashboard</a> to see if your board type is online.</p>
+<p><strong>If runner shows as offline or doesn't exist</strong>:
+- For <strong>GitHub App</strong>: The webhook should auto-provision. Wait 2-5 minutes and try again.
+- For <strong>Legacy</strong>: You may need to re-register through the web form.
+- If issues persist, <a href="#need-help">contact support</a>.</p>
+<h3 id="first-build-taking-too-long">First Build Taking Too Long</h3>
+<p>This is expected! The first build:
+1. Provisions the runner (if needed)
+2. Pulls the Docker image (~several hundred MB)
+3. Registers with GitHub
+4. Starts your workflow</p>
+<p><strong>Expected time</strong>: 2-5 minutes for first build, normal thereafter.</p>
+<h3 id="runner-becomes-unreachable">Runner Becomes Unreachable</h3>
+<p>The Docker container may occasionally become corrupted due to:
+- Network issues during registration
+- Unexpected system events
+- Storage issues</p>
+<p><strong>What to do</strong>:
+1. Check if the runner appears in your repository settings
+2. If it shows but GitHub can't contact it, the container may be corrupted
+3. <strong>Contact us immediately</strong> (see <a href="#need-help">Need Help</a> section)</p>
+<p>We currently have no automated detection for corrupted containers, so your report helps us fix it quickly.</p>
+<h3 id="common-build-failures">Common Build Failures</h3>
+<p><strong>Package installation fails</strong>: 
+- RISC-V support is still maturing. Some packages may not have RISC-V builds yet
+- Try building from source or check for RISC-V-specific repositories</p>
+<p><strong>Performance issues</strong>:
+- RISC-V is currently slower than x86 - this is expected
+- See our <a href="https://cloud-v.co/riscv-comparison">benchmark comparisons</a></p>
+<p><strong>Docker-in-Docker issues</strong>:
+- The container supports running Docker, but nested containers may have limitations
+- Use <code>docker run --privileged</code> if you encounter permission issues</p>
+<hr />
+<h2 id="advanced-topics">Advanced Topics</h2>
+<h3 id="github-secrets">GitHub Secrets</h3>
+<p>GitHub secrets work normally with Cloud-V runners. Use them as you would with any GitHub Actions workflow:</p>
+<pre><code class="language-yaml">env:
+  API_KEY: ${{ secrets.MY_API_KEY }}
+</code></pre>
+<h3 id="network-access">Network Access</h3>
+<p>Runners have full internet access with no blocked ports or restrictions. You can:
+- Download dependencies from public repositories
+- Access external APIs
+- Push to container registries
+- Deploy to remote servers</p>
+<h3 id="docker-in-docker">Docker-in-Docker</h3>
+<p>The container supports running Docker containers inside it. Example:</p>
+<pre><code class="language-yaml">- name: Run tests in container
+  run: |
+    docker run --rm ubuntu:latest bash -c &quot;echo 'Testing in Docker'&quot;
+</code></pre>
+<p><strong>Note</strong>: Use <code>--privileged</code> flag if you encounter permission issues.</p>
+<h3 id="unregistering-a-runner">Unregistering a Runner</h3>
+<ul>
+<li>Simply uninstall the app from the repository, or</li>
+<li>Wait 90 days of inactivity and runner will be removed automatically</li>
+</ul>
+<hr />
+<h2 id="important-notes-about-github-actions-on-risc-v">Important Notes About GitHub Actions on RISC-V</h2>
+<h3 id="unofficial-port">Unofficial Port</h3>
+<p>The GitHub Actions runner for RISC-V is <strong>not officially supported by GitHub</strong>. We're using a community port maintained at:
+- <a href="https://github.com/alitariq4589/github-runner-riscv">github-runner-riscv</a></p>
+<p>This port is actively maintained and functional, but some features may lag behind the official GitHub Actions runner.</p>
+<h3 id="limitations-to-be-aware-of">Limitations to Be Aware Of</h3>
+<ol>
+<li><strong>Storage cleanup is your responsibility</strong> - The Docker container persists between builds</li>
+<li><strong>One concurrent job</strong> per board type per repository</li>
+<li><strong>No automatic corruption detection</strong> - Report issues if your runner becomes unreachable</li>
+<li><strong>Performance</strong> - RISC-V boards are slower than x86; expect longer build times</li>
+</ol>
+<hr />
+<h2 id="need-help">Need Help?</h2>
+<p>If you encounter any issues:</p>
+<h3 id="before-contacting-support">Before Contacting Support</h3>
+<ol>
+<li>Check if your runner is listed in <strong>Settings</strong> → <strong>Actions</strong> → <strong>Runners</strong></li>
+<li>Verify the runner shows as "Active" (green dot)</li>
+<li>Check the <a href="https://monitor.cloud-v.co">monitoring dashboard</a> for overall system status</li>
+<li>Review the <a href="#troubleshooting">troubleshooting section</a> above</li>
+</ol>
+<h3 id="contact-us">Contact Us</h3>
+<p>We're here to help! Reach out through:</p>
+<ul>
+<li><strong>Email</strong>: cloud-v@10xengineers.ai</li>
+<li><strong>Discord</strong>: Join our <a href="https://discord.gg/H7EGrzV93p">RISC-V Software Ecosystem community</a></li>
+<li><strong>Website</strong>: <a href="https://cloud-v.co">cloud-v.co</a></li>
+</ul>
+<p>We aim to respond as quickly as possible. Including the following information helps us help you faster:
+- Your GitHub repository name
+- Board type you're using (<code>visionfive2</code>, <code>banana-pi-f3</code>, or <code>milkv-pioneer</code>)
+- Runner name from your repository settings
+- Error messages or unexpected behavior you're seeing</p>
+<hr />
+<h2 id="want-a-different-board">Want a Different Board?</h2>
+<p>We have additional RISC-V boards available but only enable them based on demand. </p>
+<p><strong>See all available boards</strong>: Check the <a href="../compute_instances/">Compute Instances page</a> for our complete inventory.</p>
+<p><strong>Need something specific?</strong>
+- Email us at cloud-v@10xengineers.ai
+- Join our <a href="https://discord.gg/H7EGrzV93p">Discord community</a>
+- Tell us which board you need and why</p>
+<p>We regularly add new boards based on community interest!</p>
+<hr />
+<h2 id="faq">FAQ</h2>
+<h3 id="can-i-use-multiple-board-types-in-the-same-repository">Can I use multiple board types in the same repository?</h3>
+<p>No. Each repository can only register <strong>one board type</strong>. However, you can use the same board type across multiple workflow files.</p>
+<h3 id="what-happens-to-my-packages-after-90-days">What happens to my packages after 90 days?</h3>
+<p>When the runner is renewed (automatically with the App, manually with Legacy), you get a fresh Docker container. All previously installed packages are gone.</p>
+<h3 id="why-is-my-build-so-slow">Why is my build so slow?</h3>
+<p>RISC-V performance currently lags behind x86. This is expected as the ecosystem matures. Your contribution to testing helps drive improvements! See our <a href="https://cloud-v.co/riscv-comparison">benchmark comparison</a>.</p>
+<h3 id="can-i-run-multiple-jobs-in-parallel">Can I run multiple jobs in parallel?</h3>
+<p>No. Only one job can run at a time per board type per repository. Multiple jobs will queue and run sequentially.</p>
+<h3 id="how-do-i-check-if-a-board-is-available">How do I check if a board is available?</h3>
+<p>Check the <a href="https://monitor.cloud-v.co">monitoring dashboard</a> or look for your runner in <strong>Settings</strong> → <strong>Actions</strong> → <strong>Runners</strong>.</p>
+<h3 id="what-if-my-job-needs-more-than-64gb-storage">What if my job needs more than 64GB storage?</h3>
+<p>Most boards have 64GB. The Milk-V Pioneer has 500GB. If you need more, contact us to discuss options.</p>
+<h3 id="can-i-use-this-for-production-cicd">Can I use this for production CI/CD?</h3>
+<p>Yes! The GitHub App (Beta) is stable enough for production use. Many projects are already using it successfully.</p>
+<h3 id="do-i-need-a-cloud-v-account">Do I need a Cloud-V account?</h3>
+<p>No. Just install the GitHub App or fill out the Legacy form - no separate account required.</p>
+<p><em>Last updated: February 2026</em></p>
 
 
 
