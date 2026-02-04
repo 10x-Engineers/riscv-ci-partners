@@ -5,8 +5,8 @@ nav:
       - Setting up CI/CD on RISC-V: 
         - CI/CD on RISC-V: ci_cd.md
         - Version Control Systems:
-            - Registering RISC-V as GitHub runner: setting_up_github_runner.md
-            - Registering RISC-V as GitLab runner: setting_up_gitlab_runner.md
+            - Register free GitHub Runner: setting_up_github_runner.md
+            - Register free GitLab Runner: setting_up_gitlab_runner.md
             - Getting access to Jenkins on Cloud-V: Software_Developer_Guide.md
             - Create a Jenkinsfile: Creating_jenkinsfile.md
         - KernelCI:
