@@ -3,7 +3,7 @@ nav:
   - Home: index.md
   - Getting Started:
       - Setting up CI/CD on RISC-V: 
-        - CI/CD on RISC-V: ci_cd_on_riscv.md
+        - CI/CD on RISC-V: ci_cd.md
         - Version Control Systems:
             - Registering RISC-V as GitHub runner: setting_up_github_runner.md
             - Registering RISC-V as GitLab runner: setting_up_gitlab_runner.md
