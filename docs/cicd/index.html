@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../setting_up_github_runner/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Running CI/CD pipelines on RISC-V with Cloud-V - Cloud-V Docs</title>
+        <title>CI/CD on RISC-V - Cloud-V Docs</title>
       
     
     
@@ -96,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running CI/CD pipelines on RISC-V with Cloud-V
+              CI/CD on RISC-V
             
           </span>
         </div>
@@ -211,18 +215,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -238,7 +244,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Getting Started
@@ -249,18 +255,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -276,7 +284,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Setting up CI/CD on RISC-V
@@ -287,10 +295,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ci_cd.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    CI/CD on RISC-V
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -301,6 +331,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-cicd-platforms-on-cloud-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported CI/CD platforms on Cloud-V
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-compute-machine-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported compute machine types
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -821,21 +889,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported compute machine types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-do-we-even-need-qemu" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why do we even need QEMU
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -857,16 +910,11 @@
 <h1 id="running-cicd-pipelines-on-risc-v-with-cloud-v">Running CI/CD pipelines on RISC-V with Cloud-V</h1>
 <p>This document describes how someone can integrate their CI/CD projects on RISC-V compute machine.</p>
 <h2 id="supported-cicd-platforms-on-cloud-v">Supported CI/CD platforms on Cloud-V</h2>
-<p>There is a <a href="https://cloud-v.co/risc-v-ci/cd">dedicated page</a> on Cloud-V website where you can check which version control platforms or CI/CD services are supported by Cloud-V with RISC-V compute machines. At present, developers can use these compute machines free of cost. </p>
-<p>Services which are labeled "Coming Soon!" are in progress and will be added soon.</p>
+<p>There is a <a href="https://cloud-v.co/risc-v-cicd">dedicated page</a> on Cloud-V website where you can check which version control platforms or CI/CD services are supported by Cloud-V with RISC-V compute machines. Developers can use these compute machines free of cost. </p>
 <h2 id="supported-compute-machine-types">Supported compute machine types</h2>
 <p>Cloud-V offers vendor-agnostic physical compute machines as well as emulated compute instances. </p>
 <p>Physical compute machines are the SBCs, desktop computers or laptops with RISC-V SoCs in them while the emulated compute instances are running on the x86 host machines. The emulated RISC-V machines use <a href="https://www.qemu.org/">QEMU</a>.</p>
 <p>See <a href="../compute_instances/">Compute Instances in Cloud-V</a> for a complete list of devices available in cloud.</p>
-<h3 id="why-do-we-even-need-qemu">Why do we even need QEMU</h3>
-<p>Every RISC-V SoC in the market supports only a limited set of extensions. So developers don't get flexibility to test the software on the desired ISA string. With QEMU, developers can have an exhaustive list of RISC-V extensions (which do not conflict with each other).</p>
-<p>One other advantage is that if the x86 host machine (which is running the QEMU) has good computing power (say 128 or 256 cores), then it can be leveraged by QEMU to provide a far better computing power than what can be provided by RISC-V physical boards available in the market at present.</p>
-<p>Check <a href="../compute_instances/#qemu-system-riscv64">QEMU Specifications</a> section for specifications QEMU system running in Cloud-V.</p>
 
 
 
