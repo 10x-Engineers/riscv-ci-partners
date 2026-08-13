@@ -1,20 +1,19 @@
-# GitHub Runner for RISC-V - Documentation
+# GitHub Actions on RISC-V
 
-Get free RISC-V compute machines as GitHub runners for your CI/CD workflows.
+Cloud-V gives your GitHub repository free CI runners on physical RISC-V
+boards. You install a GitHub App once, point your workflow at a board, and
+push. There is no account to create, no token to paste, and nothing to renew.
 
----
+## Quick start
 
-## Quick Start (Recommended for New Users)
+1. Install the [Cloud-V GitHub Runners app](https://github.com/apps/cloud-v-github-runners)
+   on your repository. You can pick specific repositories or all of them, and
+   change the selection later from your GitHub settings.
+2. Add a board label to `runs-on:` in your workflow file.
+3. Push. Your first job provisions a runner on a real board, usually within a
+   few minutes, and starts.
 
-Getting started is simple - just three steps:
-
-1. **Install the GitHub App**: Go to [Cloud-V GitHub Runners](https://github.com/apps/cloud-v-github-runners) and click "Install"
-2. **Select Repositories**: Choose which repositories should have access to RISC-V runners
-3. **Add the Label**: In your workflow file, use `runs-on:` with one of our [supported board labels](#supported-risc-v-boards)
-
-That's it! Your first build will automatically provision a RISC-V runner.
-
-### Complete Workflow Example
+A complete workflow:
 
 ```yaml
 name: RISC-V CI
@@ -22,126 +21,44 @@ on: [push, pull_request]
 
 jobs:
   build-and-test:
-    runs-on: visionfive2  # Use a RISC-V runner
+    runs-on: [self-hosted, visionfive2]
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Build project
+      - uses: actions/checkout@v4
+
+      - name: Build
         run: |
           make clean
           make all
-      
-      - name: Run tests
+
+      - name: Test
         run: make test
 ```
 
----
+## Boards and labels
 
-## Choosing Your Method: App vs Legacy
+Use any label from the row you want. The alternates exist so you do not have
+to remember our exact spelling.
 
-| Feature | **GitHub App (Beta)** ✅ | **Legacy (Web Form)** |
-|---------|-------------------------|----------------------|
-| **Recommended for** | New users, production use | Special cases only |
-| **Setup** | One-time app installation | Manual form submission per board |
-| **Registration** | Automatic via webhook | Manual, 2-5 minutes wait |
-| **After 90 days** | Auto-renews on next run | Manual re-registration required |
-| **Availability** | Real-time through GitHub | Check via email/Discord |
-| **Future** | Actively maintained | Will be deprecated |
+| Board | Labels | CPU | Cores | ISA |
+| --- | --- | --- | --- | --- |
+| StarFive VisionFive 2 | `visionfive2`, `vf2`, `vision-five-2` | JH7110 1.5 GHz | 4 | RV64GC |
+| Banana Pi BPI-F3 | `banana-pi-f3`, `bpi-f3`, `banana-pi` | SpacemiT K1 1.6 GHz | 8 | RV64GC, RVV 1.0 |
+| Milk-V Pioneer | `milkv-pioneer`, `pioneer`, `milk-v-pioneer` | SG2042 2.0 GHz | 64 | RV64GC, RVV 0.71 |
 
-**Our recommendation**: Use the GitHub App unless you have a specific reason not to.
+Full hardware details live on the
+[compute instances page](https://10x-engineers.github.io/riscv-ci-partners/compute_instances/).
 
-> **Note**: The Legacy workflow will eventually be deprecated, though no timeline has been set.
+Be honest with yourself about speed: these boards are slower than x86 hosted
+runners, and that is the point. You are testing on the real thing.
 
----
+## How runners work
 
-## Supported RISC-V Boards
+Every job runs in a fresh container. When your job finishes, its runner
+deregisters itself and is gone, and a replacement is prepared for your
+repository automatically. Nothing carries over between jobs: no leftover
+files, no half-installed packages, no stale credentials. If your workflow
+needs a package, install it in a step, every time:
 
-Add one of these labels to your workflow's `runs-on:` field:
-
-| Label | Board | CPU | Cores | RAM | ISA Extensions | Storage |
-|-------|-------|-----|-------|-----|----------------|---------|
-| `visionfive2` | StarFive VisionFive 2 | JH7110 @ 1.5GHz | 4 | 2-8GB | RV64GC | 64GB SD |
-| `banana-pi-f3` | Banana Pi BPI-F3 | SpacemiT K1 @ 1.2GHz | 8 | 2-16GB | RV64GC, RVV 1.0, 2.0 TOPS AI | 8-128GB eMMC |
-| `milkv-pioneer` | Milk-V Pioneer Box | SG2042 @ 2.0GHz | 64 | Up to 128GB | RV64GC, RVV 0.71 | 500GB NVMe |
-
-### Performance Expectations
-
-RISC-V boards are currently slower than x86 GitHub-hosted runners. This is expected as the ecosystem is still maturing. For detailed benchmark comparisons, see our [performance comparison page](https://cloud-v.co/riscv-comparison).
-
-**Key points**:
-- First build takes 2-5 minutes (pulling Docker image and registration)
-- Subsequent builds start at normal speed
-- Build times will be longer than x86, but you're helping advance RISC-V adoption!
-
----
-
-## GitHub App Setup (Beta)
-
-### Installation
-
-1. Visit [Cloud-V GitHub Runners App](https://github.com/apps/cloud-v-github-runners)
-2. Click "Install" or "Configure" (if already installed)
-3. Select "All repositories" or choose specific ones
-4. Click "Install" to grant permissions
-
-**Permissions requested**:
-- Read access to metadata
-- Read and write access to actions and administration
-
-These permissions allow the app to register runners and manage GitHub Actions for your repositories.
-
-### First Build
-
-When you push a commit with a RISC-V label in your workflow:
-
-1. **First time only**: 2-5 minutes to pull the Docker image and register the runner
-2. GitHub shows the runner as `riscv-BOARD_TYPE-YYYYMMDD` in your repository settings
-3. **All subsequent builds**: Normal startup time
-
-### Verifying Registration
-
-To confirm your runner is registered:
-
-1. Go to your repository on GitHub
-2. Navigate to **Settings** → **Actions** → **Runners**
-3. Look for a runner named `riscv-BOARD_TYPE-YYYYMMDD`
-
-You can also check runner status on our [monitoring dashboard](https://monitor.cloud-v.co).
-
-### How It Works
-
-- **One runner per board type per repository**: If you have multiple workflows using `visionfive2`, they'll share the same runner and run sequentially
-- **Docker isolation**: Each repository gets its own Docker container on the RISC-V board
-- **Persistent environment**: Packages you install remain available across builds
-- **Automatic renewal**: After 90 days, the runner is removed but automatically re-provisioned on your next build
-
----
-
-## Legacy Setup (Web Form)
-
-> **⚠️ Note**: This method will be deprecated in the future. We recommend using the GitHub App instead.
-
-For the legacy workflow, visit [cloud-v.co/github-riscv-runner](https://cloud-v.co/github-riscv-runner).
-
-### Important Limitations
-
-- Only one board type per repository (e.g., can't register both VisionFive 2 and Banana Pi F3 for the same repo)
-- Manual re-registration required after 90 days
-- Registration takes 2-5 minutes - wait for the confirmation page to load
-- More steps and points of failure compared to the GitHub App
-
----
-
-## Pre-installed Software
-
-The Docker container runs Ubuntu RISC-V with these packages pre-installed:
-
-- **Build tools**: gcc, make, git
-- **Core utilities**: curl, ca-certificates, sudo
-- **Container runtime**: docker.io (Docker-in-Docker capability)
-- **Libraries**: libatomic1, libicu-dev
-
-**Need additional software?** Install it in your workflow:
 ```yaml
 - name: Install dependencies
   run: |
@@ -149,233 +66,100 @@ The Docker container runs Ubuntu RISC-V with these packages pre-installed:
     sudo apt install -y python3 cmake ninja-build
 ```
 
-Packages remain installed for the lifetime of the container (until the 90-day renewal).
+Things worth knowing about this model:
 
-### Base Image
+- The very first job for a repository takes a few minutes longer while the
+  runner is provisioned on a board.
+- Between back to back jobs there can be a short gap, usually one to three
+  minutes, while the replacement runner comes up. Jobs queued during the gap
+  wait and are picked up automatically.
+- Each repository gets one runner per board type, and jobs for the same board
+  type run one after another. Different board types are independent, so a
+  repository using `visionfive2` and `banana-pi-f3` runs those jobs in
+  parallel.
+- Runner names look like `owner-repo-board-a1b2c3`. You will see them under
+  Settings, Actions, Runners in your repository, appearing and disappearing
+  as jobs run, which is normal.
 
-The container is based on the official [Ubuntu RISC-V image](https://hub.docker.com/r/riscv64/ubuntu). View the complete [Dockerfile on GitHub](https://github.com/alitariq4589/github-actions-riscv-image/blob/docker_acces/Dockerfile.ubuntu).
+## What is inside the runner
 
----
+Jobs run in a container from our open source runner image,
+[`cloudv10x/github-actions-riscv`](https://hub.docker.com/r/cloudv10x/github-actions-riscv),
+built on Ubuntu 24.04 for riscv64. The Docker Hub page always shows the
+current version, and the fleet runs a pinned tag of that image, so what you
+see there is what your job gets. The image ships the usual base: gcc, make,
+git, curl, sudo, and Docker.
 
-## Usage Limits & Quotas
+The runner itself is the community RISC-V port of the GitHub Actions runner,
+maintained at
+[Cloud-V-10xE/github-runner-riscv](https://github.com/Cloud-V-10xE/github-runner-riscv).
+GitHub does not officially support RISC-V runners yet, and this port is what
+makes the whole thing work. It is the same port other public RISC-V CI
+efforts build on.
 
-| Limit | Value |
-|-------|-------|
-| **Concurrent jobs** | 1 per board type per repository |
-| **Build timeout** | Standard GitHub Actions limits |
-| **Storage** | 64GB (most boards), 500GB (Milk-V Pioneer) |
-| **Network** | Full internet access, no restrictions |
-| **Runner lifetime** | 90 days (auto-renewed in App mode) |
+## Using Docker in your jobs
 
-### Storage Management
+Docker works inside your jobs without any special flags:
 
-You are responsible for cleaning up build artifacts and temporary files. The container persists between builds, so disk usage will accumulate.
-
-**Example cleanup step**:
 ```yaml
-- name: Cleanup
-  if: always()
-  run: |
-    rm -rf build/
-    docker system prune -f
+- name: Run something in a container
+  run: docker run --rm riscv64/debian:trixie-slim uname -m
 ```
 
----
+Images you pull are cached on the board itself, so a pull that was slow once
+is fast the next time, even though your runner is new. The boards are shared
+machines, so avoid pulling enormous images you do not need.
 
-## The 90-Day Cycle
+## Checking on things
 
-### With GitHub App (Beta)
-- After 90 days, the runner is automatically removed from the registry
-- **Your next build automatically provisions a fresh runner** - no action needed
-- The new runner starts with a clean environment (previously installed packages are gone)
-
-### With Legacy Workflow
-- After 90 days of registration, the runner expires
-- You must manually re-register through the [web form](https://cloud-v.co/github-riscv-runner)
-- Your builds won't run until you re-register
-
----
+Your repository's Settings, Actions, Runners page shows the current runner
+and whether it is idle or busy. Fleet wide board status is public at
+[monitor.cloud-v.co](https://monitor.cloud-v.co).
 
 ## Troubleshooting
 
-### Build Not Starting
+**The job sits in queued and nothing happens.** Three causes cover almost
+every case. The label does not match one from the table above, so check the
+spelling. The App is not installed on this particular repository, so check
+your installation's repository list. Or it is the repository's first job and
+provisioning is still running, so give it five minutes before worrying.
 
-**Check if the runner is online**:
-1. Go to **Settings** → **Actions** → **Runners** in your repository
-2. Look for your runner (`riscv-BOARD_TYPE-YYYYMMDD`)
-3. Check if it shows as "Active" or "Offline"
+**The job between two others took longer to start.** That is the replacement
+gap described above. It is expected, and the job was never lost.
 
-**Alternative**: Check the [Cloud-V monitoring dashboard](https://monitor.cloud-v.co) to see if your board type is online.
+**A package will not install.** RISC-V support across the package ecosystem
+is still growing, and some packages have no riscv64 build yet. Building from
+source usually works, and our hosted
+[RISC-V package repository](https://cloud-v.co/risc-v-resources) covers some
+of the common gaps.
 
-**If runner shows as offline or doesn't exist**:
-- For **GitHub App**: The webhook should auto-provision. Wait 2-5 minutes and try again.
-- For **Legacy**: You may need to re-register through the web form.
-- If issues persist, [contact support](#need-help).
-
-### First Build Taking Too Long
-
-This is expected! The first build:
-1. Provisions the runner (if needed)
-2. Pulls the Docker image (~several hundred MB)
-3. Registers with GitHub
-4. Starts your workflow
-
-**Expected time**: 2-5 minutes for first build, normal thereafter.
-
-### Runner Becomes Unreachable
-
-The Docker container may occasionally become corrupted due to:
-- Network issues during registration
-- Unexpected system events
-- Storage issues
-
-**What to do**:
-1. Check if the runner appears in your repository settings
-2. If it shows but GitHub can't contact it, the container may be corrupted
-3. **Contact us immediately** (see [Need Help](#need-help) section)
-
-We currently have no automated detection for corrupted containers, so your report helps us fix it quickly.
-
-### Common Build Failures
-
-**Package installation fails**: 
-- RISC-V support is still maturing. Some packages may not have RISC-V builds yet
-- Try building from source or check for RISC-V-specific repositories
-
-**Performance issues**:
-- RISC-V is currently slower than x86 - this is expected
-- See our [benchmark comparisons](https://cloud-v.co/riscv-comparison)
-
-**Docker-in-Docker issues**:
-- The container supports running Docker, but nested containers may have limitations
-- Use `docker run --privileged` if you encounter permission issues
-
----
-
-## Advanced Topics
-
-### GitHub Secrets
-
-GitHub secrets work normally with Cloud-V runners. Use them as you would with any GitHub Actions workflow:
-
-```yaml
-env:
-  API_KEY: ${{ secrets.MY_API_KEY }}
-```
-
-### Network Access
-
-Runners have full internet access with no blocked ports or restrictions. You can:
-- Download dependencies from public repositories
-- Access external APIs
-- Push to container registries
-- Deploy to remote servers
-
-### Docker-in-Docker
-
-The container supports running Docker containers inside it. Example:
-
-```yaml
-- name: Run tests in container
-  run: |
-    docker run --rm ubuntu:latest bash -c "echo 'Testing in Docker'"
-```
-
-**Note**: Use `--privileged` flag if you encounter permission issues.
-
-### Unregistering a Runner
- 
-- Simply uninstall the app from the repository, or
-- Wait 90 days of inactivity and runner will be removed automatically
-
----
-
-## Important Notes About GitHub Actions on RISC-V
-
-### Unofficial Port
-
-The GitHub Actions runner for RISC-V is **not officially supported by GitHub**. We're using a community port maintained at:
-- [github-runner-riscv](https://github.com/alitariq4589/github-runner-riscv)
-
-This port is actively maintained and functional, but some features may lag behind the official GitHub Actions runner.
-
-### Limitations to Be Aware Of
-
-1. **Storage cleanup is your responsibility** - The Docker container persists between builds
-2. **One concurrent job** per board type per repository
-3. **No automatic corruption detection** - Report issues if your runner becomes unreachable
-4. **Performance** - RISC-V boards are slower than x86; expect longer build times
-
----
-
-## Need Help?
-
-If you encounter any issues:
-
-### Before Contacting Support
-
-1. Check if your runner is listed in **Settings** → **Actions** → **Runners**
-2. Verify the runner shows as "Active" (green dot)
-3. Check the [monitoring dashboard](https://monitor.cloud-v.co) for overall system status
-4. Review the [troubleshooting section](#troubleshooting) above
-
-### Contact Us
-
-We're here to help! Reach out through:
-
-- **Email**: cloud-v@10xengineers.ai
-- **Discord**: Join our [RISC-V Software Ecosystem community](https://discord.gg/H7EGrzV93p)
-- **Website**: [cloud-v.co](https://cloud-v.co)
-
-We aim to respond as quickly as possible. Including the following information helps us help you faster:
-- Your GitHub repository name
-- Board type you're using (`visionfive2`, `banana-pi-f3`, or `milkv-pioneer`)
-- Runner name from your repository settings
-- Error messages or unexpected behavior you're seeing
-
----
-
-## Want a Different Board?
-
-We have additional RISC-V boards available but only enable them based on demand. 
-
-**See all available boards**: Check the [Compute Instances page](compute_instances.md) for our complete inventory.
-
-**Need something specific?**
-- Email us at cloud-v@10xengineers.ai
-- Join our [Discord community](https://discord.gg/H7EGrzV93p)
-- Tell us which board you need and why
-
-We regularly add new boards based on community interest!
-
----
+**Something else.** Write to cloud-v@10xengineers.ai with your repository
+name, the board label you used, and what you saw, or ask on our
+[Discord](https://discord.gg/H7EGrzV93p). Real people read both.
 
 ## FAQ
 
-### Can I use multiple board types in the same repository?
-No. Each repository can only register **one board type**. However, you can use the same board type across multiple workflow files.
+**Can one repository use several board types?**
+Yes. Each board type gets its own runner, and jobs on different board types
+run in parallel.
 
-### What happens to my packages after 90 days?
-When the runner is renewed (automatically with the App, manually with Legacy), you get a fresh Docker container. All previously installed packages are gone.
+**Can I run several jobs in parallel on the same board type?**
+No. One runner per board type per repository, jobs run sequentially.
 
-### Why is my build so slow?
-RISC-V performance currently lags behind x86. This is expected as the ecosystem matures. Your contribution to testing helps drive improvements! See our [benchmark comparison](https://cloud-v.co/riscv-comparison).
+**Do packages I install stick around?**
+No, and that is deliberate. Every job starts clean. Put your dependencies in
+a workflow step and they will be there every time, on any runner.
 
-### Can I run multiple jobs in parallel?
-No. Only one job can run at a time per board type per repository. Multiple jobs will queue and run sequentially.
+**Do I need a Cloud-V account?**
+No. The GitHub App installation is the whole setup.
 
-### How do I check if a board is available?
-Check the [monitoring dashboard](https://monitor.cloud-v.co) or look for your runner in **Settings** → **Actions** → **Runners**.
+**Is this safe to rely on for real projects?**
+Yes. Projects including llama.cpp run their RISC-V CI on this service. If a
+board goes down, provisioning moves to another board of the same type.
 
-### What if my job needs more than 64GB storage?
-Most boards have 64GB. The Milk-V Pioneer has 500GB. If you need more, contact us to discuss options.
+**How do I stop using it?**
+Uninstall the App from the repository. Anything ours disappears on its own.
 
-### Can I use this for production CI/CD?
-Yes! The GitHub App (Beta) is stable enough for production use. Many projects are already using it successfully.
-
-### Do I need a Cloud-V account?
-No. Just install the GitHub App or fill out the Legacy form - no separate account required.
-
-
-
-*Last updated: February 2026*
+**Which boards could be added?**
+More boards exist in the fleet than are listed here, and we enable them by
+demand. If your project needs a specific board, email us or ask on Discord.
