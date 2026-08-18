@@ -162,4 +162,4 @@ Uninstall the App from the repository. Anything ours disappears on its own.
 
 **Which boards could be added?**
 More boards exist in the fleet than are listed here, and we enable them by
-demand. If your project needs a specific board, email us or ask on Discord.
+demand. If your project needs a specific board, email us at cloud-v@10xengineers.ai or ask on [Discord](https://discord.gg/H7EGrzV93p).
