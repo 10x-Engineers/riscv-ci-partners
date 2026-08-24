@@ -8,11 +8,20 @@ Cloud-V is a community platform that accelerates the global adoption of RISC-V I
 
 ## What Cloud-V Offers
 
-Cloud-V provides free RISC-V infrastructure through:
+Cloud-V provides free access to RISC-V compute machines through following services:
 
-- **CI/CD pipelines** for automated testing and deployment
+- **CI/CD access** for automated testing and deployment
 - **SSH access** to RISC-V compute instances
-- **KernelCI integration** for low-level firmware testing
+
+<!-- ![Cloud-V Overview](</mkdocs_src/docs/doc_images/Cloud-V Docs main diagram.drawio.png>) -->
+<div align="center">
+    <img src="//mkdocs_src/docs/doc_images/Cloud-V Docs main diagram.drawio.png" width="50%">
+</div>
+## RISC-V Ecosystems Lab Partner
+
+Cloud-V is a RISC-V Ecosystem Lab Partner. For more information, visit https://riscv.org/developers/labs/
+
+<img src="/mkdocs_src/docs/doc_images/rvel_logo.png" width="30%">
 
 ## Getting Started
 
