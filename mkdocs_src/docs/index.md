@@ -29,7 +29,7 @@ This documentation provides the tools and information needed to leverage Cloud-V
 
 ## Connect With Us
 
-- **Website:** https://cloud-v.co
-- **Discord:** Join the RISC-V Software Ecosystem community at https://discord.gg/H7EGrzV93p
+- **Website:** [https://cloud-v.co](https://cloud-v.co)
+- **Discord:** Join the RISC-V Software Ecosystem community at [https://discord.gg/H7EGrzV93p](https://cloud-v.co)
 - **YouTube:** [@Cloud-V](https://www.youtube.com/@Cloud-V)
 - **Email:** cloud-v@10xengineers.ai
