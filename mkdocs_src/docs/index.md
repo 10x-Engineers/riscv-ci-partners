@@ -15,13 +15,13 @@ Cloud-V provides free access to RISC-V compute machines through following servic
 
 <!-- ![Cloud-V Overview](</mkdocs_src/docs/doc_images/Cloud-V Docs main diagram.drawio.png>) -->
 <div align="center">
-    <img src="//mkdocs_src/docs/doc_images/Cloud-V Docs main diagram.drawio.png" width="50%">
+    <img src="doc_images/Cloud-V%20Docs%20main%20diagram.drawio.png" width="50%">
 </div>
 ## RISC-V Ecosystems Lab Partner
 
 Cloud-V is a RISC-V Ecosystem Lab Partner. For more information, visit https://riscv.org/developers/labs/
 
-<img src="/mkdocs_src/docs/doc_images/rvel_logo.png" width="30%">
+<img src="doc_images/rvel_logo.png" width="30%">
 
 ## Getting Started
 
