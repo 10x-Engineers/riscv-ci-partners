@@ -1,57 +1,137 @@
-# Registering RISC-V board as GitLab Runner on Cloud-V
+# GitLab CI on RISC-V
 
-This document explains how developers working on GitLab projects can add RISC-V machines provided by Cloud-V as a GitLab runners.
+Cloud-V gives your GitLab project free CI runners on physical RISC-V boards.
+This works with projects on gitlab.com and with self-hosted GitLab servers,
+and there is no Cloud-V account to create. You create a runner in your own
+GitLab, hand us its token, and we run that runner on real hardware for you.
 
-## Register the runner
+## Quick start
 
-For registering the runner, visit [this](https://cloud-v.co/gitlab-riscv-runner) link. Add the necessary information on the page and then select a compute machine to use as GitLab runner. 
+1. In your GitLab project, go to Settings, CI/CD, Runners, and press
+   New project runner. Two choices on that screen matter:
+     - Tags: either check "Run untagged jobs", which is the simplest, or
+       give the runner a tag like `riscv` and remember it for step 4.
+     - Everything else can stay at its defaults.
+   Press Create runner and copy the token it shows. It starts with `glrt-`.
+2. Open [cloud-v.co/gitlab-riscv-runner](https://cloud-v.co/gitlab-riscv-runner).
+   Paste your project URL and the token, pick a board, enter your email,
+   and submit.
+3. The page reports progress while the runner is set up on a board, which
+   takes a few minutes. When your project's Runners page shows the runner
+   with a green dot, it is live.
+4. Push a pipeline. If you gave the runner a tag in step 1, your jobs must
+   request that tag; if you chose untagged, they need nothing special.
 
-After the necessary information is placed, clicking the submit button will try to register the runner. The registration can take some time so please be patient with next page loading. 
+A minimal `.gitlab-ci.yml`:
 
-### Registration Time
+```yaml
+build-and-test:
+  tags: [riscv]        # drop this line if you chose "Run untagged jobs"
+  script:
+    - uname -m         # prints riscv64
+    - make
+    - make test
+```
 
-This is the time required by the backend workflow to register the RISC-V machine as the GitLab runner for your project. 
+## Boards
 
-Depending upon the workload, network latency, and the computing power of the RISC-V machine, this can take up to **3 minutes**. While the page is loading, be patient as it takes some time to contact the runners and register them (especially QEMU machine since it is relatively slower right now).
+| Board | CPU | Cores | ISA |
+| --- | --- | --- | --- |
+| StarFive VisionFive 2 | JH7110 1.5 GHz | 4 | RV64GC |
+| Banana Pi BPI-F3 | SpacemiT K1 1.6 GHz | 8 | RV64GC, RVV 1.0 |
+| Milk-V Pioneer | SG2042 2.0 GHz | 64 | RV64GC, RVV 0.71 |
 
-Once an attempt to register is finished, you will see the result accordingly on the next page.
+Full hardware details are on the
+[compute instances page](https://10x-engineers.github.io/riscv-ci-partners/compute_instances/).
+More boards exist in the fleet and get enabled by demand, so if your project
+needs something specific, ask.
 
-### Initial Contact Time
+## How it works
 
-This is the time GitLab server takes to contact the RISC-V machine after the registration is complete. Once the GitLab is successful in contacting the runner, you will see a solid green circle with GitLab runner on the runners page.
+The runner you created is a project runner, so it serves your project only.
+Cloud-V runs it on the board you picked as a long-lived process that polls
+your GitLab for work, and every job executes in a fresh Docker container on
+that board, so jobs are isolated from each other and from other projects
+sharing the hardware. The default job image is `riscv64/debian:trixie-slim`,
+and you can use any riscv64 image instead with the ordinary `image:` keyword:
 
-This time also depends on the workload and computing power of the RISC-V machine. The maximum recorded time with QEMU machine is about **5 minutes**.
+```yaml
+build:
+  image: riscv64/ubuntu:24.04
+  script:
+    - apt update && apt install -y build-essential
+    - make
+```
 
-Once the contact is successful, all the jobs can run as usual.
+Images your jobs pull are cached on the board, so the first pull may be slow
+and later ones are fast. The boards are shared machines, so be considerate
+about very large images.
 
-## Supported RISC-V machines
+Runners are recycled after 30 days. When yours expires, registering a fresh
+one takes the same two minutes as the first time, with a new runner and
+token from step 1, since a runner token belongs to one runner for its
+lifetime. You can also remove the runner yourself at any moment by deleting
+it from your project's Runners page, and everything on our side cleans up.
 
-Currently, following RISC-V machines are supported with GitLab runner workflow.
+## Self-hosted GitLab
 
-- VisionFive 2 - Multiple boards
-- Banana Pi F3 - Multiple boards
-- QEMU System RISC-V - Slower than RISC-V hardware but flexible in RISC-V ISA extensions
+Nothing changes. The registration form reads your GitLab server's address
+from the project URL you paste, so a project at
+`https://gitlab.yourcompany.com/team/project` works exactly like one on
+gitlab.com. The one requirement is that your GitLab server is reachable
+from the public internet, because the runner on our board has to poll it
+for jobs. A GitLab that only exists inside your VPN cannot reach our
+hardware, and in that case the self-managed setup at the end of this page
+is your route.
 
-This list is not final. The infrastructure is expected to scale both in variety and quantity of supported RISC-V machines in the near future.
+## One runner per board type
 
-The QEMU-based compute instance is configured to support a wide range of ISA extensions but is relatively slower than the RISC-V hardware. So it may take a while to register the QEMU compute machine as the runner on the page.
+Each project gets one runner per board type, and its jobs on that board run
+one after another. Different board types are independent, so a project
+registered on both VisionFive 2 and Banana Pi F3 runs those pipelines in
+parallel. Registering the same project and board twice is refused while the
+first runner is alive.
 
-For a detailed list of compute machines and their specifications, see [Compute Instances in Cloud‑V](compute_instances.md).
+## Troubleshooting
 
-## How the GitLab Runner works
+**The runner shows in GitLab but jobs stay pending.** Almost always tags.
+Either the runner was created without "Run untagged jobs" and your jobs
+carry no matching `tags:` line, or the tag is misspelled. Edit the runner
+in GitLab to allow untagged jobs, or add the tag to your jobs.
 
-The GitLab runner runs on a non-sudo user on the specified RISC-V machines. Every RISC-V machine can be a shared runner between different GitLab projects. The GitLab runner package runs as docker executor on the RISC-V machine so that every job is isolated from other jobs. The necessary information about the specification of GitLab runner is mentioned on the [GitLab runner registration page](https://cloud-v.co/gitlab-riscv-runner) of Cloud-V.
+**The form reported failure or the runner never appeared.** Check that the
+project URL is the address of the project's main page, copied from the
+browser, and that the token is fresh. A `glrt-` token belongs to the runner
+it was created with, so if an attempt failed, the clean retry is to delete
+that runner in GitLab, create a new one, and register with the new token.
 
-Following diagram presents a view of how the job runs on the RISC-V machines in the Cloud-V.
+**Self-hosted GitLab and the runner never turns green.** Your server is not
+reachable from the internet, or a firewall is filtering us. The runner
+polls your GitLab over HTTPS, so whatever can reach your GitLab's web
+interface can run CI on it.
 
-![GitLab RISC-V Runner](<../doc_images/gitlab-riscv-working-diagram.drawio.png>)
+**The runner disappeared after a month.** That is the 30 day recycle.
+Register a fresh one.
 
+**Something else.** Email cloud-v@10xengineers.ai with your project URL and
+the board you picked, or ask on our
+[Discord](https://discord.gg/H7EGrzV93p).
 
-## Open-source version
+## FAQ
 
-There is also an open-source version of this workflow on [github](https://github.com/alitariq4589/riscv-gitlab-ci-infra) if you want to provision/manage the boards yourself.
+**Do I need a Cloud-V account?**
+No. Your GitLab account and the registration form are the whole setup.
 
-## Found an issue?
+**Can several of my projects use this?**
+Yes. Each project registers its own runner, since project runners belong to
+one project.
 
-If you found an issue with this workflow, you can create an issue at [GitHub Repository](https://github.com/alitariq4589/riscv-gitlab-ci-infra) or email us directly at cloud-v@10xengineers.ai.
+**Is my code safe on shared hardware?**
+Jobs run in per-job containers, and the usual shared-runner practices
+apply: keep secrets in GitLab CI/CD variables, masked and protected, rather
+than in the repository.
 
+**Can I run this stack myself?**
+The workflow is open source at
+[riscv-gitlab-ci-infra](https://github.com/alitariq4589/riscv-gitlab-ci-infra)
+if you want to provision and manage your own boards.
