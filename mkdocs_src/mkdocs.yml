@@ -25,6 +25,7 @@ nav:
       - QEMU System Linux tooling: tooling_J-QMS-1.md
 
 
-theme: material
-extra_css:
-  - stylesheets/extra.css
+theme:
+  name: material
+  logo: doc_images/cloud-v-logo.png
+  favicon: doc_images/cloud-v-logo.png
