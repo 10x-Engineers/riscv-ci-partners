@@ -1,0 +1,5 @@
+# Docs build dependencies — used by .github/workflows/docs.yml and for local preview.
+# Pinned to the versions that built the currently-live site, so the switch to
+# CI deployment changes nothing visually. Bump deliberately.
+mkdocs==1.6.1
+mkdocs-material==9.6.14
