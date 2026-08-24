@@ -1,0 +1,11 @@
+# MkDocs build output — built and deployed by CI (.github/workflows/docs.yml),
+# never committed. `/docs/` is anchored to the repo root: the Markdown source
+# in mkdocs_src/docs/ is NOT ignored.
+/docs/
+/_site/
+mkdocs_src/site/
+
+__pycache__/
+.cache/
+venv
+.venv
