@@ -23,9 +23,6 @@ Cloud-V is a RISC-V Ecosystem Lab Partner. For more information, visit [https://
 
 <img src="doc_images/rvel_logo.png" width="30%">
 
-## Getting Started
-
-This documentation provides the tools and information needed to leverage Cloud-V's RISC-V compute instances for your development projects.
 
 ## Connect With Us
 
