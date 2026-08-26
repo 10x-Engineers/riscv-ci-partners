@@ -27,6 +27,6 @@ Cloud-V is a RISC-V Ecosystem Lab Partner. For more information, visit [https://
 ## Connect With Us
 
 - **Website:** [https://cloud-v.co](https://cloud-v.co)
-- **Discord:** Join the RISC-V Software Ecosystem community at [https://discord.gg/H7EGrzV93p](https://cloud-v.co)
+- **Discord:** Join the RISC-V Software Ecosystem community at [https://discord.gg/H7EGrzV93p](https://discord.gg/H7EGrzV93p)
 - **YouTube:** [@Cloud-V](https://www.youtube.com/@Cloud-V)
 - **Email:** cloud-v@10xengineers.ai
