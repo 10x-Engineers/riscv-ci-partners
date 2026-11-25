@@ -10,6 +10,9 @@ If you landed here in search for free CI runners for your GitHub or GitLab for y
 ## Full Documentation
 [Link to main documentation page](https://10x-engineers.github.io/riscv-ci-partners/)
 
+## SSH Environments
+[Your own RISC-V environment over SSH: what you get, and what you can and cannot do](https://10x-engineers.github.io/riscv-ci-partners/ssh_environments/)
+
 ## Building and deploying the docs
 
 The source is `mkdocs_src/docs/` (Markdown) with `mkdocs_src/mkdocs.yml` as config. On every push to `main`, GitHub Actions (`.github/workflows/docs.yml`) builds the site and deploys it to GitHub Pages; PRs that touch `mkdocs_src/` get a build check. Built HTML is never committed.
