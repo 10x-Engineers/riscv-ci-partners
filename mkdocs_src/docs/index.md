@@ -11,7 +11,7 @@ Cloud-V is a community platform that accelerates the global adoption of RISC-V I
 Cloud-V provides free access to RISC-V compute machines through following services:
 
 - **CI/CD access** for automated testing and deployment
-- **SSH access** to RISC-V compute instances
+- **SSH access** to RISC-V compute instances: your own environment on a real board, with root access. Read [SSH environments on RISC-V](ssh_environments.md) for what you get, what you can and cannot do, and how to ask for one.
 
 <!-- ![Cloud-V Overview](</mkdocs_src/docs/doc_images/Cloud-V Docs main diagram.drawio.png>) -->
 <div align="center">

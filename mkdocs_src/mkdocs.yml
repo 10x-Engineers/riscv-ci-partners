@@ -9,6 +9,7 @@ nav:
             - Register free GitLab Runner: setting_up_gitlab_runner.md
         - KernelCI:
             - Getting Access to LAVA: getting_started_lava.md
+      - SSH environments on RISC-V: ssh_environments.md
       - Setting up SSH on RISC-V: sandboxing.md
   - Compute Instance Specifications: compute_instances.md
 
