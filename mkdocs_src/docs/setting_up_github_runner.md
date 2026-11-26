@@ -44,6 +44,7 @@ to remember our exact spelling.
 | StarFive VisionFive 2 | `visionfive2`, `vf2`, `vision-five-2` | JH7110 1.5 GHz | 4 | RV64GC |
 | Banana Pi BPI-F3 | `banana-pi-f3`, `bpi-f3`, `banana-pi` | SpacemiT K1 1.6 GHz | 8 | RV64GC, RVV 1.0 |
 | Milk-V Pioneer | `milkv-pioneer`, `pioneer`, `milk-v-pioneer` | SG2042 2.0 GHz | 64 | RV64GC, RVV 0.71 |
+| Milk-V Jupiter 2 | `milkv-jupiter2`, `jupiter2`, `milk-v-jupiter2` | SpacemiT K3 (X100) | 8 | RV64GC, RVV 1.0, H |
 
 Full hardware details live on the
 [compute instances page](https://10x-engineers.github.io/riscv-ci-partners/compute_instances/).

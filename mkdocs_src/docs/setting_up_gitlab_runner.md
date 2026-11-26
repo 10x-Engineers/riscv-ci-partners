@@ -40,6 +40,7 @@ build-and-test:
 | StarFive VisionFive 2 | JH7110 1.5 GHz | 4 | RV64GC |
 | Banana Pi BPI-F3 | SpacemiT K1 1.6 GHz | 8 | RV64GC, RVV 1.0 |
 | Milk-V Pioneer | SG2042 2.0 GHz | 64 | RV64GC, RVV 0.71 |
+| Milk-V Jupiter 2 | SpacemiT K3 (X100) | 8 | RV64GC, RVV 1.0, H |
 
 Full hardware details are on the
 [compute instances page](https://10x-engineers.github.io/riscv-ci-partners/compute_instances/).
