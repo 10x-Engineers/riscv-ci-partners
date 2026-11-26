@@ -181,6 +181,30 @@ Each instance type shown below may represent one or more instances in actual dep
 </div>
 </div>
 
+<div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; margin-top: -50px">
+
+<div style="flex: 2;line-height: 1.2;">
+  <h3>Compute Instance: Milk-V Jupiter 2</h3>
+  <p><strong>Architecture:</strong> riscv64</p>
+  <p><strong>Clock Frequency (per core):</strong> 2.4 GHz</p>
+  <p><strong>Core Count:</strong> 8 (plus 8 A100 AI cores)</p>
+  <p><strong>Memory:</strong> 32 GB LPDDR5</p>
+  <p><strong>Type:</strong> Physical Board</p>
+  <p style="word-break: break-word; white-space: normal;">
+<p><strong>ISA Extensions:</strong> Standard + Privilege + Hypervisor + Vector</p>
+    <details style="max-width: 600px;">
+      <summary>Show complete ISA string</summary>
+      <p style="word-break: break-word; margin-top: 0.5rem;">
+        rv64imafdcvh_zicbom_zicbop_zicboz_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zaamo_zalrsc_zawrs_zfa_zfbfmin_zfh_zfhmin_zca_zcb_zcd_zcmop_zba_zbb_zbc_zbs_zkt_zvbb_zvbc_zve32f_zve32x_zve64d_zve64f_zve64x_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkned_zvknha_zvknhb_zvksed_zvksh_zvkt_smaia_smstateen_ssaia_sscofpmf_ssnpm_sstc_svade_svinval_svnapot_svpbmt_sdtrig
+      </p>
+    </details>
+</div>
+
+<div style="flex: 1;">
+  <img src="../doc_images/milkv_jupiter2.jpg" alt="Milk-V Jupiter 2" style="max-width: 90%; border-radius: 6px; margin-left: -100px;margin-top: 10px;">
+</div>
+</div>
+
 <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; margin-top: 100px">
 
 <div style="flex: 2;line-height: 1.2;">
